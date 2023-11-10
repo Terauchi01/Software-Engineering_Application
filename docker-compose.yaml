@@ -7,7 +7,7 @@ services:
     ports:
       - '8080:8080'
     volumes:
-      - ./server:/path/in/container
+      - ./server:/var/www
   db:
     image: mysql:8.0.33
     ports:

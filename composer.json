@@ -1,0 +1,15 @@
+{
+    "name": "allround/software_engineering_application",
+    "autoload": {
+        "psr-4": {
+            "Allround\\SoftwareEngineeringApplication\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Terauchi01",
+            "email": "shun1572jp@gmail.com"
+        }
+    ],
+    "require": {}
+}
