@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - '8080:8080'
+    volumes:
+      - ./server:/path/in/container
   db:
     image: mysql:8.0.33
     ports:
