@@ -17,5 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', function () {
-    return view('welcome');
+    return view('test');
+});
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/', function () {
+        return view('admin.test');
+    });
+});
+Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
+    Route::get('/', function () {
+        return view('coop.test');
+    });
+});
+Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+    Route::get('/', function () {
+        return view('user.test');
+    });
 });
