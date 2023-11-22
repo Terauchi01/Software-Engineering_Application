@@ -15,3 +15,4 @@ RUN composer install
 RUN chmod 777 -R /var/www/storage/ && \
     echo "Listen 8080" >> /etc/apache2/ports.conf  && \
     a2enmod rewrite
+RUN apt-get install -y default-mysql-client
