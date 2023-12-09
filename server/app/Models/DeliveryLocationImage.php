@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Favorite extends Model
+class DeliveryLocationImage extends Model
 {
     use HasFactory;
-    protected $table = 'favorite';
+    protected $table = 'delivery_location_image';
 
     protected $fillable = [
-        'sender_id',
-        'destination_user_id',
+        'image_url',
     ];
 
     protected $casts = [

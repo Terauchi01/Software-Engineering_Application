@@ -5,14 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Favorite extends Model
+class AccountInformation extends Model
 {
     use HasFactory;
-    protected $table = 'favorite';
+    protected $table = 'account_information';
 
     protected $fillable = [
-        'sender_id',
-        'destination_user_id',
+        'bank_id',
+        'branch_id',
+        'account_type',
+        'account_number',
+        'account_name',
+        'account_name_kana',
     ];
 
     protected $casts = [

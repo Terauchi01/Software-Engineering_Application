@@ -24,4 +24,8 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+    protected $commands = [
+        // 他のコマンド...
+        Commands\ListModels::class,
+    ];    
 }

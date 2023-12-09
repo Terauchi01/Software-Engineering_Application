@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Favorite extends Model
+class AdminUser extends Model
 {
     use HasFactory;
-    protected $table = 'favorite';
+    protected $table = 'admin_user';
 
     protected $fillable = [
-        'sender_id',
-        'destination_user_id',
+        'user_name',
+        'password',
     ];
 
     protected $casts = [

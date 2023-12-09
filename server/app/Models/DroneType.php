@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Favorite extends Model
+class DroneType extends Model
 {
     use HasFactory;
-    protected $table = 'favorite';
+    protected $table = 'drone_type';
 
     protected $fillable = [
-        'sender_id',
-        'destination_user_id',
+        'name',
+        'drone_spec',
+        'number_of_drones',
     ];
 
     protected $casts = [
