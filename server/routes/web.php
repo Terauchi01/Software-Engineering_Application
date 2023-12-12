@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\HelloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +36,8 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         return view('user.test');
     });
 });
+Route::get('/index', [HelloController::class, 'index']);
+Route::get('/send_date', [HelloController::class, 'send_date']);
+Route::post('/send_date/add', [HelloController::class, 'update_controller']);
+Route::get('/show', [HelloController::class, 'insert_controller']);
+
