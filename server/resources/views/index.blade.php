@@ -19,11 +19,12 @@
 {{$DroneType}}
 {{$Favorite}}
 {{$LicenseInformation}} --}}
-@foreach ($User as $user)
+{{-- @foreach ($User as $user)
     @foreach ($user->getAttributes() as $key => $value)
         <p>{{ $value }}</p>
     @endforeach
-@endforeach
+@endforeach --}}
+{{$User}}
 
 <body>
 </body>

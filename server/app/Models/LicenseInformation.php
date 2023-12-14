@@ -9,7 +9,7 @@ class LicenseInformation extends Model
 {
     use HasFactory;
     protected $table = 'license_information';
-
+    protected $primaryKey = 'id';
     protected $fillable = [
         'date_of_issue',
         'date_of_registration',

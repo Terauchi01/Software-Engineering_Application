@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\loginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +41,6 @@ Route::get('/index', [HelloController::class, 'index']);
 Route::get('/send_date', [HelloController::class, 'send_date']);
 Route::post('/send_date/add', [HelloController::class, 'update_controller']);
 Route::get('/show', [HelloController::class, 'insert_controller']);
+Route::get('/test', [loginController::class, 'index']);
+Route::post('/login', [loginController::class, 'login']);
 

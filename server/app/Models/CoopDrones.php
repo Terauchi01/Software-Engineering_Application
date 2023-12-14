@@ -9,7 +9,7 @@ class CoopDrones extends Model
 {
     use HasFactory;
     protected $table = 'coop_drones';
-
+    protected $primaryKey = 'id';
     protected $fillable = [
         'drone_type_id',
         'coop_user_id',

@@ -9,7 +9,7 @@ class AccountInformation extends Model
 {
     use HasFactory;
     protected $table = 'account_information';
-
+    protected $primaryKey = 'id';
     protected $fillable = [
         'bank_id',
         'branch_id',

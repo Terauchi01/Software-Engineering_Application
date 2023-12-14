@@ -9,7 +9,7 @@ class CoopLocation extends Model
 {
     use HasFactory;
     protected $table = 'coop_location';
-
+    protected $primaryKey = 'id';
     protected $fillable = [
         'postal_code',
         'prefecture_id',

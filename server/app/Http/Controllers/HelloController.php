@@ -45,7 +45,7 @@ class HelloController extends Controller
     public function update_controller(Request $request){
         $name = $request->message;
         $User = User::find(1);
-        $User->update(["name" => $name]);
+        $User->update(["name" => $name,"email" => "test@gmail.com","password" => password_hash("test", PASSWORD_DEFAULT)]);
         return view('index', compact('User'));
     }
     public function insert_controller(){
@@ -55,7 +55,7 @@ class HelloController extends Controller
         $user->password = '12345';
         $user->save();
 
-        
+
         $User = User::where("name",'terauchishunsuke2')->first();
         return view('index', compact('User'));
     }

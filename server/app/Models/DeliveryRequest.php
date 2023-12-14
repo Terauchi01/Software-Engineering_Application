@@ -9,7 +9,7 @@ class DeliveryRequest extends Model
 {
     use HasFactory;
     protected $table = 'delivery_request';
-
+    protected $primaryKey = 'id';
     protected $fillable = [
         'delivery_destination_id',
         'collection_company_id',

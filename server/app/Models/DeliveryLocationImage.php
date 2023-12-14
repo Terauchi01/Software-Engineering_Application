@@ -9,7 +9,7 @@ class DeliveryLocationImage extends Model
 {
     use HasFactory;
     protected $table = 'delivery_location_image';
-
+    protected $primaryKey = 'id';
     protected $fillable = [
         'image_url',
     ];

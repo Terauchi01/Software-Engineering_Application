@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AdminInformation extends Model
 {
     protected $table = 'admin_information';
-    
+    protected $primaryKey = 'id';
     protected $fillable = [
         'company_name',
         'representative_name',

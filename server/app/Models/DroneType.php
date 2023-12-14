@@ -9,7 +9,7 @@ class DroneType extends Model
 {
     use HasFactory;
     protected $table = 'drone_type';
-
+    protected $primaryKey = 'id';
     protected $fillable = [
         'name',
         'drone_spec',

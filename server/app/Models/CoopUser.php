@@ -9,7 +9,7 @@ class CoopUser extends Model
 {
     use HasFactory;
     protected $table = 'coop_user';
-
+    protected $primaryKey = 'id';
     protected $fillable = [
         'email_address',
         'password',

@@ -9,7 +9,7 @@ class ChildAccount extends Model
 {
     use HasFactory;
     protected $table = 'child_account';
-
+    protected $primaryKey = 'id';
     protected $fillable = [
         'authority',
         'user_name',
