@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserLogoutController extends Controller
+class CoopReportTroubleController extends Controller
 {
-  public function userLogout (){
+  public function CoopReportTrouble (){
 
     return view('user.test');
   }
