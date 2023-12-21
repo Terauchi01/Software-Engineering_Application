@@ -8,6 +8,6 @@ class CoopRequestAdminDroneRepairController extends Controller
 {
     public function coopRequestAdminDroneRepair () {
 
-      return view('user.test');
+        return view('user.test');
     }
 }

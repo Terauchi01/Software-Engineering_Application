@@ -8,6 +8,6 @@ class CoopReportTroubleController extends Controller
 {
     public function CoopReportTrouble (){
 
-      return view('user.test');
+        return view('user.test');
     }
 }

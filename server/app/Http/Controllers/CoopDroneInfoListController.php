@@ -8,6 +8,6 @@ class CoopDroneInfoListController extends Controller
 {
     public function coopDroneInfoList (){
 
-      return view('user.text');
+        return view('user.text');
     }
 }
