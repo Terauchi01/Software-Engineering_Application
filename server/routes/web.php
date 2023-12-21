@@ -5,6 +5,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\TerauchiController;
+use App\Http\Controllers\AdminAllocateCoopDeliveryTaskController;
+use App\Http\Controllers\AdminEditAdminDroneController;
+use App\Http\Controllers\AdminEditCoopDroneInfoController;
+use App\Http\Controllers\AdminEditCoopInfoController;
+use App\Http\Controllers\AdminEditCoopPayInfoController;
+use App\Http\Controllers\AdminEditUserInfoController;
+use App\Http\Controllers\AdminEditUserPayInfoController;
+use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\AdminLogoutController;
+use App\Http\Controllers\AdminRegisterAdminDroneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +34,16 @@ Route::get('/test', function () {
     return view('test');
 });
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('adminAllocateCoopDeliveryTask', [AdminAllocateCoopDeliveryTaskController::class, 'adminAllocateCoopDeliveryTask'])->name('adminAllocateCoopDeliveryTask');
+    Route::get('adminEditAdminDrone', [AdminEditAdminDroneController::class, 'adminEditAdminDrone'])->name('adminEditAdminDrone');
+    Route::get('adminEditCoopDroneInfo', [AdminEditCoopDroneInfoController::class, 'adminEditCoopDroneInfo'])->name('adminEditCoopDroneInfo');
+    Route::get('adminEditCoopInfo', [AdminEditCoopInfoController::class, 'adminEditCoopInfo'])->name('adminEditCoopInfo');
+    Route::get('adminEditCoopPayInfo', [AdminEditCoopPayInfoController::class, 'adminEditCoopPayInfo'])->name('adminEditCoopPayInfo');
+    Route::get('adminEditUserInfo', [AdminEditUserInfoController::class, 'adminEditUserInfo'])->name('adminEditUserInfo');
+    Route::get('adminEditUserPayInfo', [AdminEditUserPayInfoController::class, 'adminEditUserPayInfo'])->name('adminEditUserPayInfo');
+    Route::get('adminLogin', [AdminLoginController::class, 'adminLogin'])->name('adminLogin');
+    Route::get('adminLogout', [AdminLogoutController::class, 'adminLogout'])->name('adminLogout');
+    Route::get('adminRegisterAdminDrone', [AdminRegisterAdminDroneController::class, 'adminRegisterAdminDrone'])->name('adminRegisterAdminDrone');
     Route::get('/', function () {
         return view('admin.test');
     });

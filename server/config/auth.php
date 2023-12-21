@@ -40,6 +40,22 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+        ],
+        'admins' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'coops' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'users' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*
@@ -60,6 +76,14 @@ return [
     */
 
     'providers' => [
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\AdminUser::class,
+        ],
+        'coops' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\CoopUser::class,
+        ],
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
@@ -91,6 +115,18 @@ return [
     */
 
     'passwords' => [
+        'admins' => [
+            'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'coops' => [
+            'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
         'users' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',

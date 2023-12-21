@@ -8,6 +8,6 @@ class AdminEditAdminDroneController extends Controller
 {
     public function adminEditAdminDrone (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('admin.AdminEditAdminDrone');
     }
 }

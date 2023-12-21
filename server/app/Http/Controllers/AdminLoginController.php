@@ -8,6 +8,6 @@ class AdminLoginController extends Controller
 {
     public function adminLogin (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('admin.AdminLogin');
     }
 }

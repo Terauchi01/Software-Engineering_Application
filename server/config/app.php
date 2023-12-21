@@ -59,6 +59,12 @@ return [
 
     'asset_url' => env('ASSET_URL'),
 
+    'user_domain' => env('APP_USER_DOMAIN'),
+
+    'customer_domain' => env('APP_COOP_DOMAIN'),
+
+    'admin_domain' => env('APP_ADMIN_DOMAIN'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

@@ -8,6 +8,6 @@ class AdminRegisterAdminDroneController extends Controller
 {
     public function adminRegisterAdminDrone (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('admin.AdminRegisterAdminDrone');
     }
 }
