@@ -8,6 +8,6 @@ class AdminAllocateCoopDeliveryTaskController extends Controller
 {
     public function adminAllocateCoopDeliveryTask (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('admin.AdminAllocateCoopDeliveryTask');
     }
 }
