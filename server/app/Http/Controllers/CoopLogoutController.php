@@ -9,6 +9,6 @@ class CoopLogoutController extends Controller
     // ログアウト(事業者)
     public function coopLogout (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('coop.coopLogout');
     }
 }

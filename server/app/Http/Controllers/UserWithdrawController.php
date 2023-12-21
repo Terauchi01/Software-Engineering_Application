@@ -8,6 +8,6 @@ class UserWithdrawController extends Controller
 {
     public function userWithdraw (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('user.userWithdraw');
     }
 }

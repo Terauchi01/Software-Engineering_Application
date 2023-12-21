@@ -1,0 +1,1 @@
+adminViewCoopPayInfo test
