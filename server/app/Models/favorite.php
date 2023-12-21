@@ -9,7 +9,7 @@ class Favorite extends Model
 {
     use HasFactory;
     protected $table = 'favorite';
-
+    protected $primaryKey = 'id';
     protected $fillable = [
         'sender_id',
         'destination_user_id',
