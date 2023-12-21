@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class CoopRequestAdminDroneRepairController extends Controller
 {
-  public function coopRequestAdminDroneRepair () {
+    public function coopRequestAdminDroneRepair () {
 
-    return view('user.test');
-  }
+      return view('user.test');
+    }
 }

@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class UserRegistrationController extends Controller
 {
-  public function userRegisterAccount (){
+    public function userRegisterAccount (){
 
-    return view('user.test');
-  }
+        return view('user.test');
+    }
 }

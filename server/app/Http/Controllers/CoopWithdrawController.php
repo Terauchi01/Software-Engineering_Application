@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class CoopWithdrawController extends Controller
 {
-  public function coopWithdraw (){
+    public function coopWithdraw (){
   
-    return view('user.test');
+        return view('user.test');
+    }
 }

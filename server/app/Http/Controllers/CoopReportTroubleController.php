@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class CoopReportTroubleController extends Controller
 {
-  public function CoopReportTrouble (){
+    public function CoopReportTrouble (){
 
-    return view('user.test');
-  }
+      return view('user.test');
+    }
 }
