@@ -15,6 +15,14 @@ use App\Http\Controllers\AdminEditUserPayInfoController;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminLogoutController;
 use App\Http\Controllers\AdminRegisterAdminDroneController;
+use App\Http\Controllers\CoopWithdrawController;
+use App\Http\Controllers\CoopDroneInfoListController;
+use App\Http\Controllers\CoopRequestAdminDroneRepairController;
+use App\Http\Controllers\CoopReportTroubleController;
+use App\Http\Controllers\UserLoginController;
+use App\Http\Controllers\UserLogoutController;
+use App\Http\Controllers\UserRegistrationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +59,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     Route::get('/', function () {
         return view('coop.test');
+    });
+    Route::get('/withdraw', coopWithdraw () {
+        return view('coop.withdraw');
     });
 });
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
