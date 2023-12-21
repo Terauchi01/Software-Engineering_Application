@@ -15,6 +15,9 @@ use App\Http\Controllers\AdminEditUserPayInfoController;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminLogoutController;
 use App\Http\Controllers\AdminRegisterAdminDroneController;
+use App\Http\Controllers\AdminViewUserListController;
+use App\Http\Controllers\AdminViewUserInfoController;
+use App\Http\Controllers\AdminViewUserDeliveryRequestListController;
 use App\Http\Controllers\CoopWithdrawController;
 use App\Http\Controllers\CoopDroneInfoListController;
 use App\Http\Controllers\CoopRequestAdminDroneRepairController;
@@ -55,6 +58,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', function () {
         return view('admin.test');
     });
+    Route::get('viewUserList', [AdminViewUserListController::class, 'adminViewUserList'])->name('viewUserList');
+    Route::get('viewUserInfo', [AdminViewUserInfoController::class, 'adminViewUserInfo'])->name('viewUserInfo');
+    Route::get('viewUserDeliveryRequestList', [AdminViewUserDeliveryRequestListController::class, 'adminViewUserDeliveryRequestList'])->name('viewUserDeliveryRequestList');
+    
 });
 Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     Route::get('/', function () {
