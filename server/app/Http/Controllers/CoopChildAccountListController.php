@@ -7,24 +7,24 @@ use Illuminate\Http\Request;
 class CoopChildAccountListController extends Controller
 {
     public function coopFilterChildCoopAccountListView (){
-        return view('user.test');
+        return view('coop.CoopChildAccountList');
     }
     public function coopSearchChildCoopAccountListView (){
-        return view('user.test');
+        return view('coop.CoopChildAccountList');
     }
     public function coopSortChildCoopAccountListViewInfo (){
-        return view('user.test');
+        return view('coop.CoopChildAccountList');
     }
     public function coopAllSelectChild (){
-        return view('user.test');
+        return view('coop.CoopChildAccountList');
     }
     public function coopAllExecuteChildCoopAccountListView (){
-        return view('user.test');
+        return view('coop.CoopChildAccountList');
     }
     public function coopViewChildCoopAccountList (){
-        return view('user.test');
+        return view('coop.CoopChildAccountList');
     }
     public function coopDeleteChildCoopAccount (){
-        return view('user.test');
+        return view('coop.CoopChildAccountList');
     }
 }
