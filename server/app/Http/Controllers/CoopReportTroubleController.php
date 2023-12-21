@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CoopWithdrawController extends Controller
+class CoopReportTroubleController extends Controller
 {
-    public function coopWithdraw (){
-  
+    public function CoopReportTrouble (){
+
         return view('user.test');
     }
 }
