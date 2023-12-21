@@ -60,14 +60,17 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     Route::get('/', function () {
         return view('coop.test');
     });
-    Route::get('/withdraw', coopWithdraw () {
-        return view('coop.withdraw');
-    });
+    Route::get('withdraw', [CoopWithdrawController::class, 'coopwithdraw'])->name('withdraw');
+    Route::get('droneInfoList', [CoopDroneInfoListController::class, 'coopDroneInfoList'])->name('droneInfoList');     Route::get('requestAdminDroneRepair', [CoopRequestAdminDroneRepairController::class, 'coopRequestAdminDroneRepair'])->name('requestAdminDroneRepair');
+    Route::get('reportTrouble', [CoopReportTroubleController::class, 'coopReportTrouble'])->name('reportTrouble');
 });
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('/', function () {
         return view('user.test');
     });
+    Route::get('login', [UserLoginController::class, 'userLogin'])->name('login');
+    Route::get('logout', [UserLogoutController::class, 'userLogout'])->name('logout');
+    Route::get('registration', [UserRegistrationController::class, 'userRegisterAccount'])->name('registration');
 });
 Route::group(['prefix' => 'terauchi', 'as' => 'terauchi.'], function () {
     Route::get('top', [TerauchiController::class, 'index'])->name('top');
