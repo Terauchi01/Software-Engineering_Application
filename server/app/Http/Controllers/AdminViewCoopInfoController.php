@@ -8,6 +8,6 @@ class AdminViewCoopInfoController extends Controller
 {
     public function adminViewCoopInfo (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('admin.AdminViewCoopInfo');
     }
 }

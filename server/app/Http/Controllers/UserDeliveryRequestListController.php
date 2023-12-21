@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class UserDeliveryRequestListController extends Controller
 {
-    public function userRequestDeliverlyList (){
+    public function userDeliveryRequestList (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('user.UserDeliveryRequestList');
     }
 }

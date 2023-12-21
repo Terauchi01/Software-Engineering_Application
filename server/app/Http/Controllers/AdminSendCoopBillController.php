@@ -8,6 +8,6 @@ class AdminSendCoopBillController extends Controller
 {
     public function adminSendCoopBill (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('admin.AdminSendCoopBill');
     }
 }
