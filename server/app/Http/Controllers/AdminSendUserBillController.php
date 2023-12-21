@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminLoginController extends Controller
+class AdminSendUserBillController extends Controller
 {
-    public function adminLogin (){
+    public function adminSendUserBill (){
         //viewの返すところは適当で良い
         return view('user.test');
     }
