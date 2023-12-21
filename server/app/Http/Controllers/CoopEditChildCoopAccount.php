@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CoopDroneRegistrationController extends Controller
+class CoopEditChildCoopAccount extends Controller
 {
-    public function coopRegisterDrone (){
+    public function coopEditChildCoopAccount (){
         return view('user.test');
     }
 }
