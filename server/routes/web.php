@@ -15,6 +15,16 @@ use App\Http\Controllers\AdminEditUserPayInfoController;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminLogoutController;
 use App\Http\Controllers\AdminRegisterAdminDroneController;
+use App\Http\Controllers\UserEditInfoController;
+use App\Http\Controllers\UserDeliveryPlaceRequestController;
+use App\Http\Controllers\UserDeliveryRequestController;
+use App\Http\Controllers\UserDeliveryRequestListController;
+use App\Http\Controllers\AdminViewCoopApplyDroneLendListController;
+use App\Http\Controllers\AdminViewCoopListController;
+use App\Http\Controllers\AdminViewCoopInfoController;
+use App\Http\Controllers\AdminSendCoopBillController;
+use App\Http\Controllers\AdminViewCoopDroneInfoController;
+use App\Http\Controllers\AdminSendUserBillController;
 use App\Http\Controllers\AdminViewUserListController;
 use App\Http\Controllers\AdminViewUserInfoController;
 use App\Http\Controllers\AdminViewUserDeliveryRequestListController;
@@ -77,8 +87,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('adminViewUserPayInfo', [AdminViewUserPayInfoController::class, 'adminViewUserPayInfo'])->name('adminViewUserPayInfo');
     Route::get('adminViewUserStatisticsInfo', [AdminViewUserStatisticsInfoController::class, 'adminViewUserStatisticsInfo'])->name('adminViewUserStatisticsInfo');
     Route::get('adminViewUserStatisticsInfoGraph', [AdminViewUserStatisticsInfoController::class, 'adminViewUserStatisticsInfoGraph'])->name('adminViewUserStatisticsInfoGraph');
+    Route::get('viewCoopList', [AdminViewCoopListController::class, 'adminViewCoopList'])->name('adminViewCoopList');
+    Route::get('viewCoopApplyDroneLendList', [AdminViewCoopApplyDroneLendListController::class, 'adminViewCoopApplyDroneLendList'])->name('adminViewCoopApplyDroneLendList');
+    Route::get('viewCoopInfo', [AdminViewCoopInfoController::class, 'adminViewCoopInfo'])->name('adminViewCoopInfo');
+    Route::get('sendCoopBill', [AdminSendCoopBillController::class, 'adminSendCoopBill'])->name('adminSendCoopBill');
+    Route::get('viewCoopDroneInfo', [AdminViewCoopDroneInfoController::class, 'adminViewCoopDroneInfo'])->name('adminViewCoopDroneInfo');
+    Route::get('sendUserBill', [AdminSendUserBillController::class, 'adminSendUserBill'])->name('adminSendUserBill');
     Route::get('/', function () {
         return view('admin.test');
+       
     });
     Route::get('viewUserList', [AdminViewUserListController::class, 'adminViewUserList'])->name('adminViewUserList');
     Route::get('viewUserInfo', [AdminViewUserInfoController::class, 'adminViewUserInfo'])->name('adminViewUserInfo');
@@ -115,6 +132,11 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     Route::get('coopApplyCoopRegister', [CoopRegistrationRequestController::class, 'coopApplyCoopRegister'])->name('coopApplyCoopRegister');
 });
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+    Route::get('editInfo', [UserEditInfoController::class, 'userEditInfo'])->name('userEditInfo');
+    Route::get('deliveryPlaceRequest', [UserDeliveryPlaceRequestController::class, 'userDeliveryPlaceRequest'])->name('userDeliveryPlaceRequest');
+    Route::get('deliveryRequest', [UserDeliveryRequestController::class, 'userDeliveryRequest'])->name('userDeliveryRequest');
+    Route::get('deliveryRequestList', [UserDeliveryRequestListController::class, 'userDeliveryRequestList'])->name('userDeliveryRequestList');
+ 
     Route::get('/', function () {
         return view('user.test');
     });

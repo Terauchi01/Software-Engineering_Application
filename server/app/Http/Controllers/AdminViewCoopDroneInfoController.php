@@ -8,6 +8,6 @@ class AdminViewCoopDroneInfoController extends Controller
 {
     public function adminViewCoopDroneInfo (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('admin.AdminViewCoopDroneInfo');
     }
 }
