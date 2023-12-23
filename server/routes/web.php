@@ -54,12 +54,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('adminLogin', [AdminLoginController::class, 'adminLogin'])->name('adminLogin');
     Route::get('adminLogout', [AdminLogoutController::class, 'adminLogout'])->name('adminLogout');
     Route::get('adminRegisterAdminDrone', [AdminRegisterAdminDroneController::class, 'adminRegisterAdminDrone'])->name('adminRegisterAdminDrone');
-    Route::get('viewCoopList', [AdminViewCoopListController::class, 'adminViewCoopList'])->name('viewCoopList');
-    Route::get('viewCoopApplyDroneLendList', [AdminViewCoopApplyDroneLendListController::class, 'adminViewCoopApplyDroneLendList'])->name('viewCoopApplyDroneLendList');
-    Route::get('viewCoopInfo', [AdminViewCoopInfoController::class, 'adminViewCoopInfo'])->name('viewCoopInfo');
-    Route::get('sendCoopBill', [AdminSendCoopBillController::class, 'adminSendCoopBill'])->name('sendCoopBill');
-    Route::get('viewCoopDroneInfo', [AdminViewCoopDroneInfoController::class, 'adminViewCoopDroneInfo'])->name('viewCoopDroneInfo');
-    Route::get('sendUserBill', [AdminSendUserBillController::class, 'adminSendUserBill'])->name('sendUserBill');
+    Route::get('viewCoopList', [AdminViewCoopListController::class, 'adminViewCoopList'])->name('adminViewCoopList');
+    Route::get('viewCoopApplyDroneLendList', [AdminViewCoopApplyDroneLendListController::class, 'adminViewCoopApplyDroneLendList'])->name('adminViewCoopApplyDroneLendList');
+    Route::get('viewCoopInfo', [AdminViewCoopInfoController::class, 'adminViewCoopInfo'])->name('adminViewCoopInfo');
+    Route::get('sendCoopBill', [AdminSendCoopBillController::class, 'adminSendCoopBill'])->name('adminSendCoopBill');
+    Route::get('viewCoopDroneInfo', [AdminViewCoopDroneInfoController::class, 'adminViewCoopDroneInfo'])->name('adminViewCoopDroneInfo');
+    Route::get('sendUserBill', [AdminSendUserBillController::class, 'adminSendUserBill'])->name('adminSendUserBill');
     Route::get('/', function () {
         return view('admin.test');
        
@@ -71,10 +71,10 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     });
 });
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
-    Route::get('editInfo', [UserEditInfoController::class, 'userEditInfo'])->name('editInfo');
-    Route::get('deliveryPlaceRequest', [UserDeliveryPlaceRequestController::class, 'userDeliveryPlaceRequest'])->name('deliveryPlaceRequest');
-    Route::get('deliveryRequest', [UserDeliveryRequestController::class, 'userDeliveryRequest'])->name('deliveryRequest');
-    Route::get('deliveryRequestList', [UserDeliveryRequestListController::class, 'userDeliveryRequestList'])->name('deliveryRequestList');
+    Route::get('editInfo', [UserEditInfoController::class, 'userEditInfo'])->name('userEditInfo');
+    Route::get('deliveryPlaceRequest', [UserDeliveryPlaceRequestController::class, 'userDeliveryPlaceRequest'])->name('userDeliveryPlaceRequest');
+    Route::get('deliveryRequest', [UserDeliveryRequestController::class, 'userDeliveryRequest'])->name('userDeliveryRequest');
+    Route::get('deliveryRequestList', [UserDeliveryRequestListController::class, 'userDeliveryRequestList'])->name('userDeliveryRequestList');
  
     Route::get('/', function () {
         return view('user.test');
