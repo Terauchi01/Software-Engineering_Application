@@ -15,6 +15,16 @@ use App\Http\Controllers\AdminEditUserPayInfoController;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminLogoutController;
 use App\Http\Controllers\AdminRegisterAdminDroneController;
+use App\Http\Controllers\AdminViewUserListController;
+use App\Http\Controllers\AdminViewUserInfoController;
+use App\Http\Controllers\AdminViewUserDeliveryRequestListController;
+use App\Http\Controllers\CoopWithdrawController;
+use App\Http\Controllers\CoopDroneInfoListController;
+use App\Http\Controllers\CoopRequestAdminDroneRepairController;
+use App\Http\Controllers\CoopReportTroubleController;
+use App\Http\Controllers\UserLoginController;
+use App\Http\Controllers\UserLogoutController;
+use App\Http\Controllers\UserRegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,11 +57,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', function () {
         return view('admin.test');
     });
+    Route::get('viewUserList', [AdminViewUserListController::class, 'adminViewUserList'])->name('adminViewUserList');
+    Route::get('viewUserInfo', [AdminViewUserInfoController::class, 'adminViewUserInfo'])->name('adminViewUserInfo');
+    Route::get('viewUserDeliveryRequestList', [AdminViewUserDeliveryRequestListController::class, 'adminViewUserDeliveryRequestList'])->name('adminViewUserDeliveryRequestList');
 });
 Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     Route::get('/', function () {
         return view('coop.test');
     });
+    Route::get('withdraw', [CoopWithdrawController::class, 'coopwithdraw'])->name('coopwithdraw');
+    Route::get('droneInfoList', [CoopDroneInfoListController::class, 'coopDroneInfoList'])->name('coopDroneInfoList');
+    Route::get('requestAdminDroneRepair', [CoopRequestAdminDroneRepairController::class, 'coopRequestAdminDroneRepair'])->name('coopRequestAdminDroneRepair');
+    Route::get('reportTrouble', [CoopReportTroubleController::class, 'coopReportTrouble'])->name('coopReportTrouble');
     Route::get('coopLogin', [CoopLoginController::class, 'coopLogin'])->name('coopLogin');
     Route::get('coopLogout', [CoopLogoutController::class, 'coopLogout'])->name('coopLogout');
     Route::get('coopApplyCoopRegister', [CoopRegistrationRequestController::class, 'coopApplyCoopRegister'])->name('coopApplyCoopRegister');
@@ -60,6 +77,9 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('/', function () {
         return view('user.test');
     });
+    Route::get('login', [UserLoginController::class, 'userLogin'])->name('userLogin');
+    Route::get('logout', [UserLogoutController::class, 'userLogout'])->name('userLogout');
+    Route::get('registration', [UserRegistrationController::class, 'userRegisterAccount'])->name('userRegisterAccount');
 });
 Route::group(['prefix' => 'terauchi', 'as' => 'terauchi.'], function () {
     Route::get('top', [TerauchiController::class, 'index'])->name('top');
