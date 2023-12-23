@@ -100,6 +100,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('viewUserList', [AdminViewUserListController::class, 'adminViewUserList'])->name('adminViewUserList');
     Route::get('viewUserInfo', [AdminViewUserInfoController::class, 'adminViewUserInfo'])->name('adminViewUserInfo');
     Route::get('viewUserDeliveryRequestList', [AdminViewUserDeliveryRequestListController::class, 'adminViewUserDeliveryRequestList'])->name('adminViewUserDeliveryRequestList');
+    Route::get('adminViewCoopPayInfo', [AdminViewCoopPayInfoController::class, 'adminViewCoopPayInfo'])->name('adminViewCoopPayInfo');
+    Route::get('adminViewCoopDeliveryRequestList', [AdminViewCoopDeliveryRequestListController::class, 'adminViewCoopDeliveryRequestList'])->name('adminViewCoopDeliveryRequestList');
+    Route::get('adminViewCoopStatisticsInfo', [AdminViewCoopStatisticsInfoController::class, 'adminViewCoopStatisticsInfo'])->name('adminViewCoopStatisticsInfo');
+    Route::get('adminViewCoopStatisticsInfoGraph', [AdminViewCoopStatisticsInfoController::class, 'adminViewCoopStatisticsInfoGraph'])->name('adminViewCoopStatisticsInfoGraph');
 });
 Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     Route::get('coopEditCoopInfo', [CoopEditCoopInfoController::class, 'coopEditCoopInfo'])->name('coopEditCoopInfo');
@@ -143,6 +147,11 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('login', [UserLoginController::class, 'userLogin'])->name('userLogin');
     Route::get('logout', [UserLogoutController::class, 'userLogout'])->name('userLogout');
     Route::get('registration', [UserRegistrationController::class, 'userRegisterAccount'])->name('userRegisterAccount');
+    Route::get('userFavoritesList', [UserFavoritesListController::class, 'userFavoritesList'])->name('userFavoritesList');
+    Route::get('userRegisterFavorites', [UserFavoritesRegisterController::class, 'userRegisterFavorites'])->name('userRegisterFavorites');
+    Route::get('userReferFavoritesData', [UserFavoritesRegisterController::class, 'userReferFavoritesData'])->name('userReferFavoritesData');
+    Route::get('userReceiveNoticeCompleteDelivery', [UserReceiveNoticeCompleteDeliveryController::class, 'userReceiveNoticeCompleteDelivery'])->name('userReceiveNoticeCompleteDelivery');
+    Route::get('userWithdraw', [UserWithdrawController::class, 'userWithdraw'])->name('userWithdraw');
 });
 Route::group(['prefix' => 'terauchi', 'as' => 'terauchi.'], function () {
     Route::get('top', [TerauchiController::class, 'index'])->name('top');
