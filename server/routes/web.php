@@ -35,6 +35,16 @@ use App\Http\Controllers\CoopReportTroubleController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserLogoutController;
 use App\Http\Controllers\UserRegistrationController;
+use App\Http\Controllers\AdminViewCoopPayInfoController;
+use App\Http\Controllers\AdminViewCoopDeliveryRequestListController;
+use App\Http\Controllers\AdminViewCoopStatisticsInfoController;
+use App\Http\Controllers\CoopLoginController;
+use App\Http\Controllers\CoopLogoutController;
+use App\Http\Controllers\CoopRegistrationRequestController;
+use App\Http\Controllers\UserFavoritesListController;
+use App\Http\Controllers\UserFavoritesRegisterController;
+use App\Http\Controllers\UserReceiveNoticeCompleteDeliveryController;
+use App\Http\Controllers\UserWithdrawController;
 
 /*
 |--------------------------------------------------------------------------
