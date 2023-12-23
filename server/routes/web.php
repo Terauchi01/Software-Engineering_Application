@@ -52,6 +52,9 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     Route::get('/', function () {
         return view('coop.test');
     });
+    Route::get('coopLogin', [CoopLoginController::class, 'coopLogin'])->name('coopLogin');
+    Route::get('coopLogout', [CoopLogoutController::class, 'coopLogout'])->name('coopLogout');
+    Route::get('coopApplyCoopRegister', [CoopRegistrationRequestController::class, 'coopApplyCoopRegister'])->name('coopApplyCoopRegister');
 });
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('/', function () {
