@@ -8,6 +8,6 @@ class UserRegistrationController extends Controller
 {
     public function userRegisterAccount (){
 
-        return view('user.test');
+        return view('user.UserRegistration');
     }
 }

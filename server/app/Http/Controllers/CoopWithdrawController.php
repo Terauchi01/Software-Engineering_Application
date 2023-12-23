@@ -8,6 +8,6 @@ class CoopWithdrawController extends Controller
 {
     public function coopWithdraw (){
   
-        return view('user.test');
+        return view('coop.CoopWithdraw');
     }
 }
