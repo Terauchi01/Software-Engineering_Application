@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class CoopEditCoopInfoController extends Controller
 {
     public function coopEditCoopInfo (){
-        return view('user.test');
+        return view('coop.CoopEditCoopInfo');
     }
 }
