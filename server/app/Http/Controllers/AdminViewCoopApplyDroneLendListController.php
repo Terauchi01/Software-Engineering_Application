@@ -8,6 +8,6 @@ class AdminViewCoopApplyDroneLendListController extends Controller
 {
     public function adminViewCoopApplyDroneLendList (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('admin.AdminViewCoopApplyDroneLendList');
     }
 }

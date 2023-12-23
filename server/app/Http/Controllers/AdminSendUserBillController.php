@@ -8,6 +8,6 @@ class AdminSendUserBillController extends Controller
 {
     public function adminSendUserBill (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('admin.AdminSendUserBill');
     }
 }
