@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class CoopDroneListController extends Controller
 {
     public function coopViewOwnDrone (){
-        return view('user.test');
+        return view('coop.CoopDroneList');
     }
 }

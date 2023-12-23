@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class CoopDroneRegistrationController extends Controller
 {
     public function coopRegisterDrone (){
-        return view('user.test');
+        return view('coop.CoopDroneRegistration');
     }
 }

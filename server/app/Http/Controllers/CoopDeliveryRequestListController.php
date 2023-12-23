@@ -7,18 +7,18 @@ use Illuminate\Http\Request;
 class CoopDeliveryRequestListController extends Controller
 {
     public function coopFillterUserDeliveryRequestListView (){
-        return view('user.test');
+        return view('coop.CoopDeliveryRequestList');
     }
     public function coopSearchUserDeliveryRequestListView (){
-        return view('user.test');
+        return view('coop.CoopDeliveryRequestList');
     }
     public function coopSortUserDeliveryRequestListViewInfo (){
-        return view('user.test');
+        return view('coop.CoopDeliveryRequestList');
     }
     public function coopCheckUserDeliveryRequestListViewExecute (){
-        return view('user.test');
+        return view('coop.CoopDeliveryRequestList');
     }
     public function coopNoticeUserDeliveryRequestListViewDeliveryComplete (){
-        return view('user.test');
+        return view('coop.CoopDeliveryRequestList');
     }
 }
