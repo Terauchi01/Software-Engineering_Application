@@ -26,7 +26,6 @@ use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserLogoutController;
 use App\Http\Controllers\UserRegistrationController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,7 +60,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('viewUserList', [AdminViewUserListController::class, 'adminViewUserList'])->name('adminViewUserList');
     Route::get('viewUserInfo', [AdminViewUserInfoController::class, 'adminViewUserInfo'])->name('adminViewUserInfo');
     Route::get('viewUserDeliveryRequestList', [AdminViewUserDeliveryRequestListController::class, 'adminViewUserDeliveryRequestList'])->name('adminViewUserDeliveryRequestList');
-    
 });
 Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     Route::get('/', function () {
@@ -71,6 +69,9 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     Route::get('droneInfoList', [CoopDroneInfoListController::class, 'coopDroneInfoList'])->name('coopDroneInfoList');
     Route::get('requestAdminDroneRepair', [CoopRequestAdminDroneRepairController::class, 'coopRequestAdminDroneRepair'])->name('coopRequestAdminDroneRepair');
     Route::get('reportTrouble', [CoopReportTroubleController::class, 'coopReportTrouble'])->name('coopReportTrouble');
+    Route::get('coopLogin', [CoopLoginController::class, 'coopLogin'])->name('coopLogin');
+    Route::get('coopLogout', [CoopLogoutController::class, 'coopLogout'])->name('coopLogout');
+    Route::get('coopApplyCoopRegister', [CoopRegistrationRequestController::class, 'coopApplyCoopRegister'])->name('coopApplyCoopRegister');
 });
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('/', function () {
@@ -100,4 +101,3 @@ Route::post('/send_date/add', [HelloController::class, 'update_controller']);
 Route::get('/show', [HelloController::class, 'insert_controller']);
 Route::get('/test', [loginController::class, 'index']);
 Route::post('/login', [loginController::class, 'login']);
-

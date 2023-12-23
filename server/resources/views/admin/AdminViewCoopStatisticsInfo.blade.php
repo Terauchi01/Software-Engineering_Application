@@ -1,0 +1,1 @@
+adminViewCoopStatisticsInfo test

@@ -8,6 +8,6 @@ class UserReceiveNoticeCompleteDeliveryController extends Controller
 {
     public function userReceiveNoticeCompleteDelivery (){
         //viewの返すところは適当で良い
-        return view('user.test');
+        return view('user.userReceiveNoticeCompleteDelivery');
     }
 }
