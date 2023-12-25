@@ -131,7 +131,7 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     Route::get('withdraw', [CoopWithdrawController::class, 'coopwithdraw'])->name('coopwithdraw');
 });
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
-    Route::get('/', function () {return view('user.test');});
+    Route::get('/', function () {return view('user.UserLogin');});
     Route::get('deliveryPlaceRequest', [UserDeliveryPlaceRequestController::class, 'userDeliveryPlaceRequest'])->name('userDeliveryPlaceRequest');
     Route::get('deliveryRequest', [UserDeliveryRequestController::class, 'userDeliveryRequest'])->name('userDeliveryRequest');
     Route::get('deliveryRequestList', [UserDeliveryRequestListController::class, 'userDeliveryRequestList'])->name('userDeliveryRequestList');
