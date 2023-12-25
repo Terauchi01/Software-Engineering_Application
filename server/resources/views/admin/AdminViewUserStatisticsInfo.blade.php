@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="globals.css" />
-  <link rel="stylesheet" href="../../css/admin/AdminViewUserStatisticsInfo.css" />
+  <link rel="stylesheet" href="{{ asset('/css/admin/AdminViewUserStatisticsInfo.css') }}" />
 </head>
 
 <body>
