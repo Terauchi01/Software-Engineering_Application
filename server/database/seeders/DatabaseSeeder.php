@@ -24,15 +24,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         AdminUser::factory(1)->create();
-        CoopUser::factory(10)->create();
-        User::factory(10)->create();
-        AccountInformation::factory(10)->create();
-        DroneType::factory(10)->create();
-        CoopDrones::factory(10)->create();
-        CoopLocation::factory(10)->create();
-        DeliveryLocationImage::factory(10)->create();
-        DeliveryRequest::factory(10)->create();
-        Favorite::factory(10)->create();
-        LicenseInformation::factory(10)->create();
+        AdminInformation::factory(100)->create();
+        CoopUser::factory(100)->create();
+        User::factory(100)->create();
+        AccountInformation::factory(100)->create();
+        DroneType::factory(100)->create();
+        CoopDrones::factory(100)->create();
+        CoopLocation::factory(100)->create();
+        DeliveryLocationImage::factory(100)->create();
+        DeliveryRequest::factory(100)->create();
+        Favorite::factory(100)->create();
+        LicenseInformation::factory(100)->create();
     }
 }
