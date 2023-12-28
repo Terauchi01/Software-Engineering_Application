@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('coop_user', function (Blueprint $table) {
             $table->unsignedBigInteger('child_status')->nullable();
+            $table->unsignedBigInteger('pair_id')->nullable()->after('id');
             $table->foreign('pair_id')->references('id')->on('coop_user');
             $table->unsignedTinyInteger('pay_status')->default(0);
             $table->dropColumn('bank_id');

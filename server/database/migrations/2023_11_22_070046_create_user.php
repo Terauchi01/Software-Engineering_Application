@@ -18,10 +18,10 @@ return new class extends Migration
             $table->char('address', 200)->nullable(false);
             $table->integer('postal_code')->nullable(false);
             $table->string('phone_number', 11)->nullable(false);
-            $table->string('user_last_name', 10)->nullable(false);
-            $table->string('user_first_name', 10)->nullable(false);
-            $table->string('user_last_name_kana', 30)->nullable(false);
-            $table->string('user_first_name_kana', 30)->nullable(false);
+            $table->string('user_last_name', 100)->nullable(false);
+            $table->string('user_first_name', 100)->nullable(false);
+            $table->string('user_last_name_kana', 300)->nullable(false);
+            $table->string('user_first_name_kana', 300)->nullable(false);
             $table->unsignedBigInteger('delivery_location_image_list_id')->nullable(false);
             $table->unsignedBigInteger('favorites_list_id')->nullable(false);
             $table->timestamps();

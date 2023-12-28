@@ -1,8 +1,10 @@
 <?php
 
 namespace Database\Factories;
-use App\Models\DeliveryRequest;
+
+use App\Models\CoopUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\delivery_request>
@@ -16,11 +18,17 @@ class DeliveryRequestFactory extends Factory
      */
     public function definition(): array
     {
+        $user0 = User::inRandomOrder()->first()->id;
+        $user1 = User::inRandomOrder()->where('id', '!=', $user0)->first()->id;
+        $coopuser0 = CoopUser::inRandomOrder()->first()->id;
+        $coopuser1 = CoopUser::inRandomOrder()->where('id', '!=', $user0)->first()->id;
+        $coopuser2 = CoopUser::inRandomOrder()->where('id', '!=', $user0)->where('id', '!=', $user1)->first()->id;
         return [
-            'delivery_destination_id' => $this->faker->numberBetween(1, 100),// 適切なランダムな値に置き換える
-            'collection_company_id' => $this->faker->numberBetween(1, 100), // 適切なランダムな値に置き換える
-            'intermediate_delivery_company_id' => $this->faker->numberBetween(1, 100),// 適切なランダムな値に置き換える
-            'delivery_company_id' => $this->faker->numberBetween(1, 100), // 適切なランダムな値に置き換える
+            'delivery_destination_id' => $user0,// 適切なランダムな値に置き換える
+            'collection_company_id' => $user1, // 適切なランダムな値に置き換える
+            'collection_company_id'=> $coopuser0,
+            'intermediate_delivery_company_id' => $coopuser1,// 適切なランダムな値に置き換える
+            'delivery_company_id' => $coopuser2, // 適切なランダムな値に置き換える
             'collection_company_remuneration' => $this->faker->numberBetween(100, 1000),
             'intermediate_delivery_company_remuneration' => $this->faker->numberBetween(100, 1000),
             'delivery_company_remuneration' => $this->faker->numberBetween(100, 1000),
@@ -30,6 +38,7 @@ class DeliveryRequestFactory extends Factory
             // 他の属性に基づいて必要な項目を追加
             'created_at' => now(),
             'updated_at' => now(),
+            'deletion_date' => null,
         ];
     }
 }

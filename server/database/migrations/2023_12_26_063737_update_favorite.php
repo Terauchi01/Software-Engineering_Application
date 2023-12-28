@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('favorite', function (Blueprint $table) {
+            $table->unsignedBigInteger('sender_id')->nullable()->change();
             $table->foreign('sender_id')->references('id')->on('user');
+
+            $table->unsignedBigInteger('destination_user_id')->nullable()->change();
             $table->foreign('destination_user_id')->references('id')->on('user');
         });
     }

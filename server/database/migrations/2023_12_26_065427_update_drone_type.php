@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('drone_type', function (Blueprint $table) {
-            $table->string('name', 100)->nullable(false);
+            $table->string('name', 100)->nullable(false)->change();
+            $table->dropColumn('drone_spec');
             $table->integer('range')->nullable(false);
             $table->integer('loading_weight')->nullable(false);
-            $table->integer('nax_time')->nullable(false);
-            $table->integer('number_of_drones')->nullable(false);
-            $table->integer('lend_drones_sum')->nullable(false);
+            $table->integer('max_time')->nullable(false);
+            $table->integer('lend_drones_sum')->nullable(false)->change();
         });
     }
 
@@ -27,7 +27,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::create('drone_type', function (Blueprint $table) {
-            $table->string('name', 10)->nullable(false);
+            $table->string('name', 10)->nullable(false)->change();
             $table->integer('drone_spec')->nullable(false);
             $table->integer('number_of_drones')->nullable(false);
             $table->dropColumn('range');

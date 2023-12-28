@@ -30,11 +30,11 @@ class CoopUser extends Model
         'amount_of_compensation',
     ];
     protected $hidden = [
-        'password' => 'hashed',
         'password',
     ];
 
     protected $casts = [
+        'password' => 'hashed',
         'deletion_date' => 'datetime',
     ];
     public function license()

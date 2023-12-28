@@ -18,8 +18,8 @@ return new class extends Migration
             $table->dropColumn('address');
             $table->string('prefecture_id',100);
             $table->string('city_id',100);
-            $table->string('town_id',100);
-            $table->string('block_id',100);
+            $table->string('town',100);
+            $table->string('block',100);
         });
     }
 

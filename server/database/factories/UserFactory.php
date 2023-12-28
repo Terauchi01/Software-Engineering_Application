@@ -21,21 +21,38 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'email_address' => $this->faker->email,
+            'password' => Hash::make('user'), 
+            'postal_code' => $this->faker->numerify('#######'),
+            'prefecture_id' => $this->faker->numberBetween(1, 47),
+            'city_id' => $this->faker->numberBetween(1, 47),
+            'town' => $this->faker->numberBetween(1, 47),
+            'block' => $this->faker->numberBetween(1, 47),
+            'phone_number' => $this->faker->numerify('###########'),
+            'user_last_name' => $this->faker->lastName,
+            'user_first_name' => $this->faker->firstName,
+            'user_last_name_kana' => $this->faker->lastName,
+            'user_first_name_kana' => $this->faker->firstName,
+            'unpaid_charge' => $this->faker->numberBetween(1000, 100000),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
+        // return [
+        //     'name' => fake()->name(),
+        //     'email' => fake()->unique()->safeEmail(),
+        //     'email_verified_at' => now(),
+        //     'password' => static::$password ??= Hash::make('password'),
+        //     'remember_token' => Str::random(10),
+        // ];
     }
 
     /**
      * Indicate that the model's email address should be unverified.
      */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
-    }
+    // public function unverified(): static
+    // {
+    //     return $this->state(fn (array $attributes) => [
+    //         'email_verified_at' => null,
+    //     ]);
+    // }
 }

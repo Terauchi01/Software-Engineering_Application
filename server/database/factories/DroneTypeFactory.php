@@ -16,13 +16,17 @@ class DroneTypeFactory extends Factory
      */
     public function definition(): array
     {
+        $number_of_drones = $this->faker->numberBetween(10,100);
         return [
             'name' => $this->faker->word, // 適切なランダムな値に置き換える
-            'drone_spec' => $this->faker->randomNumber(), // 適切なランダムな値に置き換える
-            'number_of_drones' => $this->faker->randomNumber(), // 適切なランダムな値に置き換える
+            'range' => $this->faker->numberBetween(10,100), // 適切なランダムな値に置き換える
+            'loading_weight' => $this->faker->numberBetween(10,100), // 適切なランダムな値に置き換える
+            'max_time' => $this->faker->numberBetween(10,100),
+            'number_of_drones' => $number_of_drones,
+            'lend_drones_sum'=> $this->faker->numberBetween(10,$number_of_drones),
             'created_at' => now(),
             'updated_at' => now(),
-            'deletion_date' => $this->faker->optional(0.1, null)->dateTime, // 10% の確率で null
+            'deletion_date' => null,
         ];
     }
 }

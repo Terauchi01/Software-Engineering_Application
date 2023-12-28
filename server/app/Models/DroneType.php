@@ -14,7 +14,7 @@ class DroneType extends Model
         'name',
         'range',
         'loading_weight',
-        'nax_time',
+        'max_time',
         'number_of_drones',
         'lend_drones_sum',
     ];

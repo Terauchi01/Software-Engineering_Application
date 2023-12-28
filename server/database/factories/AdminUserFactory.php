@@ -18,8 +18,8 @@ class AdminUserFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_name' => $this->faker->userName,
-            'password' => Hash::make($this->faker->password(8)), // ハッシュ化したランダムなパスワード
+            'user_name' => "admin",
+            'password' => Hash::make("admin"), // ハッシュ化したランダムなパスワード
             'created_at' => now(),
             'updated_at' => now(),
         ];

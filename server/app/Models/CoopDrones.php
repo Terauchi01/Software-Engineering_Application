@@ -21,7 +21,6 @@ class CoopDrones extends Model
     ];
 
     protected $casts = [
-        'operating_time' => 'datetime',
         'purchase_date' => 'datetime',
         'lending_period' => 'datetime',
         'deletion_date' => 'datetime',
