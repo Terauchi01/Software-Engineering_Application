@@ -12,8 +12,11 @@ class DroneType extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'name',
-        'drone_spec',
+        'range',
+        'loading_weight',
+        'nax_time',
         'number_of_drones',
+        'lend_drones_sum',
     ];
 
     protected $casts = [

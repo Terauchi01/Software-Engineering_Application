@@ -26,4 +26,12 @@ class CoopDrones extends Model
         'lending_period' => 'datetime',
         'deletion_date' => 'datetime',
     ];
+    public function drone_type()
+    {
+        return $this->belongsTo(DroneType::class);
+    }
+    public function coop_user()
+    {
+        return $this->belongsTo(CoopUser::class);
+    }
 }

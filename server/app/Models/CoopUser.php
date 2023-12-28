@@ -20,21 +20,29 @@ class CoopUser extends Model
         'representative_first_name_kana',
         'license_information_id',
         'account_information_id',
-        'bank_id',
-        'branch_id',
-        'account_type',
-        'account_number',
-        'account_name',
-        'coop_locations_list_id',
         'employees',
         'phone_number',
         'land_or_air',
         'application_status',
-        'drone_list_id',
+        'child_status',
+        'pair_id',
+        'pay_status',
         'amount_of_compensation',
+    ];
+    protected $hidden = [
+        'password' => 'hashed',
+        'password',
     ];
 
     protected $casts = [
         'deletion_date' => 'datetime',
     ];
+    public function license()
+    {
+        return $this->belongsTo(LicenseInformation::class);
+    }
+    public function account_information()
+    {
+        return $this->belongsTo(AccountInformation::class);
+    }
 }

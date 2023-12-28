@@ -30,4 +30,12 @@ class CoopLocation extends Model
     protected $casts = [
         'deletion_date' => 'datetime',
     ];
+    public function coop_user()
+    {
+        return $this->belongsTo(CoopUser::class);
+    }
+    public function license()
+    {
+        return $this->belongsTo(LicenseInformation::class);
+    }
 }

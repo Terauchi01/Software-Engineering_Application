@@ -19,9 +19,18 @@ class User extends Authenticatable
      */
     protected $primaryKey = 'id';
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'email_address',
+        'postal_code',
+        'prefecture_id',
+        'city_id',
+        'town_id',
+        'block_id',
+        'phone_number',
+        'user_last_name',
+        'user_first_name',
+        'user_last_name_kana',
+        'user_first_name_kana',
+        'unpaid charge',
     ];
 
     /**
@@ -31,7 +40,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -40,7 +48,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'deletion_date' => 'datetime',
         'password' => 'hashed',
     ];
 }

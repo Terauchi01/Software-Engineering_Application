@@ -15,7 +15,12 @@ class AdminUser extends Model
         'password',
     ];
 
+    protected $hidden = [
+        'password',
+    ];
+
     protected $casts = [
+        'password' => 'hashed',
         'deletion_date' => 'datetime',
     ];
 }
