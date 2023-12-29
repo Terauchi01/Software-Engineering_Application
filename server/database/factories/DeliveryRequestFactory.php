@@ -25,14 +25,14 @@ class DeliveryRequestFactory extends Factory
         $coopuser2 = CoopUser::inRandomOrder()->where('id', '!=', $user0)->where('id', '!=', $user1)->first()->id;
         return [
             'delivery_destination_id' => $user0,// 適切なランダムな値に置き換える
-            'collection_company_id' => $user1, // 適切なランダムな値に置き換える
+            'user_id' => $user1, // 適切なランダムな値に置き換える
             'collection_company_id'=> $coopuser0,
             'intermediate_delivery_company_id' => $coopuser1,// 適切なランダムな値に置き換える
             'delivery_company_id' => $coopuser2, // 適切なランダムな値に置き換える
             'collection_company_remuneration' => $this->faker->numberBetween(100, 1000),
             'intermediate_delivery_company_remuneration' => $this->faker->numberBetween(100, 1000),
             'delivery_company_remuneration' => $this->faker->numberBetween(100, 1000),
-            'delivery_status' => $this->faker->randomElement([1, 2, 3]), // 適切なランダムな値に置き換える
+            'delivery_status' => $this->faker->randomElement([0, 1, 2, 3, 4]), // 適切なランダムな値に置き換える
             'request_date' => $this->faker->dateTimeBetween('-30 days', '+30 days'),
             'delivery_date' => $this->faker->dateTimeBetween('+1 days', '+60 days'),
             // 他の属性に基づいて必要な項目を追加
