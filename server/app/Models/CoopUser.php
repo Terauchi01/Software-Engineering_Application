@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class CoopUser extends Model
+class CoopUser extends Model implements Authenticatable
 {
-    use HasFactory;
+    use HasFactory,AuthenticableTrait;
     protected $table = 'coop_user';
     protected $primaryKey = 'id';
     protected $fillable = [
@@ -44,5 +46,9 @@ class CoopUser extends Model
     public function account_information()
     {
         return $this->belongsTo(AccountInformation::class);
+    }
+    public function getAuthPassword()
+    {
+        return $this->password;
     }
 }

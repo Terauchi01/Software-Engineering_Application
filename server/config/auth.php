@@ -46,11 +46,11 @@ return [
         ],
         'admins' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admins',
         ],
         'coops' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'coops',
         ],
         'users' => [
             'driver' => 'session',
