@@ -1,0 +1,79 @@
+/* controller: server/app/Http/Controllers/AdminViewCoopListController.php */
+/* blade     : server/resources/views/admin/AdminViewCoopList.blade.php */
+/* css       : server/public/css/admin/AdminViewCoopList.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.side {
+    width: 100pt;
+    height: 100vh;
+    background-color: #408a7e;
+    color: #ffffff;
+    padding-top: 20px;
+    text-align: center;
+    line-height: 20pt;
+}
+
+.current {
+    background-color: #ffffff;
+    color: #000000;
+    height: 20pt;
+    text-align: center;
+}
+
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+.custom-button {
+    display: inline-block;
+    border-color  : #408a7e;
+    color : #408a7e;
+    font-size: 20px;
+    background    : #ffffff;
+    border        : 2px solid #408a7e;
+    padding       : 8px 8px;
+    text-align    : center;
+    cursor: pointer;
+    border-radius : 5%;
+}
+
+.coop {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.coop th, .coop td {
+    border-bottom: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
+
+.coop th {
+    background-color: #f2f2f2;
+}
+
+.coop tr {
+    background-color: #f2f2f2;
+}
+
+.image-button {
+  display: inline-block;
+  padding: 10px 20px; /* 適切なパディングを設定 */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.button-image {
+  width: 20px; /* 画像の幅 */
+  height: 20px; /* 画像の高さ */
+  margin-right: 5px; /* 画像とテキストの間隔 */
+}
