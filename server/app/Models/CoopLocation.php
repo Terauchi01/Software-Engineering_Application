@@ -14,8 +14,8 @@ class CoopLocation extends Model
         'postal_code',
         'prefecture_id',
         'city_id',
-        'town_id',
-        'block_id',
+        'town',
+        'block',
         'representative_last_name',
         'representative_first_name',
         'representative_last_name_kana',
@@ -30,4 +30,12 @@ class CoopLocation extends Model
     protected $casts = [
         'deletion_date' => 'datetime',
     ];
+    public function coop_user()
+    {
+        return $this->belongsTo(CoopUser::class);
+    }
+    public function license()
+    {
+        return $this->belongsTo(LicenseInformation::class);
+    }
 }

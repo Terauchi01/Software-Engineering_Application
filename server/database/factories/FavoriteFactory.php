@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use App\Models\User;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\favorite>
  */
@@ -16,12 +16,14 @@ class FavoriteFactory extends Factory
      */
     public function definition(): array
     {
+        $user0 = User::inRandomOrder()->first()->id;
+        $user1 = User::inRandomOrder()->where('id', '!=', $user0)->first()->id;
         return [
-            'sender_id' => $this->faker->randomNumber(), // 適切なランダムな値に置き換える
-            'destination_user_id' => $this->faker->randomNumber(), // 適切なランダムな値に置き換える
+            'sender_id' => $user0, // 適切なランダムな値に置き換える
+            'destination_user_id' => $user1, // 適切なランダムな値に置き換える
             'created_at' => now(),
             'updated_at' => now(),
-            'deletion_date' => $this->faker->optional(0.1, null)->dateTime, // 10% の確率で null
+            'deletion_date' => null,
         ];
     }
 }

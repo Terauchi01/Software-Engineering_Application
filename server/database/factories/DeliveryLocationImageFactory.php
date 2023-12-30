@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\delivery_location_image>
@@ -17,10 +18,11 @@ class DeliveryLocationImageFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => User::inRandomOrder()->first()->id,
             'image_url' => $this->faker->imageUrl(200, 200), // 適切なランダムな値に置き換える
-            'deletion_date' => $this->faker->optional(0.1, null)->dateTime, // 10% の確率で null
             'created_at' => now(),
             'updated_at' => now(),
+            'deletion_date' => null,
         ];
     }
 }
