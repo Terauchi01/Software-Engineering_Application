@@ -12,17 +12,12 @@
     
     <body>
         <div class = "side">
-            <div class = "current"><a href = "http://127.0.0.1:8080/admin/viewCoopList">事業者情報管理</a></div>
-            <br>
-            <a href = "http://127.0.0.1:8080/admin/adminAllocateCoopDeliveryTask">ドローン貸与申請一覧</a>
-            <br>
-            <a href = "http://127.0.0.1:8080/admin/viewUserList">利用者情報管理</a>
-            <br>
-            <a href = "http://127.0.0.1:8080/admin/adminViewCoopStatisticsInfo">事業者情報分析</a>
-            <br>
-            <a href = "http://127.0.0.1:8080/admin/adminViewUserStatisticsInfo">利用者情報分析</a>
-            <br>
-            <a href = "   http://127.0.0.1:8080/admin/viewUserDeliveryRequestList">宅配依頼一覧</a>
+            <div class = "current"><p>事業者情報管理</p></div>
+            <p>ドローン貸与申請一覧</p>
+            <p>利用者情報管理</p>
+            <p>事業者情報分析</p>
+            <p>利用者情報分析</p>
+            <p>宅配依頼一覧</p>
         </div>
         <div class = "main">
             <div class = "coopList"> <!--#408A7E-->
@@ -46,8 +41,7 @@
             <p>
                 <input type="checkbox" id="masterCheckbox" name="feature_enabled">
                 <label for="masterCheckbox">Select all</label>
-            </p>
-            
+            </p>            
             
             <table class ="coop">
                 <thead>
