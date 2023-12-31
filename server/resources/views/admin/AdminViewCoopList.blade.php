@@ -29,8 +29,19 @@
                 <p><h2><font color ="#408A7E"><u> 事業者情報管理 </u></font></h2></p>
             </div>
             
-            <button type="submit" name="add" class="custom-button"> 絞り込み </button>
-            <button type="submit" name="add" class="custom-button">リセット</button>
+            <button type="submit" name="add" id="filterButton" class="custom-button">絞り込み</button>
+            <button type="submit" name="add" id="resetButton" class="custom-button">リセット</button>
+
+            <script>
+             document.getElementById('filterButton').addEventListener('click', function() {
+                 alert('絞り込みボタンがクリックされました。');
+             });
+
+             document.getElementById('resetButton').addEventListener('click', function() {
+                 alert('リセットボタンがクリックされました。');
+             });
+            </script>
+
             
             <p><input type="checkbox" id="checkbox" name="feature_enabled">
                 <label for="checkbox">Select all</label></p>
@@ -51,18 +62,30 @@
                 <tbody>
                     @foreach ($id as $index => $coopInfo)
                         <tr>
-                            <td> <input type="checkbox" id="checkbox" name="1"></td>
+                            <td> <input type="checkbox" id="checkbox{{$index}}" name="1"></td>
                             <td>{{ $id[$index] }}</td>
                             <td>{{ $coop_name[$index] }}</td>
                             <td>{{ $representative_name[$index] }}</td>
                             <td>{{ $coop_locations_list_id[$index] }}</td>
                             <td>{{ $pay_status[$index] }}</td>
-                            <td><button type="submit" name="add">編集</button></td>
-                            <td><button type="submit" name="add">削除</button></td>
-                            <!-- <td><button type="submit" name="add" class="image-button"><img class="button-image" src="img_edit.png">削除</button></td> -->
+                            <td><button type="button" onclick="editCoop({{ $id[$index] }})">編集</button></td>
+                            <td><button type="button" onclick="confirmDelete({{ $id[$index] }})">削除</button></td>
                         </tr>
                     @endforeach
                 </tbody>
+
+                <script>
+                 function editCoop(coopId) {
+                     alert('編集しますか？ Coop ID: ' + coopId);
+                 }
+
+                 function confirmDelete(coopId) {
+                     if (confirm('本当に削除しますか？')) {
+                         alert('削除ボタンがクリックされました。Coop ID: ' + coopId);
+                     }
+                 }
+                </script>
+
             </table>
         </div>
     </body>
