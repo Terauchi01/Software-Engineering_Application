@@ -67,6 +67,7 @@
                             <td>
                                 <input type="checkbox" class="itemCheckbox" id="checkbox{{$index}}" name="selectedCoops[]" value="{{ $coopInfo }}">
                             </td>
+
                             <td>{{ $id[$index] }}</td>
                             <td>{{ $coop_name[$index] }}</td>
                             <td>{{ $representative_name[$index] }}</td>
