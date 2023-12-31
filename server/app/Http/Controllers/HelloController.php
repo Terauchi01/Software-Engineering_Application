@@ -25,7 +25,6 @@ class HelloController extends Controller
         $AccountInformation = AccountInformation::all();
         $AdminInformation = AdminInformation::all();
         $AdminUser = AdminUser::all();
-        $ChildAccount = ChildAccount::all();
         $CoopDrones = CoopDrones::all();
         $CoopLocation = CoopLocation::all();
         $CoopUser = CoopUser::all();
@@ -37,7 +36,7 @@ class HelloController extends Controller
         // $User = User::find(1);
         // $User->update(["name" => 'tera2']);
         $User = User::all();
-        return view('index', compact('hello','AccountInformation','AdminInformation','AdminUser','ChildAccount','CoopDrones','CoopLocation','CoopUser','DeliveryLocationImage','DeliveryRequest','DroneType','Favorite','LicenseInformation','User'));
+        return view('index', compact('hello','AccountInformation','AdminInformation','AdminUser','CoopDrones','CoopLocation','CoopUser','DeliveryLocationImage','DeliveryRequest','DroneType','Favorite','LicenseInformation','User'));
     }
     public function send_date (){
         return view('send_date');

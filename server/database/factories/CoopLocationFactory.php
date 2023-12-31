@@ -20,8 +20,8 @@ class CoopLocationFactory extends Factory
             'postal_code' => $this->faker->numerify('#######'),
             'prefecture_id' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
             'city_id' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
-            'town_id' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
-            'block_id' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
+            'town' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
+            'block' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
             'representative_last_name' => $this->faker->lastName,
             'representative_first_name' => $this->faker->firstName,
             'representative_last_name_kana' => $this->faker->lastName,

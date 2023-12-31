@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AdminInformation extends Model
 {
+    use HasFactory;
     protected $table = 'admin_information';
     protected $primaryKey = 'id';
     protected $fillable = [

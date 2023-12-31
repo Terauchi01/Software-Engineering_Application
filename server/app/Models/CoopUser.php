@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class CoopUser extends Model
+class CoopUser extends Model implements Authenticatable
 {
-    use HasFactory;
+    use HasFactory,AuthenticableTrait;
     protected $table = 'coop_user';
     protected $primaryKey = 'id';
     protected $fillable = [
@@ -20,21 +22,33 @@ class CoopUser extends Model
         'representative_first_name_kana',
         'license_information_id',
         'account_information_id',
-        'bank_id',
-        'branch_id',
-        'account_type',
-        'account_number',
-        'account_name',
-        'coop_locations_list_id',
         'employees',
         'phone_number',
         'land_or_air',
         'application_status',
-        'drone_list_id',
+        'child_status',
+        'pair_id',
+        'pay_status',
         'amount_of_compensation',
+    ];
+    protected $hidden = [
+        'password',
     ];
 
     protected $casts = [
+        'password' => 'hashed',
         'deletion_date' => 'datetime',
     ];
+    public function license()
+    {
+        return $this->belongsTo(LicenseInformation::class);
+    }
+    public function account_information()
+    {
+        return $this->belongsTo(AccountInformation::class);
+    }
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
 }
