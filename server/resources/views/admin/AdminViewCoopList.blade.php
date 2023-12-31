@@ -43,8 +43,11 @@
             </script>
 
             
-            <p><input type="checkbox" id="checkbox" name="feature_enabled">
-                <label for="checkbox">Select all</label></p>
+            <p>
+                <input type="checkbox" id="masterCheckbox" name="feature_enabled">
+                <label for="masterCheckbox">Select all</label>
+            </p>
+            
             
             <table class ="coop">
                 <thead>
@@ -62,7 +65,9 @@
                 <tbody>
                     @foreach ($id as $index => $coopInfo)
                         <tr>
-                            <td> <input type="checkbox" id="checkbox{{$index}}" name="1"></td>
+                            <td>
+                                <input type="checkbox" class="itemCheckbox" id="checkbox{{$index}}" name="selectedCoops[]" value="{{ $coopInfo }}">
+                            </td>
                             <td>{{ $id[$index] }}</td>
                             <td>{{ $coop_name[$index] }}</td>
                             <td>{{ $representative_name[$index] }}</td>
@@ -75,10 +80,36 @@
                 </tbody>
 
                 <script>
-                 function editCoop(coopId) {
-                     alert('編集しますか？ Coop ID: ' + coopId);
-                 }
+                 document.getElementById('masterCheckbox').addEventListener('change', function() {
+                     var masterCheckbox = this;
+                     var itemCheckboxes = document.querySelectorAll('.itemCheckbox');
 
+                     itemCheckboxes.forEach(function(itemCheckbox) {
+                         itemCheckbox.checked = masterCheckbox.checked;
+                     });
+                 });
+
+                 // 各行のチェックボックスに対するイベントリスナーも追加する場合
+                 document.querySelectorAll('.itemCheckbox').forEach(function(itemCheckbox) {
+                     itemCheckbox.addEventListener('change', function() {
+                         var allChecked = true;
+                         document.querySelectorAll('.itemCheckbox').forEach(function(checkbox) {
+                             if (!checkbox.checked) {
+                                 allChecked = false;
+                             }
+                         });
+                         document.getElementById('masterCheckbox').checked = allChecked;
+                     });
+                 });
+                 
+                 function editCoop(coopId) {
+                     var confirmation = confirm('編集しますか？ Coop ID: ' + coopId);
+                     
+                     if (confirmation) {
+                         alert('編集処理を実行します。Coop ID: ' + coopId);
+                     }
+                 }
+                 
                  function confirmDelete(coopId) {
                      if (confirm('本当に削除しますか？')) {
                          alert('削除ボタンがクリックされました。Coop ID: ' + coopId);
