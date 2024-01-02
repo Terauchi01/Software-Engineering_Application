@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
      */
     private const SEEDERS = [
         MstPrefectureSeeder::class,
+        CitiesTableSeeder::class,
     ];
     public function run(): void
     {
