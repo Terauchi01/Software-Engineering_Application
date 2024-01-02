@@ -38,35 +38,7 @@ class HelloController extends Controller
         $LicenseInformation = LicenseInformation::all();
         $User = User::all();
         $Prefecture = MstPrefecture::all();
-        // $Cities = Cities::all();
-        $Cities = Cities::select('prefecture_id','name')->where('prefecture_id','=','1')->get();
-        $User = $CoopLocation;
-
-        //事業者一覧
-        $list = CoopUser::select('id','coop_name','representative_last_name','representative_first_name','pay_status','child_status','pair_id')->get();
-        $location = CoopLocation::select('coop_user_id','postal_code','prefecture_id','city_id','town','block')->get();
-        $mergedData = $list->map(function ($item) use ($location) {
-            $locationData = $location->where('coop_user_id', $item->id)->first();
-        
-            return [
-                'id' => $item->id,
-                'coop_name' => $item->coop_name,
-                'representative_last_name' => $item->representative_last_name,
-                'representative_first_name' => $item->representative_first_name,
-                'pay_status' => $item->pay_status,
-                'child_status' => $item->child_status,
-                'pair_id' => $item->pair_id,
-                'postal_code' => optional($locationData)->postal_code,
-                'prefecture_id' => optional($locationData)->prefecture_id,
-                'city_id' => optional($locationData)->city_id,
-                'town_id' => optional($locationData)->town_id,
-                'block_id' => optional($locationData)->block_id,
-            ];
-        });
-        
-        // 結合したデータを表示（デバッグ用）
-        dump($mergedData);
-        // dump($Cities);
+        $Cities = Cities::all();
 
         return view('index', compact('AccountInformation','AdminInformation','AdminUser','CoopDrones','CoopLocation','CoopUser','DeliveryLocationImage','DeliveryRequest','DroneType','Favorite','LicenseInformation','User'));
     }
