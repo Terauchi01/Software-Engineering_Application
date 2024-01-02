@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\CoopUser;
+use App\Models\Cities;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\coop_location>
@@ -17,9 +19,16 @@ class CoopLocationFactory extends Factory
     public function definition(): array
     {
         return [
+            'coop_user_id' => CoopUser::inRandomOrder()->first()->id,
             'postal_code' => $this->faker->numerify('#######'),
             'prefecture_id' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
-            'city_id' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
+            'city_id' => function (array $attributes) {
+                // 指定された prefecture_id に対応するランダムな city_id を取得
+                $randomCity = Cities::where('prefecture_id', $attributes['prefecture_id'])
+                    ->inRandomOrder()
+                    ->first();
+                return $randomCity ? $randomCity->id : null;
+            },
             'town' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
             'block' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
             'representative_last_name' => $this->faker->lastName,
