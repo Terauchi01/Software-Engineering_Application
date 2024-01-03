@@ -23,9 +23,13 @@ class DatabaseSeeder extends Seeder
      */
     private const SEEDERS = [
         MstPrefectureSeeder::class,
+        CitiesTableSeeder::class,
     ];
     public function run(): void
     {
+        foreach(self::SEEDERS as $seeder) {
+            $this->call($seeder);
+        }
         AdminUser::factory(1)->create();
         AdminInformation::factory(100)->create();
         CoopUser::factory(100)->create();
@@ -38,8 +42,5 @@ class DatabaseSeeder extends Seeder
         DeliveryRequest::factory(100)->create();
         Favorite::factory(100)->create();
         LicenseInformation::factory(100)->create();
-        foreach(self::SEEDERS as $seeder) {
-            $this->call($seeder);
-        }
     }
 }

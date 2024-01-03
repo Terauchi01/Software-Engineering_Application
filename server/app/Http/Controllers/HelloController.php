@@ -16,12 +16,15 @@ use App\Models\DroneType;
 use App\Models\Favorite;
 use App\Models\LicenseInformation;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use App\Models\MstPrefecture;
+use App\Models\Cities;
 
 class HelloController extends Controller
 {
     public function index () 
     {
-        $hello = 'Hello, World!';
         $AccountInformation = AccountInformation::all();
         $AdminInformation = AdminInformation::all();
         $AdminUser = AdminUser::all();
@@ -33,10 +36,11 @@ class HelloController extends Controller
         $DroneType = DroneType::all();
         $Favorite = Favorite::all();
         $LicenseInformation = LicenseInformation::all();
-        // $User = User::find(1);
-        // $User->update(["name" => 'tera2']);
         $User = User::all();
-        return view('index', compact('hello','AccountInformation','AdminInformation','AdminUser','CoopDrones','CoopLocation','CoopUser','DeliveryLocationImage','DeliveryRequest','DroneType','Favorite','LicenseInformation','User'));
+        $Prefecture = MstPrefecture::all();
+        $Cities = Cities::all();
+
+        return view('index', compact('AccountInformation','AdminInformation','AdminUser','CoopDrones','CoopLocation','CoopUser','DeliveryLocationImage','DeliveryRequest','DroneType','Favorite','LicenseInformation','User'));
     }
     public function send_date (){
         return view('send_date');

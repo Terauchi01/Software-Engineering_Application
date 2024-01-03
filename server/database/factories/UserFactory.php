@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Cities;
 use Illuminate\Support\Str;
 
 /**
@@ -25,7 +26,13 @@ class UserFactory extends Factory
             'password' => Hash::make('user'), 
             'postal_code' => $this->faker->numerify('#######'),
             'prefecture_id' => $this->faker->numberBetween(1, 47),
-            'city_id' => $this->faker->numberBetween(1, 47),
+            'city_id' => function (array $attributes) {
+                // 指定された prefecture_id に対応するランダムな city_id を取得
+                $randomCity = Cities::where('prefecture_id', $attributes['prefecture_id'])
+                    ->inRandomOrder()
+                    ->first();
+                return $randomCity ? $randomCity->id : null;
+            },
             'town' => $this->faker->numberBetween(1, 47),
             'block' => $this->faker->numberBetween(1, 47),
             'phone_number' => $this->faker->numerify('###########'),
