@@ -1,7 +1,3 @@
-<!-- adminViewCoopStatisticsInfo test
-@foreach ($data as $key => $value)
-        <p>{{ $value }}</p>
-@endforeach -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,9 +13,16 @@
             </tr>
         </thead>
         <tbody>
+        @foreach($name as $userId => $coopName)
+            <tr>
+                <td>{{ $coopName }}</td>
+                <td>{{ $month_delivery[$userId] }}</td>
+                <td>{{ $ratio[$userId] !== -1 ? $ratio[$userId] * 100 . '%' : 'N/A' }}</td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
-
+    
     <button type="button" onclick="location.href='{{ route('admin.adminViewCoopStatisticsInfoGraph') }}'">グラフ表示する</button>
 </body>
 </html>
