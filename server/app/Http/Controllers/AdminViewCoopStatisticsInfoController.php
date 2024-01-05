@@ -29,7 +29,7 @@ class AdminViewCoopStatisticsInfoController extends Controller
             
         }
         
-        // データ表示用、後で消して
+        // データ表示
         // dump($name);
         // dump($month_collection);
         // dump($month_intermediate);
@@ -56,7 +56,7 @@ class AdminViewCoopStatisticsInfoController extends Controller
                 $ratio[$userId] = ($status1Count / ($status1Count + $status0Count));
             }
         }
-        // データ表示用、後で消して
+        // データ表示
         // dump($name);
         // dump($ratio);
         
@@ -79,7 +79,7 @@ class AdminViewCoopStatisticsInfoController extends Controller
             $month_delivery[$userId] = $A->where('delivery_company_id', $userId)->count();
         }
         
-        // データ表示用、後で消して
+        // データ表示
         // dump($name);
         // dump($month_collection);
         // dump($month_intermediate);
@@ -90,26 +90,31 @@ class AdminViewCoopStatisticsInfoController extends Controller
             ->groupBy('coop_user_id', 'drone_status')
             ->get();
         $coop = CoopUser::select('id','coop_name')->get();
-        $name = [];
+        $name2 = [];
         $ratio = [];
         foreach ($coop as $user) {
             $userId = $user->id;
-            $name[$userId] = $user->coop_name;
-        
+            
             $countStatus1 = $A->where('coop_user_id', $userId)->where('drone_status', 1)->first();
             $countStatus0 = $A->where('coop_user_id', $userId)->where('drone_status', 0)->first();
             $status1Count = $countStatus1 ? $countStatus1->count : 0;
             $status0Count = $countStatus0 ? $countStatus0->count : 0;
             if ($status1Count + $status0Count === 0) {
-                $ratio[$userId] = -1;
+                //$ratio[$userId] = -1;
             } else {
+                $name2[$userId] = $user->coop_name;
                 $ratio[$userId] = ($status1Count / ($status1Count + $status0Count));
             }
         }
-        // データ表示用、後で消して
+        // データ表示
         // dump($name);
         // dump($ratio);
         
-        return view('admin.adminViewCoopStatisticsInfoGraph', compact('name', 'month_delivery', 'ratio'));
+        $name = array_values($name);
+        $name2 = array_values($name2);
+        $month_delivery = array_values($month_delivery);
+        $ratio = array_values($ratio);
+        
+        return view('admin.adminViewCoopStatisticsInfoGraph', compact('name', 'month_delivery', 'name2', 'ratio'));
     }
 }

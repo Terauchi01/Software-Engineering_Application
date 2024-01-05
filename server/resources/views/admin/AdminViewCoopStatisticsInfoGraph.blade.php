@@ -17,10 +17,7 @@
                 labels: @json($name),
                 datasets: [{
                     label: '1か月の配達個数',
-                    data: @json($month_delivery),
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
+                    data: @json($month_delivery)
                 }]
             },
             options: {
@@ -38,13 +35,10 @@
         var chart2 = new Chart(ctx2, {
             type: 'bar',
             data: {
-                labels: @json($name),
+                labels: @json($name2),
                 datasets: [{
                     label: 'ドローンの稼働率',
-                    data: @json($ratio),
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
+                    data: @json($ratio)
                 }]
             },
             options: {
