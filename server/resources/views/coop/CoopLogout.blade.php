@@ -5,7 +5,7 @@
     </head>
     <body>
         <div class="logout">
-            <form action="{{ route('coop.coopLogout') }}" method="POST" class="logout_form">
+            <form action="{{ route('coop.coopLogoutFunction') }}" method="POST" class="logout_form">
                 @csrf
                 <p>ログアウトしますか</p>
                 <button type="submit" name="logout" value="true">ログアウト</button>
