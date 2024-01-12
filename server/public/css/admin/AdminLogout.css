@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+.logout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+}
+.logout_form button {
+    flex: 1;
+    background-color: #408A7E;
+    color: #FFFFFFFF;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    transition: box-shadow 0.3 ease;
+}
+.logout_form button:hover {
+    background-color: #347D68;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
