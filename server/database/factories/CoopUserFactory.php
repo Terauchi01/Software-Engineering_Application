@@ -21,8 +21,10 @@ class CoopUserFactory extends Factory
         $coopUserCount = CoopUser::count();
         $childStatus = $coopUserCount == 0 ? 0 : $this->faker->randomElement([0, 1]);
         return [
-            'email_address' => $this->faker->email,
-            'password' => Hash::make('coopuser'), // ハッシュ化したデフォルトのパスワード
+            'email_address' => function (){
+                return CoopUser::count() === 0 ? 'coop@gmail.com' : $this->faker->email;
+            },
+            'password' => Hash::make('coop'), // ハッシュ化したデフォルトのパスワード
             'coop_name' => $this->faker->company,
             'representative_last_name' => $this->faker->lastName,
             'representative_first_name' => $this->faker->firstName,

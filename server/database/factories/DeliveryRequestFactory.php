@@ -1,5 +1,5 @@
 <?php
-
+//server/database/factories/DeliveryRequestFactory.php
 namespace Database\Factories;
 
 use App\Models\CoopUser;
@@ -37,7 +37,7 @@ class DeliveryRequestFactory extends Factory
             'delivery_date' => $this->faker->dateTimeBetween('+1 days', '+60 days'),
             // 他の属性に基づいて必要な項目を追加
             'created_at' => now(),
-            'updated_at' =>  $this->faker->dateTimeBetween('-180 days', '+0 days'),
+            'updated_at' =>  $this->faker->dateTimeBetween('-300 days', '+0 days'),
             'deletion_date' => null,
         ];
     }

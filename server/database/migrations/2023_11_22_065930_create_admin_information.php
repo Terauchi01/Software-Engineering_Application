@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('admin_information', function (Blueprint $table) {
             $table->id();
             $table->string('company_name', 100)->nullable(false);
-            $table->string('representative_name', 10)->nullable(false);
+            $table->string('representative_name', 100)->nullable(false);
             $table->string('address', 100)->nullable(false);
             $table->integer('postal_code')->nullable(false);
             $table->integer('prefecture_id')->nullable(false);

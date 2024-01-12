@@ -20,7 +20,7 @@ class CoopLoginController extends Controller
         // ユーザーの認証
         if (Auth::guard('coops')->attempt($credentials)) {
             // 認証成功時の処理
-            return redirect()->route('coop.CoopLogout'); // ダッシュボードなど適切なルートにリダイレクト
+            return redirect()->route('coop.coopLogout'); // ダッシュボードなど適切なルートにリダイレクト
         }
 
         // 認証失敗時の処理
