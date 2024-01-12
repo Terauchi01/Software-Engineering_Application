@@ -5,7 +5,7 @@ hello user
 <a href="{{ route('user.userEditInfo') }}">userEditInfo</a>
 <a href="{{ route('user.userLogin') }}">userLogin</a>
 <a href="{{ route('user.userLogout') }}">userLogout</a>
-<a href="{{ route('user.userRegisterAccount') }}">userRegisterAccount</a>
+<a href="{{ route('user.userRegisterView') }}">userRegisterAccount</a>
 <a href="{{ route('user.userFavoritesList') }}">userFavoritesList</a>
 <a href="{{ route('user.userRegisterFavorites') }}">userRegisterFavorites</a>
 <a href="{{ route('user.userReferFavoritesData') }}">userReferFavoritesData</a>
