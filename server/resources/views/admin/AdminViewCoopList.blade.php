@@ -177,20 +177,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($id as $index => $coopInfo)
+                                @foreach ($mergedData as $index => $coopInfo)
                                     <tr>
                                         <td>
-                                            <input type="checkbox" class="itemCheckbox" id="checkbox{{$index}}" name="selectedCoops[]" value="{{ $coopInfo }}">
+                                            <input type="checkbox" class="itemCheckbox" id="checkbox{{$coopInfo['id']}}" name="selectedCoops[]" value="{{ $coopInfo['id'] }}">
                                         </td>
-                                        <td>{{ $id[$index] }}</td>
-                                        <td>{{ $coop_name[$index] }}</td>
-                                        <td>{{ $representative_name[$index] }}</td>
-                                        <td>{{ $coop_locations_list_id[$index] }}</td>
-                                        <td>{{ $pay_status[$index] }}</td>
-                                        <td><button type="button" onclick="editCoop({{ $id[$index] }})">
-                                            <img src="{{ asset('image/img_edit.png') }}" alt="削除" width="20" height="20">
+                                        <td>{{ $coopInfo['id'] }}</td>
+                                        <td>{{ $coopInfo['coop_name'] }}</td>
+                                        <td>{{ $coopInfo['representative_name'] }}</td>
+                                        <td>{{ $coopInfo['coop_locations'] }}</td>
+                                        <td>{{ $coopInfo['pay_status'] }}</td>
+                                        <td><button type="button" onclick="editCoop({{ $coopInfo['id'] }})">
+                                            <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20">
                                         </button></td>
-                                        <td><button type="button" onclick="confirmDelete({{ $id[$index] }})">
+                                        <td><button type="button" onclick="confirmDelete({{ $coopInfo['id'] }})">
                                             <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20">
                                         </button></td>
                                     </tr>
