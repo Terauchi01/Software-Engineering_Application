@@ -79,7 +79,7 @@ class AdminViewCoopListController extends Controller
         $B = CoopUser::class;
         $currentDateTime = Carbon::now();
         $B::where('id',$id)->update(['deletion_date' => $currentDateTime]);
-        return response()->header('Refresh', '2;url=' . route('admin.adminViewCoopList'));
+        return redirect()->route('admin.adminViewCoopList');
     }
 }
 // id
