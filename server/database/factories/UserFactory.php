@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Cities;
+use App\Models\User;
 use Illuminate\Support\Str;
 
 /**
@@ -22,7 +23,9 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'email_address' => $this->faker->email,
+            'email_address' => function (){
+                return User::count() === 0 ? 'user@gmail.com' : $this->faker->email;
+            },
             'password' => Hash::make('user'), 
             'postal_code' => $this->faker->numerify('#######'),
             'prefecture_id' => $this->faker->numberBetween(1, 47),

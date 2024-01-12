@@ -1,5 +1,6 @@
 <?php
-
+//ファイルの場所
+//server/database/seeders/DatabaseSeeder.php
 namespace Database\Seeders;
 
 use App\Models\AccountInformation;
@@ -39,7 +40,7 @@ class DatabaseSeeder extends Seeder
         CoopDrones::factory(100)->create();
         CoopLocation::factory(100)->create();
         DeliveryLocationImage::factory(100)->create();
-        DeliveryRequest::factory(100)->create();
+        DeliveryRequest::factory(1000)->create();
         Favorite::factory(100)->create();
         LicenseInformation::factory(100)->create();
     }
