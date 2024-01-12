@@ -73,7 +73,7 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('test');
 });
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {    
     Route::get('/', function () {return view('admin.test');})->name('admin');
     Route::get('adminLogin', [AdminLoginController::class, 'adminLogin'])->name('adminLogin');
     Route::post('adminLoginFunction', [AdminLoginController::class, 'adminLoginFunction'])->name('adminLoginFunction');
@@ -96,6 +96,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('viewCoopDroneInfo', [AdminViewCoopDroneInfoController::class, 'adminViewCoopDroneInfo'])->name('adminViewCoopDroneInfo');
         Route::get('viewCoopInfo', [AdminViewCoopInfoController::class, 'adminViewCoopInfo'])->name('adminViewCoopInfo');
         Route::get('viewCoopList', [AdminViewCoopListController::class, 'adminViewCoopList'])->name('adminViewCoopList');
+
+        
+        Route::post('viewCoopList', [AdminViewCoopListController::class, 'delete'])->name('adminViewCoopListDelete');
+
+
+        
         Route::get('viewUserDeliveryRequestList', [AdminViewUserDeliveryRequestListController::class, 'adminViewUserDeliveryRequestList'])->name('adminViewUserDeliveryRequestList');
         Route::get('adminViewCoopPayInfo', [AdminViewCoopPayInfoController::class, 'adminViewCoopPayInfo'])->name('adminViewCoopPayInfo');
         Route::get('adminViewCoopDeliveryRequestList', [AdminViewCoopDeliveryRequestListController::class, 'adminViewCoopDeliveryRequestList'])->name('adminViewCoopDeliveryRequestList');

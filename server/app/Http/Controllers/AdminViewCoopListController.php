@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\MstPrefecture;
+use App\Models\Cities;
+//事業者一覧
 
 class AdminViewCoopListController extends Controller
 {
@@ -15,6 +18,16 @@ class AdminViewCoopListController extends Controller
         $pay_status = ['済', '済', '未'];
         $land_or_air = ['1', '0', '1'];
         return view('admin.AdminViewCoopList', compact('id', 'coop_name', 'representative_name', 'coop_locations_list_id', 'pay_status', 'land_or_air'));
+    }
+
+    public function delete(Request $request, $coopId)
+    {
+        // $coopId を使用して削除などの処理を行う
+        Model::destroy($coopId);
+        // レスポンスを返す（任意のメッセージを含める）
+        dd($coopId);
+        return response()->json(['message' => '削除が完了しました。']);
+       
     }
 }
 // id
