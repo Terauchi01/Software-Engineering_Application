@@ -55,7 +55,7 @@
                         </tbody>
                     </table>
                     
-                    <button type="button" onclick="location.href='{{ route('admin.AdminViewCoopStatisticsInfoGraph') }}'">グラフ表示する</button>
+                    <button type="button" onclick="location.href='{{ route('admin.adminViewCoopStatisticsInfoGraph') }}'">グラフ表示する</button>
                 </div>
             </div>
         </div>

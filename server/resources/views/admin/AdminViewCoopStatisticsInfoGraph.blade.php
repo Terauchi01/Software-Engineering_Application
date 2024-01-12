@@ -84,7 +84,7 @@
                         });
                     </script>
                     
-                    <button type="button" onclick="location.href='{{ route('admin.AdminViewCoopStatisticsInfo') }}'">統計情報表示に戻る</button>
+                    <button type="button" onclick="location.href='{{ route('admin.adminViewCoopStatisticsInfo') }}'">統計情報表示に戻る</button>
                 </div>
             </div>
         </div>

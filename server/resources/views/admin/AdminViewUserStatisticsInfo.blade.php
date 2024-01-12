@@ -68,7 +68,7 @@
                         </tbody>
                     </table>
                     
-                    <button type="button" onclick="location.href='{{ route('admin.AdminViewUserStatisticsInfoGraph') }}'">グラフ表示する</button>
+                    <button type="button" onclick="location.href='{{ route('admin.adminViewUserStatisticsInfoGraph') }}'">グラフ表示する</button>
                 </div>
             </div>
         </div>
