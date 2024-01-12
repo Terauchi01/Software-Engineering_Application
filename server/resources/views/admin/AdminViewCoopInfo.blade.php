@@ -19,7 +19,8 @@
         <div class="coopInfo">
             <p class="information"><h2><font color ="#408A7E"><u>事業者情報詳細</u></font></h2></p>
             <p class="coopName">{{ $coopName }}</p>
-            <p class="coopId">{{ $coopId }}</p>
+            @if($coopId !== null)
+            <p class="coopId">ID : {{ $coopId }}</p>
             <form action="{{ route('admin.adminEditCoopInfo') }}" method="POST">
                 <button type="submit" name="id" value="{{ $coopId }}" class="edit">編集する</button>
             </form>
@@ -38,7 +39,7 @@
                 </tr>
                 <tr>
                     <th>免許情報</th>
-                    <th>{{ $data['licence'] }}</th>
+                    <th>{{ $data['license'] }}</th>
                 </tr>
                 <tr>
                     <th>口座情報</th>
@@ -57,6 +58,7 @@
                     <th>{{ $data['status'] }}</th>
                 </tr>
             </table>
+            @endif
         </div>
         <div class = "header">
             <select onChange="location.href=value;">
