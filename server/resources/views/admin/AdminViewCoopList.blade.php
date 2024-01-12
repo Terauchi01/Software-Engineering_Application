@@ -183,7 +183,7 @@
                                             <input type="checkbox" class="itemCheckbox" id="checkbox{{$coopInfo['id']}}" name="selectedCoops[]" value="{{ $coopInfo['id'] }}">
                                         </td>
                                         <td>{{ $coopInfo['id'] }}</td>
-                                        <td>{{ $coopInfo['coop_name'] }}</td>
+                                        <td><a href="{{ route('admin.adminViewCoopInfo', ['id' => $coopInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $coopInfo['coop_name'] }}</a></td>
                                         <td>{{ $coopInfo['representative_name'] }}</td>
                                         <td>{{ $coopInfo['coop_locations'] }}</td>
                                         <td>{{ $coopInfo['pay_status'] }}</td>
