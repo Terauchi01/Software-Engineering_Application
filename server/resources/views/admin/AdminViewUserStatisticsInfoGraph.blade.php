@@ -71,7 +71,7 @@
                                         display: true,
                                         title: {
                                             display: true,
-                                            text: '配達個数'
+                                            text: '配達個数(万個)'
                                         },
                                     },
                                 }
