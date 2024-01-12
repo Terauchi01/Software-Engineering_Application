@@ -24,20 +24,12 @@
         </div>
         <div class="space"></div>
         <div class="content">
-            <div class="header">
-                <div class="select-wrapper">
-                    <select class="select" id = "selected">
-                        <option value="1">管理者</option>
-                        <option value="2" onclick="logout()">ログアウト</option>
-                    </select>
-                    <script>
-                        function logout(option){
-                            if (confirm('ログアウトしますか？')) {
-                                alert('ログアウトされました');
-                            }
-                        }
-                    </script>
-                </div>
+            <div class = "header">
+                <select onChange="location.href=value;">
+                    <option>管理者</option>
+                    <option value="{{ route('admin.adminLogout') }}">ログアウト</option>
+                </select>
+                <p>admin</p> <!-- ここをユーザ名とする -->
             </div>
             <div class="main">
                 <div class="flex-main">
@@ -79,7 +71,7 @@
                                         display: true,
                                         title: {
                                             display: true,
-                                            text: '配達個数'
+                                            text: '配達個数(万個)'
                                         },
                                     },
                                 }
