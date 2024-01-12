@@ -16,9 +16,12 @@ body {
 }
 
 .side {
+    position: fixed;
+    top: 0;
     width: 100pt;
-    background-color: #408a7e;
-    color: #ffffff;
+    height: 100%;
+    background-color: #408A7E;
+    color: #FFFFFF;
     padding-top: 20px;
     text-align: center;
     line-height: 20pt;
@@ -28,9 +31,6 @@ body {
     color: #000000;
     height: 20pt;
     text-align: center;
-}
-.space {
-    width: 20pt;
 }
 
 .content {
@@ -45,6 +45,7 @@ body {
 }
 
 .main {
+    margin-left: 110pt;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
