@@ -39,9 +39,9 @@
                         <tbody>
                         @foreach($name as $userId => $coopName)
                             <tr>
-                                <td>{{ $coopName }}</td>
-                                <td>{{ $month_delivery[$userId] }}</td>
-                                <td>{{ $ratio[$userId] !== -1 ? $ratio[$userId] * 100 . '%' : 'N/A' }}</td>
+                                <td align="center">{{ $coopName }}</td>
+                                <td align="center">{{ $month_delivery[$userId] ? $month_delivery[$userId] . '万個' : $month_delivery[$userId]}}</td>
+                                <td align="center">{{ $ratio[$userId] !== -1 ? $ratio[$userId] * 100 . '%' : 'N/A' }}</td>
                             </tr>
                         @endforeach
                         </tbody>
