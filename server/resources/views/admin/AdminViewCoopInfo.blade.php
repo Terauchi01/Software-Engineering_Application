@@ -19,6 +19,9 @@
             <p class="information">事業者情報詳細</p>
             <p class="coopName">{{ $coopName }}</p>
             <p class="coopId">{{ $coopId }}</p>
+            <form action="{{ route('admin.adminEditCoopInfo') }}" method="POST">
+                <button type="submit" name="id" value="{{ $coopId }}" class="edit">編集する</button>
+            </form>
             <table>
                 <tr>
                     <th>メールアドレス</th>

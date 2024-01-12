@@ -42,19 +42,19 @@ body {
     margin-bottom: 3px;
 }
 
-.coopName {
+.userName {
     font-size: 40px;
     font-weight: bold;
     text-align:left;
     margin-bottom: 3px;
 }
 
-.coopId {
+.userId {
     text-align:left;
     margin-bottom: 3px;
 }
 
-.coopInfo {
+.userInfo {
     width: 80%;
     padding: 20px;
 }
@@ -64,18 +64,18 @@ body {
     margin-top: -30px;
 }
 
-.coopInfo table {
+.userInfo table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.coopInfo th, td {
+.userInfo th, td {
     border: 1px solid #ddd;
     padding: 10px;
 }
 
-.coopInfo th {
+.userInfo th {
     background-color: #f2f2f2;
     text-align: center;
 }
