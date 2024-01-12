@@ -20,7 +20,7 @@ class UserLoginController extends Controller
         // ユーザーの認証
         if (Auth::guard('users')->attempt($credentials)) {
             // 認証成功時の処理
-            return redirect()->route('user.userDeliveryPlaceRequest'); // ダッシュボードなど適切なルートにリダイレクト
+            return redirect()->route('user.UserDeliveryPlaceRequest'); // ダッシュボードなど適切なルートにリダイレクト
         }
 
         // 認証失敗時の処理

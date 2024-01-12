@@ -8,6 +8,6 @@ class UserFavoritesListController extends Controller
 {
     public function userFavoritesList (){
         //viewの返すところは適当で良い
-        return view('user.userFavoritesList');
+        return view('user.UserFavoritesList');
     }
 }
