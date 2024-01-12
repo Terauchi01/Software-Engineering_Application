@@ -19,7 +19,6 @@ class AdminViewUserStatisticsInfoController extends Controller
             $monthCounts[] = DeliveryRequest::where('deletion_date','=',null)->where('delivery_status', 4)->where('updated_at', '>=', $sixMonthsAgoFirstDays[$i])->count()-$sum;
             $sum += $monthCounts[$i];
         }
-        // dump($monthCounts);
         
         $Prefecture = MstPrefecture::all();
         // $User = $Prefecture;
@@ -56,9 +55,6 @@ class AdminViewUserStatisticsInfoController extends Controller
         // データ表示
         ksort($fromCounts);
         ksort($toCounts);
-        // dump($Prefecture);
-        // dump($fromCounts);
-        // dump($toCounts);
         
         return view('admin.AdminViewUserStatisticsInfo', compact('sum', 'Prefecture', 'fromCounts', 'toCounts'));
     }
@@ -72,14 +68,11 @@ class AdminViewUserStatisticsInfoController extends Controller
             $sum += $monthCounts[$i];
         }
         $monthCounts = array_reverse($monthCounts);
-        // dump($monthCounts);
         $month = [];
         for ($i = 0; $i < 6; $i++) {
             $month[$i] = $sixMonthsAgoFirstDays[$i]->month;
         }
         $month = array_reverse($month);
-        // dump($month);
-        
         $Prefecture = MstPrefecture::all();
         // $User = $Prefecture;
         
@@ -119,9 +112,6 @@ class AdminViewUserStatisticsInfoController extends Controller
         // データ表示
         ksort($fromCounts);
         ksort($toCounts);
-        // dump($Prefecture);
-        // dump($fromCounts);
-        // dump($toCounts);
         
         ksort($fromPrefectures);
         ksort($toPrefectures);

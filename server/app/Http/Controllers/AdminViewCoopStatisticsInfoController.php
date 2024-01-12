@@ -29,12 +29,6 @@ class AdminViewCoopStatisticsInfoController extends Controller
             
         }
         
-        // データ表示
-        // dump($name);
-        // dump($month_collection);
-        // dump($month_intermediate);
-        // dump($month_delivery);
-        
         //事業者のドローン稼働率
         $A = CoopDrones::where('deletion_date','=',null)
             ->select('coop_user_id', 'drone_status', DB::raw('COUNT(*) as count'))
@@ -57,9 +51,6 @@ class AdminViewCoopStatisticsInfoController extends Controller
                 $ratio[$userId] = ($status1Count / ($status1Count + $status0Count));
             }
         }
-        // データ表示
-        // dump($name);
-        // dump($ratio);
         
         return view('admin.adminViewCoopStatisticsInfo', compact('name', 'month_delivery', 'ratio'));
     }
@@ -79,12 +70,6 @@ class AdminViewCoopStatisticsInfoController extends Controller
             $month_intermediate[$userId] = $A->where('deletion_date','=',null)->where('intermediate_delivery_company_id', $userId)->count();
             $month_delivery[$userId] = $A->where('deletion_date','=',null)->where('delivery_company_id', $userId)->count();
         }
-        
-        // データ表示
-        // dump($name);
-        // dump($month_collection);
-        // dump($month_intermediate);
-        // dump($month_delivery);
         
         //事業者のドローン稼働率
         $A = CoopDrones::where('deletion_date','=',null)
@@ -107,9 +92,6 @@ class AdminViewCoopStatisticsInfoController extends Controller
                 $ratio[$userId] = ($status1Count / ($status1Count + $status0Count));
             }
         }
-        // データ表示
-        // dump($name);
-        // dump($ratio);
         
         $name = array_values($name);
         $name2 = array_values($name2);
