@@ -78,6 +78,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('adminLogin', [AdminLoginController::class, 'adminLogin'])->name('adminLogin');
     Route::post('adminLoginFunction', [AdminLoginController::class, 'adminLoginFunction'])->name('adminLoginFunction');
     Route::middleware('admin')->group(function () {
+        Route::post('adminLogoutFunction', [AdminLogoutController::class, 'adminLogoutFunction'])->name('adminLogoutFunction');
         Route::get('adminAllocateCoopDeliveryTask', [AdminAllocateCoopDeliveryTaskController::class, 'adminAllocateCoopDeliveryTask'])->name('adminAllocateCoopDeliveryTask');
         Route::get('adminEditAdminDrone', [AdminEditAdminDroneController::class, 'adminEditAdminDrone'])->name('adminEditAdminDrone');
         Route::get('adminEditCoopDroneInfo', [AdminEditCoopDroneInfoController::class, 'adminEditCoopDroneInfo'])->name('adminEditCoopDroneInfo');
@@ -110,6 +111,7 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     Route::get('coopLogin', [CoopLoginController::class, 'coopLogin'])->name('coopLogin');
     Route::post('coopLoginFunction', [CoopLoginController::class, 'coopLoginFunction'])->name('coopLoginFunction');
     Route::middleware('coop')->group(function () {
+        Route::post('coopLogoutFunction', [CoopLogoutController::class, 'coopLogoutFunction'])->name('coopLogoutFunction');
         Route::get('coopAllExecuteChildCoopAccountListView', [CoopChildAccountListController::class, 'coopAllExecuteChildCoopAccountListView'])->name('coopAllExecuteChildCoopAccountListView');
         Route::get('coopAllSelectChild', [CoopChildAccountListController::class, 'coopAllSelectChild'])->name('coopAllSelectChild');
         Route::get('coopApplyAdminDroneLend', [CoopDroneLentRequestController::class, 'coopApplyAdminDroneLend'])->name('coopApplyAdminDroneLend');
@@ -141,6 +143,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('login', [UserLoginController::class, 'userLogin'])->name('userLogin');
     Route::post('userLoginFunction', [UserLoginController::class, 'userLoginFunction'])->name('userLoginFunction');
     Route::middleware('user')->group(function () {
+        Route::post('userLogoutFunction', [UserLogoutController::class, 'userLogoutFunction'])->name('userLogoutFunction');
         Route::get('deliveryPlaceRequest', [UserDeliveryPlaceRequestController::class, 'userDeliveryPlaceRequest'])->name('userDeliveryPlaceRequest');
         Route::get('deliveryRequest', [UserDeliveryRequestController::class, 'userDeliveryRequest'])->name('userDeliveryRequest');
         Route::get('deliveryRequestList', [UserDeliveryRequestListController::class, 'userDeliveryRequestList'])->name('userDeliveryRequestList');
