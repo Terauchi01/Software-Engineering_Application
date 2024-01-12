@@ -9,7 +9,7 @@ class CoopLogoutController extends Controller
     // ログアウト(事業者)
     public function coopLogout (){
         //viewの返すところは適当で良い
-        return view('coop.coopLogout');
+        return view('coop.CoopLogout');
     }
 
     public function coopLogoutFunction (Request $request) {
@@ -17,6 +17,6 @@ class CoopLogoutController extends Controller
             Auth::guard('coops')->logout();
             return redirect()->route('coop.coopLogin');
         }
-        return redirect()->route('coop.coopCheckUserDeliveryRequestListViewExecute');
+        return redirect()->route('coop.CoopCheckUserDeliveryRequestListViewExecute');
     }
 }
