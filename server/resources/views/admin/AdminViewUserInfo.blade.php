@@ -15,7 +15,7 @@
             <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
         </nav>
         <div class="userInfo">
-            <p class="information">利用者詳細情報</p>
+            <p class="information"><h2><font color ="#408A7E"><u>利用者情報詳細</u></font></h2></p>
             <p class="userName">{{ $userName }}</p>
             <p class="userId">{{ $userId }}</p>
             <form action="{{ route('admin.adminEditUserInfo') }}" method="POST">
@@ -40,6 +40,13 @@
                     <th>{{ $data['kanaName'] }}</th>
                 </tr>
             </table>
+        </div>
+        <div class = "header">
+            <select onChange="location.href=value;">
+                <option>管理者</option>
+                <option value="{{ route('admin.adminLogout') }}">ログアウト</option>
+            </select>
+            <p>admin</p> <!-- ここをユーザ名とする -->
         </div>
     </body>
 </html>
