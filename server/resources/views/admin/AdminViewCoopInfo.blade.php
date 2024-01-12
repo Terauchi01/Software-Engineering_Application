@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <title>事業者情報詳細</title>
         <link rel="stylesheet" href="{{ asset('/css/admin/AdminViewCoopInfo.css') }}">
     </head>
     <body>
@@ -14,9 +15,9 @@
             <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>
             <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
         </nav>
-        
+
         <div class="coopInfo">
-            <p class="information">事業者情報詳細</p>
+            <p class="information"><h2><font color ="#408A7E"><u>事業者情報詳細</u></font></h2></p>
             <p class="coopName">{{ $coopName }}</p>
             <p class="coopId">{{ $coopId }}</p>
             <form action="{{ route('admin.adminEditCoopInfo') }}" method="POST">
@@ -56,6 +57,13 @@
                     <th>{{ $data['status'] }}</th>
                 </tr>
             </table>
+        </div>
+        <div class = "header">
+            <select onChange="location.href=value;">
+                <option>管理者</option>
+                <option value="{{ route('admin.adminLogout') }}">ログアウト</option>
+            </select>
+            <p>admin</p> <!-- ここをユーザ名とする -->
         </div>
     </body>
 </html>

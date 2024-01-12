@@ -16,6 +16,6 @@ class AdminLogoutController extends Controller
             Auth::guard('admins')->logout();
             return redirect()->route('admin.adminLogin');
         }
-        return redirect()->route('admin.adminAllocateCoopDeliveryTask'); // tmp
+        return redirect()->route('admin.adminViewCoopList'); // tmp
     }
 }

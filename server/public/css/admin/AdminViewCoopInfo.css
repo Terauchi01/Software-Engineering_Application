@@ -1,10 +1,19 @@
 body {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    /* height: 100vh; */
     margin: 0;
+    padding: 0;
+    width: 90vw;
+    height: 100vh;
+    flex-direction: row;
 }
+
+.header {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    text-align: right;
+}
+
 
 .side a {
     color: #FFFFFF;
