@@ -7,6 +7,8 @@ use App\Models\MstPrefecture;
 use App\Models\Cities;
 use App\Models\CoopLocation;
 use App\Models\CoopUser;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 //事業者一覧
 
 class AdminViewCoopListController extends Controller
@@ -21,12 +23,15 @@ class AdminViewCoopListController extends Controller
             'coop_user.pay_status',
             'coop_user.child_status',
             'coop_user.pair_id',
+            'coop_user.deletion_date',
             'coop_location.postal_code',
             'coop_location.prefecture_id',
             'coop_location.city_id',
             'coop_location.town',
             'coop_location.block'
         )
+        ->where('coop_user.deletion_date', '=', null)
+        ->where('coop_location.deletion_date', '=', null)
         ->join('coop_location', 'coop_user.id', '=', 'coop_location.coop_user_id')
         ->orderBy('coop_user.id', 'asc') 
         ->get();
@@ -66,14 +71,15 @@ class AdminViewCoopListController extends Controller
         return view('admin.AdminViewCoopList', compact('mergedData'));
     }
 
-    public function delete(Request $request, $coopId)
+    public function delete(Request $request, $id)
     {
         // $coopId を使用して削除などの処理を行う
-        Model::destroy($coopId);
+        // CoopUser::destroy($id);
         // レスポンスを返す（任意のメッセージを含める）
-        dd($coopId);
-        return response()->json(['message' => '削除が完了しました。']);
-       
+        $B = CoopUser::class;
+        $currentDateTime = Carbon::now();
+        $B::where('id',$id)->update(['deletion_date' => $currentDateTime]);
+        return response()->header('Refresh', '2;url=' . route('admin.adminViewCoopList'));
     }
 }
 // id
