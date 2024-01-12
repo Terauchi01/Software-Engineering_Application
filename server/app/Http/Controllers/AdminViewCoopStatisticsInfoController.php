@@ -52,7 +52,7 @@ class AdminViewCoopStatisticsInfoController extends Controller
             }
         }
         
-        return view('admin.adminViewCoopStatisticsInfo', compact('name', 'month_delivery', 'ratio'));
+        return view('admin.AdminViewCoopStatisticsInfo', compact('name', 'month_delivery', 'ratio'));
     }
     public function adminViewCoopStatisticsInfoGraph (){
         //1か月の配達個数×3社
@@ -98,6 +98,6 @@ class AdminViewCoopStatisticsInfoController extends Controller
         $month_delivery = array_values($month_delivery);
         $ratio = array_values($ratio);
         
-        return view('admin.adminViewCoopStatisticsInfoGraph', compact('name', 'month_delivery', 'name2', 'ratio'));
+        return view('admin.AdminViewCoopStatisticsInfoGraph', compact('name', 'month_delivery', 'name2', 'ratio'));
     }
 }

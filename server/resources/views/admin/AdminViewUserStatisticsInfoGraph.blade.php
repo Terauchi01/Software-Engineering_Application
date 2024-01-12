@@ -133,7 +133,7 @@
                         });
                     </script>
                     
-                    <button type="button" onclick="location.href='{{ route('admin.adminViewUserStatisticsInfo') }}'">統計情報表示に戻る</button>
+                    <button type="button" onclick="location.href='{{ route('admin.AdminViewUserStatisticsInfo') }}'">統計情報表示に戻る</button>
                 </div>
             </div>
         </div>
