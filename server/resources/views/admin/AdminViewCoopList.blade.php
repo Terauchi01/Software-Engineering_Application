@@ -190,9 +190,10 @@
                                         <td><button type="button" onclick="editCoop({{ $coopInfo['id'] }})">
                                             <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20">
                                         </button></td>
-                                        <a href="{{ route('admin.adminViewCoopListDelete', ['id' => $coopInfo['id']]) }}">
-                                            <button type="button">クリックする</button>
-                                        </a>
+                                        <td><a href="{{ route('admin.adminViewCoopListDelete', ['id' => $coopInfo['id']]) }}">
+                                            <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20">
+                                            <!-- <button type="button"></button> -->
+                                        </a></td>
                                         {{-- <td><button type="button" onclick="confirmDelete({{ $coopInfo['id'] }})">
                                             <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20">
                                         </button></td> --}}
