@@ -158,7 +158,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         Route::get('deliveryRequestList', [UserDeliveryRequestListController::class, 'userDeliveryRequestList'])->name('userDeliveryRequestList');
         Route::get('deliveryRequestList/{id}', [UserDeliveryRequestListController::class, 'delete'])->name('userDeliveryRequestListDelete');     
         Route::get('editInfo', [UserEditInfoController::class, 'userEditInfo'])->name('userEditInfo');
-        Route::get('edit/{id}', [UserEditInfoController::class, 'userEdit'])->name('userEdit');
+        Route::post('edit', [UserEditInfoController::class, 'userEdit'])->name('userEdit');
         Route::get('logout', [UserLogoutController::class, 'userLogout'])->name('userLogout');
         Route::get('userFavoritesList', [UserFavoritesListController::class, 'userFavoritesList'])->name('userFavoritesList');
         Route::get('userRegisterFavorites', [UserFavoritesRegisterController::class, 'userRegisterFavorites'])->name('userRegisterFavorites');
