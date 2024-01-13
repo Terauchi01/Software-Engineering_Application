@@ -5,7 +5,7 @@
     </head>
     <body>
         <div class="logout">
-            <form action="{{ route('user.userLogout') }}" method="POST" class="logout_form">
+            <form action="{{ route('user.userLogoutFunction') }}" method="POST" class="logout_form">
                 @csrf
                 <p>ログアウトしますか</p>
                 <button type="submit" name="logout" value="true">ログアウト</button>

@@ -12,10 +12,10 @@ class UserLogoutController extends Controller
     }
 
     public function userLogoutFunction (Request $request) {
-        if ("true" === $request->("logout")) {
+        if ("true" === $request->input("logout")) {
             Auth::guard('users')->logout();
             return redirect()->route('user.userLogin');
         }
-        return redirect()->route('user.deliveryRequestList');
+        return redirect()->route('user.userDeliveryRequestList');
     }
 }
