@@ -15,7 +15,7 @@ class LicenseInformation extends Model
         'date_of_registration',
         'name',
         'birth',
-        'condtions',
+        'conditions',
         'classification',
         'ratings_and_limitations1',
         'ratings_and_limitations2',
