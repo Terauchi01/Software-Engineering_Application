@@ -17,7 +17,8 @@
         <div class="userInfo">
             <p class="information"><h2><font color ="#408A7E"><u>利用者情報詳細</u></font></h2></p>
             <p class="userName">{{ $userName }}</p>
-            <p class="userId">{{ $userId }}</p>
+            @if($userId !== null)
+            <p class="userId">ID : {{ $userId }}</p>
             <form action="{{ route('admin.adminEditUserInfo') }}" method="POST">
                 <button type="submit" name="id" value="{{ $userId }}" class="edit">編集する</button>
             </form>
@@ -40,6 +41,7 @@
                     <th>{{ $data['kanaName'] }}</th>
                 </tr>
             </table>
+            @endif
         </div>
         <div class = "header">
             <select onChange="location.href=value;">
