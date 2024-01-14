@@ -111,12 +111,13 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     Route::get('/', function () {return view('coop.test');});
     Route::get('coopLogin', [CoopLoginController::class, 'coopLogin'])->name('coopLogin');
     Route::post('coopLoginFunction', [CoopLoginController::class, 'coopLoginFunction'])->name('coopLoginFunction');
+    Route::get('coopApplyCoopRegister', [CoopRegistrationRequestController::class, 'coopApplyCoopRegister'])->name('coopApplyCoopRegister');
+
     Route::middleware('coop')->group(function () {
         Route::post('coopLogoutFunction', [CoopLogoutController::class, 'coopLogoutFunction'])->name('coopLogoutFunction');
         Route::get('coopAllExecuteChildCoopAccountListView', [CoopChildAccountListController::class, 'coopAllExecuteChildCoopAccountListView'])->name('coopAllExecuteChildCoopAccountListView');
         Route::get('coopAllSelectChild', [CoopChildAccountListController::class, 'coopAllSelectChild'])->name('coopAllSelectChild');
         Route::get('coopApplyAdminDroneLend', [CoopDroneLentRequestController::class, 'coopApplyAdminDroneLend'])->name('coopApplyAdminDroneLend');
-        Route::get('coopApplyCoopRegister', [CoopRegistrationRequestController::class, 'coopApplyCoopRegister'])->name('coopApplyCoopRegister');
         Route::get('coopCheckUserDeliveryRequestListViewExecute', [CoopDeliveryRequestListController::class, 'coopCheckUserDeliveryRequestListViewExecute'])->name('coopCheckUserDeliveryRequestListViewExecute');
         Route::get('coopDeleteChildCoopAccount', [CoopChildAccountListController::class, 'coopDeleteChildCoopAccount'])->name('coopDeleteChildCoopAccount');
         Route::get('coopEditChildCoopAccount', [CoopEditChildCoopAccountController::class, 'coopEditChildCoopAccount'])->name('coopEditChildCoopAccount');
@@ -143,6 +144,9 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('/', function () {return view('user.test');});
     Route::get('login', [UserLoginController::class, 'userLogin'])->name('userLogin');
     Route::post('userLoginFunction', [UserLoginController::class, 'userLoginFunction'])->name('userLoginFunction');
+    Route::post('userRegister', [UserRegistrationController::class, 'userRegister'])->name('userRegister');
+    Route::get('registration', [UserRegistrationController::class, 'userRegisterView'])->name('userRegisterView');
+
     Route::middleware('user')->group(function () {
         Route::post('userLogoutFunction', [UserLogoutController::class, 'userLogoutFunction'])->name('userLogoutFunction');
         Route::get('deliveryPlaceRequest', [UserDeliveryPlaceRequestController::class, 'userDeliveryPlaceRequest'])->name('userDeliveryPlaceRequest');
@@ -151,8 +155,6 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         Route::get('editInfo', [UserEditInfoController::class, 'userEditInfo'])->name('userEditInfo');
         Route::get('edit/{id}', [UserEditInfoController::class, 'userEdit'])->name('userEdit');
         Route::get('logout', [UserLogoutController::class, 'userLogout'])->name('userLogout');
-        Route::get('registration', [UserRegistrationController::class, 'userRegisterView'])->name('userRegisterView');
-        Route::post('userRegister', [UserRegistrationController::class, 'userRegister'])->name('userRegister');
         Route::get('userFavoritesList', [UserFavoritesListController::class, 'userFavoritesList'])->name('userFavoritesList');
         Route::get('userRegisterFavorites', [UserFavoritesRegisterController::class, 'userRegisterFavorites'])->name('userRegisterFavorites');
         Route::get('userReferFavoritesData', [UserFavoritesRegisterController::class, 'userReferFavoritesData'])->name('userReferFavoritesData');
