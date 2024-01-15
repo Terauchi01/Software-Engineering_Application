@@ -26,7 +26,6 @@ class AdminViewCoopStatisticsInfoController extends Controller
             $month_collection[$userId] = $A->where('deletion_date','=',null)->where('collection_company_id', $userId)->count();
             $month_intermediate[$userId] = $A->where('deletion_date','=',null)->where('intermediate_delivery_company_id', $userId)->count();
             $month_delivery[$userId] = $A->where('deletion_date','=',null)->where('delivery_company_id', $userId)->count();
-            
         }
         
         //事業者のドローン稼働率

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
     <title>利用者情報分析</title>
     <link rel="stylesheet" href="{{ asset('css/admin/common.css') }}">
