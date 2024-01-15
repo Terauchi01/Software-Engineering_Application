@@ -21,7 +21,7 @@ class LicenseInformationFactory extends Factory
             'date_of_registration' => $this->faker->dateTimeThisDecade,
             'name' => $this->faker->name,
             'birth' => $this->faker->dateTimeThisCentury,
-            'condtions' => $this->faker->word,
+            'conditions' => $this->faker->word,
             'classification' => $this->faker->word,
             'ratings_and_limitations1' => $this->faker->word,
             'ratings_and_limitations2' => $this->faker->word,

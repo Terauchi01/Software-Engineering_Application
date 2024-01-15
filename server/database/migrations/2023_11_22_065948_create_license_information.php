@@ -17,7 +17,7 @@ return new class extends Migration
             $table->time('date_of_registration')->nullable(false);
             $table->string("name",100)->nullable(false);
             $table->time("birth")->nullable(false);
-            $table->string("condtions",100)->nullable(false);
+            $table->string("conditions",100)->nullable(false);
             $table->string("classification",100)->nullable(false);
             $table->string("ratings_and_limitations1",100);
             $table->string("ratings_and_limitations2",100);
