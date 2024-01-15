@@ -21,6 +21,7 @@
                 <input type="password" name="password" placeholder="パスワード" required>
                 <button type="submit" class="login_">ログイン</button>
             </form>
+            <a href="{{ route('coop.coopApplyCoopRegister') }}" class="new">新規登録申請する</a>
         </div>
     </body>
 </html>
