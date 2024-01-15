@@ -21,8 +21,8 @@
             <p class="coopName">{{ $coopName }}</p>
             @if($coopId !== null)
             <p class="coopId">ID : {{ $coopId }}</p>
-            <form action="{{ route('admin.adminEditCoopInfo') }}" method="POST">
-                <button type="submit" name="id" value="{{ $coopId }}" class="edit">編集する</button>
+            <form action="{{ route('admin.adminEditCoopInfo', ['id' => $coopId]) }}" method="GET">
+                <button type="submit" class="edit">編集する</button>
             </form>
             <table>
                 <tr>
