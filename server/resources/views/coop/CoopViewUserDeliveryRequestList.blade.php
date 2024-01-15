@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>子アカウント一覧</title>
+        <title>依頼一覧</title>
         <link rel="stylesheet" href="{{ asset('css/coop/CoopList.css') }}">
         <style>
          .current {
@@ -15,18 +15,18 @@
     </head>
     
     <body>    
-        <div class="side">         
-            <p><a href="{{ route('coop.coopViewUserDeliveryRequestList') }}">依頼一覧</a></p>
-            <p><a href="{{ route('coop.coopDroneInfoList') }}">所持ドローン</a></p>        
-            <p><a href="{{ route('coop.coopRegisterDrone') }}">ドローン登録</a></p>
+        <div class="side">
             <div class="current">
-                <p><a href="{{ route('coop.coopViewChildCoopAccountList') }}">子アカウント一覧</a></p>
+                <p><a href="{{ route('coop.coopViewUserDeliveryRequestList') }}">依頼一覧</a></p>
             </div>
+            <p><a href="{{ route('coop.coopDroneInfoList') }}">所持ドローン</a></p>        
+            <p><a href="{{ route('coop.coopRegisterDrone') }}">ドローン登録</a></p>                
+            <p><a href="{{ route('coop.coopViewChildCoopAccountList') }}">子アカウント一覧</a></p>
             <p><a href="{{ route('coop.coopPublishChildCoopAccount') }}">子アカウント発行</a></p>
             <p><a href="{{ route('coop.coopApplyAdminDroneLend') }}">ドローン貸与申請</a></p>
             <p><a href="{{ route('coop.coopEditCoopInfo') }}">事業者情報編集</a></p>
         </div>
-        
+
         <div class = "content">
             <div class = "header">
                 <select onChange="location.href=value;">
@@ -39,7 +39,7 @@
             
             <div class = "main">
                 <div class ="flex-main">                        
-                    <p><h2><font color ="#408A7E"><u> 子アカウント一覧 </u></font></h2></p>
+                    <p><h2><font color ="#408A7E"><u> 依頼一覧 </u></font></h2></p>
                     
                     <button id="filterButton" class="custom-button">絞り込み</button>
                     
@@ -53,33 +53,14 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>子アカウント番号</th>
-                                <th>子アカウント名</th>
-                                <th>メール</th>
-                                <th>権限</th>
-                                <th>編集</th>
-                                <th>削除</th>
+                                <th>依頼番号</th>
+                                <th>送り主情報</th>
+                                <th>受け取り主情報</th>
+                                <th>受領済</th>
+                                <th>不在</th>
                             </tr>
                         </thead>                                    
-                        <tbody>
-                            @foreach ($mergedData as $index => $childInfo)
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" class="itemCheckbox" id="checkbox{{$childInfo['id']}}" name="selectedCoops[]" value="{{ $childInfo['id'] }}">
-                                    </td>
-                                    <td>{{ $childInfo['id'] }}</td>
-                                    <td><a href="{{ route('admin.adminViewCoopInfo', ['id' => $childInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $childInfo['coop_name'] }}</a></td>
-                                    <td>{{ $childInfo['email_address'] }}</td>
-                                    <td>{{ $childInfo['child_status'] }}</td>
-                                    <td><button type="button">
-                                        <a href="{{ route('admin.adminEditCoopInfo', ['id' => $childInfo['id']]) }}">
-                                            <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20"></a></button></td>
-                                    <td><button type="button">
-                                        <a href="{{ route('admin.adminViewCoopListDelete', ['id' => $childInfo['id']]) }}">
-                                            <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
-                                </tr>
-                            @endforeach
-                        </tbody>                            
+                        
                         <script>
                          document.getElementById('masterCheckbox').addEventListener('change', function() {
                              var masterCheckbox = this;
