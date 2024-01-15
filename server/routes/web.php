@@ -29,6 +29,7 @@ use App\Http\Controllers\AdminViewUserStatisticsInfoController;
 use App\Http\Controllers\CoopChildAccountListController;
 use App\Http\Controllers\CoopCreateChildAccountController;
 use App\Http\Controllers\CoopDeliveryRequestListController;
+use App\Http\Controllers\CoopViewUserDeliveryRequestListController;
 use App\Http\Controllers\CoopDroneInfoListController;
 use App\Http\Controllers\CoopDroneLentRequestController;
 use App\Http\Controllers\CoopDroneListController;
@@ -129,6 +130,7 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
         Route::get('coopDeleteChildCoopAccount', [CoopChildAccountListController::class, 'coopDeleteChildCoopAccount'])->name('coopDeleteChildCoopAccount');
         Route::get('coopEditChildCoopAccount', [CoopEditChildCoopAccountController::class, 'coopEditChildCoopAccount'])->name('coopEditChildCoopAccount');
         Route::get('coopEditCoopInfo', [CoopEditCoopInfoController::class, 'coopEditCoopInfo'])->name('coopEditCoopInfo');
+        Route::get('coopViewUserDeliveryRequestList', [CoopViewUserDeliveryRequestListController::class, 'coopViewUserDeliveryRequestList'])->name('coopViewUserDeliveryRequestList');
         Route::get('coopFillterUserDeliveryRequestListView', [CoopDeliveryRequestListController::class, 'coopFillterUserDeliveryRequestListView'])->name('coopFillterUserDeliveryRequestListView');
         Route::get('coopFilterChildCoopAccountListView', [CoopChildAccountListController::class, 'coopFilterChildCoopAccountListView'])->name('coopFilterChildCoopAccountListView');
         Route::get('coopLogout', [CoopLogoutController::class, 'coopLogout'])->name('coopLogout');
