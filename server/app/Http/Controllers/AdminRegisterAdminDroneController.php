@@ -25,8 +25,7 @@ class AdminRegisterAdminDroneController extends Controller
                 'lend_drones_sum' => 'required|integer',
             ]);
     
-            // バリデーションが通った場合の処理
-            // ここにデータベースへの保存などの処理を記述
+            DroneType::create($data);
     
             return redirect()->route('admin.adminRegisterAdminDrone')->with('success', 'ドローンが登録されました。');
         } catch (\Illuminate\Validation\ValidationException $e) {

@@ -125,7 +125,6 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
         Route::get('coopApplyAdminDroneLend', [CoopDroneLentRequestController::class, 'coopApplyAdminDroneLend'])->name('coopApplyAdminDroneLend');
         Route::get('coopApplyCoopRegister', [CoopRegistrationRequestController::class, 'coopApplyCoopRegister'])->name('coopApplyCoopRegister');
         Route::post('coopRegister', [CoopRegistrationRequestController::class, 'coopRegister'])->name('coopRegister');
-
         Route::get('coopCheckUserDeliveryRequestListViewExecute', [CoopDeliveryRequestListController::class, 'coopCheckUserDeliveryRequestListViewExecute'])->name('coopCheckUserDeliveryRequestListViewExecute');
         Route::get('coopDeleteChildCoopAccount', [CoopChildAccountListController::class, 'coopDeleteChildCoopAccount'])->name('coopDeleteChildCoopAccount');
         Route::get('coopEditChildCoopAccount', [CoopEditChildCoopAccountController::class, 'coopEditChildCoopAccount'])->name('coopEditChildCoopAccount');
@@ -135,7 +134,9 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
         Route::get('coopLogout', [CoopLogoutController::class, 'coopLogout'])->name('coopLogout');
         Route::get('coopNoticeUserDeliveryRequestListViewDeliveryComplete', [CoopDeliveryRequestListController::class, 'coopNoticeUserDeliveryRequestListViewDeliveryComplete'])->name('coopNoticeUserDeliveryRequestListViewDeliveryComplete');
         Route::get('coopPublishChildCoopAccount', [CoopCreateChildAccountController::class, 'coopPublishChildCoopAccount'])->name('coopPublishChildCoopAccount');
+        Route::post('registerChildAccount', [CoopCreateChildAccountController::class, 'registerChildAccount'])->name('registerChildAccount');
         Route::get('coopRegisterDrone', [CoopDroneRegistrationController::class, 'coopRegisterDrone'])->name('coopRegisterDrone');
+        Route::post('registerDrone', [CoopDroneRegistrationController::class, 'registerDrone'])->name('registerDrone');
         Route::get('coopSearchChildCoopAccountListView', [CoopChildAccountListController::class, 'coopSearchChildCoopAccountListView'])->name('coopSearchChildCoopAccountListView');
         Route::get('coopSearchUserDeliveryRequestListView', [CoopDeliveryRequestListController::class, 'coopSearchUserDeliveryRequestListView'])->name('coopSearchUserDeliveryRequestListView');
         Route::get('coopSortChildCoopAccountListViewInfo', [CoopChildAccountListController::class, 'coopSortChildCoopAccountListViewInfo'])->name('coopSortChildCoopAccountListViewInfo');
