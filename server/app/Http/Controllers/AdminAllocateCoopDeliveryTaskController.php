@@ -3,32 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\DeliveryRequest;
+use App\Models\CoopUser;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class AdminAllocateCoopDeliveryTaskController extends Controller
 {
-    public function adminAllocateCoopDeliveryTask (){
-        $id = ['1', '2'];
-        $send_address = ['わかめ県こんぶ町', 'わかめ県めかぶ町'];
-        $receive_address = ['わかめ県めかぶ町', 'わかめ県マシュマロ町'];
-        $coop = ['事業者名A', '事業者名B'];
-        return view('admin.AdminAllocateCoopDeliveryTask', compact('id', 'send_address', 'receive_address', 'coop'));
-    }
-}
-/* id
- * delivery_destination_id(多分ユーザid)
- * collection_company_id
- * delivery_company_id
- * collection_company_remuneration
- * delivery_company_remuneration
- * delivery_status(未割り振りのもののみ選択)
- * request_date
- * collection_location_id(追加が必要)
- * user_id(追加が必要) */
+    public function adminAllocateCoopDeliveryTask()
+    {
+        $list = DeliveryRequest::select(
+            'delivery_request.id',
+            'delivery_request.user_id',
+            'delivery_request.delivery_destination_id',
+            'delivery_request.collection_company_id',
+            'delivery_request.delivery_company_id',
+        )            
+              ->where('delivery_request.deletion_date', '=', null)
+              ->orderBy('delivery_request.id', 'asc')
+              ->get();
+        
+        $mergedData = [];
+        
+        foreach ($list as $item) {         
+            $mergedData[] = [
+                'id' => $item->id,
+                'user_id' => $item->user_id,
+                'delivery_destination_id' => $item->delivery_destination_id,
+                'collection_company_id' => $item->collection_company_id,
+                'delivery_company_id' => $item->delivery_company_id,
+            ];
+        }
 
-/* user
- * id
- * address
- * postal_code
- * user_last_name
- * user_first_name
- * delivery_location_image_list_id */
+        return view('admin.AdminAllocateCoopDeliveryTask', compact('mergedData'));
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $B = DeliveryRequest::class;
+        $currentDateTime = Carbon::now();
+        $B::where('id',$id)->update(['deletion_date' => $currentDateTime]);
+        return redirect()->route('admin.adminAllocateCoopDeliveryTask');
+    }
+   
+}
+
