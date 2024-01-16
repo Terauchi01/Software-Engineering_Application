@@ -4,13 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\MstPrefecture;
+use App\Models\Cities;
 
 class UserRegistrationController extends Controller
 {
     public function userRegisterView (){
-        return view('user.UserRegistration');
+        // 都道府県をidでソートして取得
+        $Prefecture = MstPrefecture::orderBy('id')->pluck('name', 'id')->toArray();
+
+        // 市区町村をidでソートして取得
+        $cityCollection = Cities::orderBy('id')->select('id', 'prefecture_id', 'name')->get();
+        // コレクションをprefecture_idをキーにした連想配列に変換
+        $Cities = $cityCollection->groupBy('prefecture_id')->map(function ($items) {
+            return $items->pluck('name', 'id')->toArray();
+        })->toArray();
+        return view('user.UserRegistration',compact('Prefecture','Cities'));
     }
     public function userRegister(Request $request){
+        $request->merge([
+            'unpaid_charge' => 0,
+        ]);
         $Class = User::class;
         $newUserData = [
             'email_address' => $request['email_address'],
@@ -28,8 +42,6 @@ class UserRegistrationController extends Controller
             'unpaid_charge' => $request['unpaid_charge'],
         ];
         $Class::create($newUserData);
-        //データ確認用後で消して
-        dump($newUserData);
-        return view('user.UserRegistration');
+        return redirect()->route('user.userRegisterView')->with('success', '配送が登録されました。');
     }
 }

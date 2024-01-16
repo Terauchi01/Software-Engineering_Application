@@ -13,7 +13,6 @@ use App\Models\Cities;
 class UserDeliveryRequestController extends Controller
 {
     public function userDeliveryRequest (){
-        //viewの返すところは適当で良い
         // 都道府県をidでソートして取得
         $Prefecture = MstPrefecture::orderBy('id')->pluck('name', 'id')->toArray();
 
@@ -75,7 +74,7 @@ class UserDeliveryRequestController extends Controller
             // データをデータベースに保存
             DeliveryRequest::create($request->all());
     
-            return redirect()->route('deliveries.create')->with('success', '配送が登録されました。');
+            return redirect()->route('user.userDeliveryRequest')->with('success', '配送が登録されました。');
         } catch (\Illuminate\Validation\ValidationException $e) {
             // バリデーションエラーが発生した場合
             return back()->withErrors($e->validator)->withInput();

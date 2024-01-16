@@ -1,7 +1,7 @@
 userRequestDelivery
 <form method="POST" action="{{ route('user.deliveryRequest') }}">
     @csrf
-<h2>相手型の個人情報</h2>
+<h2>配送相手の個人情報(相手もこのシステムにユーザ登録している必要があります)</h2>
     <div>
         <label for="user_last_name">姓</label>
         <input type="text" name="user_last_name" required>
