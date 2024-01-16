@@ -60,30 +60,47 @@
                                 <th>不在</th>
                             </tr>
                         </thead>                                    
-                        
-                        <script>
-                         document.getElementById('masterCheckbox').addEventListener('change', function() {
-                             var masterCheckbox = this;
-                             var itemCheckboxes = document.querySelectorAll('.itemCheckbox');
-                             
-                             itemCheckboxes.forEach(function(itemCheckbox) {
-                                 itemCheckbox.checked = masterCheckbox.checked;
-                             });
-                         });
-                         
-                         // 各行のチェックボックスに対するイベントリスナーも追加する場合
-                         document.querySelectorAll('.itemCheckbox').forEach(function(itemCheckbox) {
-                             itemCheckbox.addEventListener('change', function() {
-                                 var allChecked = true;
-                                 document.querySelectorAll('.itemCheckbox').forEach(function(checkbox) {
-                                     if (!checkbox.checked) {
-                                         allChecked = false;
-                                     }
-                                 });
-                                 document.getElementById('masterCheckbox').checked = allChecked;
-                             });
-                         });                                                 
-                        </script>                            
+                        <tbody>
+                            @foreach ($mergedData as $index => $deliveryInfo)
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="itemCheckbox" id="checkbox{{$deliveryInfo['id']}}" name="selectedCoops[]" value="{{ $deliveryInfo['id'] }}">
+                                    </td>
+                                    <td>{{ $deliveryInfo['id'] }}</td>                                    
+                                    <td>{{ $deliveryInfo['user_id'] }}</td>
+                                    <td>{{ $deliveryInfo['delivery_destination_id'] }}</td>                                
+                                    <td><button type="button">
+                                        <a href="{{ route('admin.adminEditUserInfo', ['id' => $deliveryInfo['id']]) }}">
+                                            <img src="{{ asset('image/img_approval.png') }}" alt="受領" width="20" height="20"></a></button></td>
+                                    <td><button type="button">
+                                        <a href="{{ route('admin.adminAllocateCoopDeliveryTaskDelete', ['id' => $deliveryInfo['id']]) }}">
+                                            <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
+                                </tr>
+                            @endforeach
+                         </tbody>
+                         <script>
+                          document.getElementById('masterCheckbox').addEventListener('change', function() {
+                              var masterCheckbox = this;
+                              var itemCheckboxes = document.querySelectorAll('.itemCheckbox');
+                              
+                              itemCheckboxes.forEach(function(itemCheckbox) {
+                                  itemCheckbox.checked = masterCheckbox.checked;
+                              });
+                          });
+                          
+                          // 各行のチェックボックスに対するイベントリスナーも追加する場合
+                          document.querySelectorAll('.itemCheckbox').forEach(function(itemCheckbox) {
+                              itemCheckbox.addEventListener('change', function() {
+                                  var allChecked = true;
+                                  document.querySelectorAll('.itemCheckbox').forEach(function(checkbox) {
+                                      if (!checkbox.checked) {
+                                          allChecked = false;
+                                      }
+                                  });
+                                  document.getElementById('masterCheckbox').checked = allChecked;
+                              });
+                          });                                                 
+                         </script>                            
                     </table>
                 </div>
             </div>
