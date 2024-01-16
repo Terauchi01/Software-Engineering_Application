@@ -44,12 +44,12 @@ userRequestDelivery
 
     <!-- それ以降 -->
     <div>
-        <label for="town">町名など</label>
+        <label for="town">町名・番地</label>
         <input type="text" name="town" required>
     </div>
     
     <div>
-        <label for="block">番地</label>
+        <label for="block">建物名</label>
         <input type="text" name="block" required>
     </div>
 
@@ -63,6 +63,22 @@ userRequestDelivery
 
     <button type="submit">送信</button>
 </form>
+@if ($errors->any())
+<div>
+    <strong>入力エラーがあります。</strong>
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+@if (session('success'))
+<div>
+    <p>{{ session('success') }}</p>
+</div>
+@endif
 
 <script>
 const citiesData = @json($Cities); // コントローラーから渡された市区町村データ

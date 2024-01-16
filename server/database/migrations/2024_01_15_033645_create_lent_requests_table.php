@@ -14,9 +14,9 @@ class CreateLentRequestsTable extends Migration
             $table->unsignedBigInteger('drone_type_id');
             $table->foreign('drone_type_id')->references('id')->on('drone_type');
             $table->integer('number');
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->date('deletion_date');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->date('deletion_date')->nullable();
             $table->timestamps();
         });
     }

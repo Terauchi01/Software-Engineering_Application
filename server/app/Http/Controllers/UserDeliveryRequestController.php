@@ -50,6 +50,9 @@ class UserDeliveryRequestController extends Controller
 
         if ($user) {
             $userId = $user->id;
+            $request->merge([
+                'delivery_destination_id' => $userId,
+            ]);
             // ここで取得した $userId を使って何か処理を行う
         } else {
             // データが見つからなかった場合の処理
@@ -59,16 +62,16 @@ class UserDeliveryRequestController extends Controller
             $request->validate([
                 'delivery_destination_id' => 'required',
                 'user_id' => 'required',
-                'collection_company_id' => 'required',
-                'intermediate_delivery_company_id' => 'required',
-                'delivery_company_id' => 'required',
+                'collection_company_id' => 'nullable',
+                'intermediate_delivery_company_id' => 'nullable',
+                'delivery_company_id' => 'nullable',
                 'collection_company_remuneration' => 'required',
                 'intermediate_delivery_company_remuneration' => 'required',
                 'delivery_company_remuneration' => 'required',
                 'item' => 'required',
                 'delivery_status' => 'required',
                 'request_date' => 'required|date',
-                'delivery_date' => 'required|date',
+                'delivery_date' => 'nullable|date',
             ]);
     
             // データをデータベースに保存
