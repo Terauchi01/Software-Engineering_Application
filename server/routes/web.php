@@ -124,6 +124,7 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
         Route::get('coopAllExecuteChildCoopAccountListView', [CoopChildAccountListController::class, 'coopAllExecuteChildCoopAccountListView'])->name('coopAllExecuteChildCoopAccountListView');
         Route::get('coopAllSelectChild', [CoopChildAccountListController::class, 'coopAllSelectChild'])->name('coopAllSelectChild');
         Route::get('coopApplyAdminDroneLend', [CoopDroneLentRequestController::class, 'coopApplyAdminDroneLend'])->name('coopApplyAdminDroneLend');
+        Route::post('applyDroneLend', [CoopDroneLentRequestController::class, 'applyDroneLend'])->name('applyDroneLend');
         Route::get('coopApplyCoopRegister', [CoopRegistrationRequestController::class, 'coopApplyCoopRegister'])->name('coopApplyCoopRegister');
         Route::post('coopRegister', [CoopRegistrationRequestController::class, 'coopRegister'])->name('coopRegister');
         Route::get('coopCheckUserDeliveryRequestListViewExecute', [CoopDeliveryRequestListController::class, 'coopCheckUserDeliveryRequestListViewExecute'])->name('coopCheckUserDeliveryRequestListViewExecute');
