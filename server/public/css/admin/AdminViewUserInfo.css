@@ -19,7 +19,7 @@ body {
 }
 
 .side {
-    /* position: fixed; */
+    position: fixed;
     top: 0;
     width: 100pt;
     height: 100%;
@@ -63,6 +63,10 @@ body {
 }
 
 .userInfo {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 110pt;
     width: 80%;
     padding: 20px;
 }
