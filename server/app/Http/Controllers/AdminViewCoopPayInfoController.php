@@ -12,7 +12,7 @@ class AdminViewCoopPayInfoController extends Controller
         $id = $request->input('id');
         $coop = CoopUser::find($id);
 
-        if ($coop && $coop->deletion_data === null) {
+        if ($coop && $coop->deletion_date === null) {
             $acc = AccountInformation::find($coop->account_information_id);
             $coopName = $coop->coop_name;
             $coopId = $coop->id;
