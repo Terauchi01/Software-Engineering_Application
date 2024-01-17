@@ -12,23 +12,26 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('coop_location', function (Blueprint $table) {
-            $table->id(); // 自動増分の主キー
+            $table->id();
             $table->integer('postal_code')->nullable(false);
             $table->integer('prefecture_id')->nullable(false);
             $table->integer('city_id')->nullable(false);
-            $table->integer('town_id')->nullable(false);
-            $table->integer('block_id')->nullable(false);
-            $table->string('representative_last_name', 10)->nullable(false);
-            $table->string('representative_first_name', 10)->nullable(false);
-            $table->string('representative_last_name_kana', 30)->nullable(false);
-            $table->string('representative_first_name_kana', 30)->nullable(false);
-            $table->string('license_holder_last_name', 10)->nullable(false);
-            $table->string('license_holder_first_name', 10)->nullable(false);
-            $table->string('license_holder_last_name_kana', 30)->nullable(false);
-            $table->string('license_holder_first_name_kana', 30)->nullable(false);
+            $table->string('representative_last_name', 100)->nullable(false);
+            $table->string('representative_first_name', 100)->nullable(false);
+            $table->string('representative_last_name_kana', 100)->nullable(false);
+            $table->string('representative_first_name_kana', 100)->nullable(false);
+            $table->string('license_holder_last_name', 100)->nullable(false);
+            $table->string('license_holder_first_name', 100)->nullable(false);
+            $table->string('license_holder_last_name_kana', 100)->nullable(false);
+            $table->string('license_holder_first_name_kana', 100)->nullable(false);
             $table->unsignedBigInteger('license_id')->nullable(false);
             $table->timestamps();
             $table->timestamp('deletion_date')->nullable()->default(null);
+            $table->string('town', 100)->nullable();
+            $table->string('block', 100)->nullable();
+
+            $table->unsignedBigInteger('coop_user_id')->nullable();
+            $table->foreign('coop_user_id')->references('id')->on('coop_user');
         });
     }
 

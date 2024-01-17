@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('delivery_location_image', function (Blueprint $table) {
-            $table->id(); // 自動増分の主キー
+            $table->id();
             $table->char('image_url', 200)->nullable(false);
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('user');
+            $table->timestamps();
             $table->timestamp('deletion_date')->nullable()->default(null);
         });
     }

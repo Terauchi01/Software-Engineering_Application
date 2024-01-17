@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('delivery_request', function (Blueprint $table) {
-            $table->id(); // 自動増分の主キー
+            $table->id();
             $table->unsignedBigInteger('delivery_destination_id')->nullable(false);
             $table->unsignedBigInteger('collection_company_id')->nullable();
             $table->unsignedBigInteger('intermediate_delivery_company_id')->nullable();
@@ -26,6 +26,14 @@ return new class extends Migration
             $table->timestamp('delivery_date')->nullable();
             $table->timestamps();
             $table->timestamp('deletion_date')->nullable()->default(null);
+
+            $table->foreign('delivery_destination_id')->references('id')->on('user');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('user');
+
+            $table->foreign('collection_company_id')->references('id')->on('coop_user');
+            $table->foreign('intermediate_delivery_company_id')->references('id')->on('coop_user');
+            $table->foreign('delivery_company_id')->references('id')->on('coop_user');
         });
     }
 

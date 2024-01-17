@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('account_information', function (Blueprint $table) {
-            $table->id(); // 自動増分の主キー
+            $table->id();
             $table->unsignedBigInteger('bank_id')->nullable(false);
             $table->unsignedBigInteger('branch_id')->nullable(false);
-            $table->string('account_type', 10)->nullable(false);
+            $table->string('account_type', 100)->nullable(false);
             $table->string('account_number', 255)->nullable(false);
-            $table->string('account_name', 10)->nullable(false);
-            $table->string('account_name_kana', 30)->nullable(false);
+            $table->string('account_name', 100)->nullable(false);
+            $table->string('account_name_kana', 255)->nullable(false);
             $table->timestamps();
             $table->timestamp('deletion_date')->nullable()->default(null);
         });
