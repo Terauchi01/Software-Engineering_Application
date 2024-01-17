@@ -20,7 +20,7 @@
     <body>      
         <div class="side">
             <p><a href="{{ route('admin.adminViewCoopList') }}">事業者情報管理</a></p>         
-            <p><a href="{{ route('admin.adminViewCoopDroneInfo') }}">ドローン貸与申請一覧</a></p>
+            <p><a href="{{ route('admin.adminViewCoopApplyDroneLendList') }}">ドローン貸与申請一覧</a></p>
             <div class="current">
                 <p><a href="{{ route('admin.adminViewUserList') }}">利用者情報管理</a></p>
             </div>
@@ -66,7 +66,8 @@
                                 <th></th>
                                 <th>利用者番号</th>
                                 <th>利用者名</th>
-                                <th>メール</th>                          
+                                <th>メール</th>
+                                <th>支払い状態</th>
                                 <th>編集</th>
                                 <th>削除</th>
                             </tr>
@@ -79,7 +80,8 @@
                                     </td>
                                     <td>{{ $userInfo['id'] }}</td>                                  
                                     <td><a href="{{ route('admin.adminViewUserInfo', ['id' => $userInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $userInfo['user_name'] }}</a></td>
-                                    <td>{{ $userInfo['email_address'] }}</td>                                        
+                                    <td>{{ $userInfo['email_address'] }}</td>
+                                    <td><a href="{{ route('admin.adminViewUserPayInfo', ['id' => $userInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $userInfo['unpaid_charge'] }}</a></td>
                                     <td><button type="button">
                                         <a href="{{ route('admin.adminEditUserInfo', ['id' => $userInfo['id']]) }}">
                                             <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20"></a></button></td>
@@ -89,7 +91,7 @@
                                 </tr>
                             @endforeach
                         </tbody>
-
+                        
                         <script>
                          document.getElementById('masterCheckbox').addEventListener('change', function() {
                              var masterCheckbox = this;

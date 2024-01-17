@@ -49,13 +49,13 @@
             <div class="current">
                 <p><a href="{{ route('admin.adminViewCoopList') }}">事業者情報管理</a></p>
             </div>
-            <p><a href="{{ route('admin.adminViewCoopDroneInfo') }}">ドローン貸与申請一覧</a></p>
-            <p><a href="{{ route('admin.adminViewUserList') }}">利用者情報管理</a></p>                
+            <p><a href="{{ route('admin.adminViewCoopApplyDroneLendList') }}">ドローン貸与申請一覧</a></p>
+            <p><a href="{{ route('admin.adminViewUserList') }}">利用者情報管理</a></p>
             <p><a href="{{ route('admin.adminViewCoopStatisticsInfo') }}">事業者情報分析</a></p>
             <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>
             <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
         </div>
-
+        
         <div class = "content">
             <div class = "header">
                 <select onChange="location.href=value;">
@@ -203,7 +203,7 @@
                                     <td><a href="{{ route('admin.adminViewCoopInfo', ['id' => $coopInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $coopInfo['coop_name'] }}</a></td>
                                     <td>{{ $coopInfo['representative_name'] }}</td>
                                     <td>{{ $coopInfo['coop_locations'] }}</td>
-                                    <td>{{ $coopInfo['pay_status'] }}</td>
+                                    <td><a href="{{ route('admin.adminViewCoopPayInfo', ['id' => $coopInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $coopInfo['pay_status'] }}</a></td>                                 
                                     <td><button type="button">
                                         <a href="{{ route('admin.adminEditCoopInfo', ['id' => $coopInfo['id']]) }}">
                                             <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20"></a></button></td>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DeliveryRequest;
 use App\Models\CoopUser;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -24,14 +25,16 @@ class AdminAllocateCoopDeliveryTaskController extends Controller
               ->get();
         
         $mergedData = [];
-        
+        $coopName = CoopUser::pluck('coop_name', 'id')->toArray();
+        $sendName = User::pluck('user_last_name', 'id')->toArray();
+        $receiveName = User::pluck('user_last_name', 'id')->toArray();
         foreach ($list as $item) {         
             $mergedData[] = [
                 'id' => $item->id,
-                'user_id' => $item->user_id,
-                'delivery_destination_id' => $item->delivery_destination_id,
+                'user_id' => $sendName[$item->user_id],
+                'delivery_destination_id' => $receiveName[$item->delivery_destination_id],
                 'collection_company_id' => $item->collection_company_id,
-                'delivery_company_id' => $item->delivery_company_id,
+                'delivery_company_id' => $coopName[$item->delivery_company_id],
             ];
         }
 

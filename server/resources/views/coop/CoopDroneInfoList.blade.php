@@ -16,7 +16,7 @@
     
     <body>    
         <div class="side">
-            <p><a href="{{ route('coop.coopFillterUserDeliveryRequestListView') }}">依頼一覧</a></p>
+            <p><a href="{{ route('coop.coopViewUserDeliveryRequestList') }}">依頼一覧</a></p>
             <div class="current">
                 <p><a href="{{ route('coop.coopDroneInfoList') }}">所持ドローン</a></p>
             </div>
@@ -61,28 +61,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($mergedData['drone_id'] as $index => $drone_id)
+                            @foreach ($mergedData as $index => $droneInfo)
                                 <tr>
                                     <td>
-                                        <input type="checkbox" class="itemCheckbox" id="checkbox{{$drone_id}}" name="selectedCoops[]" value="{{ $drone_id }}">
+                                        <input type="checkbox" class="itemCheckbox" id="checkbox{{$droneInfo['id']}}" name="selectedCoops[]" value="{{ $droneInfo['id'] }}">
                                     </td>
-                                    <td>{{ $drone_id }}</td>
-                                    <td><a href="{{ route('admin.adminViewCoopInfo', ['id' => $mergedData['id'][$index]]) }}" style="color:blue; text-decoration:none"> {{ $mergedData['drone_type'][$index] }}</a></td>
-                                    <td>{{ $mergedData['drone_status'][$index] }}</td>                
-                                    <td>
-                                        <button type="button">
-                                            <a href="{{ route('admin.adminEditCoopInfo', ['id' => $mergedData['id'][$index]]) }}">
-                                                <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20">
-                                            </a>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button type="button">
-                                            <a href="{{ route('admin.adminViewCoopListDelete', ['id' => $mergedData['id'][$index]]) }}">
-                                                <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20">
-                                            </a>
-                                        </button>
-                                    </td>
+                                    <td>{{ $droneInfo['id'] }}</td>                                   
+                                    <td>{{ $droneInfo['drone_type_id'] }}</td>
+                                    <td>{{ $droneInfo['drone_status'] }}</td>                           
+                                    <td><button type="button">
+                                        <a href="{{ route('admin.adminEditCoopInfo', ['id' => $droneInfo['id']]) }}">
+                                            <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20"></a></button></td>
+                                    <td><button type="button">
+                                        <a href="{{ route('admin.adminViewCoopListDelete', ['id' => $droneInfo['id']]) }}">
+                                            <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
                                 </tr>
                             @endforeach
                         </tbody>                                   

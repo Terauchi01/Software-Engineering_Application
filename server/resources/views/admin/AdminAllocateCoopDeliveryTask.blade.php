@@ -20,7 +20,7 @@
     <body>      
         <div class="side">
             <p><a href="{{ route('admin.adminViewCoopList') }}">事業者情報管理</a></p>         
-            <p><a href="{{ route('admin.adminViewCoopDroneInfo') }}">ドローン貸与申請一覧</a></p>
+            <p><a href="{{ route('admin.adminViewCoopApplyDroneLendList') }}">ドローン貸与申請一覧</a></p>
             <p><a href="{{ route('admin.adminViewUserList') }}">利用者情報管理</a></p>                
             <p><a href="{{ route('admin.adminViewCoopStatisticsInfo') }}">事業者情報分析</a></p>
             <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>
@@ -85,9 +85,9 @@
                                     <td>
                                         <input type="checkbox" class="itemCheckbox" id="checkbox{{$deliveryInfo['id']}}" name="selectedCoops[]" value="{{ $deliveryInfo['id'] }}">
                                     </td>
-                                    <td>{{ $deliveryInfo['id'] }}</td>
+                                    <td>{{ $deliveryInfo['id'] }}</td>                                    
+                                    <td>{{ $deliveryInfo['user_id'] }}</td>
                                     <td>{{ $deliveryInfo['delivery_destination_id'] }}</td>
-                                    <td>{{ $deliveryInfo['collection_company_id'] }}</td>
                                     <td>{{ $deliveryInfo['delivery_company_id'] }}</td>
                                     <td><button type="button">
                                         <a href="{{ route('admin.adminEditUserInfo', ['id' => $deliveryInfo['id']]) }}">

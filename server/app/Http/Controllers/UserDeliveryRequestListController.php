@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DeliveryRequest;
 use App\Models\CoopUser;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -21,12 +22,12 @@ class UserDeliveryRequestListController extends Controller
               ->get();
         
         $mergedData = [];
-        
+        $receiveName = User::pluck('user_last_name', 'id')->toArray();
         foreach ($list as $item) {         
             $mergedData[] = [
                 'id' => $item->id,
                 'delivery_status' => $item->delivery_status,
-                'delivery_destination_id' => $item->delivery_destination_id,               
+                'delivery_destination_id' => $receiveName[$item->delivery_destination_id],               
             ];
         }
         

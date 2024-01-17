@@ -18,12 +18,12 @@
         <div class="side">
             <p><a href="{{ route('admin.adminViewCoopList') }}">事業者情報管理</a></p>
             <div class="current">
-                <p><a href="{{ route('admin.adminViewCoopDroneInfo') }}">ドローン貸与申請一覧</a></p>
-            </div>                
+                <p><a href="{{ route('admin.adminViewCoopApplyDroneLendList') }}">ドローン貸与申請一覧</a></p>
+            </div>
             <p><a href="{{ route('admin.adminViewUserList') }}">利用者情報管理</a></p>
             <p><a href="{{ route('admin.adminViewCoopStatisticsInfo') }}">事業者情報分析</a></p>
-            <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>                
-            <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>                
+            <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>
+            <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
         </div>           
         <div class = "content">
             <div class = "header">
@@ -37,8 +37,10 @@
             <div class = "main">
                 <div class ="flex-main">
                     <div class = "coopList"> <!--#408A7E-->
-                        <p><h2><font color ="#408A7E"><u> ドローン貸与申請一覧 </u></font></h2></p>
+                        <p><h2><font color ="#408A7E"><u> 事業者ドローン情報一覧 </u></font></h2></p>
                     </div>
+
+                    <p><a href="{{ route('admin.adminViewCoopApplyDroneLendList') }}">ドローン貸与申請一覧</a> > 事業者ドローン情報 </p>
                     
                     <button type="submit" name="add" id="filterButton" class="custom-button">承認</button>
                     <button type="submit" name="add" id="resetButton" class="custom-button">却下</button>
