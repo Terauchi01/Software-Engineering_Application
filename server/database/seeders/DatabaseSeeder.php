@@ -34,8 +34,10 @@ class DatabaseSeeder extends Seeder
         }
         AdminUser::factory(1)->create();
         AdminInformation::factory(100)->create();
-        CoopUser::factory(100)->create();
-        User::factory(100)->create();
+        CoopUser::factory(1)->create();
+        CoopUser::factory(99)->create();
+        User::factory(1)->create();
+        User::factory(99)->create();
         AccountInformation::factory(100)->create();
         DroneType::factory(100)->create();
         CoopDrones::factory(100)->create();
