@@ -161,7 +161,8 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
         Route::get('reportTrouble', [CoopReportTroubleController::class, 'coopReportTrouble'])->name('coopReportTrouble');
         Route::get('requestAdminDroneRepair', [CoopRequestAdminDroneRepairController::class, 'coopRequestAdminDroneRepair'])->name('coopRequestAdminDroneRepair');
     });
-    Route::get('withdraw', [CoopWithdrawController::class, 'coopwithdraw'])->name('coopwithdraw');
+    Route::get('coopWithdraw', [CoopWithdrawController::class, 'coopwithdraw'])->name('coopwithdraw');
+    Route::get('withdraw', [CoopWithdrawController::class, 'withdraw'])->name('withdraw');
 });
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('/', function () {return view('user.test');});
@@ -176,7 +177,6 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         Route::post('placeRequest', [UserDeliveryPlaceRequestController::class, 'placeRequest'])->name('placeRequest');
         Route::get('userDeliveryRequest', [UserDeliveryRequestController::class, 'userDeliveryRequest'])->name('userDeliveryRequest');
         Route::post('deliveryRequest', [UserDeliveryRequestController::class, 'deliveryRequest'])->name('deliveryRequest');
-
         Route::get('deliveryRequestList', [UserDeliveryRequestListController::class, 'userDeliveryRequestList'])->name('userDeliveryRequestList');
         Route::get('deliveryRequestList/{id}', [UserDeliveryRequestListController::class, 'delete'])->name('userDeliveryRequestListDelete');     
         Route::get('editInfo', [UserEditInfoController::class, 'userEditInfo'])->name('userEditInfo');
@@ -187,6 +187,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         Route::get('userReferFavoritesData', [UserFavoritesRegisterController::class, 'userReferFavoritesData'])->name('userReferFavoritesData');
         Route::get('userReceiveNoticeCompleteDelivery', [UserReceiveNoticeCompleteDeliveryController::class, 'userReceiveNoticeCompleteDelivery'])->name('userReceiveNoticeCompleteDelivery');
         Route::get('userWithdraw', [UserWithdrawController::class, 'userWithdraw'])->name('userWithdraw');
+        Route::get('withdraw', [UserWithdrawController::class, 'withdraw'])->name('withdraw');
     });
 });
 //テスト用のコード

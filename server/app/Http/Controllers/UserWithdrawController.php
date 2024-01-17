@@ -21,12 +21,17 @@ class UserWithdrawController extends Controller
         $exists = DeliveryRequest::where(function ($query) use ($userId) {
             $query->where('delivery_destination_id', $userId)
                   ->orWhere('user_id', $userId);
-        })->where('delivery_status', '!=', 4)->where('unpaid_charge','=','0')->exists();
+        })->where('delivery_status', '!=', 4)->exists();
+        $user = User::where('id',$userId)->where('unpaid_charge','=','0')->exists();
         // $exists = false;
+        // $user = true;
         if($exists){
             return redirect()->back()->with('error', '配達中の荷物が存在します');
         }
         else{
+            if(!$user){
+                return redirect()->back()->with('error', '未払いの料金が存在します');
+            }
             $user = User::where('id',$userId)->get();
             User::where('id',$userId)->update(
                 [
