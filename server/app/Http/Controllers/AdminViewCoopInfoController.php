@@ -36,7 +36,7 @@ class AdminViewCoopInfoController extends Controller
                 'date_of_registration' => $license->date_of_registration,
                 'license_name' => $license->name,
                 'license_birth' => $license->birth,
-                'conditions' => $license->condtions,
+                'conditions' => $license->conditions,
                 'classification' => $license->classification,
                 'ratings_and_limitations' => $license->ratings_and_limitations1 . ' ' . $license->ratings_and_limitations2 . ' ' . $license->ratings_and_limitations3,
                 'account' => $acc->bank_id . ' ' . $acc->branch_id . ' ' . $acc->account_type . ' ' . $acc->account_number,
