@@ -1,95 +1,129 @@
-adminEditCoopInfo、詳細だけど、ほぼ編集
-<div style="width: 100%; height: 100%; position: relative; background: #FAFAFA">
-    <div style="height: 26px; left: 238px; top: 147px; position: absolute">
-        <div style="width: 251px; height: 0px; left: 0px; top: 26px; position: absolute; border: 3px #408A7E solid"></div>
-        <div style="left: 0px; top: 0px; position: absolute; color: #408A7E; font-size: 16px; font-family: Noto Sans; font-weight: 600; word-wrap: break-word">事業者情報管理 >> 事業者情報詳細</div>
-    </div>
-    <div style="width: 127px; height: 1024px; left: 0px; top: 0px; position: absolute">
-        <div style="width: 127px; height: 1024px; left: 0px; top: 0px; position: absolute; background: #408A7E"></div>
-        <div style="width: 127px; height: 290px; left: 0px; top: 56px; position: absolute">
-            <div style="left: 15px; top: 268px; position: absolute; text-align: center; color: white; font-size: 16px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">宅配依頼一覧</div>
-            <div style="left: 7px; top: 222px; position: absolute; text-align: center; color: white; font-size: 16px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">利用者情報分析</div>
-            <div style="left: 7px; top: 176px; position: absolute; text-align: center; color: white; font-size: 16px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">事業者情報分析</div>
-            <div style="left: 7px; top: 130px; position: absolute; text-align: center; color: white; font-size: 16px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">利用者情報管理</div>
-            <div style="left: 15px; top: 62px; position: absolute; text-align: center; color: white; font-size: 16px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">ドローン<br/>貸与申請一覧</div>
-            <div style="width: 127px; height: 38px; left: 0px; top: 0px; position: absolute; background: white"></div>
-            <div style="left: 7px; top: 8px; position: absolute; color: black; font-size: 16px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">事業者情報管理</div>
-        </div>
-    </div>
-    <div style="width: 1313px; height: 100px; left: 127px; top: 0px; position: absolute">
-        <div style="width: 1313px; height: 100px; left: 0px; top: 0px; position: absolute; background: white"></div>
-        <div style="left: 1037px; top: 29px; position: absolute; color: black; font-size: 20px; font-family: Noto Sans; font-weight: 600; word-wrap: break-word">管理者</div>
-        <div style="width: 107px; height: 17px; left: 1036px; top: 60px; position: absolute; color: black; font-size: 14px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">+918912345679</div>
-        <div style="width: 32px; height: 32px; left: 942px; top: 39px; position: absolute">
-            <div style="width: 26px; height: 29px; left: 3px; top: 1px; position: absolute; background: #408A7E"></div>
-            <div style="width: 8px; height: 8px; left: 22px; top: 4px; position: absolute; background: #408A7E"></div>
-        </div>
-        <div style="width: 70px; height: 70px; left: 1153px; top: 15px; position: absolute">
-            <div style="width: 70px; height: 70px; left: 0px; top: 0px; position: absolute; background: #EFEFEF; border-radius: 9999px"></div>
-            <div style="left: 23px; top: 10px; position: absolute; color: #868686; font-size: 36px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">A</div>
-        </div>
-    </div>
-    <div style="width: 1087px; height: 664px; left: 220px; top: 360px; position: absolute">
-        <div style="width: 1087px; height: 664px; left: 0px; top: 0px; position: absolute; background: white; box-shadow: 0px 3px 50px rgba(0, 0, 0, 0.08); border-radius: 8px"></div>
-        <div style="width: 937px; height: 49px; left: 84px; top: 603px; position: absolute">
-            <div style="width: 743px; height: 49px; left: 194px; top: 0px; position: absolute">
-                <div style="width: 743px; height: 49px; left: 0px; top: 0px; position: absolute; background: #FAFAFA; border-radius: 8px"></div>
-                <div style="width: 346px; height: 32px; left: 24px; top: 10px; position: absolute; color: black; font-size: 20px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">申請中</div>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>事業者情報編集</title>
+        <link rel="stylesheet" href="{{ asset('/css/admin/AdminViewCoopInfo.css') }}">
+    </head>
+    <body>
+        <nav class="side">
+            <div class="current">
+                <p><a href="{{ route('admin.adminViewCoopList') }}">事業者情報管理</a></p>
             </div>
-            <div style="left: 0px; top: 9px; position: absolute; color: black; font-size: 16px; font-family: Noto Sans; font-weight: 600; word-wrap: break-word">申請状態</div>
+            <p><a href="{{ route('admin.adminViewCoopDroneInfo') }}">ドローン貸与申請一覧</a></p>
+            <p><a href="{{ route('admin.adminViewUserList') }}">利用者情報管理</a></p>
+            <p><a href="{{ route('admin.adminViewCoopStatisticsInfo') }}">事業者情報分析</a></p>
+            <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>
+            <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
+        </nav>
+
+        <div class="coopInfo">
+            <p class="information"><h2><font color ="#408A7E"><u>事業者情報編集</u></font></h2></p>
+            <p class="coopName">{{ $coopName }}</p>
+            @if($coopId !== null)
+            <p class="coopId">ID : {{ $coopId }}</p>
+            <form action="{{ route('admin.adminEditCoopInfoApply') }}" method="POST">
+                @csrf
+                <table>
+                    <tr>
+                        <th>事業者名</th>
+                        <th><div class="left"><input type="text" name="coop_name" value="{{ $data['coop_name'] }}" required></div></th>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス</th>
+                        <th><div class="left"><input type="text" name="email" value="{{ $data['email'] }}" placeholder="example@mail.com" required></div></th>
+                    </tr>
+                    <tr>
+                        <th>パスワード</th>
+                        <th><div class="left"><input type="password" name="password" placeholder="{{ $data['password'] }}"></div></th>
+                    </tr>
+                    <tr>
+                        <th>事業者代表名</th>
+                        <th>
+                            <div class="left">
+                                <input type="text" name="last_name" value="{{ $data['last_name'] }}" placeholder="姓" required>
+                                <input type="text" name="first_name" value="{{ $data['first_name'] }}" placeholder="名" required>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>事業者代表名カナ</th>
+                        <th>
+                            <div class="left">
+                                <input type="text" name="last_name_kana" value="{{ $data['last_name_kana'] }}" placeholder="セイ" required>
+                                <input type="text" name="first_name_kana" value="{{ $data['first_name_kana'] }}" placeholder="メイ" required>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>事業拠点情報</th>
+                        <th>
+                            <div class="left">
+                                〒<input type="text" name="postal_code" value="{{ $data['postal_code'] }}" placeholder="ハイフン無しで入力してください" required>
+                                <input type="text" name="prefecture" value="{{ $data['prefecture'] }}" placeholder="都道府県" required>
+                                <input type="text" name="city" value="{{ $data['city'] }}" placeholder="市区" required>
+                            </div>
+                            <div style="text-align:center">
+                                <input type="text" name="town" value="{{ $data['town'] }}" placeholder="町村" required>
+                                <input type="text" name="block" value="{{ $data['block'] }}" placeholder="住所" required>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>営業形態</th>
+                        <th><div class="left"><input type="text" name="land_or_air" value="{{ $data['land_or_air'] }}" required></div></th>
+                    </tr>
+                    <tr>
+                        <th>免許情報</th>
+                        <th>
+                            <div class="left">
+                                交付日<input type="text" name="date_of_issue" value="{{ $data['date_of_issue'] }}" required><br>
+                                登録日<input type="text" name="date_of_registration" value="{{ $data['date_of_registration'] }}" required><br>
+                                交付者<input type="text" name="name" value="{{ $data['name'] }}" required><br>
+                                交付者生年月日<input type="text" name="birth" value="{{ $data['birth'] }}" required><br>
+                                条件<input type="text" name="conditions" value="{{ $data['conditions'] }}" required><br>
+                                区分<input type="text" name="classification" value="{{ $data['classification'] }}" required><br>
+                                限定事項1<input type="text" name="ratings_and_limitations1" value="{{ $data['ratings_and_limitations1'] }}" required><br>
+                                限定事項2<input type="text" name="ratings_and_limitations2" value="{{ $data['ratings_and_limitations2'] }}" required><br>
+                                限定事項3<input type="text" name="ratings_and_limitations3" value="{{ $data['ratings_and_limitations3'] }}" required>
+                            </div>
+                    </tr>
+                    <tr>
+                        <th>口座情報</th>
+                        <th>
+                            <div class="left">
+                                <input type="text" name="bank_id" value="{{ $data['acc_bank'] }}" placeholder="銀行名" required>
+                                <input type="text" name="branch_id" value="{{ $data['acc_branch'] }}" placeholder="支店名" required>
+                                <input type="text" name="account_type" value="{{ $data['acc_type'] }}" placeholder="講座種別" required>
+                                <input type="text" name="account_number" value="{{ $data['acc_num'] }}" placeholder="口座番号" required>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>従業員人数</th>
+                        <th><div class="left"><input type="text" name="employees" value="{{ $data['worker'] }}" required>人</div></th>
+                    </tr>
+                    <tr>
+                        <th>電話番号</th>
+                        <th><div class="left"><input type="text" name="phone_number" value="{{ $data['phone'] }}" placeholder="ハイフン無しで入力してください" required></div></th>
+                    </tr>
+                    <tr>
+                        <th>申請状態</th>
+                        <th><div class="left"><input type="text" name="application_status" value="{{ $data['status'] }}" required></div></th>
+                    </tr>
+                </table>
+                <input type="hidden" name="id" value="{{ $coopId }}">
+                <div class="confirm">
+                    <button type="submit">上記内容で更新する</button>
+                </div>
+            </form>
+        @endif
         </div>
-        <div style="width: 937px; height: 49px; left: 84px; top: 519px; position: absolute">
-            <div style="width: 743px; height: 49px; left: 194px; top: 0px; position: absolute">
-                <div style="width: 743px; height: 49px; left: 0px; top: 0px; position: absolute; background: #FAFAFA; border-radius: 8px"></div>
-                <div style="width: 346px; height: 32px; left: 24px; top: 10px; position: absolute; color: black; font-size: 20px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">0120-xx-xxxx</div>
-            </div>
-            <div style="left: 0px; top: 9px; position: absolute; color: black; font-size: 16px; font-family: Noto Sans; font-weight: 600; word-wrap: break-word">電話番号</div>
+        <div class = "header">
+            <select onChange="location.href=value;">
+                <option>管理者</option>
+                <option value="{{ route('admin.adminLogout') }}">ログアウト</option>
+            </select>
+            <p>admin</p> <!-- ここをユーザ名とする -->
         </div>
-        <div style="width: 937px; height: 49px; left: 84px; top: 435px; position: absolute">
-            <div style="width: 743px; height: 49px; left: 194px; top: 0px; position: absolute">
-                <div style="width: 743px; height: 49px; left: 0px; top: 0px; position: absolute; background: #FAFAFA; border-radius: 8px"></div>
-                <div style="width: 346px; height: 32px; left: 26px; top: 5px; position: absolute; color: black; font-size: 20px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">1,000名</div>
-            </div>
-            <div style="left: 0px; top: 9px; position: absolute; color: black; font-size: 16px; font-family: Noto Sans; font-weight: 600; word-wrap: break-word">従業員数</div>
-        </div>
-        <div style="width: 937px; height: 49px; left: 84px; top: 350px; position: absolute">
-            <div style="width: 743px; height: 49px; left: 194px; top: 0px; position: absolute">
-                <div style="width: 743px; height: 49px; left: 0px; top: 0px; position: absolute; background: #FAFAFA; border-radius: 8px"></div>
-                <div style="width: 346px; height: 32px; left: 27px; top: 10px; position: absolute; color: black; font-size: 20px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">○○銀行 XX支店 xxxx-xxxxxxxx-x</div>
-            </div>
-            <div style="left: 0px; top: 9px; position: absolute; color: black; font-size: 16px; font-family: Noto Sans; font-weight: 600; word-wrap: break-word">口座情報</div>
-        </div>
-        <div style="width: 937px; height: 49px; left: 84px; top: 265px; position: absolute">
-            <div style="width: 743px; height: 49px; left: 194px; top: 0px; position: absolute">
-                <div style="width: 743px; height: 49px; left: 0px; top: 0px; position: absolute; background: #FAFAFA; border-radius: 8px"></div>
-                <div style="width: 346px; height: 32px; left: 26px; top: 9px; position: absolute; color: black; font-size: 20px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">123456789012</div>
-            </div>
-            <div style="left: 0px; top: 8px; position: absolute; color: black; font-size: 16px; font-family: Noto Sans; font-weight: 600; word-wrap: break-word">免許情報</div>
-        </div>
-        <div style="width: 959px; height: 49px; left: 62px; top: 180px; position: absolute">
-            <div style="width: 743px; height: 49px; left: 216px; top: 0px; position: absolute">
-                <div style="width: 743px; height: 49px; left: 0px; top: 0px; position: absolute; background: #FAFAFA; border-radius: 8px"></div>
-                <div style="width: 346px; height: 32px; left: 27px; top: 10px; position: absolute; color: black; font-size: 20px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">クジョウ タロウ</div>
-            </div>
-            <div style="left: 0px; top: 14px; position: absolute; color: black; font-size: 16px; font-family: Noto Sans; font-weight: 600; word-wrap: break-word">事業代表者カナ</div>
-        </div>
-        <div style="width: 951px; height: 49px; left: 70px; top: 95px; position: absolute">
-            <div style="width: 743px; height: 49px; left: 208px; top: 0px; position: absolute">
-                <div style="width: 743px; height: 49px; left: 0px; top: 0px; position: absolute; background: #FAFAFA; border-radius: 8px"></div>
-                <div style="width: 346px; height: 32px; left: 27px; top: 9px; position: absolute; color: black; font-size: 20px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">九条 太郎</div>
-            </div>
-            <div style="left: 0px; top: 15px; position: absolute; color: black; font-size: 16px; font-family: Noto Sans; font-weight: 600; word-wrap: break-word">事業代表者名</div>
-        </div>
-        <div style="width: 957px; height: 49px; left: 62px; top: 28px; position: absolute">
-            <div style="width: 743px; height: 49px; left: 214px; top: 0px; position: absolute">
-                <div style="width: 743px; height: 49px; left: 0px; top: 0px; position: absolute; background: #FAFAFA; border-radius: 8px"></div>
-                <div style="width: 346px; height: 32px; left: 29px; top: 0px; position: absolute; color: black; font-size: 20px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">example@mail.com<br/></div>
-            </div>
-            <div style="left: 0px; top: 3px; position: absolute; color: black; font-size: 16px; font-family: Noto Sans; font-weight: 600; word-wrap: break-word">メールアドレス</div>
-        </div>
-    </div>
-    <div style="width: 128px; height: 79px; left: 274px; top: 245px; position: absolute">
-        <div style="left: 0px; top: 0px; position: absolute; color: black; font-size: 32px; font-family: Noto Sans; font-weight: 600; word-wrap: break-word">事業者名</div>
-        <div style="left: 4px; top: 52px; position: absolute; color: black; font-size: 20px; font-family: Noto Sans; font-weight: 400; word-wrap: break-word">9765432180</div>
-    </div>
-</div>
+    </body>
+</html>

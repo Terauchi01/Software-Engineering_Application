@@ -18,12 +18,14 @@ class AdminViewUserInfoController extends Controller
             $city = Cities::find($user->city_id)['name'];
                         
             $userId = $user->id;
-            $userName = $user->user_name;
+            $userName = $user->user_last_name . $user->user_first_name;
             $data = [
                 'email' => $user->email_address,
-                'address' => $prefecture . ' ' . $city,
+                'password' => '**********',
+                'address' => '〒' . $user->postal_code . ' ' . $prefecture . ' ' . $city . ' ' . $user->town . ' ' . $user->block,
                 'name' => $user->user_last_name . ' ' . $user->user_first_name,
-                'kanaName' => $user->user_last_name_kana . ' ' . $user->user_first_name_kana
+                'kanaName' => $user->user_last_name_kana . ' ' . $user->user_first_name_kana,
+                'phone_number' => $user->phone_number,
             ];
             return view('admin.AdminViewUserInfo', compact('userId', 'userName', 'data'));
         }
@@ -31,4 +33,5 @@ class AdminViewUserInfoController extends Controller
         $userId = null;
         return view('admin.AdminViewUserInfo', compact('userName', 'userId'));
     }
+
 }

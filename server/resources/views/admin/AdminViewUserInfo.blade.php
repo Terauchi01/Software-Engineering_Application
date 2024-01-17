@@ -19,13 +19,18 @@
             <p class="userName">{{ $userName }}</p>
             @if($userId !== null)
             <p class="userId">ID : {{ $userId }}</p>
-            <form action="{{ route('admin.adminEditUserInfo', ['id' => $userId]) }}" method="GET">
-                <button type="submit" class="edit">編集する</button>
+            <form action="{{ route('admin.adminEditUserInfo') }}" method="GET">
+            <input type="hidden" name="id" value="{{ $userId }}">
+            <button type="submit" class="edit">編集する</button>
             </form>
             <table>
                 <tr>
                     <th>メールアドレス</th>
                     <th>{{ $data['email'] }}</th>
+                </tr>
+                <tr>
+                    <th>パスワード</th>
+                    <th>{{ $data['password'] }}</th>
                 </tr>
                 <tr>
                     <th>住所</th>
@@ -38,6 +43,10 @@
                 <tr>
                     <th>利用者名カナ</th>
                     <th>{{ $data['kanaName'] }}</th>
+                </tr>
+                <tr>
+                    <th>電話番号</th>
+                    <th>{{ $data['phone_number'] }}</th>
                 </tr>
             </table>
             @endif
