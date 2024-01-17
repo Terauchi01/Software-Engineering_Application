@@ -23,8 +23,8 @@ class UserWithdrawController extends Controller
                   ->orWhere('user_id', $userId);
         })->where('delivery_status', '!=', 4)->exists();
         $user = User::where('id',$userId)->where('unpaid_charge','=','0')->exists();
-        // $exists = false;
-        // $user = true;
+        $exists = false;
+        $user = true;
         if($exists){
             return redirect()->back()->with('error', '配達中の荷物が存在します');
         }
