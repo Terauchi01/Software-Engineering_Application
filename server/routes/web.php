@@ -124,6 +124,7 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
         Route::get('coopAllExecuteChildCoopAccountListView', [CoopChildAccountListController::class, 'coopAllExecuteChildCoopAccountListView'])->name('coopAllExecuteChildCoopAccountListView');
         Route::get('coopAllSelectChild', [CoopChildAccountListController::class, 'coopAllSelectChild'])->name('coopAllSelectChild');
         Route::get('coopApplyAdminDroneLend', [CoopDroneLentRequestController::class, 'coopApplyAdminDroneLend'])->name('coopApplyAdminDroneLend');
+        Route::post('applyDroneLend', [CoopDroneLentRequestController::class, 'applyDroneLend'])->name('applyDroneLend');
         Route::get('coopApplyCoopRegister', [CoopRegistrationRequestController::class, 'coopApplyCoopRegister'])->name('coopApplyCoopRegister');
         Route::post('coopRegister', [CoopRegistrationRequestController::class, 'coopRegister'])->name('coopRegister');
         Route::get('coopCheckUserDeliveryRequestListViewExecute', [CoopDeliveryRequestListController::class, 'coopCheckUserDeliveryRequestListViewExecute'])->name('coopCheckUserDeliveryRequestListViewExecute');
@@ -161,7 +162,10 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::middleware('user')->group(function () {
         Route::post('userLogoutFunction', [UserLogoutController::class, 'userLogoutFunction'])->name('userLogoutFunction');
         Route::get('deliveryPlaceRequest', [UserDeliveryPlaceRequestController::class, 'userDeliveryPlaceRequest'])->name('userDeliveryPlaceRequest');
-        Route::get('deliveryRequest', [UserDeliveryRequestController::class, 'userDeliveryRequest'])->name('userDeliveryRequest');
+        Route::post('placeRequest', [UserDeliveryPlaceRequestController::class, 'placeRequest'])->name('placeRequest');
+        Route::get('userDeliveryRequest', [UserDeliveryRequestController::class, 'userDeliveryRequest'])->name('userDeliveryRequest');
+        Route::post('deliveryRequest', [UserDeliveryRequestController::class, 'deliveryRequest'])->name('deliveryRequest');
+
         Route::get('deliveryRequestList', [UserDeliveryRequestListController::class, 'userDeliveryRequestList'])->name('userDeliveryRequestList');
         Route::get('deliveryRequestList/{id}', [UserDeliveryRequestListController::class, 'delete'])->name('userDeliveryRequestListDelete');     
         Route::get('editInfo', [UserEditInfoController::class, 'userEditInfo'])->name('userEditInfo');

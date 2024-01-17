@@ -15,6 +15,7 @@ use App\Models\DroneType;
 use App\Models\Favorite;
 use App\Models\LicenseInformation;
 use App\Models\User;
+use App\Models\LentRequest;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -43,5 +44,6 @@ class DatabaseSeeder extends Seeder
         DeliveryRequest::factory(1000)->create();
         Favorite::factory(100)->create();
         LicenseInformation::factory(100)->create();
+        LentRequest::factory(100)->create();
     }
 }

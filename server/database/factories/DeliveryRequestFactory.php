@@ -36,6 +36,7 @@ class DeliveryRequestFactory extends Factory
             'request_date' => $this->faker->dateTimeBetween('-30 days', '+30 days'),
             'delivery_date' => $this->faker->dateTimeBetween('+1 days', '+60 days'),
             // 他の属性に基づいて必要な項目を追加
+            'item' => "本",
             'created_at' => now(),
             'updated_at' =>  $this->faker->dateTimeBetween('-300 days', '+0 days'),
             'deletion_date' => null,

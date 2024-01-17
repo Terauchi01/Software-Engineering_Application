@@ -19,6 +19,7 @@ class DeliveryRequest extends Model
         'collection_company_remuneration',
         'intermediate_delivery_company_remuneration',
         'delivery_company_remuneration',
+        'item',
         'delivery_status',
         'request_date',
         'delivery_date',
