@@ -15,7 +15,7 @@
         </div>
         <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
     </div>
-    <div class="space"></div>
+    
     <div class="content">
         <div class = "header">
             <select onChange="location.href=value;">
@@ -24,10 +24,14 @@
             </select>
             <p>admin</p> <!-- ここをユーザ名とする -->
         </div>
+        
         <div class="main">
             <div class="flex-main">
                 <p><h2><font color="#408A7E"><u> 利用者情報分析 </u></font></h2></p>
-                <table border="1" align="center">
+                
+                <button type="button" onclick="location.href='{{ route('admin.adminViewUserStatisticsInfoGraph') }}'">グラフ表示する</button>
+                
+                <table border="1" align="center" bgcolor="#fff0f5">
                     <thead>
                         <tr>
                             <th width="150">累計配達個数</th>
@@ -40,7 +44,7 @@
                     </tbody>
                 </table>
                 <br>
-                <table border="1" align="center">
+                <table border="1" align="center" bgcolor="#e0ffff">
                     <thead>
                         <tr>
                             <th width="150">都道府県</th>
@@ -53,13 +57,11 @@
                             <tr>
                                 <td align="center">{{ $prefecture->name }}</td>
                                 <td align="center">{{ isset($fromCounts[$prefecture->id]) ? $fromCounts[$prefecture->id] . '万個' : 0 }}</td>
-                                <td align="center">{{ isset($toCounts[$prefecture->id]) ? $toCounts[$prefecture->id] . '万個' : 0 }}</td>
+                                <td align="center">{{ isset($toCounts[$prefecture->id]) ? $toCounts[$prefecture->id] . '万個' : 0 . '個'}}</td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                
-                <button type="button" onclick="location.href='{{ route('admin.adminViewUserStatisticsInfoGraph') }}'">グラフ表示する</button>
             </div>
         </div>
     </div>

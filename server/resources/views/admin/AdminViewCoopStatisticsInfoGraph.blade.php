@@ -28,6 +28,9 @@
         <div class="main">
             <div class="flex-main">
                 <p><h2><font color="#408A7E"><u> 事業者情報分析 </u></font></h2></p>
+                
+                <button type="button" onclick="location.href='{{ route('admin.adminViewCoopStatisticsInfo') }}'">統計情報表示に戻る</button>
+                
                 <div><canvas id="chart1"></canvas></div>
                 <div><canvas id="chart2"></canvas></div>
                 
@@ -50,6 +53,18 @@
                                     display: true,
                                     text: '1か月の配達個数'
                                 }
+                            },
+                            scales: { // 軸設定
+                                y: {
+                                    display: true,
+                                    title: {
+                                        display: true,
+                                        text: '1か月の配達個数(万個)'
+                                    },
+                                    ticks: { // 目盛り
+                                        stepSize: 1
+                                    }
+                                },
                             }
                         }
                     });
@@ -71,12 +86,19 @@
                                     display: true,
                                     text: 'ドローンの稼働率'
                                 }
+                            },
+                            scales: { // 軸設定
+                                y: {
+                                    display: true,
+                                    title: {
+                                        display: true,
+                                        text: 'ドローンの稼働率(%)'
+                                    }
+                                },
                             }
                         }
                     });
                 </script>
-                
-                <button type="button" onclick="location.href='{{ route('admin.adminViewCoopStatisticsInfo') }}'">統計情報表示に戻る</button>
             </div>
         </div>
     </div>

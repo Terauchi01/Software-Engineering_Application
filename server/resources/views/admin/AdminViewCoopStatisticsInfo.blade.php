@@ -28,7 +28,10 @@
         <div class="main">
             <div class="flex-main">
                 <p><h2><font color="#408A7E"><u> 事業者情報分析 </u></font></h2></p>
-                <table width="800" border="1" align="center">
+                
+                <button type="button" onclick="location.href='{{ route('admin.adminViewCoopStatisticsInfoGraph') }}'">グラフ表示する</button>
+                
+                <table width="800" border="1" align="center"  bgcolor="ffffe0">
                     <thead>
                         <tr>
                             <th>事業者名</th>
@@ -40,14 +43,12 @@
                     @foreach($name as $userId => $coopName)
                         <tr>
                             <td align="center">{{ $coopName }}</td>
-                            <td align="center">{{ $month_delivery[$userId] ? $month_delivery[$userId] . '万個' : $month_delivery[$userId]}}</td>
-                            <td align="center">{{ $ratio[$userId] !== -1 ? $ratio[$userId] * 100 . '%' : 'N/A' }}</td>
+                            <td align="center">{{ $month_delivery[$userId] ? $month_delivery[$userId] . '万個' : $month_delivery[$userId] . '個' }}</td>
+                            <td align="center">{{ $ratio[$userId] !== -1 ? number_format($ratio[$userId], 3) * 100 . '%' : 'N/A' }}</td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-                
-                <button type="button" onclick="location.href='{{ route('admin.adminViewCoopStatisticsInfoGraph') }}'">グラフ表示する</button>
             </div>
         </div>
     </div>

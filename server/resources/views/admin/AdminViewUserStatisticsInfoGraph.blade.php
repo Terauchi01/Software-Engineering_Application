@@ -21,7 +21,7 @@
         </div>
         <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
     </div>
-    <div class="space"></div>
+    
     <div class="content">
         <div class = "header">
             <select onChange="location.href=value;">
@@ -30,14 +30,19 @@
             </select>
             <p>admin</p> <!-- ここをユーザ名とする -->
         </div>
+        
         <div class="main">
             <div class="flex-main">
                 <p><h2><font color="#408A7E"><u> 利用者情報分析 </u></font></h2></p>
+                
+                <button type="button" onclick="location.href='{{ route('admin.adminViewUserStatisticsInfo') }}'">統計情報表示に戻る</button>
+                
                 <div style="width: 80%; margin:0 auto;"><canvas id="chart1"></canvas></div>
                 <div class="field">
                     <div style="width: 45%;"><canvas id="chart2"></canvas></div>
                     <div style="width: 45%;"><canvas id="chart3"></canvas></div>
                 </div>
+                
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                 <script>
                     // グラフ1: 累計配達個数
@@ -123,8 +128,6 @@
                         }
                     });
                 </script>
-                
-                <button type="button" onclick="location.href='{{ route('admin.adminViewUserStatisticsInfo') }}'">統計情報表示に戻る</button>
             </div>
         </div>
     </div>

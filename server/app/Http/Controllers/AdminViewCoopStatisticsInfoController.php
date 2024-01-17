@@ -88,7 +88,7 @@ class AdminViewCoopStatisticsInfoController extends Controller
             if ($status1Count + $status0Count !== 0) {
                 // $ratio[$userId] = -1;
                 $name2[$userId] = $user->coop_name;
-                $ratio[$userId] = ($status1Count / ($status1Count + $status0Count));
+                $ratio[$userId] = ($status1Count / ($status1Count + $status0Count)) * 100;
             }
         }
         
