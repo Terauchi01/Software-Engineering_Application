@@ -53,7 +53,7 @@
                                 <th>依頼番号</th>
                                 <th>商品名</th>
                                 <th>送り先</th>
-                                <th>削除</th>
+                                <th>キャンセル</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,7 +67,7 @@
                                     <td>{{ $requestInfo['delivery_destination_id'] }}</td>                
                                     <td><button type="button">
                                         <a href="{{ route('user.userDeliveryRequestListDelete', ['id' => $requestInfo['id']]) }}">
-                                            <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
+                                            <img src="{{ asset('image/img_delete.png') }}" alt="キャンセル" width="20" height="20"></a></button></td>
                                 </tr>
                             @endforeach
                         </tbody>                                   
