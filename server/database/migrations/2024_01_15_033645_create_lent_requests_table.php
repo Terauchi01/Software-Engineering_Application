@@ -19,6 +19,16 @@ class CreateLentRequestsTable extends Migration
             $table->date('deletion_date')->nullable();
             $table->timestamps();
         });
+        /*
+        return [
+            'user_id' => 'required|integer|exists:coop_user,id',
+            'drone_type_id' => 'required|integer|exists:drone_type,id',
+            'number' => 'required|integer',
+            'start_date' => 'nullable|date', // You might need to adjust the date format
+            'end_date' => 'nullable|date', // You might need to adjust the date format
+            // Add more rules for other columns as needed
+        ];
+        */
     }
 
     public function down()

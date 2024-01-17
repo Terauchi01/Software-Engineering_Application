@@ -25,14 +25,32 @@ return new class extends Migration
             $table->string('license_holder_last_name_kana', 100)->nullable(false);
             $table->string('license_holder_first_name_kana', 100)->nullable(false);
             $table->unsignedBigInteger('license_id')->nullable(false);
-            $table->timestamps();
-            $table->timestamp('deletion_date')->nullable()->default(null);
             $table->string('town', 100)->nullable();
             $table->string('block', 100)->nullable();
-
             $table->unsignedBigInteger('coop_user_id')->nullable();
             $table->foreign('coop_user_id')->references('id')->on('coop_user');
+            $table->timestamps();
+            $table->timestamp('deletion_date')->nullable()->default(null);
         });
+        /*
+        return [
+            'postal_code' => 'required|integer',
+            'prefecture_id' => 'required|integer',
+            'city_id' => 'required|integer',
+            'representative_last_name' => 'required|string|max:100',
+            'representative_first_name' => 'required|string|max:100',
+            'representative_last_name_kana' => 'required|string|max:100',
+            'representative_first_name_kana' => 'required|string|max:100',
+            'license_holder_last_name' => 'required|string|max:100',
+            'license_holder_first_name' => 'required|string|max:100',
+            'license_holder_last_name_kana' => 'required|string|max:100',
+            'license_holder_first_name_kana' => 'required|string|max:100',
+            'license_id' => 'required|integer',
+            'town' => 'nullable|string|max:100',
+            'block' => 'nullable|string|max:100',
+            'coop_user_id' => 'nullable|integer|exists:coop_user,id',
+        ];
+        */
     }
 
     /**

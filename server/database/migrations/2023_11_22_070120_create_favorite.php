@@ -23,6 +23,16 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('deletion_date')->nullable()->default(null);
         });
+        /* 
+        return [
+            'sender_id' => 'required|integer',
+            'destination_user_id' => 'required|integer',
+            'drone_type_id' => 'nullable|integer|exists:drone_type,id',
+            'coop_user_id' => 'nullable|integer|exists:coop_user,id',
+            'lending_period' => 'nullable|date', // You might need to adjust the date format
+            // Add more rules for other columns as needed
+        ];
+        */
     }
 
     /**

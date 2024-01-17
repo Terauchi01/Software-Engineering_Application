@@ -19,6 +19,12 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('deletion_date')->nullable()->default(null);
         });
+        /*
+        return [
+            'image_url' => 'required|string|max:200',
+            'user_id' => 'nullable|exists:user,id',
+        ];
+        */
     }
 
     /**

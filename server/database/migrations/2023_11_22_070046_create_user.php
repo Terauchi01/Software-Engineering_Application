@@ -30,6 +30,23 @@ return new class extends Migration
             $table->timestamp('deletion_date')->nullable()->default(null);
         });
     }
+    /*
+    return [
+            'email_address' => 'required|email|max:100',
+            'password' => 'required|string|max:255',
+            'prefecture_id' => 'nullable|string|max:100',
+            'city_id' => 'nullable|string|max:100',
+            'town' => 'nullable|string|max:100',
+            'block' => 'nullable|string|max:100',
+            'postal_code' => 'required|integer',
+            'phone_number' => 'required|string|max:11',
+            'user_last_name' => 'required|string|max:100',
+            'user_first_name' => 'required|string|max:100',
+            'user_last_name_kana' => 'required|string|max:300',
+            'user_first_name_kana' => 'required|string|max:300',
+            'unpaid_charge' => 'integer',
+        ];
+    */
 
     /**
      * Reverse the migrations.

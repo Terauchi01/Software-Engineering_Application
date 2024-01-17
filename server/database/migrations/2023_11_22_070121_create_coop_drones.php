@@ -18,14 +18,25 @@ return new class extends Migration
             $table->timestamp('purchase_date')->nullable(false);
             $table->tinyInteger('drone_status')->nullable(false);
             $table->tinyInteger('possession_or_loan')->nullable(false);
-            $table->timestamps();
-            $table->timestamp('deletion_date')->nullable()->default(null);
-            
             $table->foreign('drone_type_id')->references('id')->on('drone_type');
             $table->foreign('coop_user_id')->references('id')->on('coop_user');
             $table->timestamp('lending_period')->nullable();
             $table->unsignedBigInteger('operating_time')->nullable(false);
+            $table->timestamps();
+            $table->timestamp('deletion_date')->nullable()->default(null);
         });
+        /* 
+        return [
+            'drone_type_id' => 'required|integer|exists:drone_type,id',
+            'coop_user_id' => 'nullable|integer|exists:coop_user,id',
+            'purchase_date' => 'required|date', // You might need to adjust the date format
+            'drone_status' => 'required|integer',
+            'possession_or_loan' => 'required|integer',
+            'lending_period' => 'nullable|date', // You might need to adjust the date format
+            'operating_time' => 'required|integer',
+            // Add more rules for other columns as needed
+        ];
+        */
     }
 
     /**

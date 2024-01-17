@@ -22,6 +22,15 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('deletion_date')->nullable()->default(null);
         });
+        /*return [
+            'bank_id' => 'required|integer',
+            'branch_id' => 'required|integer',
+            'account_type' => 'required|string|max:100',
+            'account_number' => 'required|string|max:255',
+            'account_name' => 'required|string|max:100',
+            'account_name_kana' => 'required|string|max:255',
+        ]; 
+        */
     }
 
     /**

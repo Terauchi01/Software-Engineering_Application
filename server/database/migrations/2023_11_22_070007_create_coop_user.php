@@ -34,6 +34,27 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('deletion_date')->nullable()->default(null);
         });
+        /* 
+        return [
+            'email_address' => 'required|email|max:100',
+            'password' => 'required|string|max:255',
+            'coop_name' => 'required|string|max:100',
+            'representative_last_name' => 'required|string|max:100',
+            'representative_first_name' => 'required|string|max:100',
+            'representative_last_name_kana' => 'required|string|max:100',
+            'representative_first_name_kana' => 'required|string|max:100',
+            'license_information_id' => 'required|integer',
+            'account_information_id' => 'required|integer',
+            'employees' => 'required|integer',
+            'phone_number' => 'required|string|max:11',
+            'land_or_air' => 'required|integer',
+            'application_status' => 'required|integer',
+            'child_status' => 'nullable|integer',
+            'pair_id' => 'nullable|integer|exists:coop_user,id',
+            'pay_status' => 'required|integer',
+            'amount_of_compensation' => 'required|integer',
+        ];
+        */
     }
 
     /**
