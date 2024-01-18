@@ -148,27 +148,35 @@
                      // 絞り込みボタン（モーダル内）がクリックされたら処理を実行
                      document.getElementById('applyFilterButton').addEventListener('click', function() {
                          // チェックされた都道府県を取得
-                         var selectedPrefectures = [];
-                         var checkboxes = document.getElementsByName('prefecture');
-                         checkboxes.forEach(function(checkbox) {
-                             if (checkbox.checked) {
-                                 selectedPrefectures.push(checkbox.value);
-                             }
-                         });
+                        var selectedPrefectures = [];
+                        var checkboxes = document.getElementsByName('prefecture');
+                        checkboxes.forEach(function(checkbox) {
+                            if (checkbox.checked) {
+                                selectedPrefectures.push(checkbox.value);
+                            }
+                        });
 
-                         // 選択された都道府県を表示（ここではアラートで表示
-                         /* @foreach ($mergedData as $index => $coopInfo)
-                            {{ $coopInfo['coop_locations'] }}                      
-                            @endforeach */
-                         alert('選択された都道府県: ' + selectedPrefectures.join(', '));
-                         // モーダルを非表示にする
-                         document.getElementById('modal').style.display = 'none';
-                     });
+                        // 選択された都道府県を表示（ここではアラートで表示
+                        /* @foreach ($mergedData as $index => $coopInfo)
+                        {{ $coopInfo['coop_locations'] }}                      
+                        @endforeach */
+                        alert('選択された都道府県: ' + selectedPrefectures.join(', '));
+                        // モーダルを非表示にする
+                        document.getElementById('modal').style.display = 'none';
+                    });
                     </script>
 
-                    &nbsp;
-                    <button id="deleteButton" class="custom-button">チェックした項目を削除</button>                                   
-                                                        
+                    
+                    <button type="submit" name="add" id="resetButton" class="custom-button">リセット</button>
+                    
+                    <script>
+                    
+                    document.getElementById('resetButton').addEventListener('click', function() {
+                        alert('リセットボタンがクリックされました。');
+                    });
+                    </script>
+                    
+                    
                     <p>
                         <input type="checkbox" id="masterCheckbox" name="feature_enabled">
                         <label for="masterCheckbox">Select all</label>
@@ -210,61 +218,75 @@
                         </tbody>                                                                      
                         
                         <script>
-                         document.getElementById('masterCheckbox').addEventListener('change', function() {
-                             var masterCheckbox = this;
-                             var itemCheckboxes = document.querySelectorAll('.itemCheckbox');
+                        document.getElementById('masterCheckbox').addEventListener('change', function() {
+                            var masterCheckbox = this;
+                            var itemCheckboxes = document.querySelectorAll('.itemCheckbox');
 
-                             itemCheckboxes.forEach(function(itemCheckbox) {
-                                 itemCheckbox.checked = masterCheckbox.checked;
-                             });
-                         });
+                            itemCheckboxes.forEach(function(itemCheckbox) {
+                                itemCheckbox.checked = masterCheckbox.checked;
+                            });
+                        });
 
                          // 各行のチェックボックスに対するイベントリスナーも追加する場合
-                         document.querySelectorAll('.itemCheckbox').forEach(function(itemCheckbox) {
-                             itemCheckbox.addEventListener('change', function() {
-                                 var allChecked = true;
-                                 document.querySelectorAll('.itemCheckbox').forEach(function(checkbox) {
-                                     if (!checkbox.checked) {
-                                         allChecked = false;
-                                     }
-                                 });
-                                 document.getElementById('masterCheckbox').checked = allChecked;
-                             });
-                         });
+                        document.querySelectorAll('.itemCheckbox').forEach(function(itemCheckbox) {
+                            itemCheckbox.addEventListener('change', function() {
+                                var allChecked = true;
+                                document.querySelectorAll('.itemCheckbox').forEach(function(checkbox) {
+                                    if (!checkbox.checked) {
+                                        allChecked = false;
+                                    }
+                                });
+                                document.getElementById('masterCheckbox').checked = allChecked;
+                            });
+                        });
+                        document.getElementById('deleteButton').addEventListener('click', function() {
+                            var selectedCoops = document.querySelectorAll('.itemCheckbox:checked');
 
-                         document.getElementById('deleteButton').addEventListener('click', function() {
-                             var selectedCoops = document.querySelectorAll('.itemCheckbox:checked');
-                             if (selectedCoops.length > 0) {                  
-                                 const selectedIds = Array.from(selectedCoops).map(function(checkbox) {
-                                     return checkbox.value;
-                                 });
-                                
-                                 var deleteMessage = "選択した項目を削除しますか？\n削除するID: " + selectedIds.join(', ');
+                            if (selectedCoops.length > 0) {
+                                var confirmation = confirm("選択した項目を削除しますか？");
+                            
+                                if (confirmation) {
+                                    const selectedIds = Array.from(selectedCoops).map(function(checkbox) {
+                                        return checkbox.value;
+                                    });
 
-                                 var confirmation = confirm(deleteMessage);
+                                    // 選択したIDを表示するための要素（例: <div id="selectedIdsDisplay"></div>）
+                                    var displayElement = document.getElementById('selectedIdsDisplay');
 
-                                 if (confirmation) {
-                                     var url = $('#url').val();
-                                     $.ajax({
-                                         type: 'POST',
-                                         url: url,
-                                         data: { elements: selectedIds },
-                                         headers: {
-                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                         },
-                                         success: function (response) {
-                                             console.log('Request successful:', response);                                         
-                                             location.reload();
-                                         },
-                                         error: function (error) {
-                                             console.error('Error:', error);
-                                         }
-                                     });
-                                 }
-                             } else {
-                                 alert("削除する項目を選択してください。");
-                             }
-                         });
+                                    // IDを表示する
+                                    /* displayElement.innerHTML = "選択したID: " + selectedIds.join(', '); */
+                                    const element = selectedIds;
+
+
+                                    document.getElementById('deleteArea').innerHTML = selectedIds;
+                                    
+
+
+                                    var coopId = document.getElementById("checkbox{{$coopInfo['id']}}").value;
+                                    console.log("arry");
+                                    console.log(element);
+                                    var url = $('#url').val();
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: url,
+                                        data: { elements: element },
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        success: function (response) {
+                                            console.log('Request successful:', response);
+                                            // 処理が完了したらページをリロード
+                                            location.reload();
+                                        },
+                                        error: function (error) {
+                                            console.error('Error:', error);
+                                        }
+                                    });
+                                }
+                            } else {
+                                alert("削除する項目を選択してください。");
+                            }
+                        });
                         </script> 
                     </table>
                     <input type="hidden" id="url" value="{{ route('admin.deleteAll') }}">
