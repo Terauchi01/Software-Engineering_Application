@@ -9,8 +9,8 @@ use App\Models\Cities;
 
 class AdminEditUserInfoController extends Controller
 {
-    public function adminEditUserInfo (Request $request) {
-        $id = $request->input('id');
+    public function adminEditUserInfo ($id) {
+        $id;
         $user = User::find($id);
 
         if ($user && $user->deletion_date === null) {

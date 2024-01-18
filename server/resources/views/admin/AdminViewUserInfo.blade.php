@@ -19,7 +19,7 @@
             <p class="userName">{{ $userName }}</p>
             @if($userId !== null)
             <p class="userId">ID : {{ $userId }}</p>
-            <form action="{{ route('admin.adminEditUserInfo') }}" method="GET">
+            <form action="{{ route('admin.adminEditUserInfo',["id"=>$userId]) }}" method="GET">
             <input type="hidden" name="id" value="{{ $userId }}">
             <button type="submit" class="edit">編集する</button>
             </form>

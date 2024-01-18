@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('drone_type_id')->nullable(false);
             $table->unsignedBigInteger('coop_user_id')->nullable();
-            $table->timestamp('purchase_date')->nullable(false);
+            $table->date('purchase_date')->nullable(false);
             $table->tinyInteger('drone_status')->nullable(false);
             $table->tinyInteger('possession_or_loan')->nullable(false);
             $table->foreign('drone_type_id')->references('id')->on('drone_type');
             $table->foreign('coop_user_id')->references('id')->on('coop_user');
-            $table->timestamp('lending_period')->nullable();
+            $table->date('lending_period')->nullable();
             $table->unsignedBigInteger('operating_time')->nullable(false);
             $table->timestamps();
             $table->timestamp('deletion_date')->nullable()->default(null);

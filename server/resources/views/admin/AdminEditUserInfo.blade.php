@@ -20,7 +20,7 @@
             <p class="userName">{{ $userName }}</p>
             @if($userId !== null)
             <p class="userId">ID : {{ $userId }}</p>
-            <form action="{{ route('admin.adminEditUserInfoApply') }}" method="POST">
+            <form action="{{ route('admin.adminEditUserInfoApply',["id"=>$userId]) }}" method="POST">
                 @csrf
                 <table>
                     <tr>
