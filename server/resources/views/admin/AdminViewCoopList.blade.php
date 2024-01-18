@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>事業者閲覧一覧</title>
         <link rel="stylesheet" href="{{ asset('css/admin/AdminList.css') }}">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="{{ asset('js/admin/delete.js') }}"></script>
         <style>
          .current {
@@ -180,43 +181,10 @@
 
                     &nbsp;
                     <button id="deleteButton" class="custom-button">チェックした項目を削除</button>
-
                     <div id="selectedId"></div>
                     <div id="selectedIdsDisplay"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    
-                    
                     <input type="hidden" id="url" value="{{ route('admin.deleteAll') }}">
-                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-
-
-
-
-                    
-
-
-
-
-
-                    
                     <div id="deleteArea">
                         
 
