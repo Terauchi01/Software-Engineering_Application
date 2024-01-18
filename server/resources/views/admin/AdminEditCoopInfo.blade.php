@@ -70,7 +70,10 @@
                     </tr>
                     <tr>
                         <th>営業形態</th>
-                        <th><div class="left"><input type="text" name="land_or_air" value="{{ $data['land_or_air'] }}" required></div></th>
+                        <th><div class="left">
+                            <span><input type="radio" name="land_or_air" value="1" {{ $data['land_or_air'] === 1 ? 'checked' : '' }}>陸</span>
+                            <input type="radio" name="land_or_air" value="2" {{ $data['land_or_air'] === 2 ? 'checked' : '' }}>空
+                        </div></th>
                     </tr>
                     <tr>
                         <th>免許情報</th>
@@ -105,10 +108,6 @@
                     <tr>
                         <th>電話番号</th>
                         <th><div class="left"><input type="text" name="phone_number" value="{{ $data['phone'] }}" placeholder="ハイフン無しで入力してください" required></div></th>
-                    </tr>
-                    <tr>
-                        <th>申請状態</th>
-                        <th><div class="left"><input type="text" name="application_status" value="{{ $data['status'] }}" required></div></th>
                     </tr>
                 </table>
                 <input type="hidden" name="id" value="{{ $coopId }}">

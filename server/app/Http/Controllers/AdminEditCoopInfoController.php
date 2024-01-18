@@ -22,6 +22,7 @@ class AdminEditCoopInfoController extends Controller
             $license = LicenseInformation::find($coop->license_information_id);
             $coopId = $coop->id;
             $coopName = $coop->coop_name;
+
             $data = [
                 'coop_name' => $coopName,
                 'email' => $coop->email_address,
@@ -51,7 +52,7 @@ class AdminEditCoopInfoController extends Controller
                 'worker' => $coop->employees,
                 'phone' => $coop->phone_number,
                 'land_or_air' => $coop->land_or_air,
-                'status' => $coop->application_status
+                // 'status' => $coop->application_status
             ];
             return view('admin.AdminEditCoopInfo', compact('coopName', 'coopId', 'data'));
         }
@@ -79,7 +80,7 @@ class AdminEditCoopInfoController extends Controller
                 'employees' => $request['employees'],
                 'phone_number' => $request['phone_number'],
                 'land_or_air' => $request['land_or_air'],
-                'application_status' => $request['application_status']
+                // 'application_status' => $request['application_status']
             ]);
             $clData = CoopLocation::where('coop_user_id', $id);
             $clData->update([

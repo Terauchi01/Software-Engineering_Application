@@ -77,10 +77,6 @@
                     <th>電話番号</th>
                     <th>{{ $data['phone'] }}</th>
                 </tr>
-                <tr>
-                    <th>申請状態</th>
-                    <th>{{ $data['status'] }}</th>
-                </tr>
             </table>
             @endif
         </div>

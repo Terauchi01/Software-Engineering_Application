@@ -25,6 +25,10 @@ class AdminViewCoopInfoController extends Controller
             $city = Cities::find($loc->city_id)['name'];
             $coopId = $coop->id;
             $coopName = $coop->coop_name;
+            $lor = [
+                1 => '陸',
+                2 => '空'
+            ];
             $data = [
                 'email' => $coop->email_address,
                 'password' => '**********',
@@ -42,8 +46,8 @@ class AdminViewCoopInfoController extends Controller
                 'account' => $acc->bank_id . ' ' . $acc->branch_id . ' ' . $acc->account_type . ' ' . $acc->account_number,
                 'worker' => $coop->employees . '人',
                 'phone' => $coop->phone_number,
-                'land_or_air' => $coop->land_or_air,
-                'status' => $coop->application_status
+                'land_or_air' => $lor[$coop->land_or_air],
+                //'status' => $coop->application_status
             ];
             return view('admin.AdminViewCoopInfo', compact('coopName', 'coopId', 'data'));
         }
