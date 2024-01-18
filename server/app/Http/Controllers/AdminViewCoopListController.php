@@ -30,11 +30,11 @@ class AdminViewCoopListController extends Controller
             'coop_location.town',
             'coop_location.block'
         )
-        ->where('coop_user.deletion_date', '=', null)
-        ->where('coop_location.deletion_date', '=', null)
-        ->join('coop_location', 'coop_user.id', '=', 'coop_location.coop_user_id')
-        ->orderBy('coop_user.id', 'asc') 
-        ->get();
+              ->where('coop_user.deletion_date', '=', null)
+              ->where('coop_location.deletion_date', '=', null)
+              ->join('coop_location', 'coop_user.id', '=', 'coop_location.coop_user_id')
+              ->orderBy('coop_user.id', 'asc') 
+              ->get();
         $Prefecture_list = MstPrefecture::pluck('name', 'id')->toArray();
         $Cities_list = Cities::pluck('name', 'id')->toArray();
         $mergedData = [];
@@ -56,6 +56,12 @@ class AdminViewCoopListController extends Controller
         $B = CoopUser::class;
         $currentDateTime = Carbon::now();
         $B::where('id',$id)->update(['deletion_date' => $currentDateTime]);
+        return redirect()->route('admin.adminViewCoopList');
+    }
+
+    public function deleteAll(Request $request)
+    {
+        dd ("ここまで");
         return redirect()->route('admin.adminViewCoopList');
     }
 }

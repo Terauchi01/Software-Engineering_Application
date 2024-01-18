@@ -109,6 +109,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('viewCoopInfo', [AdminViewCoopInfoController::class, 'adminViewCoopInfo'])->name('adminViewCoopInfo');
         Route::get('viewCoopList', [AdminViewCoopListController::class, 'adminViewCoopList'])->name('adminViewCoopList');
         Route::get('viewCoopList/{id}', [AdminViewCoopListController::class, 'delete'])->name('adminViewCoopListDelete');
+        Route::post('deleteAll', [AdminViewCoopListController::class, 'deleteAll'])->name('deleteAll');
+        
         Route::get('viewUserDeliveryRequestList', [AdminViewUserDeliveryRequestListController::class, 'adminViewUserDeliveryRequestList'])->name('adminViewUserDeliveryRequestList');
         Route::get('adminViewCoopPayInfo', [AdminViewCoopPayInfoController::class, 'adminViewCoopPayInfo'])->name('adminViewCoopPayInfo');
         Route::get('adminViewCoopDeliveryRequestList', [AdminViewCoopDeliveryRequestListController::class, 'adminViewCoopDeliveryRequestList'])->name('adminViewCoopDeliveryRequestList');
