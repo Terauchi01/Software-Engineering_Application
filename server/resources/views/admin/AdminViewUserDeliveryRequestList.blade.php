@@ -44,21 +44,19 @@
                     <p><h2><font color ="#408A7E"><u> 利用者宅配一覧 </u></font></h2></p>                                                           
 
                     <select onChange="location.href=value;">
-                        <option>送り主を選択</option>
+                        <option>送り主または受け取り主を選択</option>
                         @foreach ($mergedData as $index => $deliveryInfo)
-                            <option value="{{  route('admin.adminViewUserDeliveryRequestList', ['user_id' => $deliveryInfo['user_id']]) }}">{{ $deliveryInfo['user_name'] }}</option>
+                            <option value="{{  route('admin.adminViewUserDeliveryRequestList', ['id' => $deliveryInfo['user_id']]) }}">{{ $deliveryInfo['user_name'] }}</option>
                         @endforeach
                     </select>
-
+                    
                     &nbsp;
 
-                    <select onChange="location.href=value;">
-                        <option>受け取り主を選択</option>
-                        @foreach ($mergedData as $index => $deliveryInfo)
-                            <option value="{{  route('admin.adminViewUserDeliveryRequestList', ['delivery_destination_id' => $deliveryInfo['delivery_destination_id']]) }}">{{ $deliveryInfo['delivery_destination_name'] }}</option>
-                        @endforeach
-                      </select>
-                      
+                    <select onChange="location.href=this.value;">
+                        <option>リセット</option>
+                        <option value="{{ route('admin.adminViewUserDeliveryRequestList', ['id' => '']) }}">リセット</option>
+                    </select>
+                     
                     <p>
                         <input type="checkbox" id="masterCheckbox" name="feature_enabled">
                         <label for="masterCheckbox">Select all</label>

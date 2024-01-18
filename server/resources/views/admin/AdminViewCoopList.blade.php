@@ -170,6 +170,34 @@
                     <button id="deleteButton" class="custom-button">チェックした項目を削除</button>                                   
                                       
                     
+                    <input type="hidden" id="url" value="{{ route('admin.deleteAll') }}">
+                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+
+
+
+                    
+
+
+
+
+
+                    
+                    <div id="deleteArea">
+                        
+
+                        // 配列の初期化
+                        $data = [];
+                        
+                        // 修正後のコード
+                        @foreach ($mergedData as $index => $coopInfo)
+                            @if (isset($coopInfo['selectedIds']))
+                                <a href="{{ route('admin.adminViewCoopListDelete', ['id' => $coopInfo['selectedIds']]) }}"></a>
+                            @endif
+                        @endforeach
+                    </div>
                     <p>
                         <input type="checkbox" id="masterCheckbox" name="feature_enabled">
                         <label for="masterCheckbox">Select all</label>

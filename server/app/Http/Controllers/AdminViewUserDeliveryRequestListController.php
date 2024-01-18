@@ -26,7 +26,7 @@ class AdminViewUserDeliveryRequestListController extends Controller
               ->orderBy('delivery_request.id', 'asc');
         
         if ($id) {
-            $query->where('delivery_request.delivery_company_id', '=', $id);
+            $query->where('delivery_request.user_id', '=', $id);
         }
 
         $list = $query->get();

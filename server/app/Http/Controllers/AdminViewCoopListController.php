@@ -66,7 +66,7 @@ class AdminViewCoopListController extends Controller
         if ($request->header('X-CSRF-TOKEN') !== csrf_token()) {
             abort(403, 'Unauthorized action.');
         }
-
+        
         // 送信されたデータを取得
         $data = $request->input('elements');
 
