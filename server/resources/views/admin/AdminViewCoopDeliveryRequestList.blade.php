@@ -45,7 +45,10 @@
                     
                     <select onChange="location.href=this.value;">
                         <option>担当事業者を選択</option>
-                        @foreach ($mergedData as $index => $deliveryInfo)
+                        @php
+                        $uniqueCompanies = collect($mergedData)->unique('delivery_company_name')->values();
+                        @endphp
+                        @foreach ($uniqueCompanies as $index => $deliveryInfo)
                             <option value="{{ route('admin.adminViewCoopDeliveryRequestList', ['id' => $deliveryInfo['delivery_company_id']]) }}">{{ $deliveryInfo['delivery_company_name'] }}</option>
                         @endforeach
                     </select>
