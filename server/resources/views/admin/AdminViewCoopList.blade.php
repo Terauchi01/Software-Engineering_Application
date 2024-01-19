@@ -15,34 +15,7 @@
              background-color: #ffffff;
              height: 20pt;
              text-align: center;
-         }
-         #modal {
-             display: none;
-             position: fixed;
-             top: 0;
-             left: 0;
-             width: 100%;
-             height: 100%;
-             background-color: rgba(0, 0, 0, 0.5);
-             justify-content: center;
-             align-items: center;
-         }
-
-         #modal-content {
-             background-color: #fff;
-             padding: 20px;
-             border-radius: 5px;
-         }
-
-         /* チェックボックスとボタンのスタイル */
-         label {
-             display: inline-block;
-             margin-bottom: 10px;
-         }
-
-         #applyFilterButton {
-             margin-top: 10px; /* 絞り込みボタンの上の余白を調整 */
-         }
+         }        
         </style>
     </head>
     
@@ -73,131 +46,74 @@
             <div class = "main">
                 <div class ="flex-main">                        
                     <p><h2><font color ="#408A7E"><u> 事業者情報管理 </u></font></h2></p>                            
-                    
-                    <button id="filterButton" class="custom-button">絞り込み</button>
-                    <!-- <select>
-                         <option>選択</option>                        
-                         @foreach ($mergedData as $index => $coopInfo)
-                         <option> {{ $coopInfo['coop_locations'] }}</option>                      
-                         @endforeach
-                         </select> -->
-                    <!-- <button type="submit" name="add" id="resetButton" class="custom-button">リセット</button> -->
-                    <!-- モーダルダイアログ -->
-                    <div id="modal">
-                        <div id="modal-content">
-                            <h3>都道府県を選択してください</h3>
-                            <!-- 47都道府県のリスト -->
-                            <div id="prefectureList">
-                                <label><input type="checkbox" name="prefecture" value="北海道">北海道</label>   
-                                <label><input type="checkbox" name="prefecture" value="青森">青森</label>
-                                <label><input type="checkbox" name="prefecture" value="岩手">岩手</label>
-                                <label><input type="checkbox" name="prefecture" value="宮城">宮城</label>
-                                <label><input type="checkbox" name="prefecture" value="秋田">秋田</label>
-                                <label><input type="checkbox" name="prefecture" value="山形">山形</label>
-                                <label><input type="checkbox" name="prefecture" value="福島">福島</label>
-                                <label><input type="checkbox" name="prefecture" value="茨城">茨城</label>
-                                <label><input type="checkbox" name="prefecture" value="栃木">栃木</label>
-                                <label><input type="checkbox" name="prefecture" value="群馬">群馬</label>
-                                <label><input type="checkbox" name="prefecture" value="埼玉">埼玉</label>
-                                <label><input type="checkbox" name="prefecture" value="千葉">千葉</label>
-                                <label><input type="checkbox" name="prefecture" value="東京">東京</label>
-                                <label><input type="checkbox" name="prefecture" value="神奈川">神奈川</label>
-                                <label><input type="checkbox" name="prefecture" value="新潟">新潟</label>
-                                <label><input type="checkbox" name="prefecture" value="富山">富山</label>
-                                <label><input type="checkbox" name="prefecture" value="石川">石川</label>
-                                <label><input type="checkbox" name="prefecture" value="福井">福井</label>
-                                <label><input type="checkbox" name="prefecture" value="山梨">山梨</label>
-                                <label><input type="checkbox" name="prefecture" value="長野">長野</label>
-                                <label><input type="checkbox" name="prefecture" value="岐阜">岐阜</label>
-                                <label><input type="checkbox" name="prefecture" value="静岡">静岡</label>
-                                <label><input type="checkbox" name="prefecture" value="愛知">愛知</label>
-                                <label><input type="checkbox" name="prefecture" value="三重">三重</label>
-                                <label><input type="checkbox" name="prefecture" value="滋賀">滋賀</label>
-                                <label><input type="checkbox" name="prefecture" value="京都">京都</label>
-                                <label><input type="checkbox" name="prefecture" value="大阪">大阪</label>
-                                <label><input type="checkbox" name="prefecture" value="兵庫">兵庫</label>
-                                <label><input type="checkbox" name="prefecture" value="奈良">奈良</label>
-                                <label><input type="checkbox" name="prefecture" value="和歌山">和歌山</label>
-                                <label><input type="checkbox" name="prefecture" value="鳥取">鳥取</label>
-                                <label><input type="checkbox" name="prefecture" value="島根">島根</label>
-                                <label><input type="checkbox" name="prefecture" value="岡山">岡山</label>
-                                <label><input type="checkbox" name="prefecture" value="広島">広島</label>
-                                <label><input type="checkbox" name="prefecture" value="山口">山口</label>
-                                <label><input type="checkbox" name="prefecture" value="徳島">徳島</label>
-                                <label><input type="checkbox" name="prefecture" value="香川">香川</label>
-                                <label><input type="checkbox" name="prefecture" value="愛媛">愛媛</label>
-                                <label><input type="checkbox" name="prefecture" value="高知">高知</label>
-                                <label><input type="checkbox" name="prefecture" value="福岡">福岡</label>
-                                <label><input type="checkbox" name="prefecture" value="佐賀">佐賀</label>
-                                <label><input type="checkbox" name="prefecture" value="長崎">長崎</label>
-                                <label><input type="checkbox" name="prefecture" value="熊本">熊本</label>
-                                <label><input type="checkbox" name="prefecture" value="大分">大分</label>
-                                <label><input type="checkbox" name="prefecture" value="宮崎">宮崎</label>
-                                <label><input type="checkbox" name="prefecture" value="鹿児島">鹿児島</label>
-                                <label><input type="checkbox" name="prefecture" value="沖縄">沖縄</label>
-                            </div>
-                            <!-- 絞り込みボタン -->
-                            <button id="applyFilterButton">絞り込み</button>
-                        </div>
-                    </div>
-                    
-                    <script>
-                     // 絞り込みボタンがクリックされたらモーダルを表示
-                     document.getElementById('filterButton').addEventListener('click', function() {
-                         document.getElementById('modal').style.display = 'flex';
-                     });
 
-                     // 絞り込みボタン（モーダル内）がクリックされたら処理を実行
-                     document.getElementById('applyFilterButton').addEventListener('click', function() {
-                         // チェックされた都道府県を取得
-                         var selectedPrefectures = [];
-                         var checkboxes = document.getElementsByName('prefecture');
-                         checkboxes.forEach(function(checkbox) {
-                             if (checkbox.checked) {
-                                 selectedPrefectures.push(checkbox.value);
-                             }
-                         });
-
-                         // 選択された都道府県を表示（ここではアラートで表示
-                         /* @foreach ($mergedData as $index => $coopInfo)
-                            {{ $coopInfo['coop_locations'] }}                      
-                            @endforeach */
-                         alert('選択された都道府県: ' + selectedPrefectures.join(', '));
-                         // モーダルを非表示にする
-                         document.getElementById('modal').style.display = 'none';
-                     });
-                    </script>
-
-
-                    &nbsp;
-                    <button type="submit" name="add" id="resetButton" class="custom-button">リセット</button>
-                    
-                    <script>
-                     
-                     document.getElementById('resetButton').addEventListener('click', function() {
-                         alert('リセットボタンがクリックされました。');
-                     });
-                    </script>
-
-                    &nbsp;
                     <button id="deleteButton" class="custom-button">チェックした項目を削除</button>
-                    <div id="selectedId"></div>
-                    <div id="selectedIdsDisplay"></div>
-                    <input type="hidden" id="url" value="{{ route('admin.deleteAll') }}">
-                    <meta name="csrf-token" content="{{ csrf_token() }}">
-                    <div id="deleteArea">
-                        
 
-                        // 配列の初期化
-                        $data = [];
-                        
-                        // 修正後のコード
-                        @foreach ($mergedData as $index => $coopInfo)
-                            @if (isset($coopInfo['selectedIds']))
-                                <a href="{{ route('admin.adminViewCoopListDelete', ['id' => $coopInfo['selectedIds']]) }}"></a>
-                            @endif
-                        @endforeach
-                    </div>
+                    &nbsp &nbsp &nbsp
+                    <select onChange="location.href=this.value;">
+                        <option>都道府県名を選択</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 1]) }}">北海道</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 2]) }}">青森県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 3]) }}">岩手県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 4]) }}">宮城県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 5]) }}">秋田県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 6]) }}">山形県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 7]) }}">福島県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 8]) }}">茨城県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 9]) }}">栃木県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 10]) }}">群馬県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 11]) }}">埼玉県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 12]) }}">千葉県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 13]) }}">東京都</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 14]) }}">神奈川県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 15]) }}">新潟県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 16]) }}">富山県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 17]) }}">石川県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 18]) }}">福井県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 19]) }}">山梨県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 20]) }}">長野県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 21]) }}">岐阜県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 22]) }}">静岡県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 23]) }}">愛知県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 24]) }}">三重県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 25]) }}">滋賀県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 26]) }}">京都府</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 27]) }}">大阪府</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 28]) }}">兵庫県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 29]) }}">奈良県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 30]) }}">和歌山県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 31]) }}">鳥取県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 32]) }}">島根県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 33]) }}">岡山県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 34]) }}">広島県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 35]) }}">山口県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 36]) }}">徳島県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 37]) }}">香川県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 38]) }}">愛媛県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 39]) }}">高知県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 40]) }}">福岡県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 41]) }}">佐賀県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 42]) }}">長崎県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 43]) }}">熊本県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 44]) }}">大分県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 45]) }}">宮崎県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 46]) }}">鹿児島県</option>
+                        <option value="{{ route('admin.adminViewCoopList', ['id' => 47]) }}">沖縄県</option>                        
+                    </select>
+
+                    
+                    <form action="{{ route('admin.adminViewCoopList', ['id' => '']) }}" method="GET" style="display: inline;">
+                        <button type="submit" name="reset" id="resetButton" class="custom-button">リセット</button>
+                    </form>
+                    
+                    <p>
+                        @php
+                        $selected = collect($mergedData)->unique('prefecture_name')->values();
+                        @endphp
+                        @foreach ($selected as $index => $show)
+                            {{ $show['prefecture_name'] }}       
+                        @endforeach                                    
+                    </p>
                     <p>
                         <input type="checkbox" id="masterCheckbox" name="feature_enabled">
                         <label for="masterCheckbox">Select all</label>

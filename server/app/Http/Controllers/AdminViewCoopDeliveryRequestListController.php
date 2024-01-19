@@ -25,7 +25,7 @@ class AdminViewCoopDeliveryRequestListController extends Controller
                ->where('delivery_request.deletion_date', '=', null)
                ->orderBy('delivery_request.id', 'asc');
 
-        if ($id) {
+        if ($id != NULL) {
             $query->where('delivery_request.delivery_company_id', '=', $id);
         }
 

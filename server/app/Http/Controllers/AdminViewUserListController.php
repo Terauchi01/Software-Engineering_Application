@@ -29,7 +29,6 @@ class AdminViewUserListController extends Controller
                 'id' => $item->id,
                 'user_name' => $item->user_last_name . ' ' . $item->user_first_name,
                 'email_address' => $item->email_address,
-                'unpaid_charge' => $item->unpaid_charge. '円',
             ];
         }
 

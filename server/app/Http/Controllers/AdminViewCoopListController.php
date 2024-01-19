@@ -14,9 +14,11 @@ use Carbon\Carbon;
 
 class AdminViewCoopListController extends Controller
 {
-    public function adminViewCoopList (){
+    public function adminViewCoopList (Request $request){
+        $id = $request->input('id');
+        
         $CoopLocation = CoopLocation::all();
-        $list = CoopUser::select(
+        $query = CoopUser::select(
             'coop_user.id',
             'coop_user.coop_name',
             'coop_user.representative_last_name',
@@ -34,8 +36,14 @@ class AdminViewCoopListController extends Controller
               ->where('coop_user.deletion_date', '=', null)
               ->where('coop_location.deletion_date', '=', null)
               ->join('coop_location', 'coop_user.id', '=', 'coop_location.coop_user_id')
-              ->orderBy('coop_user.id', 'asc') 
-              ->get();
+              ->orderBy('coop_user.id', 'asc');
+        
+        if ($id != NULL) {
+            $query->where('coop_location.prefecture_id', '=', $id);
+        }
+
+        $list = $query->get();
+        
         $Prefecture_list = MstPrefecture::pluck('name', 'id')->toArray();
         $Cities_list = Cities::pluck('name', 'id')->toArray();
         $mergedData = [];
@@ -46,7 +54,9 @@ class AdminViewCoopListController extends Controller
                 'coop_name' => $item->coop_name,
                 'representative_name' => $item->representative_last_name." ".$item->representative_first_name,
                 'coop_locations' => $Prefecture_list[$item->prefecture_id].$Cities_list[$item->city_id],
-                'pay_status' => $A[$item->pay_status],               
+                'pay_status' => $A[$item->pay_status],
+                'prefecture_id' => $item->prefecture_id,
+                'prefecture_name' => $Prefecture_list[$item->prefecture_id],
             ];
         }   
         return view('admin.AdminViewCoopList', compact('mergedData'));

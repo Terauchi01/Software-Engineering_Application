@@ -14,7 +14,7 @@ class AdminViewUserDeliveryRequestListController extends Controller
     public function adminViewUserDeliveryRequestList(Request $request)
     {
         $id = $request->input('id');
-        
+    
         $query = DeliveryRequest::select(
             'delivery_request.id',
             'delivery_request.user_id',
@@ -22,11 +22,14 @@ class AdminViewUserDeliveryRequestListController extends Controller
             'delivery_request.collection_company_id',
             'delivery_request.delivery_company_id',
         )            
-              ->where('delivery_request.deletion_date', '=', null)
-              ->orderBy('delivery_request.id', 'asc');
-        
+               ->where('delivery_request.deletion_date', '=', null)
+               ->orderBy('delivery_request.id', 'asc');
+    
         if ($id) {
-            $query->where('delivery_request.user_id', '=', $id);
+            $query->where(function($query) use ($id) {
+                $query->where('delivery_request.user_id', '=', $id)
+                      ->orWhere('delivery_request.delivery_destination_id', '=', $id);
+            });
         }
 
         $list = $query->get();

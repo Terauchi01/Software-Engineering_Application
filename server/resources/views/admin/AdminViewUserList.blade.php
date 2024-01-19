@@ -70,7 +70,6 @@
                                 <th>利用者番号</th>
                                 <th>利用者名</th>
                                 <th>メール</th>
-                                <th>支払い状態</th>
                                 <th>編集</th>
                                 <th>削除</th>
                             </tr>
@@ -83,8 +82,7 @@
                                     </td>
                                     <td>{{ $userInfo['id'] }}</td>                                  
                                     <td><a href="{{ route('admin.adminViewUserInfo', ['id' => $userInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $userInfo['user_name'] }}</a></td>
-                                    <td>{{ $userInfo['email_address'] }}</td>
-                                    <td>{{ $userInfo['unpaid_charge'] }}</td>                                   
+                                    <td>{{ $userInfo['email_address'] }}</td>                                                               
                                     <td><button type="button">
                                         <a href="{{ route('admin.adminEditUserInfo', ['id' => $userInfo['id']]) }}">
                                             <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20"></a></button></td>
