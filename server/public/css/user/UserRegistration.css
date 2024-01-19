@@ -1,18 +1,52 @@
 body {
-    display: flex;
-    justify-content: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
     padding: 0;
-    width: 90vw;
+    display: flex;
+    width: 100vw;
     height: 100vh;
+    flex-direction: row;
 }
 
-.registration {
+.contents {
+    width: auto;
+    margin: 10pt auto;
+}
+
+.inputs h2 {
+    color: #408A7E;
+}
+
+.inputs label {
+    width: 100pt;
+    text-align: center;
+    display: inline-block;
+}
+
+.inputs input {
+    width: 200pt;
+    height: 30pt;
+    border: solid thin #408A7E;
+    border-radius: 5px;
+    margin: 5pt;
+    padding-left: 8pt;
+    padding-right: 8pt;
+}
+
+.phone input {
+    width: auto;
     text-align: center;
 }
 
-.registration input {
-    border: 3px solid #408A7E;
-    margin-bottom: 10px;
-    padding: 12px;
-    font-size: 18px;
+.regist button {
+    line-height: 30pt;
+    width: 200pt;
+    background-color: #408A7E;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30pt auto;
 }

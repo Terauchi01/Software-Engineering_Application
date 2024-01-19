@@ -10,7 +10,7 @@ body {
 
 .contents {
   width: auto;
-  margin: auto;
+  margin: 10pt auto;
 }
 
 .inputs h2 {
@@ -33,28 +33,9 @@ body {
   padding-right: 8pt;
 }
 
-.name input {
-  /* display: flex; */
-  /* justify-content: space-between; */
-}
-
 .phone input {
   width: auto;
   text-align: center;
-}
-
-.land_or_air {
-  margin: 5pt;
-  margin-left: 100pt;
-}
-
-.land_or_air input {
-  width: auto;
-  height: auto;
-}
-
-.land_or_air label {
-  width: auto;
 }
 
 .regist button {
@@ -68,9 +49,4 @@ body {
   align-items: center;
   justify-content: center;
   margin: 30pt auto;
-}
-
-.regists button:hover {
-  background-color: #347D68;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
