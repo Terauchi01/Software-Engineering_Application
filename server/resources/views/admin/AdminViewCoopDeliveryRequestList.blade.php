@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>宅配依頼一覧</title>
+        <title>事業者宅配一覧</title>
         <link rel="stylesheet" href="{{ asset('css/admin/AdminList.css') }}">
         <style>
          .current {
@@ -23,13 +23,12 @@
             <p><a href="{{ route('admin.adminViewCoopApplyDroneLendList') }}">ドローン貸与申請一覧</a></p>
             <p><a href="{{ route('admin.adminViewUserList') }}">利用者情報管理</a></p>                
             <p><a href="{{ route('admin.adminViewCoopStatisticsInfo') }}">事業者情報分析</a></p>
-            <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>
-            
-            <div class="current">
-                <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
-            </div>
+            <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>            
+            <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>       
             <p><a href="{{ route('admin.adminViewDroneType') }}">ドローンタイプ　一覧</a></p>
-            <p><a href="{{ route('admin.adminViewCoopDeliveryRequestList') }}">事業者宅配一覧</a></p>
+            <div class="current">
+                <p><a href="{{ route('admin.adminViewCoopDeliveryRequestList') }}">事業者宅配一覧</a></p>
+            </div>
             <p><a href="{{ route('admin.adminViewUserDeliveryRequestList') }}">利用者宅配一覧</a></p>
         </div>           
         <div class = "content">
@@ -42,22 +41,19 @@
             </div>
             <div class = "main">
                 <div class ="flex-main">            
-                    <p><h2><font color ="#408A7E"><u> 宅配依頼一覧 </u></font></h2></p>
+                    <p><h2><font color ="#408A7E"><u> 事業者宅配一覧 </u></font></h2></p>
                     
-                    <button type="submit" name="add" id="filterButton" class="custom-button">承諾</button>
-                    <button type="submit" name="add" id="resetButton" class="custom-button">却下</button>
-                    
-                    <script>
-                     document.getElementById('filterButton').addEventListener('click', function() {
-                         alert('承諾ボタンがクリックされました。');
-                     });
-                     
-                     document.getElementById('resetButton').addEventListener('click', function() {
-                         alert('却下ボタンがクリックされました。');
-                     });
-                    </script>
-                    
-                    
+                    <select onChange="location.href=this.value;">
+                        <option>担当事業者を選択</option>
+                        @foreach ($mergedData as $index => $deliveryInfo)
+                            <option value="{{ route('admin.adminViewCoopDeliveryRequestList', ['id' => $deliveryInfo['delivery_company_id']]) }}">{{ $deliveryInfo['delivery_company_name'] }}</option>
+                        @endforeach
+                    </select>
+                    &nbsp;
+                    <select onChange="location.href=this.value;">
+                        <option>リセット</option>
+                        <option value="{{ route('admin.adminViewCoopDeliveryRequestList', ['id' => '']) }}">リセット</option>
+                    </select>
                     <p>
                         <input type="checkbox" id="masterCheckbox" name="feature_enabled">
                         <label for="masterCheckbox">Select all</label>
@@ -76,12 +72,8 @@
                                 <th>削除</th>
                             </tr>
                         </thead>
-                        <!-- $mergedData[] = [
-                             'user_id' => $item->user_id,
-                             'delivery_destination_id' => $item->delivery_destination_id,
-                             'collection_company_id' => $item->collection_company_id,
-                             'delivery_company_id' => $item->delivery_company_id,               
-                             ]; -->
+
+                        
                         <tbody>
                             @foreach ($mergedData as $index => $deliveryInfo)
                                 <tr>
@@ -90,8 +82,8 @@
                                     </td>
                                     <td>{{ $deliveryInfo['id'] }}</td>                                    
                                     <td>{{ $deliveryInfo['user_id'] }}</td>
-                                    <td>{{ $deliveryInfo['delivery_destination_id'] }}</td>
-                                    <td>{{ $deliveryInfo['delivery_company_id'] }}</td>
+                                    <td>{{ $deliveryInfo['delivery_destination_name'] }}</td>
+                                    <td>{{ $deliveryInfo['delivery_company_name'] }}</td>
                                     <td><button type="button">
                                         <a href="{{ route('admin.adminEditUserInfo', ['id' => $deliveryInfo['id']]) }}">
                                             <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20"></a></button></td>

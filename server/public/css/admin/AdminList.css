@@ -7,8 +7,8 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    width: 100vw;
-    height: 100vh;
+    width: auto;
+    height: auto;
     flex-direction: row;
 }
 
@@ -102,4 +102,9 @@ select {
     text-align    : center;
     cursor: pointer;
     border-radius : 5%;
+    
+}
+
+select option:first-child {
+    display: none;
 }

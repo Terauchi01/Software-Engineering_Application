@@ -1,17 +1,14 @@
-<!-- controller: server/app/Http/Controllers/AdminAllocateCoopDeliveryTask.php -->
-<!-- blade     : server/resources/views/admin/AdminAllocateCoopDeliveryTask.php -->
-<!-- css       : server/public/css/admin/AdminList.css -->
 <!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>宅配依頼一覧</title>
+        <title>ドローンタイプ一覧</title>
         <link rel="stylesheet" href="{{ asset('css/admin/AdminList.css') }}">
         <style>
          .current {
              background-color: #ffffff;
-             height: 20pt;
+             height: 40pt;
              text-align: center;
          }
         </style>
@@ -19,16 +16,15 @@
     
     <body>      
         <div class="side">
-            <p><a href="{{ route('admin.adminViewCoopList') }}">事業者情報管理</a></p>         
+            <p><a href="{{ route('admin.adminViewCoopList') }}">事業者情報管理</a></p>           
             <p><a href="{{ route('admin.adminViewCoopApplyDroneLendList') }}">ドローン貸与申請一覧</a></p>
-            <p><a href="{{ route('admin.adminViewUserList') }}">利用者情報管理</a></p>                
+            <p><a href="{{ route('admin.adminViewUserList') }}">利用者情報管理</a></p>
             <p><a href="{{ route('admin.adminViewCoopStatisticsInfo') }}">事業者情報分析</a></p>
             <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>
-            
+            <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
             <div class="current">
-                <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
+                <p><a href="{{ route('admin.adminViewDroneType') }}">ドローンタイプ　一覧</a></p>
             </div>
-            <p><a href="{{ route('admin.adminViewDroneType') }}">ドローンタイプ　一覧</a></p>
             <p><a href="{{ route('admin.adminViewCoopDeliveryRequestList') }}">事業者宅配一覧</a></p>
             <p><a href="{{ route('admin.adminViewUserDeliveryRequestList') }}">利用者宅配一覧</a></p>
         </div>           
@@ -40,23 +36,12 @@
                 </select>
                 <p>admin</p> <!-- ここをユーザ名とする -->
             </div>
+            
             <div class = "main">
-                <div class ="flex-main">            
-                    <p><h2><font color ="#408A7E"><u> 宅配依頼一覧 </u></font></h2></p>
-                    
-                    <button type="submit" name="add" id="filterButton" class="custom-button">承諾</button>
-                    <button type="submit" name="add" id="resetButton" class="custom-button">却下</button>
-                    
-                    <script>
-                     document.getElementById('filterButton').addEventListener('click', function() {
-                         alert('承諾ボタンがクリックされました。');
-                     });
-                     
-                     document.getElementById('resetButton').addEventListener('click', function() {
-                         alert('却下ボタンがクリックされました。');
-                     });
-                    </script>
-                    
+                <div class ="flex-main">
+                    <div class = "coopList"> <!--#408A7E-->
+                        <p><h2><font color ="#408A7E"><u> ドローンタイプ一覧 </u></font></h2></p>
+                    </div>                   
                     
                     <p>
                         <input type="checkbox" id="masterCheckbox" name="feature_enabled">
@@ -68,36 +53,32 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>依頼番号</th>
-                                <th>送り主情報</th>
-                                <th>受け取り主情報</th>
-                                <th>担当者事業者名</th>
+                                <th>ドローン番号</th>
+                                <th>ドローン種の名前</th>
+                                <th>航続距離</th>                          
+                                <th>積載重量</th>
+                                <th>飛行可能時間</th>
+                                <th>数</th>
+                                <th>貸出中ドローン</th>
                                 <th>編集</th>
-                                <th>削除</th>
                             </tr>
                         </thead>
-                        <!-- $mergedData[] = [
-                             'user_id' => $item->user_id,
-                             'delivery_destination_id' => $item->delivery_destination_id,
-                             'collection_company_id' => $item->collection_company_id,
-                             'delivery_company_id' => $item->delivery_company_id,               
-                             ]; -->
                         <tbody>
-                            @foreach ($mergedData as $index => $deliveryInfo)
+                            @foreach ($mergedData as $index => $droneInfo)
                                 <tr>
                                     <td>
-                                        <input type="checkbox" class="itemCheckbox" id="checkbox{{$deliveryInfo['id']}}" name="selectedCoops[]" value="{{ $deliveryInfo['id'] }}">
+                                        <input type="checkbox" class="itemCheckbox" id="checkbox{{$droneInfo['id']}}" name="selectedCoops[]" value="{{ $droneInfo['id'] }}">
                                     </td>
-                                    <td>{{ $deliveryInfo['id'] }}</td>                                    
-                                    <td>{{ $deliveryInfo['user_id'] }}</td>
-                                    <td>{{ $deliveryInfo['delivery_destination_id'] }}</td>
-                                    <td>{{ $deliveryInfo['delivery_company_id'] }}</td>
+                                    <td>{{ $droneInfo['id'] }}</td>
+                                    <td>{{ $droneInfo['name'] }}</td>
+                                    <td>{{ $droneInfo['range'] }}</td>
+                                    <td>{{ $droneInfo['loading_weight'] }}</td>
+                                    <td>{{ $droneInfo['max_time'] }}</td>
+                                    <td>{{ $droneInfo['number_of_drones'] }}</td>
+                                    <td>{{ $droneInfo['lend_drones_sum'] }}</td>
                                     <td><button type="button">
-                                        <a href="{{ route('admin.adminEditUserInfo', ['id' => $deliveryInfo['id']]) }}">
+                                        <a href="{{ route('admin.adminEditAdminDrone', ['id' => $droneInfo['id']]) }}">
                                             <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20"></a></button></td>
-                                    <td><button type="button">
-                                        <a href="{{ route('admin.adminAllocateCoopDeliveryTaskDelete', ['id' => $deliveryInfo['id']]) }}">
-                                            <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -142,6 +123,6 @@
                     </table>
                 </div>
             </div>
-        </div>  
+        </div>
     </body>
 </html>

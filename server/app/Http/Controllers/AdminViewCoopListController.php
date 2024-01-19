@@ -7,6 +7,7 @@ use App\Models\MstPrefecture;
 use App\Models\Cities;
 use App\Models\CoopLocation;
 use App\Models\CoopUser;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 //事業者一覧
@@ -61,8 +62,21 @@ class AdminViewCoopListController extends Controller
 
     public function deleteAll(Request $request)
     {
-        dd ("ここまで");
-        return redirect()->route('admin.adminViewCoopList');
+        // CSRFトークンを確認
+        if ($request->header('X-CSRF-TOKEN') !== csrf_token()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // 送信されたデータを取得
+        $data = $request->input('elements');
+
+        foreach($data as $id){
+            $B = CoopUser::class;
+            $currentDateTime = Carbon::now();
+            $B::where('id',$id)->update(['deletion_date' => $currentDateTime]);
+        }
+
+        return response()->json(['message' => 'Delete operation completed.']);
     }
 }
 

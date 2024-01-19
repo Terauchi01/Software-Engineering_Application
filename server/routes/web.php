@@ -26,6 +26,7 @@ use App\Http\Controllers\AdminViewUserInfoController;
 use App\Http\Controllers\AdminViewUserListController;
 use App\Http\Controllers\AdminViewUserPayInfoController;
 use App\Http\Controllers\AdminViewUserStatisticsInfoController;
+use App\Http\Controllers\AdminViewDroneTypeController;
 use App\Http\Controllers\CoopChildAccountListController;
 use App\Http\Controllers\CoopCreateChildAccountController;
 use App\Http\Controllers\CoopDeliveryRequestListController;
@@ -119,6 +120,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('viewUserInfo', [AdminViewUserInfoController::class, 'adminViewUserInfo'])->name('adminViewUserInfo');
         Route::get('viewUserList', [AdminViewUserListController::class, 'adminViewUserList'])->name('adminViewUserList');
         Route::get('viewUserList/{id}', [AdminViewUserListController::class, 'delete'])->name('adminViewUserListDelete');
+        Route::get('viewDroneType', [AdminViewDroneTypeController::class, 'adminViewDroneType'])->name('adminViewDroneType');
+        Route::get('viewDroneType/{id}', [AdminViewDroneTypeController::class, 'delete'])->name('adminViewDroneTypeDelete');
     });
 });
 Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
