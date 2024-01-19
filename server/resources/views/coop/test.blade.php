@@ -6,7 +6,7 @@ hello coop<br>
 <a href="{{ route('coop.coopCheckUserDeliveryRequestListViewExecute') }}">coopCheckUserDeliveryRequestListViewExecute</a><br>
 <a href="{{ route('coop.coopDeleteChildCoopAccount') }}">coopDeleteChildCoopAccount</a><br>
 <a href="{{ route('coop.coopEditChildCoopAccount') }}">coopEditChildCoopAccount</a><br>
-<a href="{{ route('coop.coopEditCoopInfo') }}">coopEditCoopInfo</a><br>
+<a href="{{ route('coop.coopEditCoopInfo',["id"=>1]) }}">coopEditCoopInfo</a><br>
 <a href="{{ route('coop.coopFillterUserDeliveryRequestListView') }}">coopFillterUserDeliveryRequestListView</a><br>
 <a href="{{ route('coop.coopFilterChildCoopAccountListView') }}">coopFilterChildCoopAccountListView</a><br>
 <a href="{{ route('coop.coopLogin') }}">coopLogin</a><br>

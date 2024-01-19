@@ -13,12 +13,25 @@ return new class extends Migration
     {
         Schema::create('drone_type', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 10)->nullable(false);
-            $table->integer('drone_spec')->nullable(false);
             $table->integer('number_of_drones')->nullable(false);
+            $table->string('name', 100)->nullable(false);
+            $table->integer('range')->nullable(false);
+            $table->integer('loading_weight')->nullable(false);
+            $table->integer('max_time')->nullable(false);
+            $table->integer('lend_drones_sum')->nullable(false);
             $table->timestamps();
             $table->timestamp('deletion_date')->nullable()->default(null);
         });
+        /* 
+        return [
+            'number_of_drones' => 'required|integer',
+            'name' => 'required|string|max:100',
+            'range' => 'required|integer',
+            'loading_weight' => 'required|integer',
+            'max_time' => 'required|integer',
+            'lend_drones_sum' => 'required|integer',
+        ];
+        */
     }
 
     /**

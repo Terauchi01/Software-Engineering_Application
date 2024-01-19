@@ -20,6 +20,9 @@ class CitiesTableSeeder extends Seeder
         foreach ($prefectures as $prefecture) {
             // 外部API全国地方公共団体コード
             $api = 'https://www.land.mlit.go.jp/webland/api/CitySearch?area=' .str_pad($prefecture->id, 2, 0, STR_PAD_LEFT);
+            $response = $client->request('GET', $api, [
+                'timeout' => 10, // タイムアウトを10秒に設定（必要に応じて変更）
+            ]);
             $response = $client->request('GET', $api);
             $responseData = json_decode($response->getBody()->getContents(), true);
 

@@ -8,8 +8,7 @@ use App\Models\AccountInformation;
 
 class AdminEditCoopPayInfoController extends Controller
 {
-    public function adminEditCoopPayInfo (Request $request){
-        $id = $request->input('id');
+    public function adminEditCoopPayInfo ($id){
         $coop = CoopUser::find($id);
 
         if ($coop && $coop->deletion_date === null) {

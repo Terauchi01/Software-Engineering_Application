@@ -8,6 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>事業者閲覧一覧</title>
         <link rel="stylesheet" href="{{ asset('css/admin/AdminList.css') }}">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="{{ asset('js/admin/delete.js') }}"></script>
         <style>
          .current {
              background-color: #ffffff;
@@ -166,9 +168,36 @@
                      });
                     </script>
 
+
                     &nbsp;
-                    <button id="deleteButton" class="custom-button">チェックした項目を削除</button>                                   
-                                                        
+                    <button type="submit" name="add" id="resetButton" class="custom-button">リセット</button>
+                    
+                    <script>
+                     
+                     document.getElementById('resetButton').addEventListener('click', function() {
+                         alert('リセットボタンがクリックされました。');
+                     });
+                    </script>
+
+                    &nbsp;
+                    <button id="deleteButton" class="custom-button">チェックした項目を削除</button>
+                    <div id="selectedId"></div>
+                    <div id="selectedIdsDisplay"></div>
+                    <input type="hidden" id="url" value="{{ route('admin.deleteAll') }}">
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
+                    <div id="deleteArea">
+                        
+
+                        // 配列の初期化
+                        $data = [];
+                        
+                        // 修正後のコード
+                        @foreach ($mergedData as $index => $coopInfo)
+                            @if (isset($coopInfo['selectedIds']))
+                                <a href="{{ route('admin.adminViewCoopListDelete', ['id' => $coopInfo['selectedIds']]) }}"></a>
+                            @endif
+                        @endforeach
+                    </div>
                     <p>
                         <input type="checkbox" id="masterCheckbox" name="feature_enabled">
                         <label for="masterCheckbox">Select all</label>
@@ -208,64 +237,6 @@
                                 </tr>
                             @endforeach
                         </tbody>                                                                      
-                        
-                        <script>
-                         document.getElementById('masterCheckbox').addEventListener('change', function() {
-                             var masterCheckbox = this;
-                             var itemCheckboxes = document.querySelectorAll('.itemCheckbox');
-
-                             itemCheckboxes.forEach(function(itemCheckbox) {
-                                 itemCheckbox.checked = masterCheckbox.checked;
-                             });
-                         });
-
-                         // 各行のチェックボックスに対するイベントリスナーも追加する場合
-                         document.querySelectorAll('.itemCheckbox').forEach(function(itemCheckbox) {
-                             itemCheckbox.addEventListener('change', function() {
-                                 var allChecked = true;
-                                 document.querySelectorAll('.itemCheckbox').forEach(function(checkbox) {
-                                     if (!checkbox.checked) {
-                                         allChecked = false;
-                                     }
-                                 });
-                                 document.getElementById('masterCheckbox').checked = allChecked;
-                             });
-                         });
-
-                         document.getElementById('deleteButton').addEventListener('click', function() {
-                             var selectedCoops = document.querySelectorAll('.itemCheckbox:checked');
-                             if (selectedCoops.length > 0) {                  
-                                 const selectedIds = Array.from(selectedCoops).map(function(checkbox) {
-                                     return checkbox.value;
-                                 });
-                                
-                                 var deleteMessage = "選択した項目を削除しますか？\n削除するID: " + selectedIds.join(', ');
-
-                                 var confirmation = confirm(deleteMessage);
-
-                                 if (confirmation) {
-                                     var url = $('#url').val();
-                                     $.ajax({
-                                         type: 'POST',
-                                         url: url,
-                                         data: { elements: selectedIds },
-                                         headers: {
-                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                         },
-                                         success: function (response) {
-                                             console.log('Request successful:', response);                                         
-                                             location.reload();
-                                         },
-                                         error: function (error) {
-                                             console.error('Error:', error);
-                                         }
-                                     });
-                                 }
-                             } else {
-                                 alert("削除する項目を選択してください。");
-                             }
-                         });
-                        </script> 
                     </table>
                     <input type="hidden" id="url" value="{{ route('admin.deleteAll') }}">
                     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

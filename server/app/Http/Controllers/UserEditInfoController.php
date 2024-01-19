@@ -12,8 +12,13 @@ class UserEditInfoController extends Controller
         //viewの返すところは適当で良い
         $A = 'users';
         $userId = Auth::guard($A)->id();
-        $user = User::find($userId); // ユーザー情報を取得する（Userモデルに合わせて変更）
-        return view('user.UserEditInfo', compact('user'));
+        $user = User::find($userId);
+        if($user && $user->deletion_date == null){
+            return view('user.UserEditInfo', compact('user'));
+        }
+        else{
+            return back();
+        }
     }
     public function userEdit (Request $request){
         //viewの返すところは適当で良い

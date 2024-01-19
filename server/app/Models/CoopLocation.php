@@ -11,6 +11,7 @@ class CoopLocation extends Model
     protected $table = 'coop_location';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'office_name',
         'postal_code',
         'prefecture_id',
         'city_id',
@@ -20,10 +21,10 @@ class CoopLocation extends Model
         'representative_first_name',
         'representative_last_name_kana',
         'representative_first_name_kana',
-        'license_holder_last_name',
-        'license_holder_first_name',
-        'license_holder_last_name_kana',
-        'license_holder_first_name_kana',
+        'license_holder_name',
+        // 'license_holder_first_name',
+        // 'license_holder_last_name_kana',
+        // 'license_holder_first_name_kana',
         'license_id',
     ];
 

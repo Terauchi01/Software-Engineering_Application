@@ -20,6 +20,14 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('deletion_date')->nullable()->default(null);
         });
+        /*
+        return [
+            'authority' => 'required|integer',
+            'user_name' => 'required|string|max:100',
+            'email_address' => 'required|email|max:100',
+            'password' => 'required|string|max:200',
+        ];
+         */
     }
 
     /**

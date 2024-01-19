@@ -1,10 +1,10 @@
 hello admin<br>
 <a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">adminAllocateCoopDeliveryTask</a><br>
-<a href="{{ route('admin.adminEditAdminDrone') }}">adminEditAdminDrone</a><br>
-<a href="{{ route('admin.adminEditCoopDroneInfo') }}">adminEditCoopDroneInfo</a><br>
-<a href="{{ route('admin.adminEditCoopInfo') }}">adminEditCoopInfo</a><br>
-<a href="{{ route('admin.adminEditCoopPayInfo') }}">adminEditCoopPayInfo</a><br>
-<a href="{{ route('admin.adminEditUserInfo') }}">adminEditUserInfo</a><br>
+<a href="{{ route('admin.adminEditAdminDrone',['id'=>1]) }}">adminEditAdminDrone</a><br>
+<a href="{{ route('admin.adminEditCoopDroneInfo',['id'=>1]) }}">adminEditCoopDroneInfo</a><br>
+<a href="{{ route('admin.adminEditCoopInfo',['id'=>1]) }}">adminEditCoopInfo</a><br>
+<a href="{{ route('admin.adminEditCoopPayInfo',['id'=>1]) }}">adminEditCoopPayInfo</a><br>
+<a href="{{ route('admin.adminEditUserInfo',['id'=>1]) }}">adminEditUserInfo</a><br>
 <a href="{{ route('admin.adminLogin') }}">adminLogin</a><br>
 <a href="{{ route('admin.adminLogout') }}">adminLogout</a><br>
 <a href="{{ route('admin.adminRegisterAdminDrone') }}">adminRegisterAdminDrone</a><br>

@@ -12,8 +12,8 @@ use App\Models\LicenseInformation;
 
 class AdminEditCoopInfoController extends Controller
 {
-    public function adminEditCoopInfo (Request $request){
-        $id = $request->input('id');
+    public function adminEditCoopInfo (Request $request,$id){
+        $id;
         $coop = CoopUser::find($id);
 
         if ($coop && $coop->deletion_date === null) {
