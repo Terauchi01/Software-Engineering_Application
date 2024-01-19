@@ -99,3 +99,7 @@ select {
     cursor: pointer;
     border-radius : 5%;
 }
+
+select option:first-child {
+    display: none;
+}
