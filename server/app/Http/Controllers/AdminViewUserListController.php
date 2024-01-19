@@ -24,13 +24,12 @@ class AdminViewUserListController extends Controller
         $mergedData = [];
 
         foreach ($list as $item) {
-            $unpaidChargeStatus = ($item->unpaid_charge == 0) ? '済' : '未';
 
             $mergedData[] = [
                 'id' => $item->id,
                 'user_name' => $item->user_last_name . ' ' . $item->user_first_name,
                 'email_address' => $item->email_address,
-                'unpaid_charge' => $unpaidChargeStatus,
+                'unpaid_charge' => $item->unpaid_charge. '円',
             ];
         }
 

@@ -26,7 +26,10 @@
             </div>
             <p><a href="{{ route('admin.adminViewCoopStatisticsInfo') }}">事業者情報分析</a></p>
             <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>                
-            <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>                
+            <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
+            <p><a href="{{ route('admin.adminViewDroneType') }}">ドローンタイプ　一覧</a></p>
+            <p><a href="{{ route('admin.adminViewCoopDeliveryRequestList') }}">事業者宅配一覧</a></p>
+            <p><a href="{{ route('admin.adminViewUserDeliveryRequestList') }}">利用者宅配一覧</a></p>
         </div>           
         <div class = "content">
             <div class = "header">
@@ -81,7 +84,7 @@
                                     <td>{{ $userInfo['id'] }}</td>                                  
                                     <td><a href="{{ route('admin.adminViewUserInfo', ['id' => $userInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $userInfo['user_name'] }}</a></td>
                                     <td>{{ $userInfo['email_address'] }}</td>
-                                    <td><a href="{{ route('admin.adminViewUserPayInfo', ['id' => $userInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $userInfo['unpaid_charge'] }}</a></td>
+                                    <td>{{ $userInfo['unpaid_charge'] }}</td>                                   
                                     <td><button type="button">
                                         <a href="{{ route('admin.adminEditUserInfo', ['id' => $userInfo['id']]) }}">
                                             <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20"></a></button></td>

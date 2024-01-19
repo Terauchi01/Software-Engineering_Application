@@ -54,6 +54,9 @@
             <p><a href="{{ route('admin.adminViewCoopStatisticsInfo') }}">事業者情報分析</a></p>
             <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>
             <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
+            <p><a href="{{ route('admin.adminViewDroneType') }}">ドローンタイプ　一覧</a></p>
+            <p><a href="{{ route('admin.adminViewCoopDeliveryRequestList') }}">事業者宅配一覧</a></p>
+            <p><a href="{{ route('admin.adminViewUserDeliveryRequestList') }}">利用者宅配一覧</a></p>
         </div>
         
         <div class = "content">
@@ -68,7 +71,7 @@
             <div class = "main">
                 <div class ="flex-main">                        
                     <p><h2><font color ="#408A7E"><u> 事業者情報管理 </u></font></h2></p>                            
-                                                           
+                    
                     <button id="filterButton" class="custom-button">絞り込み</button>
                     <!-- <select>
                          <option>選択</option>                        
@@ -76,7 +79,7 @@
                          <option> {{ $coopInfo['coop_locations'] }}</option>                      
                          @endforeach
                          </select> -->
-                     <!-- <button type="submit" name="add" id="resetButton" class="custom-button">リセット</button> -->
+                    <!-- <button type="submit" name="add" id="resetButton" class="custom-button">リセット</button> -->
                     <!-- モーダルダイアログ -->
                     <div id="modal">
                         <div id="modal-content">
@@ -155,25 +158,17 @@
 
                          // 選択された都道府県を表示（ここではアラートで表示
                          /* @foreach ($mergedData as $index => $coopInfo)
-                             {{ $coopInfo['coop_locations'] }}                      
-                             @endforeach */
+                            {{ $coopInfo['coop_locations'] }}                      
+                            @endforeach */
                          alert('選択された都道府県: ' + selectedPrefectures.join(', '));
                          // モーダルを非表示にする
                          document.getElementById('modal').style.display = 'none';
                      });
                     </script>
 
-                    
-                    <button type="submit" name="add" id="resetButton" class="custom-button">リセット</button>
-                    
-                    <script>
-                     
-                     document.getElementById('resetButton').addEventListener('click', function() {
-                         alert('リセットボタンがクリックされました。');
-                     });
-                    </script>
-                    
-                    
+                    &nbsp;
+                    <button id="deleteButton" class="custom-button">チェックした項目を削除</button>                                   
+                                                        
                     <p>
                         <input type="checkbox" id="masterCheckbox" name="feature_enabled">
                         <label for="masterCheckbox">Select all</label>
@@ -197,7 +192,7 @@
                             @foreach ($mergedData as $index => $coopInfo)
                                 <tr>
                                     <td>
-                                        <input type="checkbox" class="itemCheckbox" id="checkbox{{$coopInfo['id']}}" name="selectedCoops[]" value="{{ $coopInfo['id'] }}">
+                                        <input type="checkbox" class="itemCheckbox" id="checkbox{{$coopInfo['id']}}" name="selectedCoops[]" value="{{ $coopInfo['id'] }}">                         
                                     </td>
                                     <td>{{ $coopInfo['id'] }}</td>
                                     <td><a href="{{ route('admin.adminViewCoopInfo', ['id' => $coopInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $coopInfo['coop_name'] }}</a></td>
@@ -235,9 +230,51 @@
                                  });
                                  document.getElementById('masterCheckbox').checked = allChecked;
                              });
-                         });                                                 
-                        </script>                            
+                         });
+
+                         document.getElementById('deleteButton').addEventListener('click', function() {
+                             var selectedCoops = document.querySelectorAll('.itemCheckbox:checked');
+                             if (selectedCoops.length > 0) {                  
+                                 const selectedIds = Array.from(selectedCoops).map(function(checkbox) {
+                                     return checkbox.value;
+                                 });
+                                
+                                 var deleteMessage = "選択した項目を削除しますか？\n削除するID: " + selectedIds.join(', ');
+
+                                 var confirmation = confirm(deleteMessage);
+
+                                 if (confirmation) {
+                                     var url = $('#url').val();
+                                     $.ajax({
+                                         type: 'POST',
+                                         url: url,
+                                         data: { elements: selectedIds },
+                                         headers: {
+                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                         },
+                                         success: function (response) {
+                                             console.log('Request successful:', response);                                         
+                                             location.reload();
+                                         },
+                                         error: function (error) {
+                                             console.error('Error:', error);
+                                         }
+                                     });
+                                 }
+                             } else {
+                                 alert("削除する項目を選択してください。");
+                             }
+                         });
+                        </script> 
                     </table>
+                    <input type="hidden" id="url" value="{{ route('admin.deleteAll') }}">
+                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
+                    @foreach ($mergedData as $index => $coopInfo)
+                        @if (isset($coopInfo['selectedIds']))
+                            <a href="{{ route('admin.adminViewCoopListDelete', ['id' => $coopInfo['selectedIds']]) }}"></a>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>

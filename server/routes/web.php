@@ -26,6 +26,7 @@ use App\Http\Controllers\AdminViewUserInfoController;
 use App\Http\Controllers\AdminViewUserListController;
 use App\Http\Controllers\AdminViewUserPayInfoController;
 use App\Http\Controllers\AdminViewUserStatisticsInfoController;
+use App\Http\Controllers\AdminViewDroneTypeController;
 use App\Http\Controllers\CoopChildAccountListController;
 use App\Http\Controllers\CoopCreateChildAccountController;
 use App\Http\Controllers\CoopDeliveryRequestListController;
@@ -109,6 +110,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('viewCoopInfo', [AdminViewCoopInfoController::class, 'adminViewCoopInfo'])->name('adminViewCoopInfo');
         Route::get('viewCoopList', [AdminViewCoopListController::class, 'adminViewCoopList'])->name('adminViewCoopList');
         Route::get('viewCoopList/{id}', [AdminViewCoopListController::class, 'delete'])->name('adminViewCoopListDelete');
+        Route::post('deleteAll', [AdminViewCoopListController::class, 'deleteAll'])->name('deleteAll');
+        
         Route::get('viewUserDeliveryRequestList', [AdminViewUserDeliveryRequestListController::class, 'adminViewUserDeliveryRequestList'])->name('adminViewUserDeliveryRequestList');
         Route::get('adminViewCoopPayInfo', [AdminViewCoopPayInfoController::class, 'adminViewCoopPayInfo'])->name('adminViewCoopPayInfo');
         Route::get('adminViewCoopDeliveryRequestList', [AdminViewCoopDeliveryRequestListController::class, 'adminViewCoopDeliveryRequestList'])->name('adminViewCoopDeliveryRequestList');
@@ -117,6 +120,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('viewUserInfo', [AdminViewUserInfoController::class, 'adminViewUserInfo'])->name('adminViewUserInfo');
         Route::get('viewUserList', [AdminViewUserListController::class, 'adminViewUserList'])->name('adminViewUserList');
         Route::get('viewUserList/{id}', [AdminViewUserListController::class, 'delete'])->name('adminViewUserListDelete');
+        Route::get('viewDroneType', [AdminViewDroneTypeController::class, 'adminViewDroneType'])->name('adminViewDroneType');
+        Route::get('viewDroneType/{id}', [AdminViewDroneTypeController::class, 'delete'])->name('adminViewDroneTypeDelete');
     });
 });
 Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
