@@ -143,7 +143,8 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
         Route::get('coopCheckUserDeliveryRequestListViewExecute', [CoopDeliveryRequestListController::class, 'coopCheckUserDeliveryRequestListViewExecute'])->name('coopCheckUserDeliveryRequestListViewExecute');
         Route::get('coopDeleteChildCoopAccount', [CoopChildAccountListController::class, 'coopDeleteChildCoopAccount'])->name('coopDeleteChildCoopAccount');
         Route::get('coopEditChildCoopAccount', [CoopEditChildCoopAccountController::class, 'coopEditChildCoopAccount'])->name('coopEditChildCoopAccount');
-        Route::get('coopEditCoopInfo', [CoopEditCoopInfoController::class, 'coopEditCoopInfo'])->name('coopEditCoopInfo');
+        Route::get('coopEditCoopInfo/{id}', [CoopEditCoopInfoController::class, 'coopEditCoopInfo'])->name('coopEditCoopInfo');
+        Route::post('coopEditCoopInfo', [CoopEditCoopInfoController::class, 'coopEditCoopInfo'])->name('coopEditCoopInfo');
         Route::get('coopViewUserDeliveryRequestList', [CoopViewUserDeliveryRequestListController::class, 'coopViewUserDeliveryRequestList'])->name('coopViewUserDeliveryRequestList');
         Route::get('coopFillterUserDeliveryRequestListView', [CoopDeliveryRequestListController::class, 'coopFillterUserDeliveryRequestListView'])->name('coopFillterUserDeliveryRequestListView');
         Route::get('coopFilterChildCoopAccountListView', [CoopChildAccountListController::class, 'coopFilterChildCoopAccountListView'])->name('coopFilterChildCoopAccountListView');
@@ -192,24 +193,4 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         Route::get('withdraw', [UserWithdrawController::class, 'withdraw'])->name('withdraw');
     });
 });
-//テスト用のコード
-Route::group(['prefix' => 'terauchi', 'as' => 'terauchi.'], function () {
-    Route::get('top', [TerauchiController::class, 'index'])->name('top');
-    Route::get('login_view', [TerauchiController::class, 'login_view'])->name('login_view');
-    // Route::get('loginUser', [TerauchiController::class, 'login'])->name('loginUser');
-    Route::post('loginUser', [TerauchiController::class, 'login'])->name('loginUser');
-    Route::get('list_view', [TerauchiController::class, 'list_view'])->name('list_view');
-    // ->middleware('auth:users');
-    Route::get('/', function () {
-        return view('terauchi.top');
-    });
-    // Route::get('/user', function () {
-    //     // 認証済みユーザーのみがこのルートにアクセス可能
-    // })->middleware('auth');
-});
 Route::get('/index', [HelloController::class, 'index']);
-Route::get('/send_date', [HelloController::class, 'send_date']);
-Route::post('/send_date/add', [HelloController::class, 'update_controller']);
-Route::get('/show', [HelloController::class, 'insert_controller']);
-Route::get('/test', [loginController::class, 'index']);
-Route::post('/login', [loginController::class, 'login']);

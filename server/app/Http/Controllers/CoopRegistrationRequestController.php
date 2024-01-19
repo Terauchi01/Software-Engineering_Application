@@ -4,15 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CoopUser;
+use App\Models\CoopLocation;
 use App\Models\LicenseInformation;
 use App\Models\AccountInformation;
+use App\Models\MstPrefecture;
+use App\Models\Cities;
+use Illuminate\Support\Facades\DB;
 
 class CoopRegistrationRequestController extends Controller
 {
     // 事業者登録申請
     public function coopApplyCoopRegister (){
-        //viewの返すところは適当で良い
-        return view('coop.CoopRegistrationRequest');
+        // 都道府県をidでソートして取得
+        $Prefecture = MstPrefecture::orderBy('id')->pluck('name', 'id')->toArray();
+
+        // 市区町村をidでソートして取得
+        $cityCollection = Cities::orderBy('id')->select('id', 'prefecture_id', 'name')->get();
+        // コレクションをprefecture_idをキーにした連想配列に変換
+        $Cities = $cityCollection->groupBy('prefecture_id')->map(function ($items) {
+            return $items->pluck('name', 'id')->toArray();
+        })->toArray();
+        return view('coop.CoopRegistrationRequest',compact('Prefecture','Cities'));
     }
     public function coopRegister(Request $request)
     {
@@ -24,6 +36,7 @@ class CoopRegistrationRequestController extends Controller
             'amount_of_compensation' => 0,
         ]);
         try {
+            DB::beginTransaction();
             $license_information = $request->validate([
                 'date_of_issue' => 'required|date',
                 'date_of_registration' => 'required|date',
@@ -81,12 +94,60 @@ class CoopRegistrationRequestController extends Controller
                 'pay_status' => 'required|integer',
                 'amount_of_compensation' => 'required|integer',
             ]);
-            CoopUser::create($coopdata);
+            $coop = CoopUser::create($coopdata);
+            if($request->office_representative_last_name != null){
+                $request->merge([
+                    'representative_last_name' => $request->office_representative_last_name,
+                ]);
+            }
+            if($request->office_representative_last_name != null){
+                $request->merge([
+                    'representative_first_name' => $request->office_representative_first_name,
+                ]);
+            }
+            if($request->office_representative_last_name != null){
+                $request->merge([
+                    'representative_last_name_kana' => $request->office_representative_last_name_kana,
+                ]);
+            }
+            if($request->office_representative_last_name != null){
+                $request->merge([
+                    'representative_first_name_kana' => $request->office_representative_first_name_kana,
+                ]);
+            }
+            // dd($document->name);
+            $request->merge([
+                'coop_user_id' => $coop->id,
+                'license_holder_name' => $document->name,
+                'license_id' => $licenseId,
+                'coop_user_id' => $coop->id,
+            ]);
+
+            $coopLocation = $request->validate([
+                'office_name' => 'required|string|max:100',
+                'postal_code' => 'required|integer',
+                'prefecture_id' => 'required|integer',
+                'city_id' => 'required|integer',
+                'representative_last_name' => 'required|string|max:100',
+                'representative_first_name' => 'required|string|max:100',
+                'representative_last_name_kana' => 'required|string|max:100',
+                'representative_first_name_kana' => 'required|string|max:100',
+                'license_holder_name' => 'required|string|max:100',
+                'license_id' => 'required|integer',
+                'town' => 'nullable|string|max:100',
+                'block' => 'nullable|string|max:100',
+                'coop_user_id' => 'nullable|integer|exists:coop_user,id',
+            ]);
+            // dd($coopLocation);
+            CoopLocation::create($coopLocation);
+            DB::commit();
+
 
             return redirect()->route('coop.coopApplyCoopRegister')->with('success', '企業情報が登録されました。');
 
         }catch (\Illuminate\Validation\ValidationException $e) {
             // バリデーションエラーが発生した場合
+            DB::rollback();
             return back()->withErrors($e->validator)->withInput();
         }
         
