@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
         // 現在の選択肢をクリア
         citiesSelect.innerHTML = '';
-    
+        const currentCityId = citiesData[0];
+        delete citiesData[0];
         // 対応する市区町村を追加
         if (selectedPrefecture in citiesData) {
             // オブジェクトの各プロパティに対して処理を行う
@@ -18,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     const option = document.createElement('option');
                     option.value = id;
                     option.text = citiesData[selectedPrefecture][id];
+                    if (id == currentCityId){
+                        option.selected = true;
+                    }
                     citiesSelect.appendChild(option);
                 }
             }

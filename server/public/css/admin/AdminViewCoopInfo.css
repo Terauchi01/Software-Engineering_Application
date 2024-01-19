@@ -102,6 +102,14 @@ input {
     padding: 10px;
 }
 
+select {
+    width: 200px;
+    box-sizing: border-box;
+    border: 2px solid #408A7E;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
 .confirm button {
     display: flex;
     align-items: center;

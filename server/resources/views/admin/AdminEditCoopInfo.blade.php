@@ -3,6 +3,8 @@
     <head>
         <title>事業者情報編集</title>
         <link rel="stylesheet" href="{{ asset('/css/common/EditInfo.css') }}">
+        <script>const citiesData = @json($cities);</script>
+        <script src="{{ asset('js/common/city.js') }}"></script>
     </head>
     <body>
         <nav class="side">
@@ -59,11 +61,19 @@
                         <th>
                             <div class="left">
                                 〒<input type="text" name="postal_code" value="{{ $data['postal_code'] }}" placeholder="ハイフン無しで入力してください" required>
-                                <input type="text" name="prefecture" value="{{ $data['prefecture'] }}" placeholder="都道府県" required>
-                                <input type="text" name="city" value="{{ $data['city'] }}" placeholder="市区" required>
+
+                                <label for="prefecture_id">都道府県</label>
+                                <select id="prefecture" name="prefecture_id" required>
+                                    @foreach ($prefectures as $id => $name)
+                                        <option value="{{ $id }}" {{ $data['prefecture'] === $id ? 'selected' : '' }}>{{ $name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="city_id">市区町村</label>
+                                <select id="city" name="city_id" required>
+                                </select>
                             </div>
                             <div style="text-align:center">
-                                <input type="text" name="town" value="{{ $data['town'] }}" placeholder="町村" required>
+                                <input type="text" name="town" value="{{ $data['town'] }}" placeholder="町名" required>
                                 <input type="text" name="block" value="{{ $data['block'] }}" placeholder="住所" required>
                             </div>
                         </th>
@@ -79,10 +89,10 @@
                         <th>免許情報</th>
                         <th>
                             <div class="left">
-                                交付日<input type="text" name="date_of_issue" value="{{ $data['date_of_issue'] }}" required><br>
-                                登録日<input type="text" name="date_of_registration" value="{{ $data['date_of_registration'] }}" required><br>
+                                交付日<input type="date" name="date_of_issue" value="{{ $data['date_of_issue'] }}" required><br>
+                                登録日<input type="date" name="date_of_registration" value="{{ $data['date_of_registration'] }}" required><br>
                                 交付者<input type="text" name="name" value="{{ $data['name'] }}" required><br>
-                                交付者生年月日<input type="text" name="birth" value="{{ $data['birth'] }}" required><br>
+                                交付者生年月日<input type="date" name="birth" value="{{ $data['birth'] }}" required><br>
                                 条件<input type="text" name="conditions" value="{{ $data['conditions'] }}" required><br>
                                 区分<input type="text" name="classification" value="{{ $data['classification'] }}" required><br>
                                 限定事項1<input type="text" name="ratings_and_limitations1" value="{{ $data['ratings_and_limitations1'] }}" required><br>
