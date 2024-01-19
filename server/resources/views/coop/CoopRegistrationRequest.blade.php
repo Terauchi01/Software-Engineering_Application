@@ -1,10 +1,3 @@
-<script>const citiesData = @json($Cities);</script>
-<script src="{{ asset('js/common/city.js') }}"></script>
-<form action="{{ route('coop.coopRegister') }}" method="POST">
-    @csrf
-    <h2>企業情報</h2><br>
-    <label for="email_address">メールアドレス</label>
-    <input type="email" name="email_address" required><br>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -56,59 +49,55 @@
                 <label for="employees">従業員数</label>
                 <input type="number" name="employees" placeholder="0" required><br>
 
-    <h2>事業所情報</h2><br>
-    <label for="office_name">事業所名</label>
-    <input type="text" name="office_name" required><br>
-    <label for="postal_code"></label>
-    <!-- 郵便番号 -->
-    <div>
-        <label for="postal_code">郵便番号</label>
-        <input type="text" name="postal_code" required>
-    </div>
+                <h2>事業所情報</h2><br>
+                <label for="office_name">事業所名</label>
+                <input type="text" name="office_name" required><br>
+                <label for="postal_code"></label>
+                <!-- 郵便番号 -->
+                <div>
+                    <label for="postal_code">郵便番号</label>
+                    <input type="text" name="postal_code" required>
+                </div>
 
-    <!-- 都道府県id -->
-    <div>
-        <label for="prefecture_id">都道府県</label>
-        <select id="prefecture" name="prefecture_id" required>
-            @foreach ($Prefecture as $id => $name)
-                <option value="{{ $id }}">{{ $name }}</option>
-            @endforeach
-        </select>
-    </div>
-    
-    <!-- 市区町村のセレクトボックス -->
-    <div>
-        <label for="city_id">市区町村</label>
-        <select id="city" name="city_id" required>
-        </select>
-    </div>
+                <!-- 都道府県id -->
+                <div>
+                    <label for="prefecture_id">都道府県</label>
+                    <select id="prefecture" name="prefecture_id" required>
+                        @foreach ($Prefecture as $id => $name)
+                        <option value="{{ $id }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
+                <!-- 市区町村のセレクトボックス -->
+                    <label for="city_id">市区町村</label>
+                    <select id="city" name="city_id" required></select>
+                </div>
 
-    <!-- それ以降 -->
-    <div>
-        <label for="town">町名・番地</label>
-        <input type="text" name="town" required>
-    </div>
-    
-    <div>
-        <label for="block">建物名</label>
-        <input type="text" name="block" required>
-    </div>
-    以下企業情報の代表者名と異なる場合のみ記載して下さい<br>
-    <label for="representative_last_name">事業所代表者姓</label>
-    <input type="text" name="office_representative_last_name" ><br>
+                <!-- それ以降 -->
+                <div>
+                    <label for="town">町名・番地</label>
+                    <input type="text" name="town" required>
+                </div>
 
-    <label for="representative_first_name">事業所代表者名</label>
-    <input type="text" name="office_representative_first_name" ><br>
+                <div>
+                    <label for="block">建物名</label>
+                    <input type="text" name="block" required>
+                </div>
+                以下企業情報の代表者名と異なる場合のみ記載して下さい<br>
+                <label for="representative_last_name">事業所代表者姓</label>
+                <input type="text" name="office_representative_last_name"><br>
 
-    <label for="representative_last_name_kana">姓カナ</label>
-    <input type="text" name="office_representative_last_name_kana" ><br>
+                <label for="representative_first_name">事業所代表者名</label>
+                <input type="text" name="office_representative_first_name"><br>
 
-    <label for="representative_first_name_kana">名カナ</label>
-    <input type="text" name="office_representative_first_name_kana" ><br>
+                <label for="representative_last_name_kana">姓カナ</label>
+                <input type="text" name="office_representative_last_name_kana"><br>
 
-    <h2>免許情報</h2><br>
-    <label for="date_of_issue">公布日</label>
-    <input type="date" name="date_of_issue" required><br>
+                <label for="representative_first_name_kana">名カナ</label>
+                <input type="text" name="office_representative_first_name_kana"><br>
+
+                <h2>免許情報</h2><br>
+                <label for="date_of_issue">公布日</label>
+                <input type="date" name="date_of_issue" required><br>
                 <div class="phone">
                     <label for="phone_number">電話番号</label>
                     <input type="tel" name="phone_number" placeholder="000" size="3" pattern="\d{3}" required>
@@ -183,6 +172,10 @@
             </div>
         </form>
     </div>
+    <script>
+        const citiesData = @json($Cities);
+    </script>
+    <script src="{{ asset('js/common/city.js') }}"></script>
 </body>
 
 </html>
