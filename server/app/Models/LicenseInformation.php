@@ -24,9 +24,9 @@ class LicenseInformation extends Model
     ];
 
     protected $casts = [
-        'date_of_issue' => 'datetime',
-        'date_of_registration' => 'datetime',
-        'birth' => 'datetime',
+        'date_of_issue' => 'date',
+        'date_of_registration' => 'date',
+        'birth' => 'date',
         'deletion_date' => 'datetime',
     ];
 }
