@@ -1,5 +1,6 @@
 //<script>const citiesData = @json($Cities);</script>
 //<script src="{{ asset('js/common/city.js') }}"></script>
+//server/resources/views/coop/CoopRegistrationRequest.blade.phpこれとそのコントローラを参照
 document.addEventListener('DOMContentLoaded', function() {
     // const citiesData = @json($Cities); // コントローラーから渡された市区町村データ
     function updateCities() {
