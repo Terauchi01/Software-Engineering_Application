@@ -1,139 +1,155 @@
-<!DOCTYPE html>
-<html>
+coopRegistrationRequest
+<script>const citiesData = @json($Cities);</script>
+<script src="{{ asset('js/common/city.js') }}"></script>
+<form action="{{ route('coop.editCoopInfo') }}" method="POST">
+    @csrf
+    <h2>企業情報</h2><br>
+    <label for="email_address">メールアドレス</label>
+    <input type="email" name="email_address" required><br>
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="globals.css" />
-  <link rel="stylesheet" href="{{ asset('/css/coop/CoopEditCoopInfo.css') }}">
-</head>
+    <label for="password">パスワード</label>
+    <input type="password" name="password" required><br>
 
-<body>
-  <div class=e271_431>
-    <div class="e100_171"></div>
-    <div class=e100_172>
-      <div class="e100_173"></div><span class="e100_174">会員情報更新</span>
-    </div>
-    <div class=e100_175><span class="e100_176">お名前(カナ)</span>
-      <div class=e100_177>
-        <div class="e100_178"></div><span class="e100_179">セイ</span>
-      </div>
-      <div class=e100_180>
-        <div class="e100_181"></div><span class="e100_182">メイ</span>
-      </div>
-    </div>
-    <div class=e100_183><span class="e100_184">お名前</span>
-      <div class=e100_185>
-        <div class="e100_186"></div><span class="e100_187">姓</span>
-      </div>
-      <div class=e100_188><span class="e100_189">名</span>
-        <div class="e100_190"></div>
-      </div>
-    </div>
-    <div class=e100_191><span class="e100_192">事業代表者名</span>
-      <div class=e100_193>
-        <div class="e100_194"></div><span class="e100_195">姓</span>
-      </div>
-      <div class=e100_196><span class="e100_197">名</span>
-        <div class="e100_198"></div>
-      </div>
-    </div>
-    <div class=e100_199><span class="e100_200">事業代表者名(カナ)</span>
-      <div class=e100_201>
-        <div class="e100_202"></div><span class="e100_203">セイ</span>
-      </div>
-      <div class=e100_204><span class="e100_205">メイ</span>
-        <div class="e100_206"></div>
-      </div>
-    </div>
-    <div class=e100_207><span class="e100_208">免許番号</span>
-      <div class="e100_209"></div>
-    </div>
-    <div class=e100_210><span class="e100_211">口座情報</span>
-      <div class=e100_212>
-        <div class="e100_213"></div><span class="e100_214">銀行名</span>
-      </div>
-      <div class=e100_215>
-        <div class="e100_216"></div><span class="e100_217">支店名</span>
-      </div>
-      <div class=e100_218>
-        <div class="e100_219"></div><span class="e100_220">種別</span>
-      </div>
-      <div class=e100_221>
-        <div class="e100_222"></div><span class="e100_223">口座番号</span>
-      </div>
-      <div class=e100_224>
-        <div class="e100_225"></div><span class="e100_226">口座名義</span>
-      </div>
-    </div>
-    <div class=e100_227><span class="e100_228">事業拠点情報</span>
-      <div class=e100_229>
-        <div class="e100_230"></div><span class="e100_231">郵便番号</span>
-      </div>
-      <div class=e100_232>
-        <div class="e100_233"></div><span class="e100_234">県名</span>
-        <div class="e100_235"></div>
-      </div>
-      <div class=e100_236>
-        <div class="e100_237"></div><span class="e100_238">市町村</span>
-        <div class="e100_239"></div>
-      </div>
-      <div class=e100_240>
-        <div class="e100_241"></div><span class="e100_242">住所</span>
-      </div>
-    </div>
-    <div class=e100_243><span class="e100_244">従業員数</span>
-      <div class=e100_245>
-        <div class="e100_246"></div><span class="e100_247">名</span>
-      </div>
-    </div>
-    <div class=e100_248><span class="e100_249">電話番号</span>
-      <div class=e100_250>
-        <div class="e100_251"></div><span class="e100_252">0887-53-1111
-        </span>
-      </div>
-    </div>
-    <div class=e100_253><span class="e100_254">メールアドレス</span>
-      <div class=e100_255>
-        <div class="e100_256"></div><span class="e100_257">example@example.com</span>
-      </div>
-    </div>
-    <div class=e100_258><span class="e100_259">パスワード</span>
-      <div class=e100_260>
-        <div class="e100_261"></div><span class="e100_262">8文字以上32文字以下、英数字</span>
-      </div>
-    </div>
-    <div class=e100_263>
-      <div class=e100_264>
-        <div class="e100_265"></div><span class="e100_266">もう一度入力してください</span>
-      </div>
-    </div>
-    <div class=e100_267>
-      <div class="e100_268"></div><span class="e100_269">上記内容で更新する</span>
-    </div>
-    <div class=e100_581>
-      <div class="e100_582"></div><span class="e100_583">キャンセル</span>
-    </div>
-    <div class=e271_419>
-      <div class="e271_420"></div><span class="e271_421">事業者</span><span class="e271_422">+918912345679</span>
-      <div class=e271_423>
-        <div class="e271_424"></div>
-        <div class="e271_425"></div>
-      </div>
-      <div class=e271_427>
-        <div class="e271_428"></div><span class="e271_429">C</span>
-      </div>
-    </div>
-    <div class=e271_408>
-      <div class="e271_409"></div>
-      <div class=e271_410>
-        <div class="e271_417"></div><span class="e271_412">事業者情報
-          編集</span><span class="e271_411">ドローン
-          貸与申請</span><span class="e271_413">子アカウント
-          発行</span><span class="e271_414">子アカウント
-          一覧</span><span class="e271_415">ドローン登録</span><span class="e271_416">所持ドローン</span><span class="e271_418">依頼一覧</span>
-      </div>
-    </div>
-  </div>
-</body>
+    <label for="coop_name">事業者名</label>
+    <input type="text" name="coop_name" required><br>
 
-</html>
+    <label for="representative_last_name">事業代表者姓</label>
+    <input type="text" name="representative_last_name" required><br>
+
+    <label for="representative_first_name">事業代表者名</label>
+    <input type="text" name="representative_first_name" required><br>
+
+    <label for="representative_last_name_kana">姓カナ</label>
+    <input type="text" name="representative_last_name_kana" required><br>
+
+    <label for="representative_first_name_kana">名カナ</label>
+    <input type="text" name="representative_first_name_kana" required><br>
+
+    <label for="employees">従業員数</label>
+    <input type="text" name="employees" required><br>
+
+    <label for="phone_number">電話番号</label>
+    <input type="text" name="phone_number" required><br>
+
+    <label for="land_or_air">陸か空か</label>
+    <input type="text" name="land_or_air" required><br>
+
+    <h2>事業所情報</h2><br>
+    <label for="office_name">事業所名</label>
+    <input type="text" name="office_name" required><br>
+    <label for="postal_code"></label>
+    <!-- 郵便番号 -->
+    <div>
+        <label for="postal_code">郵便番号</label>
+        <input type="text" name="postal_code" required>
+    </div>
+
+    <!-- 都道府県id -->
+    <div>
+        <label for="prefecture_id">都道府県</label>
+        <select id="prefecture" name="prefecture_id" required>
+            @foreach ($Prefecture as $id => $name)
+                <option value="{{ $id }}">{{ $name }}</option>
+            @endforeach
+        </select>
+    </div>
+    
+    <!-- 市区町村のセレクトボックス -->
+    <div>
+        <label for="city_id">市区町村</label>
+        <select id="city" name="city_id" required>
+        </select>
+    </div>
+
+    <!-- それ以降 -->
+    <div>
+        <label for="town">町名・番地</label>
+        <input type="text" name="town" required>
+    </div>
+    
+    <div>
+        <label for="block">建物名</label>
+        <input type="text" name="block" required>
+    </div>
+    以下企業情報の代表者名と異なる場合のみ記載して下さい<br>
+    <label for="representative_last_name">事業所代表者姓</label>
+    <input type="text" name="office_representative_last_name" ><br>
+
+    <label for="representative_first_name">事業所代表者名</label>
+    <input type="text" name="office_representative_first_name" ><br>
+
+    <label for="representative_last_name_kana">姓カナ</label>
+    <input type="text" name="office_representative_last_name_kana" ><br>
+
+    <label for="representative_first_name_kana">名カナ</label>
+    <input type="text" name="office_representative_first_name_kana" ><br>
+
+    <h2>免許情報</h2><br>
+    <label for="date_of_issue">公布日</label>
+    <input type="date" name="date_of_issue" required><br>
+
+    <label for="date_of_registration">登録日</label>
+    <input type="date" name="date_of_registration" required><br>
+
+    <label for="name">名前</label>
+    <input type="text" name="name" required><br>
+
+    <label for="birth">生年月日</label>
+    <input type="date" name="birth" required><br>
+
+    <label for="conditions">条件</label>
+    <input type="text" name="conditions" required><br>
+
+    <label for="classification">区分</label>
+    <input type="text" name="classification" required><br>
+
+    <label for="ratings_and_limitations1">限定事項1</label>
+    <input type="text" name="ratings_and_limitations1" required><br>
+
+    <label for="ratings_and_limitations2">限定事項2</label>
+    <input type="text" name="ratings_and_limitations2"><br>
+
+    <label for="ratings_and_limitations3">限定事項3</label>
+    <input type="text" name="ratings_and_limitations3"><br>
+
+    <label for="number">番号</label>
+    <input type="text" name="number" required><br>
+
+    <h2>銀行情報</h2><br>
+    <label for="bank_id">銀行名</label>
+    <input type="text" name="bank_id" required><br>
+
+    <label for="branch_id">支店名</label>
+    <input type="text" name="branch_id" required><br>
+
+    <label for="account_type">口座の種別</label>
+    <input type="text" name="account_type" required><br>
+
+    <label for="account_number">口座番号</label>
+    <input type="text" name="account_number" required><br>
+
+    <label for="account_name">口座の持ち主の名前</label>
+    <input type="text" name="account_name" required><br>
+
+    <label for="account_name_kana">口座持ち主のカナ</label>
+    <input type="text" name="account_name_kana" required><br>
+
+    <button type="submit">登録</button>
+</form>
+
+@if ($errors->any())
+    <div>
+        <strong>入力エラーがあります。</strong>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if (session('success'))
+    <div>
+        <p>{{ session('success') }}</p>
+    </div>
+@endif
