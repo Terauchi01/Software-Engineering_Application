@@ -16,7 +16,10 @@ class AdminViewUserStatisticsInfoController extends Controller
         $sixMonthsAgoFirstDays = [];
         for ($i = 0; $i < 6; $i++) {
             $sixMonthsAgoFirstDays[] = Carbon::now()->subMonths($i)->startOfMonth();
-            $monthCounts[] = DeliveryRequest::where('deletion_date','=',null)->where('delivery_status', 4)->where('updated_at', '>=', $sixMonthsAgoFirstDays[$i])->count()-$sum;
+            $monthCounts[] = DeliveryRequest::where('deletion_date','=',null)
+                ->where('delivery_status', 4)
+                ->where('updated_at', '>=', $sixMonthsAgoFirstDays[$i])
+                ->count()-$sum;
             $sum += $monthCounts[$i];
         }
         
@@ -35,8 +38,10 @@ class AdminViewUserStatisticsInfoController extends Controller
         $toCounts = [];
         
         foreach ($A as $request) {
-            $fromPrefectureId = $users->where('deletion_date','=',null)->where('id', $request->user_id)->pluck('prefecture_id')->first();
-            $toPrefectureId = $users->where('deletion_date','=',null)->where('id', $request->delivery_destination_id)->pluck('prefecture_id')->first();
+            $fromPrefectureId = $users->where('deletion_date','=',null)
+                ->where('id', $request->user_id)->pluck('prefecture_id')->first();
+            $toPrefectureId = $users->where('deletion_date','=',null)
+                ->where('id', $request->delivery_destination_id)->pluck('prefecture_id')->first();
             
             // 出発地からのデータ数をカウント
             if (!isset($fromCounts[$fromPrefectureId])) {
@@ -64,7 +69,10 @@ class AdminViewUserStatisticsInfoController extends Controller
         $sixMonthsAgoFirstDays = [];
         for ($i = 0; $i < 6; $i++) {
             $sixMonthsAgoFirstDays[] = Carbon::now()->subMonths($i)->startOfMonth();
-            $monthCounts[] = DeliveryRequest::where('deletion_date','=',null)->where('delivery_status', 4)->where('updated_at', '>=', $sixMonthsAgoFirstDays[$i])->count()-$sum;
+            $monthCounts[] = DeliveryRequest::where('deletion_date','=',null)
+                ->where('delivery_status', 4)
+                ->where('updated_at', '>=', $sixMonthsAgoFirstDays[$i])
+                ->count()-$sum;
             $sum += $monthCounts[$i];
         }
         $monthCounts = array_reverse($monthCounts);
@@ -90,20 +98,24 @@ class AdminViewUserStatisticsInfoController extends Controller
         $toCounts = [];
         
         foreach ($A as $request) {
-            $fromPrefectureId = $users->where('deletion_date','=',null)->where('id', $request->user_id)->pluck('prefecture_id')->first();
-            $toPrefectureId = $users->where('deletion_date','=',null)->where('id', $request->delivery_destination_id)->pluck('prefecture_id')->first();
+            $fromPrefectureId = $users->where('deletion_date','=',null)
+                ->where('id', $request->user_id)->pluck('prefecture_id')->first();
+            $toPrefectureId = $users->where('deletion_date','=',null)
+                ->where('id', $request->delivery_destination_id)->pluck('prefecture_id')->first();
             
             // 出発地からのデータ数をカウント
             if (!isset($fromCounts[$fromPrefectureId])) {
                 $fromCounts[$fromPrefectureId] = 1;
-                $fromPrefectures[$fromPrefectureId] = $Prefecture->where('deletion_date','=',null)->where('id', $fromPrefectureId)->pluck('name')->first();
+                $fromPrefectures[$fromPrefectureId] = $Prefecture->where('deletion_date','=',null)
+                    ->where('id', $fromPrefectureId)->pluck('name')->first();
             } else {
                 $fromCounts[$fromPrefectureId]++;
             }
             
             // 到着地へのデータ数をカウント
             if (!isset($toCounts[$toPrefectureId])) {
-                $toPrefectures[$toPrefectureId] = $Prefecture->where('deletion_date','=',null)->where('id', $toPrefectureId)->pluck('name')->first();
+                $toPrefectures[$toPrefectureId] = $Prefecture->where('deletion_date','=',null)
+                    ->where('id', $toPrefectureId)->pluck('name')->first();
                 $toCounts[$toPrefectureId] = 1;
             } else {
                 $toCounts[$toPrefectureId]++;

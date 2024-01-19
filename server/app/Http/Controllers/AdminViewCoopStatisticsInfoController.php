@@ -26,7 +26,6 @@ class AdminViewCoopStatisticsInfoController extends Controller
             $month_collection[$userId] = $A->where('deletion_date','=',null)->where('collection_company_id', $userId)->count();
             $month_intermediate[$userId] = $A->where('deletion_date','=',null)->where('intermediate_delivery_company_id', $userId)->count();
             $month_delivery[$userId] = $A->where('deletion_date','=',null)->where('delivery_company_id', $userId)->count();
-            
         }
         
         //事業者のドローン稼働率
@@ -89,7 +88,7 @@ class AdminViewCoopStatisticsInfoController extends Controller
             if ($status1Count + $status0Count !== 0) {
                 // $ratio[$userId] = -1;
                 $name2[$userId] = $user->coop_name;
-                $ratio[$userId] = ($status1Count / ($status1Count + $status0Count));
+                $ratio[$userId] = ($status1Count / ($status1Count + $status0Count)) * 100;
             }
         }
         
