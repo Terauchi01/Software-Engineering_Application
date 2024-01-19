@@ -30,7 +30,7 @@
                     </tr>
                     <tr>
                         <th>メールアドレス</th>
-                        <th><div class="left"><input type="text" name="email" value="{{ $data['email'] }}" placeholder="example@mail.com" required></div></th>
+                        <th><div class="left"><input type="email" name="email" value="{{ $data['email'] }}" placeholder="example@mail.com" required></div></th>
                     </tr>
                     <tr>
                         <th>パスワード</th>
@@ -70,7 +70,10 @@
                     </tr>
                     <tr>
                         <th>営業形態</th>
-                        <th><div class="left"><input type="text" name="land_or_air" value="{{ $data['land_or_air'] }}" required></div></th>
+                        <th><div class="left">
+                            <label><input type="radio" name="land_or_air" value="1" {{ $data['land_or_air'] === 1 ? 'checked' : '' }}>陸</label>
+                            <label><input type="radio" name="land_or_air" value="2" {{ $data['land_or_air'] === 2 ? 'checked' : '' }}>空</label>
+                        </div></th>
                     </tr>
                     <tr>
                         <th>免許情報</th>
@@ -94,21 +97,17 @@
                                 <input type="text" name="bank_id" value="{{ $data['acc_bank'] }}" placeholder="銀行名" required>
                                 <input type="text" name="branch_id" value="{{ $data['acc_branch'] }}" placeholder="支店名" required>
                                 <input type="text" name="account_type" value="{{ $data['acc_type'] }}" placeholder="講座種別" required>
-                                <input type="text" name="account_number" value="{{ $data['acc_num'] }}" placeholder="口座番号" required>
+                                <input type="text" name="account_number" pattern="\d{12,13}" value="{{ $data['acc_num'] }}" placeholder="口座番号" required>
                             </div>
                         </th>
                     </tr>
                     <tr>
                         <th>従業員人数</th>
-                        <th><div class="left"><input type="text" name="employees" value="{{ $data['worker'] }}" required>人</div></th>
+                        <th><div class="left"><input type="text" name="employees" pattern="[0-9]*" value="{{ $data['worker'] }}" required>人</div></th>
                     </tr>
                     <tr>
                         <th>電話番号</th>
-                        <th><div class="left"><input type="text" name="phone_number" value="{{ $data['phone'] }}" placeholder="ハイフン無しで入力してください" required></div></th>
-                    </tr>
-                    <tr>
-                        <th>申請状態</th>
-                        <th><div class="left"><input type="text" name="application_status" value="{{ $data['status'] }}" required></div></th>
+                        <th><div class="left"><input type="text" name="phone_number" pattern="\d{10,11}" value="{{ $data['phone'] }}" placeholder="ハイフン無しで入力してください" required></div></th>
                     </tr>
                 </table>
                 <input type="hidden" name="id" value="{{ $coopId }}">

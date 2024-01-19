@@ -25,7 +25,7 @@
                 <table>
                     <tr>
                         <th>メールアドレス</th>
-                        <th><div class="left"><input type="text" name="email" value="{{ $data['email'] }}" placeholder="example@mail.com"></div></th>
+                        <th><div class="left"><input type="email" name="email" value="{{ $data['email'] }}" placeholder="example@mail.com"></div></th>
                     </tr>
                     <tr>
                         <th>パスワード</th>
@@ -65,7 +65,7 @@
                     </tr>
                     <tr>
                         <th>電話番号</th>
-                        <th><div class="left"><input type="text" name="phone_number" value="{{ $data['phone_number'] }}" placeholder="ハイフン無しで入力してください" required></div></th>
+                        <th><div class="left"><input type="text" name="phone_number" pattern="\d{10,11}" value="{{ $data['phone_number'] }}" placeholder="ハイフン無しで入力してください" required></div></th>
                     </tr>
                 </table>
                 <input type="hidden" name="id" value="{{ $userId }}">
