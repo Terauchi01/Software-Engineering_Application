@@ -18,9 +18,10 @@ class CoopLocationFactory extends Factory
      */
     public function definition(): array
     {
+        $coopUserIds = CoopUser::pluck('id')->toArray();
         return [
             'office_name' => $this->faker->Name,
-            'coop_user_id' => CoopUser::inRandomOrder()->first()->id,
+            'coop_user_id' => $this->faker->unique()->randomElement($coopUserIds),
             'postal_code' => $this->faker->numerify('#######'),
             'prefecture_id' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
             'city_id' => function (array $attributes) {
@@ -32,14 +33,10 @@ class CoopLocationFactory extends Factory
             },
             'town' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
             'block' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
-            'representative_last_name' => $this->faker->lastName,
-            'representative_first_name' => $this->faker->firstName,
-            'representative_last_name_kana' => $this->faker->lastName,
-            'representative_first_name_kana' => $this->faker->firstName,
-            'license_holder_name' => $this->faker->Name,
-            // 'license_holder_first_name' => $this->faker->firstName,
-            // 'license_holder_last_name_kana' => $this->faker->lastName,
-            // 'license_holder_first_name_kana' => $this->faker->firstName,
+            // 'representative_last_name' => $this->faker->lastName,
+            // 'representative_first_name' => $this->faker->firstName,
+            // 'representative_last_name_kana' => $this->faker->lastName,
+            // 'representative_first_name_kana' => $this->faker->firstName,
             'license_id' => $this->faker->numberBetween(1, 100), // 適切なランダムな値に置き換える
             // 他の属性に基づいて必要な項目を追加
             'created_at' => now(),

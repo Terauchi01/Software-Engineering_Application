@@ -17,10 +17,10 @@ return new class extends Migration
             $table->integer('postal_code')->nullable(false);
             $table->integer('prefecture_id')->nullable(false);
             $table->integer('city_id')->nullable(false);
-            $table->string('representative_last_name', 100)->nullable(false);
-            $table->string('representative_first_name', 100)->nullable(false);
-            $table->string('representative_last_name_kana', 100)->nullable(false);
-            $table->string('representative_first_name_kana', 100)->nullable(false);
+            // $table->string('representative_last_name', 100)->nullable(false);
+            // $table->string('representative_first_name', 100)->nullable(false);
+            // $table->string('representative_last_name_kana', 100)->nullable(false);
+            // $table->string('representative_first_name_kana', 100)->nullable(false);
             $table->unsignedBigInteger('license_id')->nullable(false);
             $table->string('town', 100)->nullable();
             $table->string('block', 100)->nullable();
