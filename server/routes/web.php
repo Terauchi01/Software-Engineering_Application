@@ -150,7 +150,6 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
         Route::get('coopEditCoopInfo/{id}', [CoopEditCoopInfoController::class, 'coopEditCoopInfo'])->name('coopEditCoopInfo');
         Route::post('editCoopInfo', [CoopEditCoopInfoController::class, 'editCoopInfo'])->name('editCoopInfo');
         Route::get('coopDeliveryRequestList', [CoopDeliveryRequestListController::class, 'coopDeliveryRequestList'])->name('coopDeliveryRequestList');
-        Route::get('deliveryRequestList/{id}', [CoopDeliveryRequestListController::class, 'delete'])->name('coopDeliveryRequestListDelete');
         Route::get('coopFilterChildCoopAccountListView', [CoopChildAccountListController::class, 'coopFilterChildCoopAccountListView'])->name('coopFilterChildCoopAccountListView');
         Route::get('coopLogout', [CoopLogoutController::class, 'coopLogout'])->name('coopLogout');
         Route::get('coopPublishChildCoopAccount', [CoopCreateChildAccountController::class, 'coopPublishChildCoopAccount'])->name('coopPublishChildCoopAccount');
