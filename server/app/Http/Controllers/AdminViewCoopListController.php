@@ -44,7 +44,8 @@ class AdminViewCoopListController extends Controller
 
         $list = $query->get();
         
-        $Prefecture_list = MstPrefecture::pluck('name', 'id')->toArray();
+        $Prefecture_list = MstPrefecture::orderBy('id')->pluck('name', 'id')->toArray();       
+        
         $Cities_list = Cities::pluck('name', 'id')->toArray();
         $mergedData = [];
         $A=['未','済'];
@@ -58,8 +59,8 @@ class AdminViewCoopListController extends Controller
                 'prefecture_id' => $item->prefecture_id,
                 'prefecture_name' => $Prefecture_list[$item->prefecture_id],
             ];
-        }   
-        return view('admin.AdminViewCoopList', compact('mergedData'));
+        }
+        return view('admin.AdminViewCoopList', compact('mergedData', 'Prefecture_list'));
     }
 
     public function delete(Request $request, $id)

@@ -52,53 +52,10 @@
                     &nbsp &nbsp &nbsp
                     <select onChange="location.href=this.value;">
                         <option>都道府県名を選択</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 1]) }}">北海道</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 2]) }}">青森県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 3]) }}">岩手県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 4]) }}">宮城県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 5]) }}">秋田県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 6]) }}">山形県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 7]) }}">福島県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 8]) }}">茨城県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 9]) }}">栃木県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 10]) }}">群馬県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 11]) }}">埼玉県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 12]) }}">千葉県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 13]) }}">東京都</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 14]) }}">神奈川県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 15]) }}">新潟県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 16]) }}">富山県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 17]) }}">石川県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 18]) }}">福井県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 19]) }}">山梨県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 20]) }}">長野県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 21]) }}">岐阜県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 22]) }}">静岡県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 23]) }}">愛知県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 24]) }}">三重県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 25]) }}">滋賀県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 26]) }}">京都府</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 27]) }}">大阪府</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 28]) }}">兵庫県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 29]) }}">奈良県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 30]) }}">和歌山県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 31]) }}">鳥取県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 32]) }}">島根県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 33]) }}">岡山県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 34]) }}">広島県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 35]) }}">山口県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 36]) }}">徳島県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 37]) }}">香川県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 38]) }}">愛媛県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 39]) }}">高知県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 40]) }}">福岡県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 41]) }}">佐賀県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 42]) }}">長崎県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 43]) }}">熊本県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 44]) }}">大分県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 45]) }}">宮崎県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 46]) }}">鹿児島県</option>
-                        <option value="{{ route('admin.adminViewCoopList', ['id' => 47]) }}">沖縄県</option>                        
+                        
+                        @foreach ($Prefecture_list as $key => $value)
+                            <option value="{{ route('admin.adminViewCoopList', ['id' => $key]) }}">{{ $value }}</option>
+                        @endforeach
                     </select>
 
                     
@@ -110,9 +67,15 @@
                         @php
                         $selected = collect($mergedData)->unique('prefecture_name')->values();
                         @endphp
-                        @foreach ($selected as $index => $show)
-                            {{ $show['prefecture_name'] }}       
-                        @endforeach                                    
+
+                        @if ($selected->count() === 1)                          
+                            選択された都道府県: 
+                            <span style="border: 1px solid #000; padding: 5px; display: inline;">
+                                {{ $selected->first()['prefecture_name'] }}
+                            </span>
+                        @elseif ($selected->count() === 0)
+                            選択された都道府県には事業者が存在しません
+                        @endif
                     </p>
                     <p>
                         <input type="checkbox" id="masterCheckbox" name="feature_enabled">

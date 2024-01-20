@@ -8,6 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>利用者情報管理</title>
         <link rel="stylesheet" href="{{ asset('css/admin/AdminList.css') }}">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="{{ asset('js/admin/delete.js') }}"></script>
         <style>
          .current {
              background-color: #ffffff;
@@ -25,7 +27,7 @@
                 <p><a href="{{ route('admin.adminViewUserList') }}">利用者情報管理</a></p>
             </div>
             <p><a href="{{ route('admin.adminViewCoopStatisticsInfo') }}">事業者情報分析</a></p>
-            <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>                
+            <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>  
             <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
             <p><a href="{{ route('admin.adminViewDroneType') }}">ドローンタイプ　一覧</a></p>
             <p><a href="{{ route('admin.adminViewCoopDeliveryRequestList') }}">事業者宅配一覧</a></p>
@@ -42,19 +44,21 @@
             <div class = "main">
                 <div class ="flex-main">                
                     <p><h2><font color ="#408A7E"><u> 利用者情報管理 </u></font></h2></p>                                        
-                    
-                    <button type="submit" name="add" id="filterButton" class="custom-button">絞り込み</button>
-                    <button type="submit" name="add" id="resetButton" class="custom-button">リセット</button>
-                    
-                    <script>
-                     document.getElementById('filterButton').addEventListener('click', function() {
-                         alert('所在地');
-                     });
-                     
-                     document.getElementById('resetButton').addEventListener('click', function() {
-                         alert('リセット');
-                     });
-                    </script>
+                    <button id="deleteButton" class="custom-button">チェックした項目を削除</button>
+
+                    &nbsp &nbsp &nbsp
+                    <select onChange="location.href=this.value;">
+                        <option>利用者名を選択</option>
+                        @php
+                        $uniqueName = collect($mergedData)->unique('user_name')->values();
+                        @endphp
+                        @foreach ($uniqueName as $index => $userInfo)
+                            <option value="{{ route('admin.adminViewUserList', ['id' => $userInfo['id']]) }}">{{ $userInfo['user_name'] }}</option>
+                        @endforeach
+                    </select>
+                    <form action="{{ route('admin.adminViewUserList', ['id' => '']) }}" method="GET" style="display: inline;">
+                        <button type="submit" name="reset" id="resetButton" class="custom-button">リセット</button>
+                    </form>
                     
                     
                     <p>
@@ -91,46 +95,16 @@
                                             <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
                                 </tr>
                             @endforeach
-                        </tbody>
-                        
-                        <script>
-                         document.getElementById('masterCheckbox').addEventListener('change', function() {
-                             var masterCheckbox = this;
-                             var itemCheckboxes = document.querySelectorAll('.itemCheckbox');
-                             
-                             itemCheckboxes.forEach(function(itemCheckbox) {
-                                 itemCheckbox.checked = masterCheckbox.checked;
-                             });
-                         });
-                         
-                         // 各行のチェックボックスに対するイベントリスナーも追加する場合
-                         document.querySelectorAll('.itemCheckbox').forEach(function(itemCheckbox) {
-                             itemCheckbox.addEventListener('change', function() {
-                                 var allChecked = true;
-                                 document.querySelectorAll('.itemCheckbox').forEach(function(checkbox) {
-                                     if (!checkbox.checked) {
-                                         allChecked = false;
-                                     }
-                                 });
-                                 document.getElementById('masterCheckbox').checked = allChecked;
-                             });
-                         });
-                         
-                         function editCoop(coopId) {
-                             var confirmation = confirm('編集しますか？ Coop ID: ' + coopId);
-                             
-                             if (confirmation) {
-                                 alert('編集処理を実行します。Coop ID: ' + coopId);
-                             }
-                         }
-                         
-                         function confirmDelete(coopId) {
-                             if (confirm('本当に削除しますか？')) {
-                                 alert('削除ボタンがクリックされました。Coop ID: ' + coopId);
-                             }
-                         }
-                        </script>
+                        </tbody>                                              
                     </table>
+                    <input type="hidden" id="url" value="{{ route('admin.deleteAll') }}">
+                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
+                    @foreach ($mergedData as $index => $userInfo)
+                        @if (isset($userInfo['selectedIds']))
+                            <a href="{{ route('admin.adminViewUserListDelete', ['id' => $userInfo['selectedIds']]) }}"></a>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>

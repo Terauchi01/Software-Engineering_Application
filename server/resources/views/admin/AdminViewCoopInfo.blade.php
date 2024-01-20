@@ -9,7 +9,7 @@
             <div class="current">
                 <p><a href="{{ route('admin.adminViewCoopList') }}">事業者情報管理</a></p>
             </div>
-            <p><a href="{{ route('admin.adminViewCoopDroneInfo') }}">ドローン貸与申請一覧</a></p>
+            <p><a href="{{ route('admin.adminViewCoopApplyDroneLendList') }}">ドローン貸与申請一覧</a></p>
             <p><a href="{{ route('admin.adminViewUserList') }}">利用者情報管理</a></p>
             <p><a href="{{ route('admin.adminViewCoopStatisticsInfo') }}">事業者情報分析</a></p>
             <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>

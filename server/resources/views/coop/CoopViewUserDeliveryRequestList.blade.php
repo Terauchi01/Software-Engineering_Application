@@ -23,8 +23,7 @@
             <p><a href="{{ route('coop.coopRegisterDrone') }}">ドローン登録</a></p>                
             <p><a href="{{ route('coop.coopViewChildCoopAccountList') }}">子アカウント一覧</a></p>
             <p><a href="{{ route('coop.coopPublishChildCoopAccount') }}">子アカウント発行</a></p>
-            <p><a href="{{ route('coop.coopApplyAdminDroneLend') }}">ドローン貸与申請</a></p>
-            <p><a href="{{ route('coop.coopEditCoopInfo') }}">事業者情報編集</a></p>
+            <p><a href="{{ route('coop.coopApplyAdminDroneLend') }}">ドローン貸与申請</a></p>           
         </div>
 
         <div class = "content">
