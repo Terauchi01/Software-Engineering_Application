@@ -3,30 +3,27 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>事業者ドローン情報一覧</title>
+        <title>ドローン情報一覧</title>
         <link rel="stylesheet" href="{{ asset('css/coop/CoopList.css') }}">
         <style>
-         .current {
-             background-color: #ffffff;
-             height: 20pt;
-             text-align: center;
-         }
+        .current {
+            background-color: #ffffff;
+            height: 20pt;
+            text-align: center;
+        }
         </style>
     </head>
     
     <body>    
         <div class="side">
-            <p><a href="{{ route('coop.coopViewUserDeliveryRequestList') }}">依頼一覧</a></p>
+            <p><a href="{{ route('coop.coopDeliveryRequestList') }}">依頼一覧</a></p>
             <div class="current">
-                <p><a href="{{ route('coop.coopDroneInfoList') }}">所持ドローン</a></p>
+                <p><a href="{{ route('coop.coopDroneInfoList') }}">ドローン情報一覧</a></p>
             </div>
-            <p><a href="{{ route('coop.coopRegisterDrone') }}">ドローン登録</a></p>                
-            <p><a href="{{ route('coop.coopViewChildCoopAccountList') }}">子アカウント一覧</a></p>
-            <p><a href="{{ route('coop.coopPublishChildCoopAccount') }}">子アカウント発行</a></p>
+            <p><a href="{{ route('coop.coopRegisterDrone') }}">ドローン登録</a></p>
             <p><a href="{{ route('coop.coopApplyAdminDroneLend') }}">ドローン貸与申請</a></p>
-            <p><a href="{{ route('coop.coopEditCoopInfo') }}">事業者情報編集</a></p>
         </div>
-
+        
         <div class = "content">
             <div class = "header">
                 <select onChange="location.href=value;">
@@ -39,20 +36,24 @@
             
             <div class = "main">
                 <div class ="flex-main">                        
-                    <p><h2><font color ="#408A7E"><u> 事業者ドローン情報一覧 </u></font></h2></p>
+                    <p><h2><font color ="#408A7E"><u> ドローン情報一覧 </u></font></h2></p>
                     
-                    <button id="filterButton" class="custom-button">絞り込み</button>
-                    
-                    <p>
-                        <input type="checkbox" id="masterCheckbox" name="feature_enabled">
-                        <label for="masterCheckbox">Select all</label>
-                    </p>
-                    
-                    
+                    <select onChange="location.href=this.value;">
+                        <option>ドローン状況を選択</option>
+                        @php
+                        $uniqueCompanies = collect($mergedData)->unique('drone_status')->values();
+                        @endphp
+                        @foreach ($uniqueCompanies as $index => $droneInfo)
+                            <option value="{{ route('coop.coopDroneInfoList', ['id' => $droneInfo['possession_or_loan']]) }}">{{ $droneInfo['drone_status'] }}</option>
+                        @endforeach
+                    </select>
+                    <form action="{{ route('coop.coopDroneInfoList', ['id' => '']) }}" method="GET" style="display: inline;">
+                        <button type="submit" name="reset" id="resetButton" class="custom-button">リセット</button>
+                    </form>
+                    <br><br>
                     <table class ="coop">
                         <thead>
                             <tr>
-                                <th></th>
                                 <th>ドローン番号</th>
                                 <th>ドローンの種類</th>
                                 <th>状況</th>
@@ -63,44 +64,41 @@
                         <tbody>
                             @foreach ($mergedData as $index => $droneInfo)
                                 <tr>
-                                    <td>
-                                        <input type="checkbox" class="itemCheckbox" id="checkbox{{$droneInfo['id']}}" name="selectedCoops[]" value="{{ $droneInfo['id'] }}">
-                                    </td>
                                     <td>{{ $droneInfo['id'] }}</td>                                   
                                     <td>{{ $droneInfo['drone_type_id'] }}</td>
                                     <td>{{ $droneInfo['drone_status'] }}</td>                           
                                     <td><button type="button">
-                                        <a href="{{ route('admin.adminEditCoopInfo', ['id' => $droneInfo['id']]) }}">
+                                        <a href="{{ route('admin.adminEditCoopDroneInfo', ['id' => $droneInfo['id']]) }}">
                                             <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20"></a></button></td>
                                     <td><button type="button">
-                                        <a href="{{ route('admin.adminViewCoopListDelete', ['id' => $droneInfo['id']]) }}">
+                                        <a href="{{ route('coop.coopDroneInfoListDelete', ['id' => $droneInfo['id']]) }}">
                                             <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
                                 </tr>
                             @endforeach
                         </tbody>                                   
                         
                         <script>
-                         document.getElementById('masterCheckbox').addEventListener('change', function() {
-                             var masterCheckbox = this;
-                             var itemCheckboxes = document.querySelectorAll('.itemCheckbox');
-                             
-                             itemCheckboxes.forEach(function(itemCheckbox) {
-                                 itemCheckbox.checked = masterCheckbox.checked;
-                             });
-                         });
-                         
+                        document.getElementById('masterCheckbox').addEventListener('change', function() {
+                            var masterCheckbox = this;
+                            var itemCheckboxes = document.querySelectorAll('.itemCheckbox');
+                            
+                            itemCheckboxes.forEach(function(itemCheckbox) {
+                                itemCheckbox.checked = masterCheckbox.checked;
+                            });
+                        });
+                        
                          // 各行のチェックボックスに対するイベントリスナーも追加する場合
-                         document.querySelectorAll('.itemCheckbox').forEach(function(itemCheckbox) {
-                             itemCheckbox.addEventListener('change', function() {
-                                 var allChecked = true;
-                                 document.querySelectorAll('.itemCheckbox').forEach(function(checkbox) {
-                                     if (!checkbox.checked) {
-                                         allChecked = false;
-                                     }
-                                 });
-                                 document.getElementById('masterCheckbox').checked = allChecked;
-                             });
-                         });                                                 
+                        document.querySelectorAll('.itemCheckbox').forEach(function(itemCheckbox) {
+                            itemCheckbox.addEventListener('change', function() {
+                                var allChecked = true;
+                                document.querySelectorAll('.itemCheckbox').forEach(function(checkbox) {
+                                    if (!checkbox.checked) {
+                                        allChecked = false;
+                                    }
+                                });
+                                document.getElementById('masterCheckbox').checked = allChecked;
+                            });
+                        });                                                 
                         </script>                            
                     </table>
                 </div>
@@ -108,4 +106,3 @@
         </div>
     </body>
 </html>
-                    

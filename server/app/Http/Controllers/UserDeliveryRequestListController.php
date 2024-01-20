@@ -14,20 +14,23 @@ class UserDeliveryRequestListController extends Controller
     public function userDeliveryRequestList (){
         $list = DeliveryRequest::select(
             'delivery_request.id',
-            'delivery_request.delivery_status',
+            'delivery_request.item',
+            'delivery_request.user_id',
             'delivery_request.delivery_destination_id',
         )            
-              ->where('delivery_request.deletion_date', '=', null)
-              ->orderBy('delivery_request.id', 'asc')
-              ->get();
+            ->where('delivery_request.deletion_date', '=', null)
+            ->orderBy('delivery_request.id', 'asc')
+            ->get();
         
         $mergedData = [];
+        $sendName = User::pluck('user_last_name', 'id')->toArray();
         $receiveName = User::pluck('user_last_name', 'id')->toArray();
         foreach ($list as $item) {         
             $mergedData[] = [
                 'id' => $item->id,
-                'delivery_status' => $item->delivery_status,
-                'delivery_destination_id' => $receiveName[$item->delivery_destination_id],               
+                'item' => $item->item,
+                'user_id' => $sendName[$item->user_id],
+                'delivery_destination_id' => $receiveName[$item->delivery_destination_id],
             ];
         }
         
