@@ -9,13 +9,20 @@ use App\Models\Cities;
 
 class AdminEditUserInfoController extends Controller
 {
-    public function adminEditUserInfo ($id) {
-        $id;
+    public function adminEditUserInfo (Request $request) {
+        $id = $request->input('id');
         $user = User::find($id);
 
         if ($user && $user->deletion_date === null) {
-            $prefecture = MstPrefecture::find($user->prefecture_id)['name'];
-            $city = Cities::find($user->city_id)['name'];
+            $prefectures = MstPrefecture::orderBy('id')->pluck('name', 'id')->toArray();
+            $cities = Cities::orderBy('id')
+                ->get(['id', 'prefecture_id', 'name'])
+                ->groupBy('prefecture_id')
+                ->map(function ($items) {
+                    return $items->pluck('name', 'id')->toArray();
+                })
+                ->toArray();
+            $cities[0] = $user->city_id;
                 
             $userId = $user->id;
             $userName = $user->user_last_name . $user->user_first_name;
@@ -23,8 +30,8 @@ class AdminEditUserInfoController extends Controller
                 'email' => $user->email_address,
                 'password' => '**********',
                 'postal_code' => $user->postal_code,
-                'prefecture' => $prefecture,
-                'city' => $city,
+                'prefecture' => $user->prefecture_id,
+                'city' => $user->city_id,
                 'town' => $user->town,
                 'block' => $user->block,
                 'phone_number' => $user->phone_number,
@@ -33,7 +40,7 @@ class AdminEditUserInfoController extends Controller
                 'last_name_kana' => $user->user_last_name_kana,
                 'first_name_kana' => $user->user_first_name_kana
             ];
-            return view('admin.AdminEditUserInfo', compact('userId', 'userName', 'data'));
+            return view('admin.AdminEditUserInfo', compact('userId', 'userName', 'prefectures', 'cities', 'data'));
         }
         $userName = '存在しないユーザです';
         $userId = null;
@@ -50,8 +57,8 @@ class AdminEditUserInfoController extends Controller
                 'email_address' => $request['email'],
                 'password' => $password,
                 'postal_code' => $request['postal_code'],
-                'prefecture_id' => MstPrefecture::where('name', $request['prefecture'])->value('id'),
-                'city_id' => Cities::where('name', $request['city'])->value('id'),
+                'prefecture_id' => $request['prefecture'],
+                'city_id' => $request['city'],
                 'town' => $request['town'],
                 'block' => $request['block'],
                 'phone_number' => $request['phone_number'],

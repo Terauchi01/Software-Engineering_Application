@@ -12,8 +12,8 @@ use App\Models\LicenseInformation;
 
 class AdminEditCoopInfoController extends Controller
 {
-    public function adminEditCoopInfo (Request $request,$id){
-        $id;
+    public function adminEditCoopInfo (Request $request){
+        $id = $request->input('id');
         $coop = CoopUser::find($id);
 
         if ($coop && $coop->deletion_date === null) {
@@ -22,6 +22,15 @@ class AdminEditCoopInfoController extends Controller
             $license = LicenseInformation::find($coop->license_information_id);
             $coopId = $coop->id;
             $coopName = $coop->coop_name;
+            $prefectures = MstPrefecture::orderBy('id')->pluck('name', 'id')->toArray();
+            $cities = Cities::orderBy('id')
+                ->get(['id', 'prefecture_id', 'name'])
+                ->groupBy('prefecture_id')
+                ->map(function ($items) {
+                    return $items->pluck('name', 'id')->toArray();
+                })
+                ->toArray();
+            $cities[0] = $loc->city_id;
 
             $data = [
                 'coop_name' => $coopName,
@@ -32,8 +41,8 @@ class AdminEditCoopInfoController extends Controller
                 'last_name_kana' => $coop->representative_last_name_kana,
                 'first_name_kana' => $coop->representative_first_name_kana,
                 'postal_code' => $loc->postal_code,
-                'prefecture' => MstPrefecture::find($loc->prefecture_id)['name'],
-                'city' => Cities::find($loc->city_id)['name'],
+                'prefecture' => $loc->prefecture_id,
+                'city' => $loc->city_id,
                 'town' => $loc->town,
                 'block' => $loc->block,
                 'date_of_issue' => $license->date_of_issue,
@@ -54,7 +63,7 @@ class AdminEditCoopInfoController extends Controller
                 'land_or_air' => $coop->land_or_air,
                 // 'status' => $coop->application_status
             ];
-            return view('admin.AdminEditCoopInfo', compact('coopName', 'coopId', 'data'));
+            return view('admin.AdminEditCoopInfo', compact('coopName', 'coopId', 'prefectures', 'cities', 'data'));
         }
         
         $coopName = '存在しないユーザです';
@@ -85,8 +94,8 @@ class AdminEditCoopInfoController extends Controller
             $clData = CoopLocation::where('coop_user_id', $id);
             $clData->update([
                 'postal_code' => $request['postal_code'],
-                'prefecture_id' => MstPrefecture::where('name', $request['prefecture'])->value('id'),
-                'city_id' => Cities::where('name', $request['city'])->value('id'),
+                'prefecture_id' => $request['prefecture_id'],
+                'city_id' => $request['city_id'],
                 'town' => $request['town'],
                 'block' => $request['block']
             ]);
