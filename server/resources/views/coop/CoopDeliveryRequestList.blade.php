@@ -38,34 +38,21 @@
                 <div class ="flex-main">                        
                     <p><h2><font color ="#408A7E"><u> 依頼一覧 </u></font></h2></p>
                     
-                    <button id="filterButton" class="custom-button">絞り込み</button>
-                    
-                    <p>
-                        <input type="checkbox" id="masterCheckbox" name="feature_enabled">
-                        <label for="masterCheckbox">Select all</label>
-                    </p>
-                    
-                    
                     <table class ="coop">
                         <thead>
                             <tr>
-                                <th></th>
                                 <th>依頼番号</th>
                                 <th>送り主情報</th>
                                 <th>受け取り主情報</th>
                                 <th>受領済</th>
-                                <th>不在</th>
                             </tr>
                         </thead>                                    
                         <tbody>
                             @foreach ($mergedData as $index => $deliveryInfo)
                                 <tr>
-                                    <td>
-                                        <input type="checkbox" class="itemCheckbox" id="checkbox{{$deliveryInfo['id']}}" name="selectedCoops[]" value="{{ $deliveryInfo['id'] }}">
-                                    </td>
-                                    <td>{{ $deliveryInfo['id'] }}</td>                                    
+                                    <td>{{ $deliveryInfo['id'] }}</td>
                                     <td>{{ $deliveryInfo['user_id'] }}</td>
-                                    <td>{{ $deliveryInfo['delivery_destination_id'] }}</td>                                
+                                    <td>{{ $deliveryInfo['delivery_destination_id'] }}</td>
                                     <td><button type="button">
                                         <a href="{{ route('coop.coopDeliveryRequestListDelete', ['id' => $deliveryInfo['id']]) }}">
                                             <img src="{{ asset('image/img_approval.png') }}" alt="受領" width="20" height="20"></a></button></td>
