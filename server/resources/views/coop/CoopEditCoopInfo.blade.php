@@ -85,12 +85,8 @@ clu
                     <th>陸か空か</th>
                     <th>
                         <div class="left">
-                            <!-- :TODO -->
-                            <!-- value="{{ $coop->land_or_air }}" -->
-                            <input type="radio" name="land_or_air" value="1" required>
-                            <label for="land">陸</label>
-                            <input type="radio" name="land_or_air" value="2" required>
-                            <label for="air">空</label>
+                            <label for="land"><input type="radio" name="land_or_air" value="1" {{ $coop->land_or_air === 1 ? 'checked' : '' }}>陸</label>
+                            <label for="air"><input type="radio" name="land_or_air" value="2" {{ $coop->land_or_air === 2 ? 'checked' : '' }}>空</label>
                         </div>
                     </th>
                 </tr>
@@ -276,7 +272,7 @@ clu
             </table>
 
             <div class="confirm">
-                <button type="submit">登録</button>
+                <button type="submit">上記の内容で更新する</button>
             </div>
         </form>
     </div>
