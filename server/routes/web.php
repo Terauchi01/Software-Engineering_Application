@@ -41,8 +41,6 @@ use App\Http\Controllers\CoopReportTroubleController;
 use App\Http\Controllers\CoopRequestAdminDroneRepairController;
 use App\Http\Controllers\CoopWithdrawController;
 use App\Http\Controllers\HelloController;
-use App\Http\Controllers\loginController;
-use App\Http\Controllers\TerauchiController;
 use App\Http\Controllers\UserDeliveryPlaceRequestController;
 use App\Http\Controllers\UserDeliveryRequestController;
 use App\Http\Controllers\UserDeliveryRequestListController;
@@ -73,7 +71,8 @@ Route::get('/test', function () {
     return view('test');
 });
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {    
-    Route::get('/', function () {return view('admin.test');})->name('admin');
+    Route::get('test', function () {return view('admin.test');})->name('test');
+    Route::redirect('/', 'admin/adminLogin');
     Route::get('adminLogin', [AdminLoginController::class, 'adminLogin'])->name('adminLogin');
     Route::post('adminLoginFunction', [AdminLoginController::class, 'adminLoginFunction'])->name('adminLoginFunction');
     Route::middleware('admin')->group(function () {
@@ -121,7 +120,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     });
 });
 Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
-    Route::get('/', function () {return view('coop.test');});
+    Route::get('test', function () {return view('coop.test');})->name('test');
+    Route::redirect('/', 'coop/coopLogin');
     Route::get('coopLogin', [CoopLoginController::class, 'coopLogin'])->name('coopLogin');
     Route::post('coopLoginFunction', [CoopLoginController::class, 'coopLoginFunction'])->name('coopLoginFunction');
     Route::get('coopApplyCoopRegister', [CoopRegistrationRequestController::class, 'coopApplyCoopRegister'])->name('coopApplyCoopRegister');
@@ -159,7 +159,8 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
     });
 });
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
-    Route::get('/', function () {return view('user.test');});
+    Route::get('test', function () {return view('user.test');})->name('test');
+    Route::redirect('/', 'user/userLogin');
     Route::get('login', [UserLoginController::class, 'userLogin'])->name('userLogin');
     Route::post('userLoginFunction', [UserLoginController::class, 'userLoginFunction'])->name('userLoginFunction');
     Route::post('userRegister', [UserRegistrationController::class, 'userRegister'])->name('userRegister');
