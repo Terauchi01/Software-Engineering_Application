@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>事業者登録</title>
-    <link rel="stylesheet" href="{{ asset('css/coop/CoopRegistrationRequest.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common/Register.css') }}">
     <style>
         .current {
             background-color: #ffffff;
@@ -109,7 +109,7 @@
                     <input type="radio" name="land_or_air" value="1" required>
                     <label for="land">陸</label>
                     <input type="radio" name="land_or_air" value="2" required>
-                    <label for="land">空</label>
+                    <label for="air">空</label>
                 </div>
             </div>
 

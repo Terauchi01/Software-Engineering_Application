@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ドローン登録</title>
-    <link rel="stylesheet" href="{{ asset('css/coop/CoopRegistration.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common/Register.css') }}">
     <style>
         .current {
             background-color: #ffffff;

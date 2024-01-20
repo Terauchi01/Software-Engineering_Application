@@ -23,7 +23,7 @@ body {
   display: inline-block;
 }
 
-.inputs input {
+.inputs input, select {
   width: 200pt;
   height: 30pt;
   border: solid thin #408A7E;
@@ -31,6 +31,20 @@ body {
   margin: 5pt;
   padding-left: 8pt;
   padding-right: 8pt;
+}
+
+.land_or_air {
+  margin: 5pt;
+  margin-left: 100pt;
+}
+
+.land_or_air input {
+  width: auto;
+  height: auto;
+}
+
+.land_or_air label {
+  width: auto;
 }
 
 .phone input {

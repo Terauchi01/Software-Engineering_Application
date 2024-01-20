@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>宅配依頼</title>
-    <link rel="stylesheet" href="{{ asset('css/user/UserRegistration.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common/Register.css') }}">
     <style>
         .current {
             background-color: #ffffff;
