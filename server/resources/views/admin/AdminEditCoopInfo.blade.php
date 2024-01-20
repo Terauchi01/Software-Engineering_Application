@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <title>事業者情報編集</title>
-        <link rel="stylesheet" href="{{ asset('/css/admin/AdminViewCoopInfo.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/common/EditInfo.css') }}">
     </head>
     <body>
         <nav class="side">
@@ -16,11 +16,11 @@
             <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
         </nav>
 
-        <div class="coopInfo">
-            <p class="information"><h2><font color ="#408A7E"><u>事業者情報編集</u></font></h2></p>
-            <p class="coopName">{{ $coopName }}</p>
+        <div class="info">
+            <h2><u>事業者情報編集</u></h2>
+            <p class="name">{{ $coopName }}</p>
             @if($coopId !== null)
-            <p class="coopId">ID : {{ $coopId }}</p>
+            <p class="currentId">ID : {{ $coopId }}</p>
             <form action="{{ route('admin.adminEditCoopInfoApply') }}" method="POST">
                 @csrf
                 <table>

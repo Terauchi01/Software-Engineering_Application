@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <title>事業者情報詳細</title>
-        <link rel="stylesheet" href="{{ asset('/css/admin/AdminViewCoopPayInfo.css') }}">
+        <title>事業者情報編集</title>
+        <link rel="stylesheet" href="{{ asset('/css/common/EditInfo.css') }}">
     </head>
     <body>
         <div class = "header">
@@ -24,17 +24,17 @@
             <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
         </nav>
 
-        <div class="pay">
-            <p class="information"><h2><font color="#408A7E"><u>事業者支払い情報編集</u></font></h2></p>
-            <p class="coopName">{{ $coopName }}</p>
+        <div class="info">
+            <h2><u>事業者支払い情報編集</u></h2>
+            <p class="name">{{ $coopName }}</p>
             @if($coopId !== null)
-            <p class="coopId">ID : {{ $coopId }}</p>
+            <p class="currentID">ID : {{ $coopId }}</p>
             <form action="{{ route('admin.adminEditCoopPayInfoApply') }}" method="POST">
                 @csrf
                 <table>
                     <tr>
                         <th>支払い情報</th>
-                        <th><div class="left"><input type="text" name="pay" value="{{ $data['pay'] }}">円</div></th>
+                        <th><input type="text" name="pay" value="{{ $data['pay'] }}">円</th>
                     </tr>
                     <tr>
                         <th>銀行名</th>

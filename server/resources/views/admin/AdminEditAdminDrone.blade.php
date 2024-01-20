@@ -3,10 +3,18 @@
 
 <head>
     <title>ドローン情報編集</title>
-    <link rel="stylesheet" href="{{ asset('/css/admin/AdminViewCoopInfo.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/common/EditInfo.css') }}">
 </head>
 
 <body>
+    <div class="header">
+        <select onChange="location.href=value;">
+            <option>管理者</option>
+            <option value="{{ route('admin.adminLogout') }}">ログアウト</option>
+        </select>
+        <p>admin</p> <!-- ここをユーザ名とする -->
+    </div>
+
     <nav class="side">
         <div class="current">
             <p><a href="{{ route('admin.adminViewCoopList') }}">事業者情報管理</a></p>
@@ -18,12 +26,12 @@
         <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
     </nav>
 
-    <div class="coopInfo">
-        <p class="information">
-        <h2>
-            <font color="#408A7E"><u>ドローン情報編集</u></font>
-        </h2>
-        </p>
+    <div class="info">
+        <h2><u>ドローン情報編集</u></h2>
+
+        <p class="name">{{ $Drone->name }}</p>
+        @if($Drone->id !== null)
+        <p class="currentID">ID : {{ $Drone->id }}</p>
 
         @if(session('status'))
         <div class="alert alert-success">
@@ -84,6 +92,7 @@
                 <button type="submit" class="btn btn-primary">上記の内容で更新する</button>
             </div>
         </form>
+        @endif
     </div>
 </body>
 
