@@ -7,13 +7,16 @@
 <body>
     <div class="side">
         <p><a href="{{ route('admin.adminViewCoopList') }}">事業者情報管理</a></p>
-        <p><a href="{{ route('admin.adminViewCoopDroneInfo') }}">ドローン貸与申請一覧</a></p>
+        <p><a href="{{ route('admin.adminViewCoopApplyDroneLendList') }}">ドローン貸与申請一覧</a></p>
         <p><a href="{{ route('admin.adminViewUserList') }}">利用者情報管理</a></p>
         <div class="current">
         <p><a href="{{ route('admin.adminViewCoopStatisticsInfo') }}">事業者情報分析</a></p>
         </div>
         <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>
         <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
+        <p><a href="{{ route('admin.adminViewDroneType') }}">ドローンタイプ　一覧</a></p>
+        <p><a href="{{ route('admin.adminViewCoopDeliveryRequestList') }}">事業者宅配一覧</a></p>
+        <p><a href="{{ route('admin.adminViewUserDeliveryRequestList') }}">利用者宅配一覧</a></p>
     </div>
     
     <div class="content">
@@ -29,7 +32,7 @@
             <div class="flex-main">
                 <p><h2><font color="#408A7E"><u> 事業者情報分析 </u></font></h2></p>
                 
-                <button type="button" onclick="location.href='{{ route('admin.adminViewCoopStatisticsInfoGraph') }}'">グラフ表示する</button>
+                <button type="button" class="custom-button" onclick="location.href='{{ route('admin.adminViewCoopStatisticsInfoGraph') }}'">グラフ表示する</button>
                 
                 <table width="800" border="1" align="center"  bgcolor="ffffe0">
                     <thead>

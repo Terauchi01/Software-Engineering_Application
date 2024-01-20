@@ -52,11 +52,10 @@
                             <option value="{{ route('admin.adminViewCoopDeliveryRequestList', ['id' => $deliveryInfo['delivery_company_id']]) }}">{{ $deliveryInfo['delivery_company_name'] }}</option>
                         @endforeach
                     </select>
-                    &nbsp;
-                    <select onChange="location.href=this.value;">
-                        <option>リセット</option>
-                        <option value="{{ route('admin.adminViewCoopDeliveryRequestList', ['id' => '']) }}">リセット</option>
-                    </select>
+                    <form action="{{ route('admin.adminViewCoopDeliveryRequestList', ['id' => '']) }}" method="GET" style="display: inline;">
+                        <button type="submit" name="reset" id="resetButton" class="custom-button">リセット</button>
+                    </form>
+                    
                     <p>
                         <input type="checkbox" id="masterCheckbox" name="feature_enabled">
                         <label for="masterCheckbox">Select all</label>
