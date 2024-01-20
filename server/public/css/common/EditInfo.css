@@ -66,7 +66,7 @@ body {
   padding: 20px;
 }
 
-.info h2 {
+.info h2, h3 {
   color: #408A7E;
 }
 
@@ -86,7 +86,7 @@ body {
   text-align: center;
 }
 
-.info input {
+.info input, select {
   width: 30%;
   box-sizing: border-box;
   border: 2px solid #408A7E;
@@ -117,4 +117,9 @@ body {
 
 .left {
   text-align: left;
+}
+
+.phone input {
+  width: auto;
+  text-align: center;
 }

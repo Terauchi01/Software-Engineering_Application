@@ -32,7 +32,7 @@
 
                 <div class="name">
                     <label for="representative_last_name">事業代表者</label>
-                    <input type="text" name="representative_last_name" placeholder="性" required>
+                    <input type="text" name="representative_last_name" placeholder="姓" required>
 
                     <!-- <label for="representative_first_name">事業代表者名</label> -->
                     <input type="text" name="representative_first_name" placeholder="名" required><br>
