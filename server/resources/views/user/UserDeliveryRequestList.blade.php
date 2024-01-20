@@ -3,12 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>宅配依頼一覧(送達)</title>
+        <title>宅配依頼一覧</title>
         <link rel="stylesheet" href="{{ asset('css/coop/CoopList.css') }}">
         <style>
         .current {
             background-color: #ffffff;
-            height: 40pt;
+            height: 20pt;
             text-align: center;
         }
         </style>
@@ -17,12 +17,12 @@
     <body>    
         <div class="side">
             <div class="current">
-                <p><a href="{{ route('user.userDeliveryRequestList') }}">宅配依頼一覧(送達)</a></p>
+                <p><a href="{{ route('user.userDeliveryRequestList') }}">宅配依頼一覧</a></p>
             </div>
             <p><a href="{{ route('user.userDeliveryPlaceRequest') }}">宅配場所登録</a></p>
-            <p><a href="{{ route('user.userDeliveryRequest') }}">宅配依頼</a></p>   
+            <p><a href="{{ route('user.userDeliveryRequest') }}">宅配依頼</a></p>
         </div>
-
+        
         <div class = "content">
             <div class = "header">
                 <select onChange="location.href=value;">
@@ -35,14 +35,15 @@
             
             <div class = "main">
                 <div class ="flex-main">                        
-                    <p><h2><font color ="#408A7E"><u> 宅配依頼一覧(送達) </u></font></h2></p>
+                    <p><h2><font color ="#408A7E"><u> 宅配依頼一覧 </u></font></h2></p>
                     
                     <table class ="coop">
                         <thead>
                             <tr>
                                 <th>依頼番号</th>
                                 <th>商品名</th>
-                                <th>送り先</th>
+                                <th>送り主</th>
+                                <th>受け取り主</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,7 +51,8 @@
                                 <tr>
                                     <td>{{ $requestInfo['id'] }}</td>                        
                                     <td>{{ $requestInfo['item'] }}</td>
-                                    <td>{{ $requestInfo['delivery_destination_id'] }}</td>                
+                                    <td>{{ $requestInfo['user_id'] }}</td>
+                                    <td>{{ $requestInfo['delivery_destination_id'] }}</td>
                                 </tr>
                             @endforeach
                         </tbody>                                   

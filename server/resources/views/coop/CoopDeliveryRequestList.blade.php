@@ -19,11 +19,11 @@
             <div class="current">
                 <p><a href="{{ route('coop.coopDeliveryRequestList') }}">依頼一覧</a></p>
             </div>
-            <p><a href="{{ route('coop.coopDroneInfoList') }}">所持ドローン</a></p>        
+            <p><a href="{{ route('coop.coopDroneInfoList') }}">ドローン情報一覧</a></p>        
             <p><a href="{{ route('coop.coopRegisterDrone') }}">ドローン登録</a></p>
             <p><a href="{{ route('coop.coopApplyAdminDroneLend') }}">ドローン貸与申請</a></p>
         </div>
-
+        
         <div class = "content">
             <div class = "header">
                 <select onChange="location.href=value;">
@@ -67,11 +67,8 @@
                                     <td>{{ $deliveryInfo['user_id'] }}</td>
                                     <td>{{ $deliveryInfo['delivery_destination_id'] }}</td>                                
                                     <td><button type="button">
-                                        <a href="{{ route('admin.adminAllocateCoopDeliveryTask', ['id' => $deliveryInfo['id']]) }}">
+                                        <a href="{{ route('coop.coopDeliveryRequestListDelete', ['id' => $deliveryInfo['id']]) }}">
                                             <img src="{{ asset('image/img_approval.png') }}" alt="受領" width="20" height="20"></a></button></td>
-                                    <td><button type="button">
-                                        <a href="{{ route('admin.adminAllocateCoopDeliveryTaskDelete', ['id' => $deliveryInfo['id']]) }}">
-                                            <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
                                 </tr>
                             @endforeach
                         </tbody>
