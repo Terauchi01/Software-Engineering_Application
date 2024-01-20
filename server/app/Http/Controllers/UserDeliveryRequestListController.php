@@ -15,6 +15,7 @@ class UserDeliveryRequestListController extends Controller
         $list = DeliveryRequest::select(
             'delivery_request.id',
             'delivery_request.item',
+            'delivery_request.user_id',
             'delivery_request.delivery_destination_id',
         )            
             ->where('delivery_request.deletion_date', '=', null)
@@ -22,12 +23,14 @@ class UserDeliveryRequestListController extends Controller
             ->get();
         
         $mergedData = [];
+        $sendName = User::pluck('user_last_name', 'id')->toArray();
         $receiveName = User::pluck('user_last_name', 'id')->toArray();
         foreach ($list as $item) {         
             $mergedData[] = [
                 'id' => $item->id,
                 'item' => $item->item,
-                'delivery_destination_id' => $receiveName[$item->delivery_destination_id],               
+                'user_id' => $sendName[$item->user_id],
+                'delivery_destination_id' => $receiveName[$item->delivery_destination_id],
             ];
         }
         

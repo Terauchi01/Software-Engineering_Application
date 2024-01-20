@@ -15,16 +15,17 @@ use Carbon\Carbon;
 class CoopDeliveryRequestListController extends Controller
 {
     public function CoopDeliveryRequestList (){
-         $list = DeliveryRequest::select(
+        $list = DeliveryRequest::select(
             'delivery_request.id',
             'delivery_request.user_id',
             'delivery_request.delivery_destination_id',
             'delivery_request.collection_company_id',
             'delivery_request.delivery_company_id',
         )            
-              ->where('delivery_request.deletion_date', '=', null)
-              ->orderBy('delivery_request.id', 'asc')
-              ->get();
+            ->where('delivery_request.deletion_date', '=', null)
+            ->where('delivery_request.delivery_status', '!=', 4)
+            ->orderBy('delivery_request.id', 'asc')
+            ->get();
         
         $mergedData = [];
         $sendName = User::pluck('user_last_name', 'id')->toArray();
@@ -35,8 +36,13 @@ class CoopDeliveryRequestListController extends Controller
                 'user_id' => $sendName[$item->user_id],
                 'delivery_destination_id' => $receiveName[$item->delivery_destination_id],
             ];
-        }        
+        }
         return view('coop.CoopDeliveryRequestList', compact('mergedData'));
     }
-
+    public function delete(Request $request, $id)
+    {
+        $B = DeliveryRequest::class;
+        $B::where('id',$id)->update(['delivery_status' => 4]);
+        return redirect()->route('coop.coopDeliveryRequestList');
+    }
 }

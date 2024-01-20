@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>事業者ドローン情報一覧</title>
+        <title>ドローン情報一覧</title>
         <link rel="stylesheet" href="{{ asset('css/coop/CoopList.css') }}">
         <style>
         .current {
@@ -18,12 +18,12 @@
         <div class="side">
             <p><a href="{{ route('coop.coopDeliveryRequestList') }}">依頼一覧</a></p>
             <div class="current">
-                <p><a href="{{ route('coop.coopDroneInfoList') }}">所持ドローン</a></p>
+                <p><a href="{{ route('coop.coopDroneInfoList') }}">ドローン情報一覧</a></p>
             </div>
             <p><a href="{{ route('coop.coopRegisterDrone') }}">ドローン登録</a></p>
             <p><a href="{{ route('coop.coopApplyAdminDroneLend') }}">ドローン貸与申請</a></p>
         </div>
-
+        
         <div class = "content">
             <div class = "header">
                 <select onChange="location.href=value;">
@@ -36,7 +36,7 @@
             
             <div class = "main">
                 <div class ="flex-main">                        
-                    <p><h2><font color ="#408A7E"><u> 事業者ドローン情報一覧 </u></font></h2></p>
+                    <p><h2><font color ="#408A7E"><u> ドローン情報一覧 </u></font></h2></p>
                     
                     <select onChange="location.href=this.value;">
                         <option>ドローン状況を選択</option>
@@ -50,7 +50,7 @@
                     <form action="{{ route('coop.coopDroneInfoList', ['id' => '']) }}" method="GET" style="display: inline;">
                         <button type="submit" name="reset" id="resetButton" class="custom-button">リセット</button>
                     </form>
-                    
+                    <br><br>
                     <table class ="coop">
                         <thead>
                             <tr>
@@ -106,4 +106,3 @@
         </div>
     </body>
 </html>
-                    
