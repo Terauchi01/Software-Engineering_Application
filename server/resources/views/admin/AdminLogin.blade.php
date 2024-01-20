@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <title>ログイン</title>
         <link rel="stylesheet" href="{{ asset('/css/admin/AdminLogin.css') }}">
     </head>
     <body>
