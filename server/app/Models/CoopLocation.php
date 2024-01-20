@@ -21,7 +21,7 @@ class CoopLocation extends Model
         'representative_first_name',
         'representative_last_name_kana',
         'representative_first_name_kana',
-        'license_holder_name',
+        // 'license_holder_name',
         // 'license_holder_first_name',
         // 'license_holder_last_name_kana',
         // 'license_holder_first_name_kana',
