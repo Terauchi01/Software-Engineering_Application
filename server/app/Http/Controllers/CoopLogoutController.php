@@ -17,6 +17,6 @@ class CoopLogoutController extends Controller
             Auth::guard('coops')->logout();
             return redirect()->route('coop.coopLogin');
         }
-        return redirect()->route('coop.coopViewUserDeliveryRequestList');
+        return redirect()->route('coop.coopDeliveryRequestList');
     }
 }
