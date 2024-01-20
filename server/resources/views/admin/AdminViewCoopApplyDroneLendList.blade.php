@@ -18,7 +18,7 @@
 @endsection
 
 @php
-$currentPage = 'admin.adminViewCoopApplyDroneLendList'
+$currentPage = 'adminViewCoopApplyDroneLendList'
 @endphp
 
 @section('content')
