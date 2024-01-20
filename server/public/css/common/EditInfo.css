@@ -1,0 +1,120 @@
+body {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: 90vw;
+  height: 100vh;
+  flex-direction: row;
+}
+
+.header {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  text-align: right;
+}
+
+
+.side a {
+  color: #FFFFFF;
+}
+
+.side {
+  position: fixed;
+  top: 0;
+  width: 100pt;
+  height: 100%;
+  background-color: #408A7E;
+  padding-top: 20px;
+  text-align: center;
+  line-height: 20pt;
+}
+
+.side a {
+  text-decoration: none;
+}
+
+.current {
+  background-color: #FFFFFF;
+  color: #000000;
+  height: 20pt;
+  text-align: center;
+}
+
+.current a {
+  color: #000000;
+}
+
+.name {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 3px;
+}
+
+.currentID {
+  text-align: left;
+  margin-bottom: 3px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 110pt;
+  width: 80%;
+  padding: 20px;
+}
+
+.info h2 {
+  color: #408A7E;
+}
+
+.info table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.info th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.info th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.info input {
+  width: 30%;
+  box-sizing: border-box;
+  border: 2px solid #408A7E;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.confirm button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 20px;
+  background-color: #408A7E;
+  color: #FFFFFFFF;
+  border: none;
+  padding: 12px;
+  font-size: 18px;
+  transition: box-shadow 0.3 ease;
+  border-radius: 10px;
+}
+
+.confirm button:hover {
+  background-color: #347D68;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.left {
+  text-align: left;
+}
