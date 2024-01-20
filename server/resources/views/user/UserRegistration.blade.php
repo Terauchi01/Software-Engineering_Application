@@ -1,70 +1,86 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <link rel="stylesheet" href="{{ asset('/css/user/UserRegistration.css') }}">
-    </head>
-    <body>
-        <div class="registration">
-            <h2 style="color:#408A7E">新規会員登録</h2>
-            <form action="{{ route('user.userRegister') }}" method="POST">
-                {{ csrf_field() }}
-                <table>
-                    <tr>
-                        <th>お客様氏名</th>
-                        <th><input type="text" name="user_last_name" placeholder="姓" required></th>
-                        <th><input type="text" name="user_first_name" placeholder="名" required></th>
-                    </tr>
-                    <tr>
-                        <th>お客様氏名カナ</th>
-                        <th><input type="text" name="user_last_name_kana" placeholder="セイ" required></th>
-                        <th><input type="text" name="user_first_name_kana" placeholder="メイ" required></th>
-                    </tr>
-                    <tr>
-                        <th>住所</th>
-                        <th><input type="text" name="postal_code" placeholder="郵便番号" required></th>
-                        <th><div><label for="prefecture_id">都道府県</label>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用者会員登録</title>
+    <link rel="stylesheet" href="{{ asset('css/common/Register.css') }}">
+    <style>
+        .current {
+            background-color: #ffffff;
+            height: 20pt;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contents">
+        <form action="{{ route('user.userRegister') }}" method="POST">
+            {{ csrf_field() }}
+            <div class="inputs">
+                <h2>新規会員登録</h2>
+                <div>
+                    <label for="representative_last_name">お客様氏名</label>
+                    <input type="text" name="representative_last_name" placeholder="姓" required>
+
+                    <input type="text" name="representative_first_name" placeholder="名" required><br>
+                </div>
+
+                <div>
+                    <label for="representative_last_name_kana">お客様氏名カナ</label>
+                    <input type="text" name="representative_last_name_kana" placeholder="セイ" required>
+
+                    <input type="text" name="representative_first_name_kana" placeholder="メイ" required><br>
+                </div>
+                <div>
+                    <label for="representative_last_name_kana">住所</label>
+                    <input type="text" name="postal_code" placeholder="郵便番号" required>
+                    <div><label for="prefecture_id">都道府県</label>
                         <select id="prefecture" name="prefecture_id" required>
                             @foreach ($Prefecture as $id => $name)
-                                <option value="{{ $id }}">{{ $name }}</option>
+                            <option value="{{ $id }}">{{ $name }}</option>
                             @endforeach
-                        </select></div></th>
-                        {{-- <th><input type="text" name="prefecture" placeholder="都道府県" required></th> --}}
-                        <th><div>
-                            <label for="city_id">市区町村</label>
-                            <select id="city" name="city_id" required>
-                            </select>
-                        </div></th>
-                        {{-- <th><input type="text" name="city" placeholder="市区町村" requred></th> --}}
-                        <th><input type="text" name="town" placeholder="町名・番地"></th>
-                        <th><input type="text" name="block" placeholder="建物名"></th>
-                    </tr>
-                    <tr>
-                        <th>電話番号</th>
-                        <th><input type="text" name="phone_number" placeholder="ハイフン無しで入力してください" required></th>
-                    </tr>
-                    <tr>
-                        <th>メールアドレス</th>
-                        <th><input type="text" name="email_address" placeholder="mail@example.com" required></th>
-                    </tr>
-                    <tr>
-                        <th>パスワード</th>
-                        <th><input type="password" name="password" placeholder="8文字以上32文字以下 英数字" required></th>
-                    </tr>
-                </table>
-                <button type="submit" name="add">上記内容で登録する</button>
-            </form>
-        </div>
-    </body>
+                        </select>
+                        {{-- <input type="text" name="prefecture" placeholder="都道府県" required> --}}
+                        <label for="city_id">市区町村</label>
+                        <select id="city" name="city_id" required></select>
+                    </div>
+                    {{-- <input type="text" name="city" placeholder="市区町村" requred> --}}
+                    <label></label>
+                    <input type="text" name="town" placeholder="町名・番地">
+                    <input type="text" name="block" placeholder="建物名">
+                </div>
+                <div class="phone">
+                    <label for="phone_number">電話番号</label>
+                    <input type="tel" name="phone_number" placeholder="000" size="3" pattern="\d{3}" required>-
+                    <input type="tel" name="phone_number" placeholder="000" size="4" pattern="\d{4}" required>-
+                    <input type="tel" name="phone_number" placeholder="000" size="4" pattern="\d{4}" required>
+                </div>
+
+                <label for="email_address">メールアドレス</label>
+                <input type="email" name="email_address" placeholder="exsample@exsample.com" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;" required><br>
+
+                <label for="password">パスワード</label>
+                <input type="password" name="password" placeholder="8文字以上32文字以下、英数字" pattern="\w{8,32}" required><br>
+
+            </div>
+            <div class="regist"><button type="submit" name="add">上記内容で登録する</button></div>
+        </form>
+    </div>
+</body>
+
 </html>
 <script>
     const citiesData = @json($Cities); // コントローラーから渡された市区町村データ
     function updateCities() {
         const selectedPrefecture = document.getElementById('prefecture').value;
         const citiesSelect = document.getElementById('city');
-    
+
         // 現在の選択肢をクリア
         citiesSelect.innerHTML = '';
-    
+
         // 対応する市区町村を追加
         if (selectedPrefecture in citiesData) {
             // オブジェクトの各プロパティに対して処理を行う
@@ -78,19 +94,19 @@
             }
         }
     }
-    
+
     // 都道府県が変更されたときに市区町村を更新
     document.getElementById('prefecture').addEventListener('change', updateCities);
-    
+
     // 初期表示時にも実行
     updateCities();
-    </script>
+</script>
 @if ($errors->any())
 <div>
     <strong>入力エラーがあります。</strong>
     <ul>
         @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
+        <li>{{ $error }}</li>
         @endforeach
     </ul>
 </div>
