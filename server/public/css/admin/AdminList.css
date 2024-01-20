@@ -39,7 +39,10 @@ body {
     flex-grow: 1;
 }
 
-.header {  
+.header {
+    position: absolute;
+    top: 0px;
+    right: 10px;
     height: 30pt;
     text-align: right;
 }
