@@ -85,13 +85,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('adminEditCoopDroneInfo/{id}', [AdminEditCoopDroneInfoController::class, 'adminEditCoopDroneInfo'])->name('adminEditCoopDroneInfo');
         Route::post('editCoopDrone', [AdminEditCoopDroneInfoController::class, 'editCoopDrone'])->name('editCoopDrone');
         Route::get('adminEditCoopInfo/{id}', [AdminEditCoopInfoController::class, 'adminEditCoopInfo'])->name('adminEditCoopInfo');
-        // Route::get('adminEditCoopInfoApply', [AdminEditCoopInfoController::class, 'adminEditCoopInfoApply'])->name('adminEditCoopInfoApply');
         Route::post('adminEditCoopInfoApply', [AdminEditCoopInfoController::class, 'adminEditCoopInfoApply'])->name('adminEditCoopInfoApply');
         Route::get('adminEditCoopPayInfo/{id}', [AdminEditCoopPayInfoController::class, 'adminEditCoopPayInfo'])->name('adminEditCoopPayInfo');
-        // Route::get('adminEditCoopPayInfoApply', [AdminEditCoopPayInfoController::class, 'adminEditCoopPayInfoApply'])->name('adminEditCoopPayInfoApply');
         Route::post('adminEditCoopPayInfoApply', [AdminEditCoopPayInfoController::class, 'adminEditCoopPayInfoApply'])->name('adminEditCoopPayInfoApply');
         Route::get('adminEditUserInfo/{id}', [AdminEditUserInfoController::class, 'adminEditUserInfo'])->name('adminEditUserInfo');
-        // Route::get('adminEditUserInfoApply', [AdminEditUserInfoController::class, 'adminEditUserInfoApply'])->name('adminEditUserInfoApply');
         Route::post('adminEditUserInfoApply', [AdminEditUserInfoController::class, 'adminEditUserInfoApply'])->name('adminEditUserInfoApply');
         Route::get('adminEditUserPayInfo/{id}', [AdminEditUserPayInfoController::class, 'adminEditUserPayInfo'])->name('adminEditUserPayInfo');
         Route::get('adminLogout', [AdminLogoutController::class, 'adminLogout'])->name('adminLogout');
@@ -149,7 +146,6 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
         Route::post('editCoopInfo', [CoopEditCoopInfoController::class, 'editCoopInfo'])->name('editCoopInfo');
         Route::get('coopDeliveryRequestList', [CoopDeliveryRequestListController::class, 'coopDeliveryRequestList'])->name('coopDeliveryRequestList');
         Route::get('deliveryRequestInfoList/{id}', [CoopDeliveryRequestListController::class, 'delete'])->name('coopDeliveryRequestListDelete');
-        Route::get('coopFilterChildCoopAccountListView', [CoopChildAccountListController::class, 'coopFilterChildCoopAccountListView'])->name('coopFilterChildCoopAccountListView');
         Route::get('coopLogout', [CoopLogoutController::class, 'coopLogout'])->name('coopLogout');
         Route::get('coopRegisterDrone', [CoopDroneRegistrationController::class, 'coopRegisterDrone'])->name('coopRegisterDrone');
         Route::post('registerDrone', [CoopDroneRegistrationController::class, 'registerDrone'])->name('registerDrone');
