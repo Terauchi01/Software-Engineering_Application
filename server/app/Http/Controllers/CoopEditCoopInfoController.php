@@ -64,7 +64,6 @@ class CoopEditCoopInfoController extends Controller
                 'account_name' => 'required|string',
                 'account_name_kana' => 'required|string',
             ]);
-            dd($coop->account_information_id);
             $AccountInformationTable = AccountInformation::findOrFail($coop->account_information_id);
             $AccountInformationTable->update($data);
             $request->merge([
@@ -79,7 +78,7 @@ class CoopEditCoopInfoController extends Controller
                 'amount_of_compensation' => 0,
             ]);
             $coopdata = $request->validate([
-                'email_address' => 'required|email|unique:coop_user,email_address',
+                'email_address' => 'required|email',
                 'password' => 'required|min:8', // パスワードの最小長は8と仮定
                 'coop_name' => 'required|string',
                 'representative_last_name' => 'required|string',
@@ -96,7 +95,7 @@ class CoopEditCoopInfoController extends Controller
                 'pay_status' => 'required|integer',
                 'amount_of_compensation' => 'required|integer',
             ]);
-            $CoopUserTable = CoopUser::findOrFail($coop->accountInformation);
+            $CoopUserTable = CoopUser::findOrFail($coop->account_information_id);
             $CoopUserTable->update($coopdata);
             $request->merge([
                 'license_holder_name' => $coop->name,
@@ -108,8 +107,8 @@ class CoopEditCoopInfoController extends Controller
                 'postal_code' => 'required|integer',
                 'prefecture_id' => 'required|integer',
                 'city_id' => 'required|integer',
-                'license_holder_name' => 'required|string|max:100',
-                'license_id' => 'required|integer',
+                // 'license_holder_name' => 'required|string|max:100',
+                // 'license_id' => 'required|integer',
                 'town' => 'nullable|string|max:100',
                 'block' => 'nullable|string|max:100',
                 'coop_user_id' => 'nullable|integer|exists:coop_user,id',

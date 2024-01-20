@@ -74,16 +74,16 @@ coopRegistrationRequest
 
     <h2>免許情報</h2><br>
     <label for="date_of_issue">公布日</label>
-    <input type="date" name="date_of_issue" value="{{ $LicenseInformation->date_of_issue }}" required><br>
+    <input type="date" name="date_of_issue" value="{{ \Carbon\Carbon::parse($LicenseInformation->date_of_issue)->toDateString() }}" required><br>
 
     <label for="date_of_registration">登録日</label>
-    <input type="date" name="date_of_registration" value="{{ $LicenseInformation->date_of_registration }}" required><br>
+    <input type="date" name="date_of_registration" value="{{ \Carbon\Carbon::parse($LicenseInformation->date_of_registration)->toDateString() }}" required><br>
 
     <label for="name">名前</label>
     <input type="text" name="name" value="{{ $LicenseInformation->name }}" required><br>
 
-    <label for="birth">生年月日</label>
-    <input type="date" name="birth" value="{{ $LicenseInformation->birth }}" required><br>
+    <label for="birth">生年月日</label>"
+    <input type="date" name="birth" value="{{ \Carbon\Carbon::parse($LicenseInformation->birth)->toDateString() }}" required><br>
 
     <label for="conditions">条件</label>
     <input type="text" name="conditions" value="{{ $LicenseInformation->conditions }}" required><br>
