@@ -15,7 +15,8 @@ use Carbon\Carbon;
 class AdminViewCoopListController extends Controller
 {
     public function adminViewCoopList (Request $request){
-        $id = $request->input('id');
+        $prefecture_id = $request->input('prefecture_id');
+        $pay_id = $request->input('pay_id');
         
         $CoopLocation = CoopLocation::all();
         $query = CoopUser::select(
@@ -38,8 +39,11 @@ class AdminViewCoopListController extends Controller
               ->join('coop_location', 'coop_user.id', '=', 'coop_location.coop_user_id')
               ->orderBy('coop_user.id', 'asc');
         
-        if ($id != NULL) {
-            $query->where('coop_location.prefecture_id', '=', $id);
+        if ($prefecture_id != NULL) {
+            $query->where('coop_location.prefecture_id', '=', $prefecture_id);
+        }
+        if ($pay_id != NULL) {
+            $query->where('coop_user.pay_status', '=', $pay_id);
         }
 
         $list = $query->get();
@@ -58,6 +62,7 @@ class AdminViewCoopListController extends Controller
                 'pay_status' => $A[$item->pay_status],
                 'prefecture_id' => $item->prefecture_id,
                 'prefecture_name' => $Prefecture_list[$item->prefecture_id],
+                'pay_id' => $item->pay_status,
             ];
         }
         return view('admin.AdminViewCoopList', compact('mergedData', 'Prefecture_list'));

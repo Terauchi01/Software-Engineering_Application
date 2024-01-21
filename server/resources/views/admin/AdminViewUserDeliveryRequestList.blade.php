@@ -26,16 +26,29 @@ $currentPage = 'adminViewUserDeliveryRequestList'
         <p><h2><font color ="#408A7E"><u> 利用者宅配一覧 </u></font></h2></p>                                                           
 
         <select onChange="location.href=value;">
-            <option>利用者を選択</option>
+            <option>送り主を選択</option>
             @php
             $uniqueName = collect($mergedData)->unique('user_name')->values();
             @endphp           
             @foreach ($uniqueName as $index => $deliveryInfo)
-                <option value="{{ route('admin.adminViewUserDeliveryRequestList', ['id' => $deliveryInfo['user_id']]) }}">
+                <option value="{{ route('admin.adminViewUserDeliveryRequestList', ['send_id' => $deliveryInfo['user_id']]) }}">
                     {{ $deliveryInfo['user_name'] }}
                 </option>
-                @endforeach
-        </select>
+            @endforeach
+		</select>
+		    
+		<select onChange="location.href=value;">
+			<option>受け取り主を選択</option>
+			@php
+			$uniqueReceive = collect($mergedData)->unique('delivery_destination_name')->values();
+			@endphp           
+			@foreach ($uniqueReceive as $index => $deliveryInfo)
+		    	<option value="{{ route('admin.adminViewUserDeliveryRequestList', ['receive_id' => $deliveryInfo['delivery_destination_id']]) }}">
+		        	{{ $deliveryInfo['delivery_destination_name'] }}
+		   	 	</option>
+			@endforeach
+		</select>
+
         <form action="{{ route('admin.adminViewUserDeliveryRequestList', ['id' => '']) }}" method="GET" style="display: inline;">
             <button type="submit" name="reset" id="resetButton" class="custom-button">リセット</button>
         </form>

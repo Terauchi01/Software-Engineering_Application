@@ -34,9 +34,21 @@ $currentPage = 'adminViewCoopList'
             <option>都道府県名を選択</option>
             
             @foreach ($Prefecture_list as $key => $value)
-                <option value="{{ route('admin.adminViewCoopList', ['id' => $key]) }}">{{ $value }}</option>
+                <option value="{{ route('admin.adminViewCoopList', ['prefecture_id' => $key]) }}">{{ $value }}</option>
                 @endforeach
         </select>
+        
+        <select onChange="location.href=value;">
+			<option>支払い状況を選択</option>
+			@php
+			$payStatus = collect($mergedData)->unique('pay_status')->values();
+			@endphp           
+			@foreach ($payStatus as $index => $payInfo)
+		    	<option value="{{ route('admin.adminViewCoopList', ['pay_id' => $payInfo['pay_id']]) }}">
+		        	{{ $payInfo['pay_status'] }}
+		   	 	</option>
+			@endforeach
+		</select>
         
         <form action="{{ route('admin.adminViewCoopList', ['id' => '']) }}" method="GET" style="display: inline;">
             <button type="submit" name="reset" id="resetButton" class="custom-button">リセット</button>

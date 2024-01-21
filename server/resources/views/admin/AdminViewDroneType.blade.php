@@ -27,6 +27,11 @@ $currentPage = 'adminViewDroneType'
             <p><h2><font color ="#408A7E"><u> ドローンタイプ一覧 </u></font></h2></p>
         </div>                   
         
+        
+        <form action="{{ route('admin.adminRegisterAdminDrone') }}" style="display: inline;">
+            <button class="custom-button" type="submit">ドローンを新規登録</button>
+        </form>
+        
         <br></br>
         
         <table class ="coop">

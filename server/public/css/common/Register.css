@@ -1,3 +1,14 @@
+.main {
+    margin-left: 300pt;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.flex-main {
+    flex-grow: 1;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -70,7 +81,7 @@ select option:first-child {
 }
 
 .inputs input {
-  width: 200pt;
+  width: 400pt;
   height: 30pt;
   border: solid thin #408A7E;
   border-radius: 5px;
@@ -108,7 +119,7 @@ select option:first-child {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 30pt auto;
+  margin: 30pt 200pt;
 }
 
 .toLogin {

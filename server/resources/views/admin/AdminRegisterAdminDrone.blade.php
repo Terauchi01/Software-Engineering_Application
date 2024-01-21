@@ -1,26 +1,33 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('admin.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ドローン登録</title>
-    <link rel="stylesheet" href="{{ asset('css/common/Register.css') }}">
-    <style>
-        .current {
-            background-color: #ffffff;
-            height: 20pt;
-            text-align: center;
-        }
-    </style>
-</head>
+@section('title', 'ドローン登録')
 
-<body>
+@section('style')
+<link rel="stylesheet" href="{{ asset('css/common/Register.css') }}">
+<style>
+ .current {
+	 background-color: #ffffff;
+     height: 40pt;
+     text-align: center;
+ }
+</style>
+@endsection
+
+@section('script')
+@endsection
+
+@php
+$currentPage = 'adminViewDroneType'
+@endphp
+
+@section('content')
+<div class = "main">
+    <div class ="flex-main">
     <div class="contents">
         <div class="inputs">
             <form action="{{ route('admin.registerDrone') }}" method="POST">
                 @csrf
-                <h2>ドローン登録フォーム</h2>
+                <p><h2><font color ="#408A7E"><u> ドローン登録フォーム </u></font></h2></p>
 
                 <label for="name">名前</label>
                 <input type="text" name="name" placeholder="ドローン名" required><br>
@@ -61,3 +68,4 @@
     <p>{{ session('success') }}</p>
 </div>
 @endif
+@endsection

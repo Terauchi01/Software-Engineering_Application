@@ -23,6 +23,7 @@ class CoopViewUserDeliveryRequestListController extends Controller
             'delivery_request.delivery_company_id',
         )            
               ->where('delivery_request.deletion_date', '=', null)
+              ->where('delivery_request.delivery_status', '!=', 0)
               ->orderBy('delivery_request.id', 'asc')
               ->get();
         
