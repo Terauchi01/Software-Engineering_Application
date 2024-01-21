@@ -25,11 +25,13 @@ $currentPage = 'coopApplyAdminDroneLend'
     @if ($errors->any())
         <div>
             <strong>入力エラーがあります。</strong>
+            <div class="red">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
+            </div>
         </div>
     @endif
 
