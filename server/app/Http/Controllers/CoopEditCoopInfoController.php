@@ -116,7 +116,7 @@ class CoopEditCoopInfoController extends Controller
             $CoopLocationTable = CoopLocation::where('coop_user_id','=',$coop->id);
             $CoopLocationTable->update($coopLocation);
             DB::commit();
-            return redirect()->route('coop.coopEditCoopInfo')->with('success', '企業情報が登録されました。');
+            return redirect()->route('coop.coopEditCoopInfo', ['id'=>1])->with('success', '企業情報が更新されました。');
         }catch (\Illuminate\Validation\ValidationException $e) {
             // バリデーションエラーが発生した場合
             DB::rollback();
