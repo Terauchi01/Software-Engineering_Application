@@ -28,14 +28,7 @@ $currentPage = 'adminViewDroneType'
     <p class="name">{{ $err }}</p>
     @else
     @if ($errors->any())
-    <div>
-        <strong class="red">入力エラーがあります。</strong>
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li class="red">{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+    <div><strong class="red">入力エラーがあります。</strong></div>
     @endif
     <p class="name">{{ $Drone->name }}</p>
     <p class="currentID">ID : {{ $Drone->id }}</p>
