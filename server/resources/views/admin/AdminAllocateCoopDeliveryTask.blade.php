@@ -21,9 +21,9 @@ $currentPage = 'adminAllocateCoopDeliveryTask'
 @endphp
 
 @section('content')
-<div class = "main">
+<div class = "info">
     <div class ="flex-main">            
-        <p><h2><font color ="#408A7E"><u> 宅配依頼割り振り一覧 </u></font></h2></p>
+        <h2>宅配依頼割り振り一覧</h2>
               
         <br></br>
         

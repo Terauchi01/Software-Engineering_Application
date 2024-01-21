@@ -1,23 +1,4 @@
-.main {
-    margin-left: 300pt;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
 
-.flex-main {
-    flex-grow: 1;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  flex-direction: row;
-}
 
 .contents {
   width: auto;
@@ -59,7 +40,7 @@ body {
   text-align: center;
 }
 
-.regist button {
+/* .regist button {
   line-height: 30pt;
   width: 200pt;
   background-color: #408A7E;
@@ -69,8 +50,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 30pt 200pt;
-}
+  margin: 30pt auto;
+} */
 
 .toLogin {
     position: absolute;

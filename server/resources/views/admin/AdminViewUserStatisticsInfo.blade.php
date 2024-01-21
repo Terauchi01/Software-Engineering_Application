@@ -14,9 +14,9 @@ $currentPage = 'adminViewUserStatisticsInfo'
 @endphp
 
 @section('content')
-<div class="main">
+<div class="info">
     <div class="flex-main">
-        <p><h2><font color="#408A7E"><u> 利用者情報分析 </u></font></h2></p>
+        <h2>利用者情報分析</h2>
         
         <button type="button" class="custom-button" onclick="location.href='{{ route('admin.adminViewUserStatisticsInfoGraph') }}'">グラフ表示する</button>
         

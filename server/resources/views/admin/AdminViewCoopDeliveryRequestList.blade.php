@@ -5,11 +5,11 @@
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/admin/AdminList.css') }}">
 <style>
- .current {
-     background-color: #ffffff;
-     height: 20pt;
-     text-align: center;
- }
+    .current {
+        background-color: #ffffff;
+        height: 20pt;
+        text-align: center;
+    }
 </style>
 @endsection
 
@@ -21,10 +21,10 @@ $currentPage = 'adminViewCoopDeliveryRequestList'
 @endphp
 
 @section('content')
-<div class = "main">
-    <div class ="flex-main">            
-        <p><h2><font color ="#408A7E"><u> 事業者宅配一覧 </u></font></h2></p>
-                                                                                         
+<div class = "info">
+    <div class ="flex-main">
+        <h2>事業者宅配一覧</h2>
+
         <select onChange="location.href=this.value;">
             <option>担当事業者を選択</option>
             @php
@@ -33,12 +33,12 @@ $currentPage = 'adminViewCoopDeliveryRequestList'
             @foreach ($uniqueCompanies as $index => $deliveryInfo)
                 <option value="{{ route('admin.adminViewCoopDeliveryRequestList', ['coop_id' => $deliveryInfo['delivery_company_id']]) }}">{{ $deliveryInfo['delivery_company_name'] }}</option>
                 @endforeach
-        </select>                                                                                             
+        </select>
         <form action="{{ route('admin.adminViewCoopDeliveryRequestList', ['id' => '']) }}" method="GET" style="display: inline;">
             <button type="submit" name="reset" id="resetButton" class="custom-button">リセット</button>
         </form>
         <br></br>
-                                                                                                                                         
+
         <table class ="coop">
             <thead>
                 <tr>                  

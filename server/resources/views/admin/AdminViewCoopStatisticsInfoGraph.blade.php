@@ -14,9 +14,9 @@ $currentPage = 'adminViewCoopStatisticsInfo'
 @endphp
 
 @section('content')
-<div class="main">
+<div class="info">
     <div class="flex-main">
-        <p><h2><font color="#408A7E"><u> 事業者情報分析 </u></font></h2></p>
+        <h2>事業者情報分析</h2>
         
         <button type="button" class="custom-button" onclick="location.href='{{ route('admin.adminViewCoopStatisticsInfo') }}'">統計情報表示に戻る</button>
         

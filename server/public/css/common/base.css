@@ -45,7 +45,6 @@ body {
 
 .header select {
   display: inline-block;
-  border-color: #408a7e;
   color: #408a7e;
   font-size: 20px;
   background: #ffffff;
@@ -58,4 +57,13 @@ body {
 
 .header select option:first-child {
   display: none;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 110pt;
+  width: 80%;
+  padding: 20px 0;
 }

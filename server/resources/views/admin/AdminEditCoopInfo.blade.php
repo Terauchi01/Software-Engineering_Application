@@ -1,5 +1,5 @@
 @extends('admin.app')
-                       
+
 @section('title', '事業者情報編集')
 
 @section('style')
@@ -18,7 +18,7 @@ $currentPage = 'adminViewCoopList'
 
 @section('content')
 <div class="info">
-    <p class="information"><h2><font color ="#408A7E"><u>事業者情報編集</u></font></h2></p>
+    <h2>事業者情報編集</h2>
     <p class="name">{{ $coopName }}</p>
     @if($coopId !== null)
     <p class="id">ID : {{ $coopId }}</p>

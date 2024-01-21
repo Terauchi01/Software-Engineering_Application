@@ -2,14 +2,6 @@
 /* blade     : server/resources/views/admin/AdminViewCoopList.blade.php */
 /* css       : server/public/css/admin/AdminViewCoopList.css */
 
-
-.main {
-    margin-left: 110pt;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
 .flex-main {
     flex-grow: 1;
 }

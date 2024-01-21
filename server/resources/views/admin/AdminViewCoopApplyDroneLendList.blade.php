@@ -22,10 +22,10 @@ $currentPage = 'adminViewCoopApplyDroneLendList'
 @endphp
 
 @section('content')
-<div class = "main">
+<div class = "info">
     <div class ="flex-main">
         <div class = "coopList"> <!--#408A7E-->
-            <p><h2><font color ="#408A7E"><u> ドローン貸与申請一覧 </u></font></h2></p>
+            <h2>ドローン貸与申請一覧</h2>
         </div>
 
         <br></br>

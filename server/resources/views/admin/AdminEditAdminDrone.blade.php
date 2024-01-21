@@ -5,11 +5,11 @@
 @section('style')
 <link rel="stylesheet" href="{{ asset('/css/common/EditInfo.css') }}">
 <style>
- .current {
-     background-color: #ffffff;
-     height: 40pt;
-     text-align: center;
- }
+.current {
+    background-color: #ffffff;
+    height: 40pt;
+    text-align: center;
+}
 </style>
 @endsection
 
@@ -22,7 +22,7 @@ $currentPage = 'adminViewDroneType'
 
 @section('content')
 <div class="info">
-    <h2><u>ドローン情報編集</u></h2>
+    <h2>ドローン情報編集</h2>
 
     @if ($err !== null)
     <p class="name">{{ $err }}</p>

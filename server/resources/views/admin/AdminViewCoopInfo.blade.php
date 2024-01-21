@@ -15,7 +15,7 @@ $currentPage = 'adminViewCoopList'
 
 @section('content')
 <div class="info">
-    <p class="information"><h2><font color ="#408A7E"><u>事業者情報詳細</u></font></h2></p>
+    <h2>事業者情報詳細</h2>
     <p class="name">{{ $coopName }}</p>
     @if($coopId !== null)
     <p class="id">ID : {{ $coopId }}</p>

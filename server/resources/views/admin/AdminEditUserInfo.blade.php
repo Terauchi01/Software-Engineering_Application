@@ -17,7 +17,7 @@ $currentPage = 'adminViewUserList'
 
 @section('content')
 <div class="info">
-    <p class="information"><h2><font color ="#408A7E"><u>利用者情報編集</u></font></h2></p>
+    <h2>利用者情報編集</h2>
     <p class="name">{{ $userName }}</p>
     @if($userId !== null)
     <p class="id">ID : {{ $userId }}</p>

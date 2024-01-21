@@ -5,11 +5,11 @@
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/common/Register.css') }}">
 <style>
- .current {
-	 background-color: #ffffff;
-     height: 40pt;
-     text-align: center;
- }
+    .current {
+        background-color: #ffffff;
+        height: 40pt;
+        text-align: center;
+    }
 </style>
 @endsection
 
@@ -21,36 +21,29 @@ $currentPage = 'adminViewDroneType'
 @endphp
 
 @section('content')
-<div class = "main">
-    <div class ="flex-main">
-    <div class="contents">
-        <div class="inputs">
-            <form action="{{ route('admin.registerDrone') }}" method="POST">
-                @csrf
-                <p><h2><font color ="#408A7E"><u> ドローン登録フォーム </u></font></h2></p>
+<div class="info">
+    <form action="{{ route('admin.registerDrone') }}" method="POST">
+        @csrf
+        <h2>ドローン登録フォーム</h2>
 
-                <label for="name">名前</label>
-                <input type="text" name="name" placeholder="ドローン名" required><br>
+        <label for="name">名前</label>
+        <input type="text" name="name" placeholder="ドローン名" required><br>
 
-                <label for="range">航続距離</label>
-                <input type="number" name="range" required><br>
+        <label for="range">航続距離</label>
+        <input type="number" name="range" required><br>
 
-                <label for="loading_weight">搭載重量</label>
-                <input type="number" name="loading_weight" required><br>
+        <label for="loading_weight">搭載重量</label>
+        <input type="number" name="loading_weight" required><br>
 
-                <label for="max_time">最大飛行時間</label>
-                <input type="number" name="max_time" required><br>
+        <label for="max_time">最大飛行時間</label>
+        <input type="number" name="max_time" required><br>
 
-                <label for="number_of_drones">ドローンの数</label>
-                <input type="number" name="number_of_drones" required><br>
+        <label for="number_of_drones">ドローンの数</label>
+        <input type="number" name="number_of_drones" required><br>
 
-                <div class="regist"><button type="submit">登録</button></div>
-            </form>
-        </div>
-    </div>
-</body>
-
-</html>
+        <div class="confirm"><button type="submit">上記内容で登録する</button></div>
+    </form>
+</div>
 
 @if ($errors->any())
 <div>

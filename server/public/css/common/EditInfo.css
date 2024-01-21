@@ -11,39 +11,6 @@
   margin-bottom: 3px;
 }
 
-.info {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  margin-left: 110pt;
-  width: 80%;
-  padding: 20px;
-}
-
-.info table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.info th, .info td {
-  border: 1px solid #ddd;
-  padding: 10px;
-}
-
-.info th {
-  background-color: #f2f2f2;
-  text-align: center;
-}
-
-.info input, .info select {
-  width: 30%;
-  box-sizing: border-box;
-  border: 2px solid #408A7E;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5px;
-}
 
 .left {
   text-align: left;

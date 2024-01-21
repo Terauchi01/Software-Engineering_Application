@@ -21,10 +21,10 @@ $currentPage = 'adminViewDroneType'
 @endphp
 
 @section('content')
-<div class = "main">
+<div class = "info">
     <div class ="flex-main">
         <div class = "coopList"> <!--#408A7E-->
-            <p><h2><font color ="#408A7E"><u> ドローンタイプ一覧 </u></font></h2></p>
+            <h2>ドローンタイプ一覧</h2>
         </div>                   
         
         

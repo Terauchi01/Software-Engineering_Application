@@ -23,9 +23,9 @@ $currentPage = 'adminViewCoopList'
 @endphp
 
 @section('content')
-<div class = "main">
+<div class = "info">
     <div class ="flex-main">                        
-        <p><h2><font color ="#408A7E"><u> 事業者情報管理 </u></font></h2></p>
+        <h2>事業者情報管理</h2>
 
         <button id="deleteButton" class="custom-button">チェックした項目を削除</button>
 

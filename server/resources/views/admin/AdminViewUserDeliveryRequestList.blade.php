@@ -21,9 +21,9 @@ $currentPage = 'adminViewUserDeliveryRequestList'
 @endphp
 
 @section('content')
-<div class = "main">
+<div class = "info">
     <div class ="flex-main">            
-        <p><h2><font color ="#408A7E"><u> 利用者宅配一覧 </u></font></h2></p>                                                           
+        <h2>利用者宅配一覧</h2>
 
         <select onChange="location.href=value;">
             <option>送り主を選択</option>
