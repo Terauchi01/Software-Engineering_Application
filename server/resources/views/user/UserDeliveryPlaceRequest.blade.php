@@ -26,7 +26,7 @@ $currentPage = 'userDeliveryPlaceRequest'
         <form action="{{ route('user.placeRequest') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="inputs">
-                <h2>宅配場所の登録</h2>
+                <p><h2><font color ="#408A7E"><u> 宅配場所登録 </u></font></h2></p>
 
                 <!-- 他のフォーム要素 -->
                 <label for="image">画像</label>

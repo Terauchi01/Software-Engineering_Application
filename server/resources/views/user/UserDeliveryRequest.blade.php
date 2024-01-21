@@ -26,6 +26,7 @@ $currentPage = 'userDeliveryRequest'
         <form method="POST" action="{{ route('user.deliveryRequest') }}">
             @csrf
             <div class="inputs">
+                <p><h2><font color ="#408A7E"><u> 宅配依頼 </u></font></h2></p>
                 <h2>配送相手の個人情報(相手もこのシステムにユーザ登録している必要があります)</h2>
                 <div class="name">
                     <label for="user_name">お名前</label>
