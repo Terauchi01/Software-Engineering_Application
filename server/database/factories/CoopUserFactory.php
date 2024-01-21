@@ -5,6 +5,8 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CoopUser;
+use App\Models\LicenseInformation;
+use App\Models\AccountInformation;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\coop_user>
@@ -30,8 +32,8 @@ class CoopUserFactory extends Factory
             'representative_first_name' => $this->faker->firstName,
             'representative_last_name_kana' => $this->faker->lastKanaName,
             'representative_first_name_kana' => $this->faker->firstKanaName,
-            'license_information_id' => $this->faker->numberBetween(1, 100), // 適切なランダムな値に置き換える
-            'account_information_id' => $this->faker->numberBetween(1, 100), // 適切なランダムな値に置き換える
+            'license_information_id' => LicenseInformation::inRandomOrder()->first()->id, // 適切なランダムな値に置き換える
+            'account_information_id' => AccountInformation::inRandomOrder()->first()->id, // 適切なランダムな値に置き換える
             'employees' => $this->faker->numberBetween(1, 100),
             'phone_number' => $this->faker->numerify('###########'),
             'land_or_air' => $this->faker->randomElement([1, 2]), // 適切なランダムな値に置き換える

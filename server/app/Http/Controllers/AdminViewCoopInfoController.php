@@ -17,10 +17,10 @@ class AdminViewCoopInfoController extends Controller
         $coop = CoopUser::find($id);
 
         if ($coop && $coop->deletion_date === null) {
+            // dd($coop->license_information_id);
             $acc = AccountInformation::find($coop->account_information_id);
             $loc = CoopLocation::where('coop_user_id', $id)->first();
             $license = LicenseInformation::find($coop->license_information_id);
-
             $prefecture = MstPrefecture::find($loc->prefecture_id)['name'];
             $city = Cities::find($loc->city_id)['name'];
             $coopId = $coop->id;
