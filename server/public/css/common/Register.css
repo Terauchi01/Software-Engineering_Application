@@ -1,3 +1,14 @@
+.main {
+    margin-left: 400pt;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.flex-main {
+    flex-grow: 1;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
