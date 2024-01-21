@@ -72,7 +72,6 @@ $currentPage = 'adminViewCoopList'
                     <th>事業者代表名</th>
                     <th>所在地</th>
                     <th>先月の支払い状況</th>
-                    <th>編集</th>
                     <th>削除</th>
                 </tr>
             </thead>
@@ -86,10 +85,7 @@ $currentPage = 'adminViewCoopList'
                         <td><a href="{{ route('admin.adminViewCoopInfo', ['id' => $coopInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $coopInfo['coop_name'] }}</a></td>
                         <td>{{ $coopInfo['representative_name'] }}</td>
                         <td>{{ $coopInfo['coop_locations'] }}</td>
-                        <td><a href="{{ route('admin.adminViewCoopPayInfo', ['id' => $coopInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $coopInfo['pay_status'] }}</a></td>                                 
-                        <td><button type="button">
-                            <a href="{{ route('admin.adminEditCoopInfo', ['id' => $coopInfo['id']]) }}">
-                                <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20"></a></button></td>
+                        <td><a href="{{ route('admin.adminViewCoopPayInfo', ['id' => $coopInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $coopInfo['pay_status'] }}</a></td>                                                         
                         <td><button type="button">
                             <a href="{{ route('admin.adminViewCoopListDelete', ['id' => $coopInfo['id']]) }}">
                                 <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
