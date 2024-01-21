@@ -16,7 +16,12 @@ class AdminViewCoopPayInfoController extends Controller
             $acc = AccountInformation::find($coop->account_information_id);
             $coopName = $coop->coop_name;
             $coopId = $coop->id;
+            $payStatus = [
+                0 => '未',
+                1 => '済'
+            ];
             $data = [
+                'pay_status' => $payStatus[$coop->pay_status],
                 'pay' => $coop->amount_of_compensation . '円',
                 'bank' => $acc->bank_id,
                 'branch' => $acc->branch_id,
