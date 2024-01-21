@@ -18,6 +18,7 @@ class LentRequestFactory extends Factory
             'user_id' => User::inRandomOrder()->first()->id, // 適切な値に変更
             'drone_type_id' => $Dronetype->id, // 適切な値に変更
             'number' => $this->faker->randomNumber(1,$Dronetype->number_of_drones - $Dronetype->lend_drones_sum),
+            'state' => random_int(0, 1),
             'start_date' => $this->faker->date,
             'end_date' => $this->faker->date,
             'deletion_date' => null,

@@ -14,6 +14,7 @@ class LentRequest extends Model
         'user_id',
         'drone_type_id',
         'number',
+        'state',
         'start_date',
         'end_date',
     ];
