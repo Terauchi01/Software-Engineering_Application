@@ -63,17 +63,13 @@ select option:first-child {
   margin: 10pt auto;
 }
 
-.inputs h2 {
-  color: #408A7E;
-}
-
 .inputs label {
   width: 100pt;
   text-align: center;
   display: inline-block;
 }
 
-.inputs input, .inputs select {
+.inputs input {
   width: 200pt;
   height: 30pt;
   border: solid thin #408A7E;
