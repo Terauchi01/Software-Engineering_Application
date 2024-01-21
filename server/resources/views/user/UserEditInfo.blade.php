@@ -37,7 +37,7 @@
                     <th>パスワード</th>
                     <th>
                         <div class="left">
-                            <input type="password" name="password" placeholder="{{ $user->password }}" required>
+                            <input type="password" name="password" value="{{ $user->password }}" placeholder="8文字以上32文字以下、英数字" pattern="\w{8,32}" required>
                         </div>
                     </th>
                 </tr>
