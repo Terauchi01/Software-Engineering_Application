@@ -14,6 +14,7 @@ class CoopUser extends Model implements Authenticatable
     protected $primaryKey = 'id';
     protected $fillable = [
         'email_address',
+        'password',
         'coop_name',
         'representative_last_name',
         'representative_first_name',

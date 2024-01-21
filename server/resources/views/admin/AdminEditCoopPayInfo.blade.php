@@ -33,7 +33,7 @@ $currentPage = 'adminViewCoopList'
             </tr>
             <tr>
                 <th>支払い情報</th>
-                <th><input type="text" name="pay" value="{{ $data['pay'] }}">円</th>
+                <th><input type="number" name="pay" value="{{ $data['pay'] }}">円</th>
             </tr>
             <tr>
                 <th>銀行名</th>

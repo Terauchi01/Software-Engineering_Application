@@ -14,6 +14,7 @@ class UserEditInfoController extends Controller
         $userId = Auth::guard($A)->id();
         $user = User::find($userId);
         if($user && $user->deletion_date == null){
+            $user->password = null;
             return view('user.UserEditInfo', compact('user'));
         }
         else{
