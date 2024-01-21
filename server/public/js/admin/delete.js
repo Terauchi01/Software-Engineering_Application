@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-        // 各行のチェックボックスに対するイベントリスナーも追加する場合
+    // 各行のチェックボックスに対するイベントリスナーも追加する場合
     document.querySelectorAll('.itemCheckbox').forEach(function(itemCheckbox) {
         itemCheckbox.addEventListener('change', function() {
             var allChecked = true;
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (selectedCoops.length > 0) {
             var confirmation = confirm("選択した項目を削除しますか？");
-        
+
             if (confirmation) {
                 const selectedIds = Array.from(selectedCoops).map(function(checkbox) {
                     return checkbox.value;
@@ -40,12 +40,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function (response) {
-                        console.log('Request successful:', response);
-                        // 処理が完了したらページをリロード
+                        console.log('リクエストが成功しました:', response);                        
+                        document.querySelectorAll('.itemCheckbox').forEach(function(checkbox) {
+                            checkbox.checked = false;
+                        });
                         location.reload();
                     },
                     error: function (error) {
-                        console.error('Error:', error);
+                        console.error('エラー:', error);
                     }
                 });
             }

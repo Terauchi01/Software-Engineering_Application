@@ -45,9 +45,9 @@
                 <p><a href="{{ route('admin.adminViewUserStatisticsInfo') }}">利用者情報分析</a></p>
             @endif
             @if ($currentPage === 'adminAllocateCoopDeliveryTask')
-                <div class="current"><p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p></div>
+                <div class="current"><p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼割り振り一覧</a></p></div>
             @else
-                <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼一覧</a></p>
+                <p><a href="{{ route('admin.adminAllocateCoopDeliveryTask') }}">宅配依頼割り振り一覧</a></p>
             @endif
             @if ($currentPage === 'adminViewDroneType')
                 <div class="current"><p><a href="{{ route('admin.adminViewDroneType') }}">ドローンタイプ<br>一覧</a></p></div>

@@ -26,7 +26,7 @@ $currentPage = 'adminViewUserDeliveryRequestList'
         <p><h2><font color ="#408A7E"><u> 利用者宅配一覧 </u></font></h2></p>                                                           
 
         <select onChange="location.href=value;">
-            <option>送り主を選択</option>
+            <option>利用者を選択</option>
             @php
             $uniqueName = collect($mergedData)->unique('user_name')->values();
             @endphp           
