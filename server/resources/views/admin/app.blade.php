@@ -5,7 +5,10 @@
         <title>
             @yield('title')
         </title>
-        @yield('style')
+	<link rel="stylesheet" href="{{ asset('css/common/base.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/common/text.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/common/innputBoxes.css') }}">
+	@yield('style')
         @show
         @yield('script')
         @show
