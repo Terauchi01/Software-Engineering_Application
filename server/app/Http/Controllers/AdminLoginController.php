@@ -18,7 +18,7 @@ class AdminLoginController extends Controller
         ]);
 
         // ユーザーの認証
-        if (Auth::guard('admins')->attempt($credentials)) {
+        if (Auth::guard('admins')->attempt($credentials + ['deletion_date' => null])) {
             // 認証成功時の処理
             return redirect()->route('admin.adminViewCoopList'); // ダッシュボードなど適切なルートにリダイレクト
         }

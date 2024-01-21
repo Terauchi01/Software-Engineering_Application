@@ -8,13 +8,13 @@ use App\Models\DroneType;
 class AdminEditAdminDroneController extends Controller
 {
     public function adminEditAdminDrone ($id){
+        $err = null;
         $Drone = DroneType::find($id);
         if($Drone && $Drone->deletion_date == null){
-            return view('admin.AdminEditAdminDrone', compact('Drone'));
+            return view('admin.AdminEditAdminDrone', compact('Drone', 'err'));
         }
-        else{
-            return back();
-        }
+        $err = '存在しないドローンです';
+        return view('admin.AdminEditAdminDrone', compact('err'));
     }
     public function editDrone (Request $request){
         $request->validate([
@@ -30,11 +30,9 @@ class AdminEditAdminDroneController extends Controller
 
         if ($Drone && $Drone->deletion_date == null) {
             $Drone->update($request->all());
-
-            return redirect()->route('admin.adminEditAdminDrone', $Drone->id)->with('status', 'Drone updated successfully');
-        } else {
-            // ドローンが見つからないか削除されている場合の処理
-            return redirect()->back()->with('error', 'Drone not found or deleted');
+            
+            return redirect()->route('admin.adminEditAdminDrone', $Drone->id)->with('status', 'ドローン情報の更新が完了しました');
         }
+        return redirect()->route('admin.adminEditAdminDrone');
     }
 }

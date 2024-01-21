@@ -16,6 +16,7 @@ class AdminEditCoopPayInfoController extends Controller
             $coopName = $coop->coop_name;
             $coopId = $coop->id;
             $data = [
+                'pay_status' => $coop->pay_status,
                 'pay' => $coop->amount_of_compensation,
                 'bank' => $acc->bank_id,
                 'branch' => $acc->branch_id,
@@ -32,6 +33,7 @@ class AdminEditCoopPayInfoController extends Controller
         $coop = CoopUser::find($id);
         if ($coop && $coop->deletion_date === null) {
             $coop->update([
+                'pay_status' => $request['pay_status'],
                 'amount_of_compensation' => $request['pay']
             ]);
             return redirect()->route('admin.adminViewCoopPayInfo', ['id' => $id]);

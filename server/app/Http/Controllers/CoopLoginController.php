@@ -18,7 +18,7 @@ class CoopLoginController extends Controller
         ]);
 
         // ユーザーの認証
-        if (Auth::guard('coops')->attempt($credentials)) {
+        if (Auth::guard('coops')->attempt($credentials + ['deletion_date' => null])) {
             // 認証成功時の処理
             return redirect()->route('coop.coopDeliveryRequestList');
         }
