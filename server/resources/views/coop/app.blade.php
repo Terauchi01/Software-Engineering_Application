@@ -43,7 +43,7 @@
             @if ($currentPage === 'coopEditCoopInfo')
             <div class="current"><p><a href="{{ route('coop.coopEditCoopInfo',["id"=>1]) }}">事業者情報編集</a></p></div>
             @else
-            <p><a href="{{ route('coop.coopEditCoopInfo',["id"=>1]) }}">事業者情報編集</a></p>
+            <p><a href="{{ route('coop.coopEditCoopInfo') }}">事業者情報編集</a></p>
             @endif
             </div>
 
