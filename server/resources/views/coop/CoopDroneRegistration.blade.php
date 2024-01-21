@@ -43,16 +43,21 @@ $currentPage = 'coopRegisterDrone'
             @csrf
             <h2>ドローン登録フォーム</h2>
 
-            <label for="droneTypeId">ドローン種類ID</label>
-            <input type="text" id="droneTypeId" name="drone_type_id" required><br>
+            <label for="drone_type_id">ドローン選択</label>
+                <select name="drone_type_id" required>
+                    @foreach ($Drone as $drone)
+                        <option value="{{ $drone["id"] }}">{{ $drone['name'] }}</option>
+                    @endforeach
+                </select>
+            <br>
 
             <label for="operatingTime">稼働時間</label>
             <input type="text" id="operatingTime" name="operating_time" required><br>
 
             <label for="purchaseDate">購入時期</label>
             <input type="date" id="purchaseDate" name="purchase_date" required><br>
+            <div class="regist"><button type="submit">登録</button></div>
         </form>
-        <div class="regist"><button type="submit">登録</button></div>
     </div>
 </div>
 @endsection
