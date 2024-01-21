@@ -51,7 +51,7 @@ $currentPage = 'adminAllocateCoopDeliveryTask'
                             <a href="{{ route('admin.adminAllocateCoopDeliveryTaskApproval', ['id' => $deliveryInfo['id']])  }}">
                                 <img src="{{ asset('image/img_approval.png') }}" alt="承認" width="20" height="20"</a></button></td>
                         <td><button type="button">
-                            <a href="{{ route('admin.adminAllocateCoopDeliveryTaskApproval', ['id' => $deliveryInfo['id']]) }}">
+                            <a href="{{ route('admin.adminAllocateCoopDeliveryTaskDelete', ['id' => $deliveryInfo['id']]) }}">
                                <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
                     </tr>
                     @endforeach
