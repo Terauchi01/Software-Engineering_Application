@@ -7,7 +7,7 @@
         </title>
 	<link rel="stylesheet" href="{{ asset('css/common/base.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/common/text.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/common/innputBoxes.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/common/inputBoxes.css') }}">
 	@yield('style')
         @show
         @yield('script')
