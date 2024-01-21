@@ -18,12 +18,12 @@ class AdminEditAdminDroneController extends Controller
     }
     public function editDrone (Request $request){
         $request->validate([
-            'number_of_drones' => 'required|integer',
+            'number_of_drones' => 'required|integer|min:1|max:4294967295',
             'name' => 'required|string|max:100',
             'range' => 'required|integer|min:1|max:4294967295',
             'loading_weight' => 'required|integer|min:1|max:4294967295',
             'max_time' => 'required|integer|min:1|max:4294967295',
-            'lend_drones_sum' => 'required|integer|min:1|max:4294967295',
+            'lend_drones_sum' => 'required|integer|min:0|max:4294967295',
         ]);
 
         $Drone = DroneType::find($request->id);

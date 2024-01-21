@@ -138,8 +138,6 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
         Route::get('coopLogout', [CoopLogoutController::class, 'coopLogout'])->name('coopLogout');
         Route::get('coopRegisterDrone', [CoopDroneRegistrationController::class, 'coopRegisterDrone'])->name('coopRegisterDrone');
         Route::post('registerDrone', [CoopDroneRegistrationController::class, 'registerDrone'])->name('registerDrone');
-        // Route::get('coopSearchUserDeliveryRequestListView', [CoopDeliveryRequestListController::class, 'coopSearchUserDeliveryRequestListView'])->name('coopSearchUserDeliveryRequestListView');
-        // Route::get('coopSortUserDeliveryRequestListViewInfo', [CoopDeliveryRequestListController::class, 'coopSortUserDeliveryRequestListViewInfo'])->name('coopSortUserDeliveryRequestListViewInfo');
         Route::get('coopDeliveryRequestList', [CoopDeliveryRequestListController::class, 'coopDeliveryRequestList'])->name('coopDeliveryRequestList');
         Route::get('deliveryRequestInfoList/{id}', [CoopDeliveryRequestListController::class, 'delete'])->name('coopDeliveryRequestListDelete');
         Route::get('coopLogout', [CoopLogoutController::class, 'coopLogout'])->name('coopLogout');
