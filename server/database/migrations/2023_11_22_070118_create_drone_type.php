@@ -15,21 +15,21 @@ return new class extends Migration
             $table->id();
             $table->integer('number_of_drones')->nullable(false);
             $table->string('name', 100)->nullable(false);
-            $table->integer('range')->nullable(false);
-            $table->integer('loading_weight')->nullable(false);
-            $table->integer('max_time')->nullable(false);
-            $table->integer('lend_drones_sum')->nullable(false);
+            $table->unsignedInteger('range')->nullable(false);
+            $table->unsignedInteger('loading_weight')->nullable(false);
+            $table->unsignedInteger('max_time')->nullable(false);
+            $table->unsignedInteger('lend_drones_sum')->nullable(false);
             $table->timestamps();
             $table->timestamp('deletion_date')->nullable()->default(null);
         });
-        /* 
+        /* |min:-2147483648|max:2147483647'
         return [
             'number_of_drones' => 'required|integer',
             'name' => 'required|string|max:100',
-            'range' => 'required|integer',
-            'loading_weight' => 'required|integer',
-            'max_time' => 'required|integer',
-            'lend_drones_sum' => 'required|integer',
+            'range' => 'required|integer|min:1|max:4294967295',
+            'loading_weight' => 'required|integer|min:1|max:4294967295',
+            'max_time' => 'required|integer|min:1|max:4294967295',
+            'lend_drones_sum' => 'required|integer|min:1|max:4294967295',
         ];
         */
     }

@@ -17,12 +17,12 @@ class AdminRegisterAdminDroneController extends Controller
         $request->merge(['lend_drones_sum' => 0]);
         try {
             $data = $request->validate([
-                'name' => 'required|string',
-                'range' => 'required|numeric',
-                'loading_weight' => 'required|numeric',
-                'max_time' => 'required|numeric',
                 'number_of_drones' => 'required|integer',
-                'lend_drones_sum' => 'required|integer',
+                'name' => 'required|string|max:100',
+                'range' => 'required|integer|min:1|max:4294967295',
+                'loading_weight' => 'required|integer|min:1|max:4294967295',
+                'max_time' => 'required|integer|min:1|max:4294967295',
+                'lend_drones_sum' => 'required|integer|min:1|max:4294967295',
             ]);
     
             DroneType::create($data);

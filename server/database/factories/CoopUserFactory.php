@@ -28,8 +28,8 @@ class CoopUserFactory extends Factory
             'coop_name' => $this->faker->company,
             'representative_last_name' => $this->faker->lastName,
             'representative_first_name' => $this->faker->firstName,
-            'representative_last_name_kana' => $this->faker->lastName,
-            'representative_first_name_kana' => $this->faker->firstName,
+            'representative_last_name_kana' => $this->faker->lastKanaName,
+            'representative_first_name_kana' => $this->faker->firstKanaName,
             'license_information_id' => $this->faker->numberBetween(1, 100), // 適切なランダムな値に置き換える
             'account_information_id' => $this->faker->numberBetween(1, 100), // 適切なランダムな値に置き換える
             'employees' => $this->faker->numberBetween(1, 100),
