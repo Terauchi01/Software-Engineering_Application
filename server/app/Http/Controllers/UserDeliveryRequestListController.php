@@ -12,13 +12,18 @@ use Carbon\Carbon;
 class UserDeliveryRequestListController extends Controller
 {
     public function userDeliveryRequestList (){
+        $A = 'users';
+        $userId = Auth::guard($A)->id();
         $list = DeliveryRequest::select(
             'delivery_request.id',
             'delivery_request.item',
             'delivery_request.user_id',
             'delivery_request.delivery_destination_id',
+            'delivery_request.delivery_date',
         )            
             ->where('delivery_request.deletion_date', '=', null)
+            ->where('delivery_request.user_id', "=" , $userId)
+            ->orWhere('delivery_request.delivery_destination_id' , "=" , $userId)
             ->orderBy('delivery_request.id', 'asc')
             ->get();
         
@@ -31,6 +36,7 @@ class UserDeliveryRequestListController extends Controller
                 'item' => $item->item,
                 'user_id' => $sendName[$item->user_id],
                 'delivery_destination_id' => $receiveName[$item->delivery_destination_id],
+                'delivery_date' => $item->delivery_date
             ];
         }
         

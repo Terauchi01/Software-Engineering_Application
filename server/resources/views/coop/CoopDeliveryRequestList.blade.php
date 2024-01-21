@@ -44,20 +44,26 @@
                                 <th>依頼番号</th>
                                 <th>送り主情報</th>
                                 <th>受け取り主情報</th>
+                                <th>集荷会社情報</th>
+                                <th>中間配達会社情報</th>
+                                <th>配送会社情報</th>
                                 <th>受領済</th>
                             </tr>
                         </thead>                                    
                         <tbody>
-                            @foreach ($mergedData as $index => $deliveryInfo)
-                                <tr>
-                                    <td>{{ $deliveryInfo['id'] }}</td>
-                                    <td>{{ $deliveryInfo['user_id'] }}</td>
-                                    <td>{{ $deliveryInfo['delivery_destination_id'] }}</td>
-                                    <td><button type="button">
-                                        <a href="{{ route('coop.coopDeliveryRequestListDelete', ['id' => $deliveryInfo['id']]) }}">
-                                            <img src="{{ asset('image/img_approval.png') }}" alt="受領" width="20" height="20"></a></button></td>
-                                </tr>
-                            @endforeach
+                                @foreach ($mergedData as $index => $deliveryInfo)
+                                    <tr>
+                                        <td>{{ $deliveryInfo['id'] }}</td>
+                                        <td>{{ $deliveryInfo['user_id'] }}</td>
+                                        <td>{{ $deliveryInfo['delivery_destination_id'] }}</td>
+                                        <td>{{ $deliveryInfo['collection_company_id'] }}</td>
+                                        <td>{{ $deliveryInfo['intermediate_delivery_company_id'] }}</td>
+                                        <td>{{ $deliveryInfo['delivery_company_id'] }}</td>
+                                        <td><button type="button">
+                                            <a href="{{ route('coop.coopDeliveryRequestListDelete', ['id' => $deliveryInfo['id']]) }}">
+                                                <img src="{{ asset('image/img_approval.png') }}" alt="受領" width="20" height="20"></a></button></td>
+                                    </tr>
+                                @endforeach
                         </tbody>
                         <script>
                         document.getElementById('masterCheckbox').addEventListener('change', function() {
