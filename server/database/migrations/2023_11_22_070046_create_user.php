@@ -32,7 +32,7 @@ return new class extends Migration
     }
     /*
     return [
-            'email_address' => 'required|email|max:100',
+            'email_address' => 'required|email|unique:user,email_address',
             'password' => 'required|string|max:255',
             'prefecture_id' => 'required|string|max:100',
             'city_id' => 'required|string|max:100',

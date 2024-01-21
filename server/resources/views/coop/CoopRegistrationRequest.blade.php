@@ -15,7 +15,8 @@
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="/js/common/bank.js"></script>
-
+    <script>const citiesData = @json($Cities);</script>
+    <script src="{{ asset('js/common/city.js') }}"></script>
 </head>
 </head>
 
@@ -167,10 +168,6 @@
         </form>
         <a class="toLogin" href="{{ route('coop.coopLogin') }}">ログイン画面に戻る</a>
     </div>
-    <script>
-        const citiesData = @json($Cities);
-    </script>
-    <script src="{{ asset('js/common/city.js') }}"></script>
 </body>
 
 </html>

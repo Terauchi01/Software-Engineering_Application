@@ -1,3 +1,16 @@
+{/* 
+<h2>銀行情報</h2>
+<label for="bank_id">銀行名</label>
+<input type="text" id="bankSearch" placeholder="銀行名を検索">
+<select id="bankSelect" name="bank_id">
+    <option value="" disabled selected>銀行名を選択してください</option>
+</select>
+
+<label for="branch_id">支店名</label>
+<select id="branchSelect" name="branch_id">
+    <option value="" disabled selected>支店名を選択してください</option>
+</select> 
+*/}
 $(document).ready(function() {
     var banksList = [];
     $.getJSON('/data/banks.json', function(json){
