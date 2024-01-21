@@ -22,26 +22,23 @@ class UserRegistrationController extends Controller
         return view('user.UserRegistration',compact('Prefecture','Cities'));
     }
     public function userRegister(Request $request){
-        $request->merge([
-            'unpaid_charge' => 0,
-        ]);
         $Class = User::class;
-        $newUserData = [
-            'email_address' => $request['email_address'],
-            'password' => $request['password'], 
-            'postal_code' => $request['postal_code'],
-            'prefecture_id' => $request['prefecture_id'],
-            'city_id' => $request['city_id'],
-            'town' => $request['town'],
-            'block' => $request['block'],
-            'phone_number' => $request['phone_number'],
-            'user_last_name' => $request['user_last_name'],
-            'user_first_name' => $request['user_first_name'],
-            'user_last_name_kana' => $request['user_last_name_kana'],
-            'user_first_name_kana' => $request['user_first_name_kana'],
-            'unpaid_charge' => $request['unpaid_charge'],
-        ];
+        $newUserData = $request->validate([
+            'email_address' => 'required|email|max:100|unique:user,email_address',
+            'password' => 'required|string|max:255',
+            'prefecture_id' => 'required|string|max:100',
+            'city_id' => 'required|string|max:100',
+            'town' => 'required|string|max:100',
+            'block' => 'nullable|string|max:100',
+            'postal_code' => 'required|integer',
+            'phone_number' => 'required|string|max:11',
+            'user_last_name' => 'required|string|max:100',
+            'user_first_name' => 'required|string|max:100',
+            'user_last_name_kana' => 'required|string|max:300',
+            'user_first_name_kana' => 'required|string|max:300',
+            'unpaid_charge' => 'integer',
+        ]);
         $Class::create($newUserData);
-        return redirect()->route('user.userRegisterView')->with('success', '配送が登録されました。');
+        return redirect()->route('user.userLogin')->withErrors(['login' => '登録が完了しました']);
     }
 }
