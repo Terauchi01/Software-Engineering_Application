@@ -82,11 +82,11 @@ clu
                 </tr>
 
                 <tr>
-                    <th>陸か空か</th>
+                    <th>陸運か空運か</th>
                     <th>
                         <div class="left">
-                            <label for="land"><input type="radio" name="land_or_air" value="1" {{ $coop->land_or_air === 1 ? 'checked' : '' }}>陸</label>
-                            <label for="air"><input type="radio" name="land_or_air" value="2" {{ $coop->land_or_air === 2 ? 'checked' : '' }}>空</label>
+                            <label for="land"><input type="radio" name="land_or_air" value="1" {{ $coop->land_or_air === 1 ? 'checked' : '' }}>陸運</label>
+                            <label for="air"><input type="radio" name="land_or_air" value="2" {{ $coop->land_or_air === 2 ? 'checked' : '' }}>空運</label>
                         </div>
                     </th>
                 </tr>
