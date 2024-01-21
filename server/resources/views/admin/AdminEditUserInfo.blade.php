@@ -52,8 +52,8 @@ $currentPage = 'adminViewUserList'
                         </select>
                     </div>
                     <div style="text-align:center">
-                        <input type="text" name="town" value="{{ $data['town'] }}" placeholder="町村" required>
-                        <input type="text" name="block" value="{{ $data['block'] }}" placeholder="住所" required>
+                        <input type="text" name="town" value="{{ $data['town'] }}" placeholder="市区町村以降の住所" required>
+                        <input type="text" name="block" value="{{ $data['block'] }}" placeholder="建物名" required>
                     </div>
                 </th>
             </tr>

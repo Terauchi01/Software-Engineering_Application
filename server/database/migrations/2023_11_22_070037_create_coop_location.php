@@ -17,10 +17,6 @@ return new class extends Migration
             $table->integer('postal_code')->nullable(false);
             $table->integer('prefecture_id')->nullable(false);
             $table->integer('city_id')->nullable(false);
-            // $table->string('representative_last_name', 100)->nullable(false);
-            // $table->string('representative_first_name', 100)->nullable(false);
-            // $table->string('representative_last_name_kana', 100)->nullable(false);
-            // $table->string('representative_first_name_kana', 100)->nullable(false);
             $table->unsignedBigInteger('license_id')->nullable(false);
             $table->string('town', 100)->nullable();
             $table->string('block', 100)->nullable();
@@ -35,10 +31,6 @@ return new class extends Migration
             'postal_code' => 'required|integer',
             'prefecture_id' => 'required|integer',
             'city_id' => 'required|integer',
-            'representative_last_name' => 'required|string|max:100',
-            'representative_first_name' => 'required|string|max:100',
-            'representative_last_name_kana' => 'required|string|max:100',
-            'representative_first_name_kana' => 'required|string|max:100',
             'license_holder_name' => 'required|string|max:100',
             'license_id' => 'required|integer',
             'town' => 'nullable|string|max:100',

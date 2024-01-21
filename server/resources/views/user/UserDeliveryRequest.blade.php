@@ -55,7 +55,7 @@
 
                 <!-- それ以降 -->
                 <div>
-                    <label for="town">町名・番地</label>
+                    <label for="town">市区町村以降の住所</label>
                     <input type="text" name="town" required>
                     <label for="block">建物名</label>
                     <input type="text" name="block" required>

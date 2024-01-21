@@ -38,28 +38,28 @@ class CoopRegistrationRequestController extends Controller
         try {
             DB::beginTransaction();
             $license_information = $request->validate([
-                'date_of_issue' => 'required|date',
-                'date_of_registration' => 'required|date',
-                'name' => 'required|string',
-                'birth' => 'required|date',
-                'conditions' => 'required|string',
-                'classification' => 'required|string',
-                'ratings_and_limitations1' => 'required|string',
-                'ratings_and_limitations2' => 'nullable|string',
-                'ratings_and_limitations3' => 'nullable|string',
-                'number' => 'required|string',
+                'date_of_issue' => 'required|date|after_or_equal:2022-01-01|before_or_equal:today',
+                'date_of_registration' => 'required|date|after_or_equal:2022-01-01|before_or_equal:today',
+                'name' => 'required|string|max:100',
+                'birth' => 'required|date|after_or_equal:1900-01-01|before_or_equal:today',
+                'conditions' => 'nullable|string|max:100',
+                'classification' => 'required|string|max:100',
+                'ratings_and_limitations1' => 'nullable|string|max:100',
+                'ratings_and_limitations2' => 'nullable|string|max:100',
+                'ratings_and_limitations3' => 'nullable|string|max:100',
+                'number' => 'nullable|string|max:200',
             ]);
             // dd($license_information);
             $document = LicenseInformation::create($license_information);
             $licenseId = $document->id;
 
             $data = $request->validate([
-                'bank_id' => 'required|integer',
-                'branch_id' => 'required|string',
-                'account_type' => 'required|string',
-                'account_number' => 'required|string',
-                'account_name' => 'required|string',
-                'account_name_kana' => 'required|string',
+                'bank_id' => 'required|numeric',
+                'branch_id' => 'required|numeric',
+                'account_type' => 'required|string|max:100',
+                'account_number' => 'required|string|max:255',
+                'account_name' => 'required|string|max:100',
+                'account_name_kana' => 'required|string|max:255',
             ]);
             $bankAccount = AccountInformation::create($data);
             // 登録したIDを取得
@@ -78,7 +78,7 @@ class CoopRegistrationRequestController extends Controller
             ]);
             $coopdata = $request->validate([
                 'email_address' => 'required|email|unique:coop_user,email_address',
-                'password' => 'required|min:8', // パスワードの最小長は8と仮定
+                'password' => 'required|min:8',
                 'coop_name' => 'required|string',
                 'representative_last_name' => 'required|string',
                 'representative_first_name' => 'required|string',
@@ -86,7 +86,7 @@ class CoopRegistrationRequestController extends Controller
                 'representative_first_name_kana' => 'required|string',
                 'license_information_id' => 'required|integer',
                 'account_information_id' => 'required|integer',
-                'employees' => 'required|integer',
+                'employees' => 'required|integer|min:1',
                 'phone_number' => 'required|string',
                 'land_or_air' => 'required|string',
                 'application_status' => 'required|integer',
@@ -95,27 +95,6 @@ class CoopRegistrationRequestController extends Controller
                 'amount_of_compensation' => 'required|integer',
             ]);
             $coop = CoopUser::create($coopdata);
-            if($request->office_representative_last_name != null){
-                $request->merge([
-                    'representative_last_name' => $request->office_representative_last_name,
-                ]);
-            }
-            if($request->office_representative_last_name != null){
-                $request->merge([
-                    'representative_first_name' => $request->office_representative_first_name,
-                ]);
-            }
-            if($request->office_representative_last_name != null){
-                $request->merge([
-                    'representative_last_name_kana' => $request->office_representative_last_name_kana,
-                ]);
-            }
-            if($request->office_representative_last_name != null){
-                $request->merge([
-                    'representative_first_name_kana' => $request->office_representative_first_name_kana,
-                ]);
-            }
-            // dd($document->name);
             $request->merge([
                 'coop_user_id' => $coop->id,
                 'license_holder_name' => $document->name,
@@ -128,10 +107,6 @@ class CoopRegistrationRequestController extends Controller
                 'postal_code' => 'required|integer',
                 'prefecture_id' => 'required|integer',
                 'city_id' => 'required|integer',
-                'representative_last_name' => 'required|string|max:100',
-                'representative_first_name' => 'required|string|max:100',
-                'representative_last_name_kana' => 'required|string|max:100',
-                'representative_first_name_kana' => 'required|string|max:100',
                 'license_holder_name' => 'required|string|max:100',
                 'license_id' => 'required|integer',
                 'town' => 'nullable|string|max:100',

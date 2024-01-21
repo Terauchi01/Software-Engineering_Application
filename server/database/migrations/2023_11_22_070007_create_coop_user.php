@@ -36,24 +36,23 @@ return new class extends Migration
         });
         /* 
         return [
-            'email_address' => 'required|email|max:100',
-            'password' => 'required|string|max:255',
-            'coop_name' => 'required|string|max:100',
-            'representative_last_name' => 'required|string|max:100',
-            'representative_first_name' => 'required|string|max:100',
-            'representative_last_name_kana' => 'required|string|max:100',
-            'representative_first_name_kana' => 'required|string|max:100',
-            'license_information_id' => 'required|integer',
-            'account_information_id' => 'required|integer',
-            'employees' => 'required|integer',
-            'phone_number' => 'required|string|max:11',
-            'land_or_air' => 'required|integer',
-            'application_status' => 'required|integer',
-            'child_status' => 'nullable|integer',
-            'pair_id' => 'nullable|integer|exists:coop_user,id',
-            'pay_status' => 'required|integer',
-            'amount_of_compensation' => 'required|integer',
-        ];
+                'email_address' => 'required|email|unique:coop_user,email_address',
+                'password' => 'required|min:8', // パスワードの最小長は8と仮定
+                'coop_name' => 'required|string',
+                'representative_last_name' => 'required|string',
+                'representative_first_name' => 'required|string',
+                'representative_last_name_kana' => 'required|string',
+                'representative_first_name_kana' => 'required|string',
+                'license_information_id' => 'required|integer',
+                'account_information_id' => 'required|integer',
+                'employees' => 'required|integer|min:1',
+                'phone_number' => 'required|string',
+                'land_or_air' => 'required|string',
+                'application_status' => 'required|integer',
+                'child_status' => 'required|integer',
+                'pay_status' => 'required|integer',
+                'amount_of_compensation' => 'required|integer',
+            ];
         */
     }
 
