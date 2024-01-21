@@ -8,10 +8,10 @@
 
 @section('script')
 <script>const citiesData = @json($cities);</script>
-<script>
+{{-- <script>
     const nowBankId = @json($data['bank_id']);
     const nowBranchId = @json($data['branch_id']);
-</script>
+</script> --}}
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="{{ asset('js/common/city.js') }}"></script>
 <script src="{{ asset('js/common/bank.js') }}"></script>
