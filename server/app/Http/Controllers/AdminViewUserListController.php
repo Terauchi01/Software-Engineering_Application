@@ -50,7 +50,7 @@ class AdminViewUserListController extends Controller
         return redirect()->route('admin.adminViewUserList');
     }
 
-     public function deleteAll(Request $request)
+    public function deleteAll(Request $request)
     {
         // CSRFトークンを確認
         if ($request->header('X-CSRF-TOKEN') !== csrf_token()) {
@@ -60,7 +60,7 @@ class AdminViewUserListController extends Controller
         $data = $request->input('elements');
 
         foreach($data as $id){
-            $B = CoopUser::class;
+            $B = User::class;
             $currentDateTime = Carbon::now();
             $B::where('id',$id)->update(['deletion_date' => $currentDateTime]);
         }

@@ -28,35 +28,36 @@ $currentPage = 'adminViewCoopApplyDroneLendList'
             <p><h2><font color ="#408A7E"><u> ドローン貸与申請一覧 </u></font></h2></p>
         </div>
 
-        <p><a href="{{ route('admin.adminViewCoopApplyDroneLendList') }}">ドローン貸与申請一覧</a></p>                       
-
         <br></br>
         
         <table class ="coop">
             <thead>
                 <tr>                 
-                    <th>申請番号</th>                                
-                    <th>事業者名</th>
-                    <th>ドローン情報</th>
+                    <th>申請番号</th>            
+                    <th>ユーザ名</th>
+                    <th>ドローンタイプ</th>          
+                    <th>貸与希望数</th>
+                    <th>貸与希望開始日</th>
+                    <th>貸与希望終了日</th>                          
                     <th>承認</th>
-                    <th>却下</th>
+                    <th>却下</th>                               
                 </tr>
             </thead>
             <tbody>
-                @foreach ($mergedData as $index => $droneInfo)
+                @foreach ($mergedData as $index => $applyInfo)
                     <tr>                       
-                        <td>{{ $droneInfo['id'] }}</td>                                   
-                        <td>{{ $droneInfo['coop_user_id'] }}</td>
+                        <td>{{ $applyInfo['id'] }}</td>                                   
+                        <td>{{ $applyInfo['user_id'] }}</td>
+                        <td>{{ $applyInfo['drone_type_id'] }}</td>
+                        <td>{{ $applyInfo['number'] }}</td>
+                        <td>{{ $applyInfo['start_date'] }}</td>
+                        <td>{{ $applyInfo['end_date'] }}</td>
                         <td><button type="button">
-                            <a href="{{ route('admin.adminViewCoopDroneInfo', ['id' => $droneInfo['id']]) }}">
-                                <img src="{{ asset('image/img_drone.png') }}" alt="詳細" width="20" height="20"></a></button>
-                        </td>
-                        <td><button type="button">
-                            <a href="{{ route('admin.adminEditUserInfo', ['id' => $droneInfo['id']]) }}">
+                            <a href="{{ route('admin.adminViewCoopApplyDroneLendListApproval', ['id' => $applyInfo['id']]) }}">
                                 <img src="{{ asset('image/img_approval.png') }}" alt="承認" width="20" height="20"></a></button>
                         </td>
                         <td><button type="button">
-                            <a href="{{ route('admin.adminViewCoopDroneInfoDelete', ['id' => $droneInfo['id']]) }}">
+                            <a href="{{ route('admin.adminViewCoopApplyDroneLendListDelete', ['id' => $applyInfo['id']]) }}">
                                 <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
                     </tr>
                     @endforeach

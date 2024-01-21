@@ -100,6 +100,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('sendCoopBill', [AdminSendCoopBillController::class, 'adminSendCoopBill'])->name('adminSendCoopBill');
         Route::get('sendUserBill', [AdminSendUserBillController::class, 'adminSendUserBill'])->name('adminSendUserBill');
         Route::get('viewCoopApplyDroneLendList', [AdminViewCoopApplyDroneLendListController::class, 'adminViewCoopApplyDroneLendList'])->name('adminViewCoopApplyDroneLendList');
+        Route::get('viewCoopApplyDroneLendListDelete/{id}', [AdminViewCoopApplyDroneLendListController::class, 'delete'])->name('adminViewCoopApplyDroneLendListDelete');
+        Route::get('viewCoopApplyDroneLendList/{id}', [AdminViewCoopApplyDroneLendListController::class, 'approval'])->name('adminViewCoopApplyDroneLendListApproval');
         Route::get('viewCoopDroneInfo', [AdminViewCoopDroneInfoController::class, 'adminViewCoopDroneInfo'])->name('adminViewCoopDroneInfo');
         Route::get('viewCoopDroneInfo/{id}', [AdminViewCoopDroneInfoController::class, 'delete'])->name('adminViewCoopDroneInfoDelete');
         Route::get('viewCoopInfo', [AdminViewCoopInfoController::class, 'adminViewCoopInfo'])->name('adminViewCoopInfo');
@@ -116,6 +118,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('viewUserInfo', [AdminViewUserInfoController::class, 'adminViewUserInfo'])->name('adminViewUserInfo');
         Route::get('viewUserList', [AdminViewUserListController::class, 'adminViewUserList'])->name('adminViewUserList');
         Route::get('viewUserList/{id}', [AdminViewUserListController::class, 'delete'])->name('adminViewUserListDelete');
+        Route::post('userDeleteAll', [AdminViewUserListController::class, 'deleteAll'])->name('userDeleteAll');
         Route::get('viewDroneType', [AdminViewDroneTypeController::class, 'adminViewDroneType'])->name('adminViewDroneType');
         Route::get('viewDroneType/{id}', [AdminViewDroneTypeController::class, 'delete'])->name('adminViewDroneTypeDelete');
     });
