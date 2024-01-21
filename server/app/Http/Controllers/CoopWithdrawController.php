@@ -22,7 +22,6 @@ class CoopWithdrawController extends Controller
                   ->orWhere('delivery_company_id', $userId);
         })->where('delivery_status', '!=', 4)->exists();
         $user_pay = CoopUser::where('amount_of_compensation','=',0)->exists();
-        $exists = false;
         
         if($exists){
             return redirect()->back()->with('error', '配達中の荷物が存在します');
