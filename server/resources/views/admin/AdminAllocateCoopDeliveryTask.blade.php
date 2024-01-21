@@ -34,7 +34,7 @@ $currentPage = 'adminAllocateCoopDeliveryTask'
                     <th>送り主情報</th>
                     <th>受け取り主情報</th>
                     <th>担当者事業者名</th>                 
-                    <th>承認</th>           
+                    <th>割り振り</th>           
                     <th>削除</th>
                 </tr>
             </thead>
