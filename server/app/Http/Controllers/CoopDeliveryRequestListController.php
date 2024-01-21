@@ -27,9 +27,11 @@ class CoopDeliveryRequestListController extends Controller
         )
             ->where('delivery_request.deletion_date', '=', null)
             ->where('delivery_request.delivery_status', '!=', 4)
-            ->where('delivery_request.collection_company_id', "=" , $userId)
-            ->orWhere('delivery_request.intermediate_delivery_company_id' , "=" , $userId)
-            ->orWhere('delivery_request.delivery_company_id' , "=" , $userId)
+            ->where(function($query) use ($userId) {
+                $query->where('delivery_request.collection_company_id', '=', $userId)
+                    ->orWhere('delivery_request.intermediate_delivery_company_id', '=', $userId)
+                    ->orWhere('delivery_request.delivery_company_id', '=', $userId);
+            })
             ->orderBy('delivery_request.id', 'asc')
             ->get();
         

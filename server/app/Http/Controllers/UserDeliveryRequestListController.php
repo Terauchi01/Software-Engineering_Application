@@ -19,6 +19,7 @@ class UserDeliveryRequestListController extends Controller
             'delivery_request.item',
             'delivery_request.user_id',
             'delivery_request.delivery_destination_id',
+            'delivery_request.delivery_status',
             'delivery_request.delivery_date',
         )            
             ->where('delivery_request.deletion_date', '=', null)
@@ -30,12 +31,14 @@ class UserDeliveryRequestListController extends Controller
         $mergedData = [];
         $sendName = User::pluck('user_last_name', 'id')->toArray();
         $receiveName = User::pluck('user_last_name', 'id')->toArray();
+        $deliveryStatus = ['未割り振り', '割り振り済', '集荷決定,配達未決定', '配達中', '配達完了'];
         foreach ($list as $item) {         
             $mergedData[] = [
                 'id' => $item->id,
                 'item' => $item->item,
                 'user_id' => $sendName[$item->user_id],
                 'delivery_destination_id' => $receiveName[$item->delivery_destination_id],
+                'delivery_status' => $deliveryStatus[$item->delivery_status],
                 'delivery_date' => $item->delivery_date
             ];
         }

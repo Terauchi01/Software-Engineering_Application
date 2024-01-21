@@ -1,21 +1,27 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('user.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>宅配依頼</title>
-    <link rel="stylesheet" href="{{ asset('css/common/Register.css') }}">
-    <style>
-        .current {
-            background-color: #ffffff;
-            height: 20pt;
-            text-align: center;
-        }
-    </style>
-</head>
+@section('title', '宅配依頼')
 
-<body>
+@section('style')
+<link rel="stylesheet" href="{{ asset('css/common/Register.css') }}">
+<style>
+.current {
+    background-color: #ffffff;
+    height: 20pt;
+    text-align: center;
+}
+</style>
+@endsection
+
+@section('script')
+
+@endsection
+
+@php
+$currentPage = 'userDeliveryRequest'
+@endphp
+
+@section('content')
     <div class="contents">
         <form method="POST" action="{{ route('user.deliveryRequest') }}">
             @csrf
@@ -72,9 +78,6 @@
             <div class="regist"><button type="submit">送信</button></div>
         </form>
     </div>
-</body>
-
-</html>
 
 @if ($errors->any())
 <div>
