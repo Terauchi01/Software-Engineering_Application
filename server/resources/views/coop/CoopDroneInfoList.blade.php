@@ -48,7 +48,6 @@ $currentPage = 'coopDroneInfoList'
                     <th>ドローンの種類</th>
                     <th>稼働状況</th>
                     <th>所有状況</th>
-                    <th>編集</th>
                     <th>削除</th>
                 </tr>
             </thead>
@@ -59,9 +58,6 @@ $currentPage = 'coopDroneInfoList'
                         <td>{{ $droneInfo['drone_type_id'] }}</td>
                         <td>{{ $droneInfo['drone_status'] }}</td> 
                         <td>{{ $droneInfo['possessionOrLoan'] }}</td>
-                        <td><button type="button">
-                            <a href="{{ route('admin.adminEditCoopDroneInfo', ['id' => $droneInfo['id']]) }}">
-                                <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20"></a></button></td>
                         <td><button type="button">
                             <a href="{{ route('coop.coopDroneInfoListDelete', ['id' => $droneInfo['id']]) }}">
                                 <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
