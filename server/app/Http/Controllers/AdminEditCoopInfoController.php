@@ -61,7 +61,6 @@ class AdminEditCoopInfoController extends Controller
                 'worker' => $coop->employees,
                 'phone' => $coop->phone_number,
                 'land_or_air' => $coop->land_or_air,
-                // 'status' => $coop->application_status
             ];
             return view('admin.AdminEditCoopInfo', compact('coopName', 'coopId', 'prefectures', 'cities', 'data'));
         }

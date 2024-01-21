@@ -79,8 +79,8 @@ $currentPage = 'adminViewCoopList'
             <tr>
                 <th>営業形態</th>
                 <th><div class="left">
-                    <label><input type="radio" name="land_or_air" value="1" {{ $data['land_or_air'] === 1 ? 'checked' : '' }}>陸</label>
-                    <label><input type="radio" name="land_or_air" value="2" {{ $data['land_or_air'] === 2 ? 'checked' : '' }}>空</label>
+                    <label><input type="radio" name="land_or_air" value="1" {{ $data['land_or_air'] === 1 ? 'checked' : '' }}>陸運</label>
+                    <label><input type="radio" name="land_or_air" value="2" {{ $data['land_or_air'] === 2 ? 'checked' : '' }}>空運</label>
                 </div></th>
             </tr>
             <tr>
