@@ -1,9 +1,9 @@
 @extends('admin.app')
-
+                       
 @section('title', '事業者情報編集')
 
 @section('style')
-<link rel="stylesheet" href="{{ asset('/css/common/EditInfo.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/admin/AdminInfo.css') }}">
 @endsection
 
 @section('script')
@@ -17,10 +17,10 @@ $currentPage = 'adminViewCoopList'
 
 @section('content')
 <div class="info">
-    <h2><u>事業者情報編集</u></h2>
+    <p class="information"><h2><font color ="#408A7E"><u>事業者情報編集</u></font></h2></p>
     <p class="name">{{ $coopName }}</p>
     @if($coopId !== null)
-    <p class="currentId">ID : {{ $coopId }}</p>
+    <p class="id">ID : {{ $coopId }}</p>
     <form action="{{ route('admin.adminEditCoopInfoApply') }}" method="POST">
         @csrf
         <table>
@@ -79,8 +79,8 @@ $currentPage = 'adminViewCoopList'
             <tr>
                 <th>営業形態</th>
                 <th><div class="left">
-                    <label><input type="radio" name="land_or_air" value="1" {{ $data['land_or_air'] === 1 ? 'checked' : '' }}>陸</label>
-                    <label><input type="radio" name="land_or_air" value="2" {{ $data['land_or_air'] === 2 ? 'checked' : '' }}>空</label>
+                    <label><input type="radio" name="land_or_air" value="1" {{ $data['land_or_air'] === 1 ? 'checked' : '' }}>陸運</label>
+                    <label><input type="radio" name="land_or_air" value="2" {{ $data['land_or_air'] === 2 ? 'checked' : '' }}>空運</label>
                 </div></th>
             </tr>
             <tr>

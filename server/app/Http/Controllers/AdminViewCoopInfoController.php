@@ -26,8 +26,8 @@ class AdminViewCoopInfoController extends Controller
             $coopId = $coop->id;
             $coopName = $coop->coop_name;
             $lor = [
-                1 => '陸',
-                2 => '空'
+                1 => '陸運',
+                2 => '空運'
             ];
             $data = [
                 'email' => $coop->email_address,
@@ -36,10 +36,10 @@ class AdminViewCoopInfoController extends Controller
                 'kanaName' => $coop->representative_last_name_kana . $coop->representative_first_name_kana,
                 'postal_code' => $loc->postal_code,
                 'address' => $prefecture . ' ' . $city . ' ' . $loc->town . ' ' . $loc->block,
-                'date_of_issue' => $license->date_of_issue,
-                'date_of_registration' => $license->date_of_registration,
+                'date_of_issue' => \Carbon\Carbon::parse($license->date_of_issue)->toDateString(),
+                'date_of_registration' => \Carbon\Carbon::parse($license->date_of_registration)->toDateString(),
                 'license_name' => $license->name,
-                'license_birth' => $license->birth,
+                'license_birth' => \Carbon\Carbon::parse($license->birth)->toDateString(),
                 'conditions' => $license->conditions,
                 'classification' => $license->classification,
                 'ratings_and_limitations' => $license->ratings_and_limitations1 . ' ' . $license->ratings_and_limitations2 . ' ' . $license->ratings_and_limitations3,
@@ -47,7 +47,6 @@ class AdminViewCoopInfoController extends Controller
                 'worker' => $coop->employees . '人',
                 'phone' => $coop->phone_number,
                 'land_or_air' => $lor[$coop->land_or_air],
-                //'status' => $coop->application_status
             ];
             return view('admin.AdminViewCoopInfo', compact('coopName', 'coopId', 'data'));
         }

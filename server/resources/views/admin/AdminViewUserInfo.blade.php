@@ -3,7 +3,7 @@
 @section('title', '利用者情報詳細')
 
 @section('style')
-<link rel="stylesheet" href="{{ asset('/css/admin/AdminViewUserInfo.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/admin/AdminInfo.css') }}">
 @endsection
 
 @section('script')
@@ -14,11 +14,11 @@ $currentPage = 'adminViewUserList'
 @endphp
 
 @section('content')
-<div class="userInfo">
+<div class="info">
     <p class="information"><h2><font color ="#408A7E"><u>利用者情報詳細</u></font></h2></p>
-    <p class="userName">{{ $userName }}</p>
+    <p class="name">{{ $userName }}</p>
     @if($userId !== null)
-    <p class="userId">ID : {{ $userId }}</p>
+    <p class="id">ID : {{ $userId }}</p>
     <form action="{{ route('admin.adminEditUserInfo',["id"=>$userId]) }}" method="GET">
         <input type="hidden" name="id" value="{{ $userId }}">
         <button type="submit" class="edit">編集する</button>
@@ -50,12 +50,5 @@ $currentPage = 'adminViewUserList'
         </tr>
     </table>
     @endif
-</div>
-<div class = "header">
-    <select onChange="location.href=value;">
-        <option>管理者</option>
-        <option value="{{ route('admin.adminLogout') }}">ログアウト</option>
-    </select>
-    <p>admin</p> <!-- ここをユーザ名とする -->
 </div>
 @endsection

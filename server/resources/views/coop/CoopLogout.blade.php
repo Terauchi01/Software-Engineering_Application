@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <title>ログアウト</title>
         <link rel="stylesheet" href="{{ asset('/css/admin/AdminLogout.css') }}">
     </head>
     <body>

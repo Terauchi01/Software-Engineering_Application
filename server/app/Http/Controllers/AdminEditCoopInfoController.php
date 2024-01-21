@@ -45,10 +45,10 @@ class AdminEditCoopInfoController extends Controller
                 'city' => $loc->city_id,
                 'town' => $loc->town,
                 'block' => $loc->block,
-                'date_of_issue' => $license->date_of_issue,
-                'date_of_registration' => $license->date_of_registration,
+                'date_of_issue' => \Carbon\Carbon::parse($license->date_of_issue)->toDateString(),
+                'date_of_registration' => \Carbon\Carbon::parse($license->date_of_registration)->toDateString(),
                 'name' => $license->name,
-                'birth' => $license->birth,
+                'birth' => \Carbon\Carbon::parse($license->birth)->toDateString(),
                 'conditions' => $license->conditions,
                 'classification' => $license->classification,
                 'ratings_and_limitations1' => $license->ratings_and_limitations1,
@@ -61,7 +61,6 @@ class AdminEditCoopInfoController extends Controller
                 'worker' => $coop->employees,
                 'phone' => $coop->phone_number,
                 'land_or_air' => $coop->land_or_air,
-                // 'status' => $coop->application_status
             ];
             return view('admin.AdminEditCoopInfo', compact('coopName', 'coopId', 'prefectures', 'cities', 'data'));
         }

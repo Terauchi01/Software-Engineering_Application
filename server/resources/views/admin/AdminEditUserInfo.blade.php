@@ -3,7 +3,7 @@
 @section('title', '利用者情報編集')
 
 @section('style')
-<link rel="stylesheet" href="{{ asset('/css/common/EditInfo.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/admin/AdminInfo.css') }}">
 @endsection
 
 @section('script')
@@ -17,10 +17,10 @@ $currentPage = 'adminViewUserList'
 
 @section('content')
 <div class="info">
-    <h2><u>利用者情報編集</u></h2>
+    <p class="information"><h2><font color ="#408A7E"><u>利用者情報編集</u></font></h2></p>
     <p class="name">{{ $userName }}</p>
     @if($userId !== null)
-    <p class="currentID">ID : {{ $userId }}</p>
+    <p class="id">ID : {{ $userId }}</p>
     <form action="{{ route('admin.adminEditUserInfoApply',["id"=>$userId]) }}" method="POST">
         @csrf
         <table>
