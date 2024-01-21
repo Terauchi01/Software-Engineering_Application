@@ -65,22 +65,22 @@ $currentPage = 'adminViewUserList'
                         <td>
                             <input type="checkbox" class="itemCheckbox" id="checkbox{{$userInfo['id']}}" name="selectedCoops[]" value="{{ $userInfo['id'] }}">
                         </td>
-                        <td>{{ $userInfo['id'] }}</td>                                  
+                        <td>{{ $userInfo['id'] }}</td>                        
                         <td><a href="{{ route('admin.adminViewUserInfo', ['id' => $userInfo['id']]) }}" style="color:blue; text-decoration:none"> {{ $userInfo['user_name'] }}</a></td>
-                        <td>{{ $userInfo['email_address'] }}</td>                                        
+                        <td>{{ $userInfo['email_address'] }}</td>
                         <td><button type="button">
                             <a href="{{ route('admin.adminViewUserListDelete', ['id' => $userInfo['id']]) }}">
                                 <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
                     </tr>
                     @endforeach
-            </tbody>                                              
+            </tbody>
         </table>
-        <input type="hidden" id="url" value="{{ route('admin.deleteAll') }}">
+        <input type="hidden" id="url" value="{{ route('admin.userDeleteAll') }}">
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        @foreach ($mergedData as $index => $userInfo)
-            @if (isset($userInfo['selectedIds']))
-                <a href="{{ route('admin.adminViewUserListDelete', ['id' => $userInfo['selectedIds']]) }}"></a>
+        @foreach ($mergedData as $index => $coopInfo)
+            @if (isset($coopInfo['selectedIds']))
+                <a href="{{ route('admin.adminViewUserListDelete', ['id' => $coopInfo['selectedIds']]) }}"></a>
             @endif
         @endforeach
     </div>
