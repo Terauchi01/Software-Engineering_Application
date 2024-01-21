@@ -1,3 +1,4 @@
+//<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 //<script>const citiesData = @json($Cities);</script>
 //<script src="{{ asset('js/common/city.js') }}"></script>
 //server/resources/views/coop/CoopRegistrationRequest.blade.phpこれとそのコントローラを参照
