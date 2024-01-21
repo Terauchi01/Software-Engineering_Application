@@ -13,7 +13,7 @@ class CreateLentRequestsTable extends Migration
             $table->foreign('user_id')->references('id')->on('coop_user');
             $table->unsignedBigInteger('drone_type_id');
             $table->foreign('drone_type_id')->references('id')->on('drone_type');
-            $table->integer('number');
+            $table->unsignedInteger('number');
             $table->integer('state');
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
@@ -25,9 +25,8 @@ class CreateLentRequestsTable extends Migration
             'user_id' => 'required|integer|exists:coop_user,id',
             'drone_type_id' => 'required|integer|exists:drone_type,id',
             'number' => 'required|integer',
-            'start_date' => 'nullable|date', // You might need to adjust the date format
-            'end_date' => 'nullable|date', // You might need to adjust the date format
-            // Add more rules for other columns as needed
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date',
         ];
         */
     }
