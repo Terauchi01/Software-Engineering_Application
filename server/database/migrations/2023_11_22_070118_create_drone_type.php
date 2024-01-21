@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('drone_type', function (Blueprint $table) {
             $table->id();
-            $table->integer('number_of_drones')->nullable(false);
+            $table->unsignedInteger('number_of_drones')->nullable(false);
             $table->string('name', 100)->nullable(false);
             $table->unsignedInteger('range')->nullable(false);
             $table->unsignedInteger('loading_weight')->nullable(false);
@@ -24,7 +24,7 @@ return new class extends Migration
         });
         /* |min:-2147483648|max:2147483647'
         return [
-            'number_of_drones' => 'required|integer',
+            'number_of_drones' => 'required|integer|min:1|max:4294967295',
             'name' => 'required|string|max:100',
             'range' => 'required|integer|min:1|max:4294967295',
             'loading_weight' => 'required|integer|min:1|max:4294967295',

@@ -29,9 +29,9 @@ return new class extends Migration
             'representative_name' => 'required|string|max:100',
             'address' => 'required|string|max:100',
             'postal_code' => 'required|string|size:7',
-            'prefecture_id' => 'required|integer',
+            'prefecture_id' => 'required|integer|min:1|max:47',
             'coop_scale' => 'required|string|max:200',
-            'capital_stock' => 'required|integer',
+            'capital_stock' => 'required|integer|min:-2147483648|max:2147483647'',
         ];
          */
     }

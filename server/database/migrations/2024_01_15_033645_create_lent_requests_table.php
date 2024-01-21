@@ -24,7 +24,7 @@ class CreateLentRequestsTable extends Migration
         return [
             'user_id' => 'required|integer|exists:coop_user,id',
             'drone_type_id' => 'required|integer|exists:drone_type,id',
-            'number' => 'required|integer',
+            'number' => 'required|integer|min:-2147483648|max:2147483647',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date',
         ];
