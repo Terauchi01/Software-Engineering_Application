@@ -156,6 +156,7 @@
                 <button type="submit">登録</button>
             </div>
         </form>
+        <a class="toLogin" href="{{ route('coop.coopLogin') }}">ログイン画面に戻る</a>
     </div>
     <script>
         const citiesData = @json($Cities);

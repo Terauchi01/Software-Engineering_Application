@@ -43,6 +43,6 @@ class CoopWithdrawController extends Controller
             );
             Auth::guard('users')->logout();
         }
-        return redirect()->route('user.userLogin');
+        return redirect()->route('coop.coopLogin');
     }
 }
