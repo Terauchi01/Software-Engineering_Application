@@ -62,31 +62,7 @@ $currentPage = 'coopDroneInfoList'
                                 <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
                     </tr>
                 @endforeach
-            </tbody>                                   
-            
-            <script>
-             document.getElementById('masterCheckbox').addEventListener('change', function() {
-                 var masterCheckbox = this;
-                 var itemCheckboxes = document.querySelectorAll('.itemCheckbox');
-                 
-                 itemCheckboxes.forEach(function(itemCheckbox) {
-                     itemCheckbox.checked = masterCheckbox.checked;
-                 });
-             });
-             
-             // 各行のチェックボックスに対するイベントリスナーも追加する場合
-             document.querySelectorAll('.itemCheckbox').forEach(function(itemCheckbox) {
-                 itemCheckbox.addEventListener('change', function() {
-                     var allChecked = true;
-                     document.querySelectorAll('.itemCheckbox').forEach(function(checkbox) {
-                         if (!checkbox.checked) {
-                             allChecked = false;
-                         }
-                     });
-                     document.getElementById('masterCheckbox').checked = allChecked;
-                 });
-             });                                                 
-            </script>                            
+            </tbody>                          
         </table>
     </div>
 </div>
