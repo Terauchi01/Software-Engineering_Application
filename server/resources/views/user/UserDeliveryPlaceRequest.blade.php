@@ -1,26 +1,32 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('user.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>宅配場所登録</title>
-    <link rel="stylesheet" href="{{ asset('css/common/Register.css') }}">
-    <style>
-        .current {
-            background-color: #ffffff;
-            height: 20pt;
-            text-align: center;
-        }
-    </style>
-</head>
+@section('title', '宅配場所登録')
 
-<body>
+@section('style')
+<link rel="stylesheet" href="{{ asset('css/common/Register.css') }}">
+<style>
+.current {
+    background-color: #ffffff;
+    height: 20pt;
+    text-align: center;
+}
+</style>
+@endsection
+
+@section('script')
+
+@endsection
+
+@php
+$currentPage = 'userDeliveryPlaceRequest'
+@endphp
+
+@section('content')
     <div class="contents">
         <form action="{{ route('user.placeRequest') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="inputs">
-                <h2>宅配場所の登録</h2>
+                <p><h2><font color ="#408A7E"><u> 宅配場所登録 </u></font></h2></p>
 
                 <!-- 他のフォーム要素 -->
                 <label for="image">画像</label>
@@ -30,10 +36,7 @@
             </div>
         </form>
     </div>
-</body>
-
-</html>
-
+@endsection
 
 @if ($errors->any())
 <div>

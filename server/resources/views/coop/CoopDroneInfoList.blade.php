@@ -28,22 +28,26 @@ $currentPage = 'coopDroneInfoList'
         <select onChange="location.href=this.value;">
             <option>ドローン状況を選択</option>
             @php
-            $uniqueCompanies = collect($mergedData)->unique('drone_status')->values();
+            $uniqueCompanies = collect($mergedData)->unique('possession_or_loan')->values();
             @endphp
             @foreach ($uniqueCompanies as $index => $droneInfo)
-                <option value="{{ route('coop.coopDroneInfoList', ['id' => $droneInfo['possession_or_loan']]) }}">{{ $droneInfo['drone_status'] }}</option>
+                <option value="{{ route('coop.coopDroneInfoList', ['id' => $droneInfo['possession_or_loan']]) }}">{{ $droneInfo['possessionOrLoan'] }}</option>
             @endforeach
         </select>
         <form action="{{ route('coop.coopDroneInfoList', ['id' => '']) }}" method="GET" style="display: inline;">
             <button type="submit" name="reset" id="resetButton" class="custom-button">リセット</button>
         </form>
         <br><br>
+        @if(empty($mergedData))
+            <p>ドローンが存在しません</p>
+        @else
         <table class ="coop">
             <thead>
                 <tr>
                     <th>ドローン番号</th>
                     <th>ドローンの種類</th>
-                    <th>状況</th>
+                    <th>稼働状況</th>
+                    <th>所有状況</th>
                     <th>編集</th>
                     <th>削除</th>
                 </tr>
@@ -53,7 +57,8 @@ $currentPage = 'coopDroneInfoList'
                     <tr>
                         <td>{{ $droneInfo['id'] }}</td>                                   
                         <td>{{ $droneInfo['drone_type_id'] }}</td>
-                        <td>{{ $droneInfo['drone_status'] }}</td>                           
+                        <td>{{ $droneInfo['drone_status'] }}</td> 
+                        <td>{{ $droneInfo['possessionOrLoan'] }}</td>
                         <td><button type="button">
                             <a href="{{ route('admin.adminEditCoopDroneInfo', ['id' => $droneInfo['id']]) }}">
                                 <img src="{{ asset('image/img_edit.png') }}" alt="編集" width="20" height="20"></a></button></td>
@@ -64,6 +69,7 @@ $currentPage = 'coopDroneInfoList'
                 @endforeach
             </tbody>                          
         </table>
+        @endif
     </div>
 </div>
 @endsection
