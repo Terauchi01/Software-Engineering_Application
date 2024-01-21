@@ -14,7 +14,8 @@
             <div class="header">
             <select onChange="location.href=value;">
             <option>事業者</option>
-            <option value="{{ route('admin.adminLogout') }}">ログアウト</option>
+            <option value="{{ route('coop.coopLogout') }}">ログアウト</option>
+            <option value="{{ route('coop.coopwithdraw') }}">退会申請</option>
             </select>
             <p>@yield('name')</p> <!-- ここをユーザ名とする -->
             </div>
