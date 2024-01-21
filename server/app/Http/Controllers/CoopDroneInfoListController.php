@@ -12,15 +12,17 @@ class CoopDroneInfoListController extends Controller
 {
     public function coopDroneInfoList(Request $request) {
         $id = $request->input('id');
+        $A = 'coops';
+        $userId = Auth::guard($A)->id();
         
         $query = CoopDrones::select(
             'coop_drones.id',
-            'coop_user_id',
+            'coop_drones.coop_user_id',
             'coop_drones.drone_type_id',
             'coop_drones.possession_or_loan'
         )
-            // ->where('coop_drones.coop_user_id', '=', $coopId)
             ->where('coop_drones.deletion_date', '=', null)
+            ->where('coop_drones.coop_user_id', '=', $userId)
             ->orderBy('coop_drones.id', 'asc');
             if ($id != NULL) {
                 $query->where('coop_drones.possession_or_loan', '=', $id);

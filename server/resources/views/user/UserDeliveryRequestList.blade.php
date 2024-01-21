@@ -44,6 +44,7 @@
                                 <th>商品名</th>
                                 <th>送り主</th>
                                 <th>受け取り主</th>
+                                <th>配達日</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,6 +54,7 @@
                                     <td>{{ $requestInfo['item'] }}</td>
                                     <td>{{ $requestInfo['user_id'] }}</td>
                                     <td>{{ $requestInfo['delivery_destination_id'] }}</td>
+                                    <td>{{ $requestInfo['delivery_date'] }}</td>
                                 </tr>
                             @endforeach
                         </tbody>                                   
