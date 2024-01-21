@@ -31,7 +31,7 @@ $currentPage = 'adminViewCoopDeliveryRequestList'
             $uniqueCompanies = collect($mergedData)->unique('delivery_company_name')->values();
             @endphp
             @foreach ($uniqueCompanies as $index => $deliveryInfo)
-                <option value="{{ route('admin.adminViewCoopDeliveryRequestList', ['id' => $deliveryInfo['delivery_company_id']]) }}">{{ $deliveryInfo['delivery_company_name'] }}</option>
+                <option value="{{ route('admin.adminViewCoopDeliveryRequestList', ['coop_id' => $deliveryInfo['delivery_company_id']]) }}">{{ $deliveryInfo['delivery_company_name'] }}</option>
                 @endforeach
         </select>                                                                                             
         <form action="{{ route('admin.adminViewCoopDeliveryRequestList', ['id' => '']) }}" method="GET" style="display: inline;">

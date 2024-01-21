@@ -13,7 +13,7 @@ class AdminViewCoopDeliveryRequestListController extends Controller
 {
     public function adminViewCoopDeliveryRequestList(Request $request)
     {
-        $id = $request->input('id');
+        $coop_id = $request->input('coop_id');
 
         $query = DeliveryRequest::select(
             'delivery_request.id',
@@ -23,14 +23,15 @@ class AdminViewCoopDeliveryRequestListController extends Controller
             'delivery_request.delivery_company_id',
         )            
                ->where('delivery_request.deletion_date', '=', null)
+               ->where('delivery_request.delivery_status', '!=', 0)
                ->orderBy('delivery_request.id', 'asc');
 
-        if ($id != NULL) {
-            $query->where('delivery_request.delivery_company_id', '=', $id);
+        if ($coop_id != NULL) {
+            $query->where('delivery_request.delivery_company_id', '=', $coop_id);
         }
 
         $list = $query->get();
-    
+        
         $mergedData = [];
         $coopName = CoopUser::pluck('coop_name', 'id')->toArray();
         $sendName = User::pluck('user_last_name', 'id')->toArray();

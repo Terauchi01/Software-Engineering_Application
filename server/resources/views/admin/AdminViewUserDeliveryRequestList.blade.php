@@ -31,7 +31,7 @@ $currentPage = 'adminViewUserDeliveryRequestList'
             $uniqueName = collect($mergedData)->unique('user_name')->values();
             @endphp           
             @foreach ($uniqueName as $index => $deliveryInfo)
-                <option value="{{ route('admin.adminViewUserDeliveryRequestList', ['id' => $deliveryInfo['user_id']]) }}">
+                <option value="{{ route('admin.adminViewUserDeliveryRequestList', ['send_id' => $deliveryInfo['user_id']]) }}">
                     {{ $deliveryInfo['user_name'] }}
                 </option>
             @endforeach

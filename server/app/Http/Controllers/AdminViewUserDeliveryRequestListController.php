@@ -13,7 +13,7 @@ class AdminViewUserDeliveryRequestListController extends Controller
 {
     public function adminViewUserDeliveryRequestList(Request $request)
     {
-        $id = $request->input('id');
+        $send_id = $request->input('send_id');
         $receive_id = $request->input('receive_id');
     
         $query = DeliveryRequest::select(
@@ -27,16 +27,16 @@ class AdminViewUserDeliveryRequestListController extends Controller
                ->where('delivery_request.delivery_status', '!=', 0)
                ->orderBy('delivery_request.id', 'asc');
     
-        if ($id) {
-            $query->where(function($query) use ($id) {
-                $query->where('delivery_request.user_id', '=', $id)
-                      ->orWhere('delivery_request.delivery_destination_id', '=', $id);
+        if ($send_id) {
+            $query->where(function($query) use ($send_id) {
+                $query->where('delivery_request.user_id', '=', $send_id)
+                      ->orWhere('delivery_request.delivery_destination_id', '=', $send_id);
             });
         }
 
         if ($receive_id) {
             $query->where(function($query) use ($receive_id) {
-                $query->where('delivery_request.delivery_destination_id', '=', $receive_id)
+                $query->where('delivery_request.user_id', '=', $receive_id)
                       ->orWhere('delivery_request.delivery_destination_id', '=', $receive_id);
             });
         }

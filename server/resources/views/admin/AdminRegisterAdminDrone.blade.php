@@ -27,7 +27,7 @@ $currentPage = 'adminViewDroneType'
         <div class="inputs">
             <form action="{{ route('admin.registerDrone') }}" method="POST">
                 @csrf
-                <h2>ドローン登録フォーム</h2>
+                <p><h2><font color ="#408A7E"><u> ドローン登録フォーム </u></font></h2></p>
 
                 <label for="name">名前</label>
                 <input type="text" name="name" placeholder="ドローン名" required><br>
