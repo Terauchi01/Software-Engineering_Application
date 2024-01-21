@@ -28,7 +28,7 @@ class CoopEditCoopInfoController extends Controller
         })->toArray();
         $Cities[0] = $CoopLocation->city_id;
         $coop->password = null;
-        return view('coop.coopEditCoopInfo', compact('coop',"CoopLocation","LicenseInformation","AccountInformation", 'Prefecture', 'Cities'));
+        return view('coop.CoopEditCoopInfo', compact('coop',"CoopLocation","LicenseInformation","AccountInformation", 'Prefecture', 'Cities'));
     }
     public function editCoopInfo (Request $request){
         $A = 'coops';
