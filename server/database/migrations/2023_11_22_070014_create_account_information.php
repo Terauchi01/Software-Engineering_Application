@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('account_information', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bank_id')->nullable(false);
-            $table->unsignedBigInteger('branch_id')->nullable(false);
+            $table->string('bank_id',100)->nullable(false);
+            $table->string('branch_id',100)->nullable(false);
             $table->string('account_type', 100)->nullable(false);
             $table->string('account_number', 255)->nullable(false);
             $table->string('account_name', 100)->nullable(false);
@@ -23,8 +23,8 @@ return new class extends Migration
             $table->timestamp('deletion_date')->nullable()->default(null);
         });
         /*return [
-            'bank_id' => 'required|integer',
-            'branch_id' => 'required|integer',
+            'bank_id' => 'required|numeric',
+            'branch_id' => 'required|numeric',
             'account_type' => 'required|string|max:100',
             'account_number' => 'required|string|max:255',
             'account_name' => 'required|string|max:100',

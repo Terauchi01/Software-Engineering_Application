@@ -82,11 +82,13 @@ clu
                 </tr>
 
                 <tr>
-                    <th>陸運か空運か</th>
+                    <th>陸運か空運</th>
                     <th>
                         <div class="left">
-                            <label for="land"><input type="radio" name="land_or_air" value="1" {{ $coop->land_or_air === 1 ? 'checked' : '' }}>陸運</label>
-                            <label for="air"><input type="radio" name="land_or_air" value="2" {{ $coop->land_or_air === 2 ? 'checked' : '' }}>空運</label>
+                            <input type="radio" name="land_or_air" value="1" {{ $coop->land_or_air === 1 ? 'checked' : '' }} required>
+                            <label for="land">陸運</label>
+                            <input type="radio" name="land_or_air" value="2" {{ $coop->land_or_air === 2 ? 'checked' : '' }} required>
+                            <label for="air">空運</label>
                         </div>
                     </th>
                 </tr>
@@ -100,15 +102,12 @@ clu
                         <div class="left"><input type="text" name="office_name" value="{{ $CoopLocation->office_name }}" required></div>
                     </th>
                 </tr>
-                <!-- 郵便番号 -->
                 <tr>
                     <th>郵便番号</th>
                     <th>
                         <div class="left"><input type="text" name="postal_code" value="{{ $CoopLocation->postal_code }}" required></div>
                     </th>
                 </tr>
-
-                <!-- 都道府県id -->
                 <tr>
                     <th>住所</th>
                     <th>
@@ -118,11 +117,10 @@ clu
                                 <option value="{{ $id }}" {{ $id == $CoopLocation->prefecture_id ? 'selected' : '' }}>{{ $name }}</option>
                                 @endforeach
                             </select>
-                            <!-- 市区町村のセレクトボックス -->
                             <select id="city" name="city_id" required></select>
                         </div>
                         <div class="left">
-                            <input type="text" name="town" placeholder="町名・番地" value="{{ $CoopLocation->town }}" required>
+                            <input type="text" name="town" placeholder="市区町村以降の住所" value="{{ $CoopLocation->town }}" required>
                             <input type="text" name="block" placeholder="建物名" value="{{ $CoopLocation->block }}" required>
                         </div>
                     </th>

@@ -43,13 +43,11 @@
                             <option value="{{ $id }}">{{ $name }}</option>
                             @endforeach
                         </select>
-                        {{-- <input type="text" name="prefecture" placeholder="都道府県" required> --}}
                         <label for="city_id">市区町村</label>
                         <select id="city" name="city_id" required></select>
                     </div>
-                    {{-- <input type="text" name="city" placeholder="市区町村" requred> --}}
                     <label></label>
-                    <input type="text" name="town" placeholder="町名・番地">
+                    <input type="text" name="town" placeholder="市区町村以降の住所">
                     <input type="text" name="block" placeholder="建物名">
                 </div>
                 <div class="phone">
