@@ -3,7 +3,7 @@
 @section('title', '事業者情報詳細')
 
 @section('style')
-<link rel="stylesheet" href="{{ asset('/css/admin/AdminViewCoopInfo.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/admin/AdminInfo.css') }}">
 @endsection
 
 @section('script')
@@ -14,11 +14,11 @@ $currentPage = 'adminViewCoopList'
 @endphp
 
 @section('content')
-<div class="coopInfo">
+<div class="info">
     <p class="information"><h2><font color ="#408A7E"><u>事業者情報詳細</u></font></h2></p>
-    <p class="coopName">{{ $coopName }}</p>
+    <p class="name">{{ $coopName }}</p>
     @if($coopId !== null)
-    <p class="coopId">ID : {{ $coopId }}</p>
+    <p class="id">ID : {{ $coopId }}</p>
     <form action="{{ route('admin.adminEditCoopInfo',["id"=>$coopId]) }}" method="get">
         <input type="hidden" name="id" value="{{ $coopId }}">
         <button type="submit" class="edit">編集する</button>
