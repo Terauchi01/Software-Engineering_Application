@@ -89,7 +89,7 @@
                     <input type="tel" name="phone_number" placeholder="ハイフンなしで入力して下さい" size="11" pattern="\d{11}" value="{{ old('phone_number') }}" required>
                 </div>                
 
-                <label for="land_or_air">事業形態</label>
+                <label for="land_or_air">陸運か空運か</label>
                 <div class="land_or_air">
                     <input type="radio" name="land_or_air" value="1" {{ old('land_or_air') == '1' ? 'checked' : '' }} required>
                     <label for="land">陸運</label>
