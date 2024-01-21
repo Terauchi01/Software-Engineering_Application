@@ -78,6 +78,7 @@ $currentPage = 'userDeliveryRequest'
             <div class="regist"><button type="submit">送信</button></div>
         </form>
     </div>
+@endsection
 
 @if ($errors->any())
 <div>

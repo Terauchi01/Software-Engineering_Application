@@ -24,7 +24,9 @@ $currentPage = 'coopDeliveryRequestList'
 <div class = "main">
     <div class ="flex-main">                        
         <p><h2><font color ="#408A7E"><u> 依頼一覧 </u></font></h2></p>
-        
+        @if(empty($mergedData))
+            <p>依頼が存在しません</p>
+        @else
         <table class ="coop">
             <thead>
                 <tr>
@@ -53,6 +55,7 @@ $currentPage = 'coopDeliveryRequestList'
                     @endforeach
             </tbody>                           
         </table>
+        @endif
     </div>
 </div>
 @endsection
