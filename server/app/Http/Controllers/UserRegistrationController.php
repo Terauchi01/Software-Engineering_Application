@@ -22,6 +22,9 @@ class UserRegistrationController extends Controller
         return view('user.UserRegistration',compact('Prefecture','Cities'));
     }
     public function userRegister(Request $request){
+        $request->merge([
+            'unpaid_charge' => 0,
+        ]);
         $Class = User::class;
         $newUserData = $request->validate([
             'email_address' => 'required|email|max:100|unique:user,email_address',
