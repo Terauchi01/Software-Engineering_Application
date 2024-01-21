@@ -64,3 +64,11 @@ body {
   justify-content: center;
   margin: 30pt auto;
 }
+
+.toLogin {
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+    text-decoration: none;
+    color:blue;
+}

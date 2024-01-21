@@ -80,6 +80,7 @@
                 </div>
                 <div class="regist"><button type="submit" name="add">上記内容で登録する</button></div>
             </form>
+            <a class="toLogin" href="{{ route('user.userLogin') }}">ログイン画面に戻る</a>
         </div>
     </body>
 
