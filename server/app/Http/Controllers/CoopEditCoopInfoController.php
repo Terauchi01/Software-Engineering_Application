@@ -18,17 +18,20 @@ class CoopEditCoopInfoController extends Controller
         $A = 'coops';
         $userId = Auth::guard($A)->id();
         $coop = CoopUser::where('id', $userId)->where('deletion_date', null)->first();
-        $CoopLocation = CoopLocation::where('coop_user_id', $userId)->where('deletion_date', null)->first();
-        $LicenseInformation = LicenseInformation::where("id",$coop->license_information_id)->first();
-        $AccountInformation = AccountInformation::where("id",$coop->account_information_id)->first();
-        $Prefecture = MstPrefecture::orderBy('id')->pluck('name', 'id')->toArray();
-        $cityCollection = Cities::orderBy('id')->select('id', 'prefecture_id', 'name')->get();
-        $Cities = $cityCollection->groupBy('prefecture_id')->map(function ($items) {
-            return $items->pluck('name', 'id')->toArray();
-        })->toArray();
-        $Cities[0] = $CoopLocation->city_id;
-        $coop->password = null;
-        return view('coop.CoopEditCoopInfo', compact('coop',"CoopLocation","LicenseInformation","AccountInformation", 'Prefecture', 'Cities'));
+        if ($coop && $coop->deletion_date == null) {
+            $CoopLocation = CoopLocation::where('coop_user_id', $userId)->where('deletion_date', null)->first();
+            $LicenseInformation = LicenseInformation::where("id",$coop->license_information_id)->first();
+            $AccountInformation = AccountInformation::where("id",$coop->account_information_id)->first();
+            $Prefecture = MstPrefecture::orderBy('id')->pluck('name', 'id')->toArray();
+            $cityCollection = Cities::orderBy('id')->select('id', 'prefecture_id', 'name')->get();
+            $Cities = $cityCollection->groupBy('prefecture_id')->map(function ($items) {
+                return $items->pluck('name', 'id')->toArray();
+            })->toArray();
+            $Cities[0] = $CoopLocation->city_id;
+            $coop->password = null;
+            return view('coop.CoopEditCoopInfo', compact('coop',"CoopLocation","LicenseInformation","AccountInformation", 'Prefecture', 'Cities'));
+        }
+        return redirect()->route('coop.coopLogin');
     }
     public function editCoopInfo (Request $request){
         $A = 'coops';
