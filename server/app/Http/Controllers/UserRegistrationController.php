@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\MstPrefecture;
 use App\Models\Cities;
+use Illuminate\Support\Facades\Hash;
 
 class UserRegistrationController extends Controller
 {
@@ -41,6 +42,7 @@ class UserRegistrationController extends Controller
             'user_first_name_kana' => 'required|string|max:300',
             'unpaid_charge' => 'integer',
         ]);
+        $newUserData['password'] = Hash::make($newUserData['password']);
         $Class::create($newUserData);
         return redirect()->route('user.userLogin')->withErrors(['login' => '登録が完了しました']);
     }

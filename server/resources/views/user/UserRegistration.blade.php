@@ -66,9 +66,7 @@
                     </div>
                     <div class="phone">
                         <label>電話番号</label>
-                        <input type="tel" name="phone_number" placeholder="000" size="3" pattern="\d{3}" required>-
-                        <input type="tel" name="phone_number" placeholder="0000" size="4" pattern="\d{4}" required>-
-                        <input type="tel" name="phone_number" placeholder="0000" size="4" pattern="\d{4}" required>
+                        <input type="tel" name="phone_number" placeholder="0000000000" size="11" pattern="\d{11}" required>
                     </div>
 
                     <label>メールアドレス</label>
