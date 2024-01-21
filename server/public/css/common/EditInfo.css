@@ -80,7 +80,7 @@ body {
   padding: 20px;
 }
 
-.info h2, h3 {
+.info h2, .info h3 {
   color: #408A7E;
 }
 
@@ -90,7 +90,7 @@ body {
   margin-top: 20px;
 }
 
-.info th, td {
+.info th, .info td {
   border: 1px solid #ddd;
   padding: 10px;
 }
@@ -100,7 +100,7 @@ body {
   text-align: center;
 }
 
-.info input, select {
+.info input, .info select {
   width: 30%;
   box-sizing: border-box;
   border: 2px solid #408A7E;

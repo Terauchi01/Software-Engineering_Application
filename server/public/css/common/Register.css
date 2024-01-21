@@ -23,7 +23,7 @@ body {
   display: inline-block;
 }
 
-.inputs input, select {
+.inputs input, .inputs select {
   width: 200pt;
   height: 30pt;
   border: solid thin #408A7E;
