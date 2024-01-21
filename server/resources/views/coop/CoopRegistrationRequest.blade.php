@@ -13,6 +13,11 @@
             text-align: center;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/js/common/bank.js"></script>
+    <script>const citiesData = @json($Cities);</script>
+    <script src="{{ asset('js/common/city.js') }}"></script>
+</head>
 </head>
 
 <body>
@@ -134,10 +139,15 @@
             <div class="inputs">
                 <h2>銀行情報</h2>
                 <label for="bank_id">銀行名</label>
-                <input type="text" name="bank_id" placeholder="銀行名" value="{{ old('bank_id') }}" required>
+                <input type="text" id="bankSearch" placeholder="銀行名を検索">
+                <select id="bankSelect" name="bank_id">
+                    <option value="" disabled selected>銀行名を選択してください</option>
+                </select>
 
                 <label for="branch_id">支店名</label>
-                <input type="text" name="branch_id" placeholder="支店名" value="{{ old('branch_id') }}" required><br>
+                <select id="branchSelect" name="branch_id">
+                    <option value="" disabled selected>支店名を選択してください</option>
+                </select>
 
                 <label for="account_type">口座の種別</label>
                 <input type="text" name="account_type" placeholder="口座の種別" value="{{ old('account_type') }}" required>
@@ -158,10 +168,6 @@
         </form>
         <a class="toLogin" href="{{ route('coop.coopLogin') }}">ログイン画面に戻る</a>
     </div>
-    <script>
-        const citiesData = @json($Cities);
-    </script>
-    <script src="{{ asset('js/common/city.js') }}"></script>
 </body>
 
 </html>

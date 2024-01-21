@@ -8,9 +8,10 @@
 
 @section('script')
 <script>const citiesData = @json($cities);</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="{{ asset('js/common/city.js') }}"></script>
+<script src="{{ asset('js/common/bank.js') }}"></script>
 @endsection
-
 @php
 $currentPage = 'adminViewCoopList'
 @endphp
@@ -102,10 +103,11 @@ $currentPage = 'adminViewCoopList'
                 <th>口座情報</th>
                 <th>
                     <div class="left">
-                        <input type="text" name="bank_id" value="{{ $data['acc_bank'] }}" placeholder="銀行名" required>
-                        <input type="text" name="branch_id" value="{{ $data['acc_branch'] }}" placeholder="支店名" required>
-                        <input type="text" name="account_type" value="{{ $data['acc_type'] }}" placeholder="講座種別" required>
-                        <input type="text" name="account_number" pattern="\d{12,13}" value="{{ $data['acc_num'] }}" placeholder="口座番号" required>
+                        <input type="text" id="bankSearch" placeholder="銀行名を検索"><br>
+                        <select id="bankSelect" name="bank_id"><option value="" disabled selected>銀行名を選択してください</option></select>
+                        <select id="branchSelect" name="branch_id"><option value="" disabled selected>支店名を選択してください</option></select><br>
+                        講座種別<input type="text" name="account_type" value="{{ $data['acc_type'] }}" placeholder="講座種別" required>
+                        口座番号<input type="text" name="account_number" pattern="\d{12,13}" value="{{ $data['acc_num'] }}" placeholder="口座番号" required>
                     </div>
                 </th>
             </tr>
