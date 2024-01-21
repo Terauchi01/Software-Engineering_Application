@@ -60,7 +60,7 @@ class AdminAllocateCoopDeliveryTaskController extends Controller
         $B = DeliveryRequest::class;
         $currentDateTime = Carbon::now();
         
-        $B::where('id',$id)->update(['delivery_status' => $currentDateTime]);
+        $B::where('id',$id)->update(['delivery_request.deletion_date' => $currentDateTime]);
         return redirect()->route('admin.adminAllocateCoopDeliveryTask');
     }
 

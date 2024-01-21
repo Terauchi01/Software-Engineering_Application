@@ -78,7 +78,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::middleware('admin')->group(function () {
         Route::post('adminLogoutFunction', [AdminLogoutController::class, 'adminLogoutFunction'])->name('adminLogoutFunction');
         Route::get('adminAllocateCoopDeliveryTask', [AdminAllocateCoopDeliveryTaskController::class, 'adminAllocateCoopDeliveryTask'])->name('adminAllocateCoopDeliveryTask');
-        Route::get('adminAllocateCoopDeliveryTask/{id}', [AdminAllocateCoopDeliveryTaskController::class, 'delete'])->name('adminAllocateCoopDeliveryTaskDelete');
+        Route::get('adminAllocateCoopDeliveryTaskDelete/{id}', [AdminAllocateCoopDeliveryTaskController::class, 'delete'])->name('adminAllocateCoopDeliveryTaskDelete');
         Route::get('adminAllocateCoopDeliveryTask/{id}', [AdminAllocateCoopDeliveryTaskController::class, 'approval'])->name('adminAllocateCoopDeliveryTaskApproval');
         Route::get('adminEditAdminDrone/{id}', [AdminEditAdminDroneController::class, 'adminEditAdminDrone'])->name('adminEditAdminDrone');
         Route::post('editDrone', [AdminEditAdminDroneController::class, 'editDrone'])->name('editDrone');
