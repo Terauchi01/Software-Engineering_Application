@@ -41,7 +41,7 @@
             <p><a href="{{ route('coop.coopApplyAdminDroneLend') }}">ドローン貸与申請</a></p>
             @endif
             @if ($currentPage === 'coopEditCoopInfo')
-            <div class="current"><p><a href="{{ route('coop.coopEditCoopInfo',["id"=>1]) }}">事業者情報編集</a></p></div>
+            <div class="current"><p><a href="{{ route('coop.coopEditCoopInfo') }}">事業者情報編集</a></p></div>
             @else
             <p><a href="{{ route('coop.coopEditCoopInfo') }}">事業者情報編集</a></p>
             @endif

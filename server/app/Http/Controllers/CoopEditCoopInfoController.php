@@ -27,7 +27,7 @@ class CoopEditCoopInfoController extends Controller
             return $items->pluck('name', 'id')->toArray();
         })->toArray();
         $Cities[0] = $CoopLocation->city_id;
-        return view('coop.CoopEditCoopInfo', compact('coop',"CoopLocation","LicenseInformation","AccountInformation", 'Prefecture', 'Cities'));
+        return view('coop.coopEditCoopInfo', compact('coop',"CoopLocation","LicenseInformation","AccountInformation", 'Prefecture', 'Cities'));
     }
     public function editCoopInfo (Request $request){
         $A = 'coops';
@@ -79,7 +79,6 @@ class CoopEditCoopInfoController extends Controller
             ]);
             $coopdata = $request->validate([
                 'email_address' => 'required|email',
-                'password' => 'required|min:8', // パスワードの最小長は8と仮定
                 'coop_name' => 'required|string',
                 'representative_last_name' => 'required|string',
                 'representative_first_name' => 'required|string',
@@ -95,6 +94,19 @@ class CoopEditCoopInfoController extends Controller
                 'pay_status' => 'required|integer',
                 'amount_of_compensation' => 'required|integer',
             ]);
+            
+            // パスワードが入力されている場合のみ更新
+            if ($request->filled('password')) {
+                // パスワードのバリデーション
+                $passwordRules = [
+                    'password' => 'required|min:8',
+                ];
+            
+                $this->validate($request, $passwordRules);
+            
+                // パスワードをデータに追加
+                $coopdata['password'] = bcrypt($request->input('password'));
+            }
             $CoopUserTable = CoopUser::findOrFail($coop->account_information_id);
             $CoopUserTable->update($coopdata);
             $request->merge([

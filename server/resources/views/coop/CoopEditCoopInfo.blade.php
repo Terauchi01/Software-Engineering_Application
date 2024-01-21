@@ -49,7 +49,7 @@ $currentPage = 'coopEditCoopInfo'
             <tr>
                 <th>パスワード</th>
                 <th>
-                    <div class="left"><input type="password" name="password" value="{{ $coop->password }}" placeholder="8文字以上32文字以下、英数字" pattern="\w{8,32}" required></div>
+                    <div class="left"><input type="password" name="password" placeholder='**********' pattern="\w{8,32}"></div>
                 </th>
             </tr>
 
@@ -142,31 +142,6 @@ $currentPage = 'coopEditCoopInfo'
                 </th>
             </tr>
         </table>
-
-
-        <p>以下企業情報の代表者名と異なる場合のみ記載して下さい</p>
-        <table>
-            <tr>
-                <th>事業所代表者名</th>
-                <th>
-                    <div class="left">
-                        <input type="text" name="office_representative_last_name" placeholder="姓">
-                        <input type="text" name="office_representative_first_name" placeholder="名">
-                    </div>
-                </th>
-            </tr>
-
-            <tr>
-                <th>事業所代表者名(カナ)</th>
-                <th>
-                    <div class="left">
-                        <input type="text" name="office_representative_last_name_kana" placeholder="セイ">
-                        <input type="text" name="office_representative_first_name_kana" placeholder="メイ">
-                    </div>
-                </th>
-            </tr>
-        </table>
-
         <h3>免許情報</h3>
         <table>
             <tr>

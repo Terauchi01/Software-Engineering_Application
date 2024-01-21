@@ -2,7 +2,7 @@ hello coop<br>
 <a href="{{ route('coop.coopApplyAdminDroneLend') }}">coopApplyAdminDroneLend</a><br>
 <a href="{{ route('coop.coopApplyCoopRegister') }}">coopApplyCoopRegister</a><br>
 <a href="{{ route('coop.coopCheckUserDeliveryRequestListViewExecute') }}">coopCheckUserDeliveryRequestListViewExecute</a><br>
-<a href="{{ route('coop.coopEditCoopInfo',["id"=>1]) }}">coopEditCoopInfo</a><br>
+<a href="{{ route('coop.coopEditCoopInfo') }}">coopEditCoopInfo</a><br>
 <a href="{{ route('coop.coopFillterUserDeliveryRequestListView') }}">coopFillterUserDeliveryRequestListView</a><br>
 <a href="{{ route('coop.coopLogin') }}">coopLogin</a><br>
 <a href="{{ route('coop.coopLogout') }}">coopLogout</a><br>
