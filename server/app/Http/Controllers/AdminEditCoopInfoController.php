@@ -64,10 +64,7 @@ class AdminEditCoopInfoController extends Controller
             ];
             return view('admin.AdminEditCoopInfo', compact('coopName', 'coopId', 'prefectures', 'cities', 'data'));
         }
-        
-        $coopName = '存在しないユーザです';
-        $coopId = null;
-        return view('admin.AdminEditCoopInfo', compact('coopName', 'coopId'));
+        return redirect()->route('admin.adminViewCoopInfo');
     }
     
     public function adminEditCoopInfoApply (Request $request){

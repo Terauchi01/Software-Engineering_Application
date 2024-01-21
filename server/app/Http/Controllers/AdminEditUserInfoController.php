@@ -42,9 +42,7 @@ class AdminEditUserInfoController extends Controller
             ];
             return view('admin.AdminEditUserInfo', compact('userId', 'userName', 'prefectures', 'cities', 'data'));
         }
-        $userName = '存在しないユーザです';
-        $userId = null;
-        return view('admin.AdminEditUserInfo', compact('userName', 'userId'));
+        return redirect()->route('admin.adminViewUserInfo');
     }
     public function adminEditUserInfoApply (Request $request){
         $id = $request->input('id');
