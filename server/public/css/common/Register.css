@@ -1,20 +1,6 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  flex-direction: row;
-}
-
 .contents {
   width: auto;
   margin: 10pt auto;
-}
-
-.inputs h2 {
-  color: #408A7E;
 }
 
 .inputs label {
@@ -23,7 +9,7 @@ body {
   display: inline-block;
 }
 
-.inputs input, .inputs select {
+.inputs input {
   width: 200pt;
   height: 30pt;
   border: solid thin #408A7E;
