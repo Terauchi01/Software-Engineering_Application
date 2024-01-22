@@ -111,7 +111,7 @@ $currentPage = 'adminViewCoopList'
                         <select id="bankSelect" name="bank_id"><option value="" disabled>銀行名を選択してください</option></select>
                         <select id="branchSelect" name="branch_id"><option value="" disabled>支店名を選択してください</option></select><br>
                         講座種別<input type="text" name="account_type" value="{{ $data['acc_type'] }}" placeholder="講座種別" required>
-                        口座番号<input type="text" name="account_number" pattern="\d{12,13}" value="{{ $data['acc_num'] }}" placeholder="口座番号" required>
+                        口座番号<input type="text" name="account_number" value="{{ $data['acc_num'] }}" placeholder="口座番号" required>
                     </div>
                 </th>
             </tr>

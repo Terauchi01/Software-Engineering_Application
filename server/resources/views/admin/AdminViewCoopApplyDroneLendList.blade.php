@@ -29,7 +29,16 @@ $currentPage = 'adminViewCoopApplyDroneLendList'
         </div>
 
         <br></br>
-        
+        @if ($errors->any())
+        <div>
+            <strong>エラーがあります。</strong>
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <table class ="coop">
             <thead>
                 <tr>                 

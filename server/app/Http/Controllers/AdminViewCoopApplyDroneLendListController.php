@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CoopDrones;
 use Illuminate\Http\Request;
 use App\Models\LentRequest;
 use App\Models\DroneType;
 use App\Models\CoopUser;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class AdminViewCoopApplyDroneLendListController extends Controller
@@ -23,6 +25,7 @@ class AdminViewCoopApplyDroneLendListController extends Controller
         )
               ->where('deletion_date', '=', null)
               ->where('state', '=', 0)
+              ->where("end_date",'>=',today())
               ->orderBy('id', 'asc')
               ->get();
        
@@ -59,8 +62,54 @@ class AdminViewCoopApplyDroneLendListController extends Controller
 
     public function approval(Request $request, $id)
     {
-        $B = LentRequest::class;
-        $B::where('id',$id)->update(['state' => 1]);
-        return redirect()->route('admin.adminViewCoopApplyDroneLendList');
+        try {
+            DB::transaction(function () use ($id) {
+                $LentRequest = LentRequest::find($id);
+                $LentRequest->update(['state' => 1]);
+        
+                $DroneType = DroneType::find($LentRequest->drone_type_id);
+                // dump($DroneType->number_of_drones);
+                // dump($DroneType->lend_drones_sum);
+                // dd($DroneType->lend_drones_sum + $LentRequest->number);
+                if ($DroneType->number_of_drones >= $DroneType->lend_drones_sum + $LentRequest->number) {
+                    $DroneType->update(['lend_drones_sum' => $DroneType->lend_drones_sum + $LentRequest->number]);
+        
+                    $purchase_date = $LentRequest->start_date;
+                    if ($LentRequest->start_date < today()) {
+                        $purchase_date = today();
+                    }
+        
+                    $CoopDronesdata = [
+                        'drone_type_id' => $DroneType->id,
+                        'coop_user_id' => $LentRequest->user_id,
+                        'operating_time' => 0,
+                        'purchase_date' => $purchase_date,
+                        'drone_status' => 0,
+                        'possession_or_loan' => 0,
+                        'lending_period' => $LentRequest->end_date,
+                    ];
+        
+                    $validator = validator($CoopDronesdata, [
+                        'drone_type_id' => 'required|exists:drone_type,id',
+                        'coop_user_id' => 'required|exists:coop_user,id',
+                        'operating_time' => 'required|integer|min:0',
+                        'purchase_date' => 'required|date',
+                        'drone_status' => 'required|integer',
+                        'possession_or_loan' => 'required|integer',
+                        'lending_period' => 'required|date',
+                    ]);
+                    if ($validator->fails()) {
+                        throw new \Exception('Validation failed');
+                    }
+                    $validatedData = $validator->validated();
+                    CoopDrones::create($validatedData);
+                } else {
+                    throw new \Exception('Lending limit exceeded');
+                }
+            });
+            return redirect()->route('admin.adminViewCoopApplyDroneLendList')->with('success', '承認しました');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.adminViewCoopApplyDroneLendList')->withErrors(['message' => $e->getMessage()]);
+        }
     }
 }
