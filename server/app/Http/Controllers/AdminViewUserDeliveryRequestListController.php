@@ -29,15 +29,13 @@ class AdminViewUserDeliveryRequestListController extends Controller
     
         if ($send_id) {
             $query->where(function($query) use ($send_id) {
-                $query->where('delivery_request.user_id', '=', $send_id)
-                      ->orWhere('delivery_request.delivery_destination_id', '=', $send_id);
+                $query->where('delivery_request.user_id', '=', $send_id);
             });
         }
-
+        
         if ($receive_id) {
             $query->where(function($query) use ($receive_id) {
-                $query->where('delivery_request.user_id', '=', $receive_id)
-                      ->orWhere('delivery_request.delivery_destination_id', '=', $receive_id);
+                $query->Where('delivery_request.delivery_destination_id', '=', $receive_id);
             });
         }
         
