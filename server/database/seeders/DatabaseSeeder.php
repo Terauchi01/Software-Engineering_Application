@@ -33,19 +33,20 @@ class DatabaseSeeder extends Seeder
             $this->call($seeder);
         }
         AdminUser::factory(1)->create();
-        AdminInformation::factory(100)->create();
+        AdminInformation::factory(10)->create();
+        AccountInformation::factory(10)->create();
+        LicenseInformation::factory(10)->create();
         CoopUser::factory(1)->create();
-        CoopUser::factory(99)->create();
+        CoopUser::factory(9)->create();
         User::factory(1)->create();
-        User::factory(99)->create();
-        AccountInformation::factory(100)->create();
-        DroneType::factory(100)->create();
-        CoopDrones::factory(100)->create();
-        CoopLocation::factory(100)->create();
-        DeliveryLocationImage::factory(100)->create();
-        DeliveryRequest::factory(1000)->create();
-        Favorite::factory(100)->create();
-        LicenseInformation::factory(100)->create();
-        LentRequest::factory(100)->create();
+        User::factory(9)->create();
+        DroneType::factory(10)->create();
+        CoopDrones::factory(10)->create();
+        CoopLocation::factory(10)->create();
+        DeliveryLocationImage::factory(10)->create();
+        DeliveryRequest::factory(10)->create();
+        Favorite::factory(10)->create();
+        // dd(LicenseInformation::factory(1)->create());
+        LentRequest::factory(10)->create();
     }
 }

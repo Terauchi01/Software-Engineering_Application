@@ -61,7 +61,7 @@ class CoopEditCoopInfoController extends Controller
             $licenseInformationTable = LicenseInformation::findOrFail($coop["license_information_id"]);
             $licenseInformationTable->update($license_information);
             $data = $request->validate([
-                'bank_id' => 'required|integer',
+                'bank_id' => 'required|string',
                 'branch_id' => 'required|string',
                 'account_type' => 'required|string',
                 'account_number' => 'required|string',

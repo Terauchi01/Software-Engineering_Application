@@ -19,8 +19,8 @@ class LentRequestFactory extends Factory
             'drone_type_id' => $Dronetype->id, // 適切な値に変更
             'number' => $this->faker->randomNumber(1,$Dronetype->number_of_drones - $Dronetype->lend_drones_sum),
             'state' => random_int(0, 1),
-            'start_date' => $this->faker->date,
-            'end_date' => $this->faker->date,
+            'start_date' => $this->faker->dateTimeBetween('-30 days', '+30 days'),
+            'end_date' => $this->faker->dateTimeBetween('0 days', '+300 days'),
             'deletion_date' => null,
         ];
     }

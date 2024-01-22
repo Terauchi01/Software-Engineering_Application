@@ -25,11 +25,13 @@ $currentPage = 'coopApplyAdminDroneLend'
     @if ($errors->any())
         <div>
             <strong>入力エラーがあります。</strong>
+            <div class="red">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
+            </div>
         </div>
     @endif
 
@@ -47,14 +49,14 @@ $currentPage = 'coopApplyAdminDroneLend'
                 <label for="drone_type_id">ドローン選択</label>
                 <select name="drone_type_id" required>
                     @foreach ($droneInfoArray as $id => $drone)
-                        <option value="{{ $id }}">{{ $drone['name'] }}, 航続距離:{{$drone['range']}}km</option>
+                        <option value="{{ $id }}">{{ $drone['name'] }}, 航続距離:{{$drone['range']}}km, max:{{$drone['number_of_drones']-$drone['lend_drones_sum']}}台</option>
                     @endforeach
                 </select>
             </div>
             <!-- 貸与希望数 -->
             <div>
                 <label for="number">貸与希望数</label>
-                <input type="number" name="number" required max="{{ $drone['max_number'] }}">
+                <input type="number" name="number" required>
             </div>
 
             <!-- 貸与開始希望日 -->

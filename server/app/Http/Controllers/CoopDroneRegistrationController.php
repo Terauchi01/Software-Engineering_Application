@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CoopDrones;
+use App\Models\DroneType;
 use Illuminate\Support\Facades\Auth;
 
 class CoopDroneRegistrationController extends Controller
 {
     public function coopRegisterDrone (){
-        return view('coop.CoopDroneRegistration');
+        $Drone = DroneType::select('id','name',)->orderBy('id')->get()->toArray();
+        return view('coop.CoopDroneRegistration',compact("Drone"));
     }
     public function registerDrone(Request $request)
     {

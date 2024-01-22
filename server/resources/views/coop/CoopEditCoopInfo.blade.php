@@ -9,6 +9,12 @@
 @section('script')
 <script> const citiesData = @json($Cities); </script>
 <script src="{{ asset('js/common/city.js') }}"></script>
+<script>
+    const nowBankId = @json($AccountInformation->bank_id);
+    const nowBranchId = @json($AccountInformation->branch_id);
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="{{ asset('js/common/bank.js') }}"></script>
 @endsection
 
 @php
@@ -49,7 +55,7 @@ $currentPage = 'coopEditCoopInfo'
             <tr>
                 <th>パスワード</th>
                 <th>
-                    <div class="left"><input type="password" name="password" placeholder='**********' pattern="\w{8,32}"></div>
+                    <div class="left"><input type="password" name="password" placeholder="8文字以上32文字以下、英数字" pattern="\w{8,32}"></div>
                 </th>
             </tr>
 
@@ -142,6 +148,7 @@ $currentPage = 'coopEditCoopInfo'
                 </th>
             </tr>
         </table>
+
         <h3>免許情報</h3>
         <table>
             <tr>
@@ -220,14 +227,23 @@ $currentPage = 'coopEditCoopInfo'
             <tr>
                 <th>銀行名</th>
                 <th>
-                    <div class="left"><input type="text" name="bank_id" value="{{ $AccountInformation->bank_id }}" required></div>
+                    <div class="left">
+                        <input type="text" id="bankSearch" placeholder="銀行名を検索">
+                        <select id="bankSelect" name="bank_id">
+                            <option value="" disabled selected>銀行名を選択してください</option>
+                        </select>
+                    </div>
                 </th>
             </tr>
 
             <tr>
                 <th>支店名</th>
                 <th>
-                    <div class="left"><input type="text" name="branch_id" value="{{ $AccountInformation->branch_id }}" required></div>
+                    <div class="left">
+                        <select id="branchSelect" name="branch_id">
+                            <option value="" disabled selected>支店名を選択してください</option>
+                        </select> 
+                    </div>
                 </th>
             </tr>
 

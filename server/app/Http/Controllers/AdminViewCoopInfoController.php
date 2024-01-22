@@ -17,10 +17,10 @@ class AdminViewCoopInfoController extends Controller
         $coop = CoopUser::find($id);
 
         if ($coop && $coop->deletion_date === null) {
+            // dd($coop->license_information_id);
             $acc = AccountInformation::find($coop->account_information_id);
             $loc = CoopLocation::where('coop_user_id', $id)->first();
             $license = LicenseInformation::find($coop->license_information_id);
-
             $prefecture = MstPrefecture::find($loc->prefecture_id)['name'];
             $city = Cities::find($loc->city_id)['name'];
             $coopId = $coop->id;
@@ -43,7 +43,9 @@ class AdminViewCoopInfoController extends Controller
                 'conditions' => $license->conditions,
                 'classification' => $license->classification,
                 'ratings_and_limitations' => $license->ratings_and_limitations1 . ' ' . $license->ratings_and_limitations2 . ' ' . $license->ratings_and_limitations3,
-                'account' => $acc->bank_id . ' ' . $acc->branch_id . ' ' . $acc->account_type . ' ' . $acc->account_number,
+                'bank_id' => $acc->bank_id,
+                'branch_id' => $acc->branch_id,
+                'account' => $acc->account_type . ' ' . $acc->account_number,
                 'worker' => $coop->employees . '人',
                 'phone' => $coop->phone_number,
                 'land_or_air' => $lor[$coop->land_or_air],

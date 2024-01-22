@@ -29,7 +29,8 @@ class CoopDroneLentRequestController extends Controller
                 'range' => $drone->range,
                 'loading_weight' => $drone->loading_weight,
                 'max_time' => $drone->max_time,
-                'max_number' => $drone->number_of_drones-$drone->lend_drones_sums,
+                'number_of_drones' => $drone->number_of_drones,
+                'lend_drones_sum' => $drone->lend_drones_sum,
             ];
         }
         return view('coop.CoopDroneLentRequest',compact('droneInfoArray'));
@@ -40,23 +41,26 @@ class CoopDroneLentRequestController extends Controller
         $request->merge([
             'user_id' => $userId,
             'deletion_date' => null,
+            'state' => 0,
         ]);
         try {
             $rules = [
-                'user_id' => 'required|integer',
-                'drone_type_id' => 'required|integer',
-                'number' => 'required|integer',
-                'start_date' => 'required|date',
-                'end_date' => 'required|date',
-                'deletion_date' => 'nullable|date',
+                'user_id' => 'required|integer|exists:coop_user,id',
+                'drone_type_id' => 'required|integer|exists:drone_type,id',
+                'number' => 'required|integer|min:1|max:2147483647',
+                'state' => 'required|integer|min:0|max:1',
+                'start_date' => 'nullable|date',
+                'end_date' => 'nullable|date',
             ];
-    
-            // バリデーション実行
+            $drone = DroneType::find($request->drone_type_id);
             $request->validate($rules);
-
-            LentRequest::create($request->all());
-    
-            return redirect()->route('coop.coopApplyAdminDroneLend')->with('success', '登録されました');
+            if($request->number <= ($drone->number_of_drones)-($drone->lend_drones_sum)){
+                LentRequest::create($request->all());
+                return redirect()->route('coop.coopApplyAdminDroneLend')->with('success', '登録されました');
+            }
+            else{
+                return redirect()->route('coop.coopApplyAdminDroneLend')->withErrors(['message' => '借りれる最大数を超えています']);
+            }
         } catch (\Illuminate\Validation\ValidationException $e) {
             // バリデーションエラーが発生した場合
             return back()->withErrors($e->validator)->withInput();
