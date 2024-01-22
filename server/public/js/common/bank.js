@@ -22,18 +22,18 @@ $(document).ready(function() {
     var bankSelect = $('#bankSelect');
     var branchSelect = $('#branchSelect');
     var bankSearch = $('#bankSearch');
-    console.log(nowBankId);
-    console.log(nowBranchId);
 
-    function populateBankSelect(selectedBankId = null) {
+    function populateBankSelect(selectedBankId = null,searchKeyword = null) {
         bankSelect.empty().append($('<option>', { value: '', text: '銀行名を選択してください' }));
         
         $.each(banksList, function(key, value) {
-            var option = $('<option>', { value: key, text: value.name });
-            if (key == selectedBankId) {
-                option.attr('selected', true);
-            }
-            bankSelect.append(option);
+            if (searchKeyword == null || value.name.toLowerCase().includes(searchKeyword)) {
+                var option = $('<option>', { value: key, text: value.name });
+                if (key == selectedBankId) {
+                    option.attr('selected', true);
+                }
+                bankSelect.append(option);
+            };
         });
         
         branchSelect.empty().append($('<option>', { value: '', text: '支店名を選択してください' }));
@@ -68,7 +68,8 @@ $(document).ready(function() {
 
     bankSearch.on('input', function() {
         var searchKeyword = bankSearch.val().trim().toLowerCase();
-        populateBankSelect();
+        // console.log(searchKeyword);
+        populateBankSelect(null,searchKeyword);
         bankSelect.trigger('change');
     });
 

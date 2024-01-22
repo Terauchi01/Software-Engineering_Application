@@ -17,6 +17,7 @@
     <script src="/js/common/bank.js"></script>
     <script>const citiesData = @json($Cities);</script>
     <script src="{{ asset('js/common/city.js') }}"></script>
+    <script src="{{ asset('js/common/bank.js') }}"></script>
 </head>
 </head>
 
@@ -142,12 +143,12 @@
                 <input type="text" id="bankSearch" placeholder="銀行名を検索">
                 <select id="bankSelect" name="bank_id">
                     <option value="" disabled selected>銀行名を選択してください</option>
-                </select>
+                </select><br>
 
                 <label for="branch_id">支店名</label>
                 <select id="branchSelect" name="branch_id">
                     <option value="" disabled selected>支店名を選択してください</option>
-                </select>
+                </select><br>
 
                 <label for="account_type">口座の種別</label>
                 <input type="text" name="account_type" placeholder="口座の種別" value="{{ old('account_type') }}" required>
