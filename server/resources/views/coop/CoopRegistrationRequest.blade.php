@@ -16,6 +16,10 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="/js/common/bank.js"></script>
     <script>const citiesData = @json($Cities);</script>
+    <script>
+        const nowBankId = null;
+        const nowBranchId = null;
+    </script>
     <script src="{{ asset('js/common/city.js') }}"></script>
     <script src="{{ asset('js/common/bank.js') }}"></script>
 </head>

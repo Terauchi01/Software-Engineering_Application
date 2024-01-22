@@ -60,18 +60,18 @@ class UserDeliveryRequestController extends Controller
 
         try {
             $request->validate([
-                'delivery_destination_id' => 'required',
-                'user_id' => 'required',
-                'collection_company_id' => 'nullable',
-                'intermediate_delivery_company_id' => 'nullable',
-                'delivery_company_id' => 'nullable',
-                'collection_company_remuneration' => 'required',
-                'intermediate_delivery_company_remuneration' => 'required',
-                'delivery_company_remuneration' => 'required',
-                'item' => 'required',
-                'delivery_status' => 'required',
-                'request_date' => 'required|date',
+                'delivery_destination_id' => 'required|exists:user,id',
+                'collection_company_id' => 'nullable|exists:coop_user,id',
+                'intermediate_delivery_company_id' => 'nullable|exists:coop_user,id',
+                'delivery_company_id' => 'nullable|exists:coop_user,id',
+                'collection_company_remuneration' => 'required|integer',
+                'intermediate_delivery_company_remuneration' => 'required|integer',
+                'delivery_company_remuneration' => 'required|integer',
+                'delivery_status' => 'required|integer',
+                'item' => 'required|string',
+                'request_date' => 'nullable|date',
                 'delivery_date' => 'nullable|date',
+                'user_id' => 'nullable|exists:user,id',
             ]);
     
             // データをデータベースに保存
