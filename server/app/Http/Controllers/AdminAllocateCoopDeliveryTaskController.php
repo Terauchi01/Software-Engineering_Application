@@ -45,8 +45,8 @@ class AdminAllocateCoopDeliveryTaskController extends Controller
                 'id' => $item->id,
                 'user_id' => $sendName[$item->user_id],
                 'delivery_destination_id' => $receiveName[$item->delivery_destination_id],
-                'collection_company_id' => $item->collection_company_id,
-                'delivery_company_id' => $coopName[$item->delivery_company_id],
+                'collection_company_id' => $item->collection_company_id ?? null,
+                'delivery_company_id' => $coopName[$item->delivery_company_id]?? null,
                 'delivery_status' => $item->delivery_status,
                 'delivery_status_name' => $statusName[$item->delivery_status],
             ];

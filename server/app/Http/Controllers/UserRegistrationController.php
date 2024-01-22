@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\MstPrefecture;
 use App\Models\Cities;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserRegistrationController extends Controller
 {
@@ -28,7 +29,12 @@ class UserRegistrationController extends Controller
         ]);
         $Class = User::class;
         $newUserData = $request->validate([
-            'email_address' => 'required|email|max:100|unique:user,email_address',
+            'email_address' => [
+                'required',
+                'email',
+                'max:100',
+                Rule::unique('user', 'email_address')->whereNull('deletion_date'),
+            ],
             'password' => 'required|string|max:255',
             'prefecture_id' => 'required|string|max:100',
             'city_id' => 'required|string|max:100',

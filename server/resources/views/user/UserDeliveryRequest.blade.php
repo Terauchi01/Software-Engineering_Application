@@ -24,7 +24,12 @@ $currentPage = 'userDeliveryRequest'
 @endphp
 
 @section('content')
-@if ($errors->any())
+        <form method="POST" action="{{ route('user.deliveryRequest') }}" style="padding-left: 110pt">
+            @csrf
+            <div class="inputs">
+                <p><h2><font color ="#408A7E"><u> 宅配依頼 </u></font></h2></p>
+                <h2>配送相手の個人情報(相手もこのシステムにユーザ登録している必要があります)</h2>
+                @if ($errors->any())
 <div>
     <strong>入力エラーがあります。</strong>
     <ul>
@@ -40,11 +45,6 @@ $currentPage = 'userDeliveryRequest'
     <p>{{ session('success') }}</p>
 </div>
 @endif
-        <form method="POST" action="{{ route('user.deliveryRequest') }}" style="padding-left: 110pt">
-            @csrf
-            <div class="inputs">
-                <p><h2><font color ="#408A7E"><u> 宅配依頼 </u></font></h2></p>
-                <h2>配送相手の個人情報(相手もこのシステムにユーザ登録している必要があります)</h2>
                 <div class="name">
                     <label for="user_name">お名前</label>
                     <input type="text" name="user_last_name" placeholder="姓" required style="width: 20%">
