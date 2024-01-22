@@ -10,6 +10,7 @@ use App\Models\AccountInformation;
 use App\Models\MstPrefecture;
 use App\Models\Cities;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class CoopRegistrationRequestController extends Controller
 {
@@ -77,7 +78,12 @@ class CoopRegistrationRequestController extends Controller
                 'amount_of_compensation' => 0,
             ]);
             $coopdata = $request->validate([
-                'email_address' => 'required|email|unique:coop_user,email_address',
+                'email_address' => [
+                    'required',
+                    'email',
+                    'max:100',
+                    Rule::unique('user', 'email_address')->whereNull('deletion_date'),
+                ],
                 'password' => 'required|min:8',
                 'coop_name' => 'required|string',
                 'representative_last_name' => 'required|string',
