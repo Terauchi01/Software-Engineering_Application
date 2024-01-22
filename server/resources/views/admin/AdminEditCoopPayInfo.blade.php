@@ -7,6 +7,12 @@
 @endsection
 
 @section('script')
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    var bankId = {{ intval($data['bank'], 10) }};
+    var branchId = {{ intval($data['branch'], 10) }};
+</script>
+<script src="{{ asset('js/common/view_bank.js') }}"></script>
 @endsection
 
 @php
@@ -37,11 +43,11 @@ $currentPage = 'adminViewCoopList'
             </tr>
             <tr>
                 <th>銀行名</th>
-                <th>{{ $data['bank'] }}</th>
+                <th><div id="bankInfo"></div></th>
             </tr>
             <tr>
                 <th>支店名</th>
-                <th>{{ $data['branch'] }}</th>
+                <th><div id="branchInfo"></div></th>
             </tr>
             <tr>
                 <th>口座種別</th>
