@@ -19,7 +19,7 @@ class AccountInformationFactory extends Factory
     {
         return [
             'bank_id' => $this->faker->randomElement(['0001', '0005','0009','0010']), // 適切な範囲を設定
-            'branch_id' => $this->faker->numerify('###'),
+            'branch_id' => $this->faker->randomElement(['015', '111','114','121']),
             'account_type' => $this->faker->randomElement(['普通', '定期預金','総合','積立定期預金']), // 任意の値を設定
             'account_number' => $this->faker->numerify('##########'),
             'account_name' => $this->faker->name, // 修正: name フォーマットを使用
