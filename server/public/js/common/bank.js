@@ -1,6 +1,10 @@
 {/* 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="{{ asset('js/common/bank.js') }}"></script>
+<script>
+    const nowBankId = @json($data['acc_bank']);
+    const nowBranchId = @json($data['acc_branch']);
+</script>
 <h2>銀行情報</h2>
 <label for="bank_id">銀行名</label>
 <input type="text" id="bankSearch" placeholder="銀行名を検索">

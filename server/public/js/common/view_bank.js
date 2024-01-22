@@ -13,7 +13,7 @@ $(document).ready(function() {
     $.getJSON('/data/banks.json', function(json) {
         banksList = json;
         var bankName = banksList[formattedBankId] ? banksList[formattedBankId].name : '銀行が見つかりません';
-        $('#bankInfo').html('<p>銀行名: ' + bankName + '</p>');
+        $('#bankInfo').html('<p>銀行名 ' + bankName + '</p>');
     });
 
     var formattedBranchId = branchId.toString().padStart(3, '0');
@@ -21,6 +21,6 @@ $(document).ready(function() {
     $.getJSON('/data/branches/' + formattedBankId + '.json', function(json) {
         branchList = json;
         var branchName = branchList[formattedBranchId] ? branchList[formattedBranchId].name : '支店が見つかりません';
-        $('#branchInfo').html('<p>支店名: ' + branchName + '</p>');
+        $('#branchInfo').html('<p>支店名 ' + branchName + '</p>');
     });
 });
