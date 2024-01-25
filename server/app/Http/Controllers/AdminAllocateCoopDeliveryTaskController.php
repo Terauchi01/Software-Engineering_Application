@@ -21,10 +21,10 @@ class AdminAllocateCoopDeliveryTaskController extends Controller
             'delivery_request.delivery_company_id',
             'delivery_request.delivery_status',
         )            
-              ->where('delivery_request.deletion_date', '=', null)
-              ->where('delivery_request.delivery_status', '=', 0)
-              ->orderBy('delivery_request.id', 'asc')
-              ->get();
+            ->where('delivery_request.deletion_date', '=', null)
+            ->where('delivery_request.delivery_status', '=', 0)
+            ->orderBy('delivery_request.id', 'asc')
+            ->get();
     
         $mergedData = [];
         $coopName = CoopUser::pluck('coop_name', 'id')->toArray();

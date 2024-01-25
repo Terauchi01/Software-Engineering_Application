@@ -44,8 +44,10 @@ class CoopDeliveryRequestListController extends Controller
         foreach ($list as $item) {         
             $mergedData[] = [
                 'id' => $item->id,
-                'user_id' => $sendName[$item->user_id],
-                'delivery_destination_id' => $receiveName[$item->delivery_destination_id],
+                'user_name' => $sendName[$item->user_id],
+                'user_id' => $item->user_id,
+                'delivery_destination_name' => $receiveName[$item->delivery_destination_id],
+                'delivery_destination_id' => $item->delivery_destination_id,
                 'collection_company_id' => $collection[$item->collection_company_id],
                 'intermediate_delivery_company_id' => $intermediate[$item->intermediate_delivery_company_id],
                 'delivery_company_id' => $delivery[$item->delivery_company_id],

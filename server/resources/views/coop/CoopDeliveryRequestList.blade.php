@@ -43,8 +43,8 @@ $currentPage = 'coopDeliveryRequestList'
                 @foreach ($mergedData as $index => $deliveryInfo)
                     <tr>
                         <td>{{ $deliveryInfo['id'] }}</td>
-                        <td>{{ $deliveryInfo['user_id'] }}</td>
-                        <td>{{ $deliveryInfo['delivery_destination_id'] }}</td>
+                        <td><a href="{{ route('coop.viewUserInfo', ['id' => $deliveryInfo['user_id']]) }}" style="color:blue; text-decoration:none">{{ $deliveryInfo['user_name'] }}</td>
+                        <td><a href="{{ route('coop.viewUserInfo', ['id' => $deliveryInfo['delivery_destination_id']]) }}" style="color:blue; text-decoration:none">{{ $deliveryInfo['delivery_destination_name'] }}</td>
                         <td>{{ $deliveryInfo['collection_company_id'] }}</td>
                         <td>{{ $deliveryInfo['intermediate_delivery_company_id'] }}</td>
                         <td>{{ $deliveryInfo['delivery_company_id'] }}</td>
