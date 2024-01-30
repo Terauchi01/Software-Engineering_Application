@@ -25,6 +25,7 @@ class CoopLocation extends Model
         // 'license_holder_first_name',
         // 'license_holder_last_name_kana',
         // 'license_holder_first_name_kana',
+        'coop_user_id',
         'license_id',
     ];
 

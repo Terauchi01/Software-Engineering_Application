@@ -105,7 +105,6 @@ class CoopRegistrationRequestController extends Controller
                 'coop_user_id' => $coop->id,
                 'license_holder_name' => $document->name,
                 'license_id' => $licenseId,
-                'coop_user_id' => $coop->id,
             ]);
 
             $coopLocation = $request->validate([
