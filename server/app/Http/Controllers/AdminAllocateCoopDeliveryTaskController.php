@@ -51,8 +51,8 @@ class AdminAllocateCoopDeliveryTaskController extends Controller
                 'delivery_status_name' => $statusName[$item->delivery_status],
             ];
         }
-
-        return view('admin.AdminAllocateCoopDeliveryTask', compact('mergedData'));
+        $coops = CoopUser::where('deletion_date', null)->get();
+        return view('admin.AdminAllocateCoopDeliveryTask', compact('mergedData', 'coops'));
     }
 
     public function delete(Request $request, $id)
@@ -64,10 +64,12 @@ class AdminAllocateCoopDeliveryTaskController extends Controller
         return redirect()->route('admin.adminAllocateCoopDeliveryTask');
     }
 
-    public function approval(Request $request, $id)
-    {
+    public function approval(Request $request) {
         $B = DeliveryRequest::class;
-        $B::where('id',$id)->update(['delivery_status' => 1]);
+        $B::where('id', $request['id'])->update(['delivery_status' => 1]);
+        $B::where('id', $request['id'])->update(['collection_company_id' => $request['c_coop_id']]);
+        $B::where('id', $request['id'])->update(['intermediate_delivery_company_id' => $request['i_coop_id']]);
+        $B::where('id', $request['id'])->update(['delivery_company_id' => $request['d_coop_id']]);
         return redirect()->route('admin.adminAllocateCoopDeliveryTask');
     }
 }
