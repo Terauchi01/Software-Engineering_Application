@@ -45,9 +45,9 @@ $currentPage = 'coopDeliveryRequestList'
                         <td>{{ $deliveryInfo['id'] }}</td>
                         <td><a href="{{ route('coop.viewUserInfo', ['id' => $deliveryInfo['user_id']]) }}" style="color:blue; text-decoration:none">{{ $deliveryInfo['user_name'] }}</td>
                         <td><a href="{{ route('coop.viewUserInfo', ['id' => $deliveryInfo['delivery_destination_id']]) }}" style="color:blue; text-decoration:none">{{ $deliveryInfo['delivery_destination_name'] }}</td>
-                        <td>{{ $deliveryInfo['collection_company_id'] }}</td>
-                        <td>{{ $deliveryInfo['intermediate_delivery_company_id'] }}</td>
-                        <td>{{ $deliveryInfo['delivery_company_id'] }}</td>
+                        <td><a href="{{ route('coop.viewCoopInfo', ['id' => $deliveryInfo['collection_company_id']]) }}" style="color:blue; text-decoration:none">{{ $deliveryInfo['collection_company_name'] }}</td>
+                        <td><a href="{{ route('coop.viewCoopInfo', ['id' => $deliveryInfo['intermediate_delivery_company_id']]) }}" style="color:blue; text-decoration:none">{{ $deliveryInfo['intermediate_delivery_company_name'] }}</td>
+                        <td><a href="{{ route('coop.viewCoopInfo', ['id' => $deliveryInfo['delivery_company_id']]) }}" style="color:blue; text-decoration:none">{{ $deliveryInfo['delivery_company_name'] }}</td>
                         <td><button type="button">
                             <a href="{{ route('coop.coopDeliveryRequestListDelete', ['id' => $deliveryInfo['id']]) }}">
                                 <img src="{{ asset('image/img_approval.png') }}" alt="受領" width="20" height="20"></a></button></td>

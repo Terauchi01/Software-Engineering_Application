@@ -1,109 +1,56 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>依頼一覧</title>
-        <link rel="stylesheet" href="{{ asset('css/coop/CoopList.css') }}">
-        <style>
-         .current {
-             background-color: #ffffff;
-             height: 20pt;
-             text-align: center;
-         }
-        </style>
-    </head>
-    
-    <body>    
-        <div class="side">
-            <div class="current">
-                <p><a href="{{ route('coop.coopViewUserDeliveryRequestList') }}">依頼一覧</a></p>
-            </div>
-            <p><a href="{{ route('coop.coopDroneInfoList') }}">所持ドローン</a></p>        
-            <p><a href="{{ route('coop.coopRegisterDrone') }}">ドローン登録</a></p>                
-            <p><a href="{{ route('coop.coopViewChildCoopAccountList') }}">子アカウント一覧</a></p>
-            <p><a href="{{ route('coop.coopPublishChildCoopAccount') }}">子アカウント発行</a></p>
-            <p><a href="{{ route('coop.coopApplyAdminDroneLend') }}">ドローン貸与申請</a></p>           
-        </div>
+@extends('coop.app')
 
-        <div class = "content">
-            <div class = "header">
-                <select onChange="location.href=value;">
-                    <option>事業者</option>
-                    <option value="{{ route('coop.coopLogout') }}">ログアウト</option>
-                    <option value="{{ route('coop.coopwithdraw') }}">退会</option>
-                </select>                
-                <p>coop</p> <!-- ここをユーザ名とする -->
-            </div>
-            
-            <div class = "main">
-                <div class ="flex-main">                        
-                    <p><h2><font color ="#408A7E"><u> 依頼一覧 </u></font></h2></p>
-                    
-                    <button id="filterButton" class="custom-button">絞り込み</button>
-                    
-                    <p>
-                        <input type="checkbox" id="masterCheckbox" name="feature_enabled">
-                        <label for="masterCheckbox">Select all</label>
-                    </p>
-                    
-                    
-                    <table class ="coop">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>依頼番号</th>
-                                <th>送り主情報</th>
-                                <th>受け取り主情報</th>
-                                <th>受領済</th>
-                                <th>不在</th>
-                            </tr>
-                        </thead>                                    
-                        <tbody>
-                            @foreach ($mergedData as $index => $deliveryInfo)
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" class="itemCheckbox" id="checkbox{{$deliveryInfo['id']}}" name="selectedCoops[]" value="{{ $deliveryInfo['id'] }}">
-                                    </td>
-                                    <td>{{ $deliveryInfo['id'] }}</td>                                    
-                                    <td>{{ $deliveryInfo['user_id'] }}</td>
-                                    <td>{{ $deliveryInfo['delivery_destination_id'] }}</td>                                
-                                    <td><button type="button">
-                                        <a href="{{ route('admin.adminEditUserInfo', ['id' => $deliveryInfo['id']]) }}">
-                                            <img src="{{ asset('image/img_approval.png') }}" alt="受領" width="20" height="20"></a></button></td>
-                                    <td><button type="button">
-                                        <a href="{{ route('admin.adminAllocateCoopDeliveryTaskDelete', ['id' => $deliveryInfo['id']]) }}">
-                                            <img src="{{ asset('image/img_delete.png') }}" alt="削除" width="20" height="20"></a></button></td>
-                                </tr>
-                            @endforeach
-                         </tbody>
-                         <script>
-                          document.getElementById('masterCheckbox').addEventListener('change', function() {
-                              var masterCheckbox = this;
-                              var itemCheckboxes = document.querySelectorAll('.itemCheckbox');
-                              
-                              itemCheckboxes.forEach(function(itemCheckbox) {
-                                  itemCheckbox.checked = masterCheckbox.checked;
-                              });
-                          });
-                          
-                          // 各行のチェックボックスに対するイベントリスナーも追加する場合
-                          document.querySelectorAll('.itemCheckbox').forEach(function(itemCheckbox) {
-                              itemCheckbox.addEventListener('change', function() {
-                                  var allChecked = true;
-                                  document.querySelectorAll('.itemCheckbox').forEach(function(checkbox) {
-                                      if (!checkbox.checked) {
-                                          allChecked = false;
-                                      }
-                                  });
-                                  document.getElementById('masterCheckbox').checked = allChecked;
-                              });
-                          });                                                 
-                         </script>                            
-                    </table>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+@section('title', '事業者情報詳細')
 
+@section('style')
+<link rel="stylesheet" href="{{ asset('/css/admin/AdminInfo.css') }}">
+@endsection
+
+@section('script')
+@endsection
+
+@php
+$currentPage = 'coopDeliveryRequestList'
+@endphp
+
+@section('content')
+<div class="info">
+    <p class="information"><h2><font color ="#408A7E"><u>事業者情報詳細</u></font></h2></p>
+    <p class="name">{{ $coopName }}</p>
+    @if($coopId !== null)
+    <table>
+        <tr>
+            <th>メールアドレス</th>
+            <th>{{ $data['email'] }}</th>
+        </tr>
+        <tr>
+            <th>事業者代表名</th>
+            <th>{{ $data['name'] }}</th>
+        </tr>
+        <tr>
+            <th>事業者代表名カナ</th>
+            <th>{{ $data['kanaName'] }}</th>
+        </tr>
+        <tr>
+            <th>事業拠点情報</th>
+            <th>
+                〒{{ $data['postal_code'] }}<br>
+                {{ $data['address'] }}
+            </th>
+        </tr>
+        <tr>
+            <th>営業形態</th>
+            <th>{{ $data['land_or_air'] }}</th>
+        </tr>
+        <tr>
+            <th>従業員人数</th>
+            <th>{{ $data['worker'] }}</th>
+        </tr>
+        <tr>
+            <th>電話番号</th>
+            <th>{{ $data['phone'] }}</th>
+        </tr>
+    </table>
+    @endif
+</div>
+@endsection

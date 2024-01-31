@@ -9,24 +9,33 @@ use Illuminate\Http\Request;
 
 class CoopViewCoopInfoController extends Controller
 {
-    public function viewUserInfo (Request $request){
+    public function viewCoopInfo (Request $request){
         $id = $request->input('id');
-        $user = CoopUser::find($id);
-        $user = CoopLocation::find($id);
+        $coop = CoopUser::with('location')->find($id);
+        // dump($coop);
+        // $user = CoopUser::find($id);
+        // $user_location = CoopLocation::where("user_id",$id)->first();
 
-        if ($user && $user->deletion_date === null) {
-            $prefecture = MstPrefecture::find($user->prefecture_id)['name'];
-            $city = Cities::find($user->city_id)['name'];
-                        
-            $userId = $user->id;
-            $userName = $user->user_last_name . $user->user_first_name;
-            $data = [
-                'address' => '〒' . $user->postal_code . ' ' . $prefecture . ' ' . $city . ' ' . $user->town . ' ' . $user->block,
-                'name' => $user->user_last_name . ' ' . $user->user_first_name,
-                'kanaName' => $user->user_last_name_kana . ' ' . $user->user_first_name_kana,
-                'phone_number' => $user->phone_number,
+        if ($coop && $coop->deletion_date === null) {
+            $prefecture = MstPrefecture::find($coop->location->prefecture_id)['name'];
+            $city = Cities::find($coop->location->city_id)['name'];
+            $coopId = $coop->id;
+            $coopName = $coop->coop_name;
+            $lor = [
+                1 => '陸運',
+                2 => '空運'
             ];
-            return view('coop.CoopViewUserInfo', compact('userId', 'userName', 'data'));
+            $data = [
+                'email' => $coop->email_address,
+                'name' => $coop->representative_last_name . $coop->representative_first_name,
+                'kanaName' => $coop->representative_last_name_kana . $coop->representative_first_name_kana,
+                'postal_code' => $coop->location->postal_code,
+                'address' => $prefecture . ' ' . $city . ' ' . $coop->location->town . ' ' . $coop->location->block,
+                'worker' => $coop->employees . '人',
+                'phone' => $coop->phone_number,
+                'land_or_air' => $lor[$coop->land_or_air],
+            ];
+            return view('coop.CoopViewCoopInfo', compact('coopName', 'coopId', 'data'));
         }
         $userName = '存在しないユーザです';
         $userId = null;

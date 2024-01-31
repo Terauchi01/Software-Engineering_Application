@@ -48,9 +48,12 @@ class CoopDeliveryRequestListController extends Controller
                 'user_id' => $item->user_id,
                 'delivery_destination_name' => $receiveName[$item->delivery_destination_id],
                 'delivery_destination_id' => $item->delivery_destination_id,
-                'collection_company_id' => $collection[$item->collection_company_id],
-                'intermediate_delivery_company_id' => $intermediate[$item->intermediate_delivery_company_id],
-                'delivery_company_id' => $delivery[$item->delivery_company_id],
+                'collection_company_name' => $collection[$item->collection_company_id],
+                'intermediate_delivery_company_name' => $intermediate[$item->intermediate_delivery_company_id],
+                'delivery_company_name' => $delivery[$item->delivery_company_id],
+                'collection_company_id' => $item->collection_company_id,
+                'intermediate_delivery_company_id' => $item->intermediate_delivery_company_id,
+                'delivery_company_id' => $item->delivery_company_id,
             ];
         }
         return view('coop.CoopDeliveryRequestList', compact('mergedData'));
