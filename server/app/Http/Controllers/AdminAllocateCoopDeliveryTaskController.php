@@ -67,13 +67,12 @@ class AdminAllocateCoopDeliveryTaskController extends Controller
 
     public function approval(Request $request) {
         $B = DeliveryRequest::class;
-        // $B::where('id', $request['id'])->update(['delivery_status' => 1]);
-        $id = $B::where('id', $request['id'])->select('delivery_destination_id','user_id')->get()->toArray();
-        $prefecture_id = User::where('id', $id->delivery_destination_id)->select('prefecture_id')->get()->to_Array();
-        $prefecture_id2 = User::where('id', $id->user_id)->select('prefecture_id')->get()->to_Array();
+        $B::where('id', $request['id'])->update(['delivery_status' => 1]);
+        $id = $B::where('id', $request['id'])->select('delivery_destination_id','user_id')->first();
+        $prefecture_id = User::where('id', $id->delivery_destination_id)->select('prefecture_id')->first()->toArray();
+        $prefecture_id_2 = User::where('id', $id->user_id)->select('prefecture_id')->first()->toArray();
         $joinedData = CoopUser::join('coop_location', 'coop_user.id', '=', 'coop_location.coop_user_id')->get();
         $CoopLocation = [];
-
         // 各coop_user_idに対して処理を行う
         foreach ($joinedData as $data) {
             $coop_user_id = $data->id;
@@ -105,41 +104,44 @@ class AdminAllocateCoopDeliveryTaskController extends Controller
         });
         if($request['c_coop_id'] == null){
             $filteredArray = array_filter($CoopLocation, function ($item) use ($prefecture_id) {
-                return $item['prefecture_id'] == $prefecture_id && $item['land_or_air']==2;
+                return $item['prefecture_id'] == $prefecture_id['prefecture_id'] && $item['land_or_air']==2;
             });
-            if(count($filteredArray) == 0){
+            $firstItem = reset($filteredArray);
+            if($firstItem !== false){
+                $request['c_coop_id'] = $firstItem['coop_user_id'];
+            }
+            else{
                 $request['c_coop_id'] = 1;
             }
-            else{
-                $request['c_coop_id'] = $filteredArray[0];
-            }
-            dd($request['c_coop_id']);
         }
-        else if($request['i_coop_id'] == null){
+        if($request['i_coop_id'] == null){
             $filteredArray = array_filter($CoopLocation, function ($item) use ($prefecture_id) {
-                return $item['prefecture_id'] == $prefecture_id && $item['land_or_air']==1;
+                return $item['prefecture_id'] == $prefecture_id['prefecture_id'] && $item['land_or_air']==1;
             });
-            if(count($filteredArray) == 0){
+            $firstItem = reset($filteredArray);
+            if($firstItem !== false){
+                $request['i_coop_id'] = $firstItem['coop_user_id'];
+            }
+            else{
                 $request['i_coop_id'] = 1;
             }
-            else{
-                $request['i_coop_id'] = $filteredArray[0];
-            }
         }
-        else if($request['c_coop_id'] == null){
-            $filteredArray = array_filter($CoopLocation, function ($item) use ($prefecture_id) {
-                return $item['prefecture_id'] == $prefecture_id && $item['land_or_air']==2;
+        if($request['d_coop_id'] == null){
+            $filteredArray = array_filter($CoopLocation, function ($item) use ($prefecture_id_2) {
+                return $item['prefecture_id'] == $prefecture_id_2['prefecture_id'] && $item['land_or_air']==2;
             });
-            if(count($filteredArray) == 0){
-                $request['i_coop_id'] = 1;
+            $firstItem = reset($filteredArray);
+            if($firstItem !== false){
+                $request['d_coop_id'] = $firstItem['coop_user_id'];
             }
             else{
-                $request['i_coop_id'] = $filteredArray[0];
+                $request['d_coop_id'] = 1;
             }
         }
         $B::where('id', $request['id'])->update(['collection_company_id' => $request['c_coop_id']]);
         $B::where('id', $request['id'])->update(['intermediate_delivery_company_id' => $request['i_coop_id']]);
         $B::where('id', $request['id'])->update(['delivery_company_id' => $request['d_coop_id']]);
+        $test = $B::where('id', $request['id'])->first()->toArray();
         return redirect()->route('admin.adminAllocateCoopDeliveryTask');
     }
 }

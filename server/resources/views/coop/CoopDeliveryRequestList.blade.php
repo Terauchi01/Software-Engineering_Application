@@ -36,7 +36,7 @@ $currentPage = 'coopDeliveryRequestList'
                     <th>集荷会社情報</th>
                     <th>中間配達会社情報</th>
                     <th>配送会社情報</th>
-                    <th>受領済</th>
+                    <th>配達完了</th>
                 </tr>
             </thead>                                    
             <tbody>

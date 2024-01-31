@@ -34,13 +34,13 @@ class CoopDeliveryRequestListController extends Controller
             })
             ->orderBy('delivery_request.id', 'asc')
             ->get();
-        
         $mergedData = [];
         $sendName = User::pluck('user_last_name', 'id')->toArray();
         $receiveName = User::pluck('user_last_name', 'id')->toArray();
-        $collection = CoopUser::pluck('coop_name', 'id')->toArray();
-        $intermediate = CoopUser::pluck('coop_name', 'id')->toArray();
-        $delivery = CoopUser::pluck('coop_name', 'id')->toArray();
+        $joinedData = CoopUser::join('coop_location', 'coop_user.id', '=', 'coop_location.coop_user_id')->get();
+        $collection = $joinedData->pluck('coop_name', 'id')->toArray();
+        $intermediate = $joinedData->pluck('coop_name', 'id')->toArray();
+        $delivery = $joinedData->pluck('coop_name', 'id')->toArray();
         foreach ($list as $item) {         
             $mergedData[] = [
                 'id' => $item->id,
