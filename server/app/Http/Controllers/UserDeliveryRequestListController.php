@@ -31,7 +31,7 @@ class UserDeliveryRequestListController extends Controller
         $mergedData = [];
         $sendName = User::pluck('user_last_name', 'id')->toArray();
         $receiveName = User::pluck('user_last_name', 'id')->toArray();
-        $deliveryStatus = ['未割り振り', '割り振り済', '集荷決定,配達未決定', '配達中', '配達完了'];
+        $deliveryStatus = ['未割り振り', '割り振り済', '配達中', '配達中', '配達完了'];
         foreach ($list as $item) {         
             $mergedData[] = [
                 'id' => $item->id,

@@ -38,6 +38,7 @@ class CoopDeliveryRequestListController extends Controller
         $sendName = User::pluck('user_last_name', 'id')->toArray();
         $receiveName = User::pluck('user_last_name', 'id')->toArray();
         $joinedData = CoopUser::join('coop_location', 'coop_user.id', '=', 'coop_location.coop_user_id')->get();
+        $coop = CoopUser::all();
         $collection = $joinedData->pluck('coop_name', 'id')->toArray();
         $intermediate = $joinedData->pluck('coop_name', 'id')->toArray();
         $delivery = $joinedData->pluck('coop_name', 'id')->toArray();
@@ -58,10 +59,14 @@ class CoopDeliveryRequestListController extends Controller
         }
         return view('coop.CoopDeliveryRequestList', compact('mergedData'));
     }
-    public function delete(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $B = DeliveryRequest::class;
-        $B::where('id',$id)->update(['delivery_status' => 4]);
+        $del = $B::where('id',$id)->first();
+        $del->update(['delivery_status' => $del->delivery_status+1]);
+        if($del->delivery_status == 4){
+            $del->update(['delivery_date' => now()->timezone('Asia/Tokyo')]);
+        }
         return redirect()->route('coop.coopDeliveryRequestList');
     }
 }
