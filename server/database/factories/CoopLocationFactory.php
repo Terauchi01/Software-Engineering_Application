@@ -19,7 +19,6 @@ class CoopLocationFactory extends Factory
      */
     public function definition(): array
     {
-        $coopUserIds = CoopUser::pluck('id')->toArray();
         $maxUserId = CoopLocation::max('coop_user_id') ?? 0;
         return [
             'office_name' => $this->faker->Name,

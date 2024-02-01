@@ -42,7 +42,9 @@ class DatabaseSeeder extends Seeder
         User::factory(99)->create();
         DroneType::factory(100)->create();
         CoopDrones::factory(100)->create();
-        CoopLocation::factory(100)->create();
+        for ($i = 0; $i < 100; $i++) {
+            CoopLocation::factory(1)->create();
+        }
         DeliveryLocationImage::factory(100)->create();
         DeliveryRequest::factory(100)->create();
         Favorite::factory(100)->create();
