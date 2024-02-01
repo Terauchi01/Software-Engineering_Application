@@ -39,7 +39,7 @@ class HelloController extends Controller
         $User = User::all();
         $Prefecture = MstPrefecture::all();
         $Cities = Cities::all();
-        $User = $DeliveryRequest;
+        $User = $CoopLocation;
 
         return view('index', compact('AccountInformation','AdminInformation','AdminUser','CoopDrones','CoopLocation','CoopUser','DeliveryLocationImage','DeliveryRequest','DroneType','Favorite','LicenseInformation','User'));
     }

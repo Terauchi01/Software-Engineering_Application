@@ -52,7 +52,7 @@ class AdminAllocateCoopDeliveryTaskController extends Controller
                 'delivery_status_name' => $statusName[$item->delivery_status],
             ];
         }
-        $coops = CoopUser::where('deletion_date', null)->get();
+        $coops = CoopUser::where('deletion_date', null)->orderBy('id')->get();
         return view('admin.AdminAllocateCoopDeliveryTask', compact('mergedData', 'coops'));
     }
 

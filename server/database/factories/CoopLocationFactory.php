@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\CoopUser;
 use App\Models\Cities;
+use App\Models\CoopLocation;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\coop_location>
@@ -19,9 +20,10 @@ class CoopLocationFactory extends Factory
     public function definition(): array
     {
         $coopUserIds = CoopUser::pluck('id')->toArray();
+        $maxUserId = CoopLocation::max('coop_user_id') ?? 0;
         return [
             'office_name' => $this->faker->Name,
-            'coop_user_id' => $this->faker->unique()->randomElement($coopUserIds),
+            'coop_user_id' => $maxUserId + 1,
             'postal_code' => $this->faker->numerify('#######'),
             'prefecture_id' => $this->faker->numberBetween(1, 47), // 適切なランダムな値に置き換える
             'city_id' => function (array $attributes) {
