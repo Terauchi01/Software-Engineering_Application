@@ -51,4 +51,8 @@ class CoopUser extends Model implements Authenticatable
     {
         return $this->password;
     }
+        public function location()
+    {
+        return $this->hasOne(CoopLocation::class);
+    }
 }

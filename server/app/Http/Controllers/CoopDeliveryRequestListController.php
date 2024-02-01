@@ -34,21 +34,26 @@ class CoopDeliveryRequestListController extends Controller
             })
             ->orderBy('delivery_request.id', 'asc')
             ->get();
-        
         $mergedData = [];
         $sendName = User::pluck('user_last_name', 'id')->toArray();
         $receiveName = User::pluck('user_last_name', 'id')->toArray();
-        $collection = CoopUser::pluck('coop_name', 'id')->toArray();
-        $intermediate = CoopUser::pluck('coop_name', 'id')->toArray();
-        $delivery = CoopUser::pluck('coop_name', 'id')->toArray();
+        $joinedData = CoopUser::join('coop_location', 'coop_user.id', '=', 'coop_location.coop_user_id')->get();
+        $collection = $joinedData->pluck('coop_name', 'id')->toArray();
+        $intermediate = $joinedData->pluck('coop_name', 'id')->toArray();
+        $delivery = $joinedData->pluck('coop_name', 'id')->toArray();
         foreach ($list as $item) {         
             $mergedData[] = [
                 'id' => $item->id,
-                'user_id' => $sendName[$item->user_id],
-                'delivery_destination_id' => $receiveName[$item->delivery_destination_id],
-                'collection_company_id' => $collection[$item->collection_company_id],
-                'intermediate_delivery_company_id' => $intermediate[$item->intermediate_delivery_company_id],
-                'delivery_company_id' => $delivery[$item->delivery_company_id],
+                'user_name' => $sendName[$item->user_id],
+                'user_id' => $item->user_id,
+                'delivery_destination_name' => $receiveName[$item->delivery_destination_id],
+                'delivery_destination_id' => $item->delivery_destination_id,
+                'collection_company_name' => $collection[$item->collection_company_id],
+                'intermediate_delivery_company_name' => $intermediate[$item->intermediate_delivery_company_id],
+                'delivery_company_name' => $delivery[$item->delivery_company_id],
+                'collection_company_id' => $item->collection_company_id,
+                'intermediate_delivery_company_id' => $item->intermediate_delivery_company_id,
+                'delivery_company_id' => $item->delivery_company_id,
             ];
         }
         return view('coop.CoopDeliveryRequestList', compact('mergedData'));

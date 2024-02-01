@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\DeliveryRequest;
 use App\Models\CoopUser;
 use App\Models\User;
+use App\Models\CoopLocation;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -21,10 +22,10 @@ class AdminAllocateCoopDeliveryTaskController extends Controller
             'delivery_request.delivery_company_id',
             'delivery_request.delivery_status',
         )            
-              ->where('delivery_request.deletion_date', '=', null)
-              ->where('delivery_request.delivery_status', '=', 0)
-              ->orderBy('delivery_request.id', 'asc')
-              ->get();
+            ->where('delivery_request.deletion_date', '=', null)
+            ->where('delivery_request.delivery_status', '=', 0)
+            ->orderBy('delivery_request.id', 'asc')
+            ->get();
     
         $mergedData = [];
         $coopName = CoopUser::pluck('coop_name', 'id')->toArray();
@@ -67,9 +68,80 @@ class AdminAllocateCoopDeliveryTaskController extends Controller
     public function approval(Request $request) {
         $B = DeliveryRequest::class;
         $B::where('id', $request['id'])->update(['delivery_status' => 1]);
+        $id = $B::where('id', $request['id'])->select('delivery_destination_id','user_id')->first();
+        $prefecture_id = User::where('id', $id->delivery_destination_id)->select('prefecture_id')->first()->toArray();
+        $prefecture_id_2 = User::where('id', $id->user_id)->select('prefecture_id')->first()->toArray();
+        $joinedData = CoopUser::join('coop_location', 'coop_user.id', '=', 'coop_location.coop_user_id')->get();
+        $CoopLocation = [];
+        // 各coop_user_idに対して処理を行う
+        foreach ($joinedData as $data) {
+            $coop_user_id = $data->id;
+
+            // 指定されたcoop_user_idが何回出現するかを数える
+            $count = DeliveryRequest::where('delivery_status', '=', '0')
+                ->where(function ($query) use ($coop_user_id) {
+                    $query->where('collection_company_id', $coop_user_id)
+                        ->orWhere('intermediate_delivery_company_id', $coop_user_id)
+                        ->orWhere('delivery_company_id', $coop_user_id);
+                })
+                ->count();
+
+            // マージするデータを作成
+            $coopLocationData = [
+                'coop_user_id' => $coop_user_id,
+                'prefecture_id' => $data->prefecture_id, // CoopLocationから取得
+                'coop_user_count' => $count,
+                'land_or_air' => $data->land_or_air,
+            ];
+
+            // $CoopLocationにデータを追加
+            $CoopLocation[] = $coopLocationData;
+        }
+
+        // coop_user_countで配列をソート
+        usort($CoopLocation, function ($a, $b) {
+            return $a['coop_user_count'] <=> $b['coop_user_count'];
+        });
+        if($request['c_coop_id'] == null){
+            $filteredArray = array_filter($CoopLocation, function ($item) use ($prefecture_id) {
+                return $item['prefecture_id'] == $prefecture_id['prefecture_id'] && $item['land_or_air']==2;
+            });
+            $firstItem = reset($filteredArray);
+            if($firstItem !== false){
+                $request['c_coop_id'] = $firstItem['coop_user_id'];
+            }
+            else{
+                $request['c_coop_id'] = 1;
+            }
+        }
+        if($request['i_coop_id'] == null){
+            $filteredArray = array_filter($CoopLocation, function ($item) use ($prefecture_id) {
+                return $item['prefecture_id'] == $prefecture_id['prefecture_id'] && $item['land_or_air']==1;
+            });
+            $firstItem = reset($filteredArray);
+            if($firstItem !== false){
+                $request['i_coop_id'] = $firstItem['coop_user_id'];
+            }
+            else{
+                $request['i_coop_id'] = 1;
+            }
+        }
+        if($request['d_coop_id'] == null){
+            $filteredArray = array_filter($CoopLocation, function ($item) use ($prefecture_id_2) {
+                return $item['prefecture_id'] == $prefecture_id_2['prefecture_id'] && $item['land_or_air']==2;
+            });
+            $firstItem = reset($filteredArray);
+            if($firstItem !== false){
+                $request['d_coop_id'] = $firstItem['coop_user_id'];
+            }
+            else{
+                $request['d_coop_id'] = 1;
+            }
+        }
         $B::where('id', $request['id'])->update(['collection_company_id' => $request['c_coop_id']]);
         $B::where('id', $request['id'])->update(['intermediate_delivery_company_id' => $request['i_coop_id']]);
         $B::where('id', $request['id'])->update(['delivery_company_id' => $request['d_coop_id']]);
+        $test = $B::where('id', $request['id'])->first()->toArray();
         return redirect()->route('admin.adminAllocateCoopDeliveryTask');
     }
 }

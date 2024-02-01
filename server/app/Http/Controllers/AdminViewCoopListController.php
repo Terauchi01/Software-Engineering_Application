@@ -34,10 +34,10 @@ class AdminViewCoopListController extends Controller
             'coop_location.town',
             'coop_location.block'
         )
-              ->where('coop_user.deletion_date', '=', null)
-              ->where('coop_location.deletion_date', '=', null)
-              ->join('coop_location', 'coop_user.id', '=', 'coop_location.coop_user_id')
-              ->orderBy('coop_user.id', 'asc');
+            ->where('coop_user.deletion_date', '=', null)
+            ->where('coop_location.deletion_date', '=', null)
+            ->join('coop_location', 'coop_user.id', '=', 'coop_location.coop_user_id')
+            ->orderBy('coop_user.id', 'asc');
         
         if ($prefecture_id != NULL) {
             $query->where('coop_location.prefecture_id', '=', $prefecture_id);

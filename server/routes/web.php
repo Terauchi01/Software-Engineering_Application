@@ -40,6 +40,8 @@ use App\Http\Controllers\CoopRegistrationRequestController;
 use App\Http\Controllers\CoopReportTroubleController;
 use App\Http\Controllers\CoopRequestAdminDroneRepairController;
 use App\Http\Controllers\CoopWithdrawController;
+use App\Http\Controllers\CoopViewUserInfoController;
+use App\Http\Controllers\CoopViewCoopInfoController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\UserDeliveryPlaceRequestController;
 use App\Http\Controllers\UserDeliveryRequestController;
@@ -139,6 +141,10 @@ Route::group(['prefix' => 'coop', 'as' => 'coop.'], function () {
         Route::get('coopRegisterDrone', [CoopDroneRegistrationController::class, 'coopRegisterDrone'])->name('coopRegisterDrone');
         Route::post('registerDrone', [CoopDroneRegistrationController::class, 'registerDrone'])->name('registerDrone');
         Route::get('coopDeliveryRequestList', [CoopDeliveryRequestListController::class, 'coopDeliveryRequestList'])->name('coopDeliveryRequestList');
+
+        Route::get('viewUserInfo', [CoopViewUserInfoController::class, 'viewUserInfo'])->name('viewUserInfo');
+        Route::get('viewCoopInfo', [CoopViewCoopInfoController::class, 'viewCoopInfo'])->name('viewCoopInfo');
+
         Route::get('deliveryRequestInfoList/{id}', [CoopDeliveryRequestListController::class, 'delete'])->name('coopDeliveryRequestListDelete');
         Route::get('coopLogout', [CoopLogoutController::class, 'coopLogout'])->name('coopLogout');
         Route::get('coopRegisterDrone', [CoopDroneRegistrationController::class, 'coopRegisterDrone'])->name('coopRegisterDrone');
